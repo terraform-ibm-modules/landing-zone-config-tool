@@ -1,0 +1,1270 @@
+{
+  "vpn-and-waf": {
+    "classic_access": false,
+    "default_network_acl_name": null,
+    "default_routing_table_name": null,
+    "default_security_group_name": null,
+    "address_prefixes": {
+      "zone-1": ["10.5.0.0/16"],
+      "zone-2": ["10.6.0.0/16"],
+      "zone-3": ["10.7.0.0/16"]
+    },
+    "default_security_group_rules": [],
+    "flow_logs_bucket_name": null,
+    "network_acls": [
+      {
+        "add_cluster_rules": false,
+        "name": "edge-acl",
+        "rules": [
+          {
+            "action": "allow",
+            "destination": "10.0.0.0/8",
+            "direction": "inbound",
+            "name": "allow-ibm-inbound",
+            "source": "161.26.0.0/16",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          },
+          {
+            "action": "allow",
+            "destination": "10.0.0.0/8",
+            "direction": "inbound",
+            "name": "allow-all-network-inbound",
+            "source": "10.0.0.0/8",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          },
+          {
+            "action": "allow",
+            "destination": "0.0.0.0/0",
+            "direction": "outbound",
+            "name": "allow-all-outbound",
+            "source": "0.0.0.0/0",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          }
+        ]
+      },
+      {
+        "add_cluster_rules": false,
+        "name": "f5-external-acl",
+        "rules": [
+          {
+            "action": "allow",
+            "destination": "10.0.0.0/8",
+            "direction": "inbound",
+            "name": "allow-ibm-inbound",
+            "source": "161.26.0.0/16",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          },
+          {
+            "action": "allow",
+            "destination": "10.0.0.0/8",
+            "direction": "inbound",
+            "name": "allow-all-network-inbound",
+            "source": "10.0.0.0/8",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          },
+          {
+            "action": "allow",
+            "destination": "0.0.0.0/0",
+            "direction": "outbound",
+            "name": "allow-all-outbound",
+            "source": "0.0.0.0/0",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          },
+          {
+            "action": "allow",
+            "destination": "10.0.0.0/8",
+            "direction": "inbound",
+            "name": "allow-f5-external-443-inbound",
+            "source": "0.0.0.0/0",
+            "tcp": {
+              "port_max": 443,
+              "port_min": 443,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          }
+        ]
+      }
+    ],
+    "prefix": "edge",
+    "resource_group": "edge-rg",
+    "subnets": {
+      "zone-1": [
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.5.60.0/24",
+          "name": "f5-bastion-zone-1",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "f5-external-acl",
+          "cidr": "10.5.40.0/24",
+          "name": "f5-external-zone-1",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.5.30.0/24",
+          "name": "f5-management-zone-1",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.5.50.0/24",
+          "name": "f5-workload-zone-1",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.5.70.0/24",
+          "name": "vpe-zone-1",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.5.10.0/24",
+          "name": "vpn-1-zone-1",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.5.20.0/24",
+          "name": "vpn-2-zone-1",
+          "public_gateway":false
+        }
+      ],
+      "zone-2": [
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.6.60.0/24",
+          "name": "f5-bastion-zone-2",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "f5-external-acl",
+          "cidr": "10.6.40.0/24",
+          "name": "f5-external-zone-2",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.6.30.0/24",
+          "name": "f5-management-zone-2",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.6.50.0/24",
+          "name": "f5-workload-zone-2",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.6.70.0/24",
+          "name": "vpe-zone-2",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.6.10.0/24",
+          "name": "vpn-1-zone-2",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.6.20.0/24",
+          "name": "vpn-2-zone-2",
+          "public_gateway":false
+        }
+      ],
+      "zone-3": [
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.7.60.0/24",
+          "name": "f5-bastion-zone-3",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "f5-external-acl",
+          "cidr": "10.7.40.0/24",
+          "name": "f5-external-zone-3",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.7.30.0/24",
+          "name": "f5-management-zone-3",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.7.50.0/24",
+          "name": "f5-workload-zone-3",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.7.70.0/24",
+          "name": "vpe-zone-3",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.7.10.0/24",
+          "name": "vpn-1-zone-3",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.7.20.0/24",
+          "name": "vpn-2-zone-3",
+          "public_gateway":false
+        }
+      ]
+    },
+    "use_public_gateways": {
+      "zone-1": false,
+      "zone-2": false,
+      "zone-3": false
+    }
+  },
+  "waf": {
+    "classic_access": false,
+    "default_network_acl_name": null,
+    "default_routing_table_name": null,
+    "default_security_group_name": null,
+    "address_prefixes": {
+      "zone-1": ["10.5.0.0/16"],
+      "zone-2": ["10.6.0.0/16"],
+      "zone-3": ["10.7.0.0/16"]
+    },
+    "default_security_group_rules": [],
+    "flow_logs_bucket_name": null,
+    "network_acls": [
+      {
+        "add_cluster_rules": false,
+        "name": "edge-acl",
+        "rules": [
+          {
+            "action": "allow",
+            "destination": "10.0.0.0/8",
+            "direction": "inbound",
+            "name": "allow-ibm-inbound",
+            "source": "161.26.0.0/16",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          },
+          {
+            "action": "allow",
+            "destination": "10.0.0.0/8",
+            "direction": "inbound",
+            "name": "allow-all-network-inbound",
+            "source": "10.0.0.0/8",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          },
+          {
+            "action": "allow",
+            "destination": "0.0.0.0/0",
+            "direction": "outbound",
+            "name": "allow-all-outbound",
+            "source": "0.0.0.0/0",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          }
+        ]
+      },
+      {
+        "add_cluster_rules": false,
+        "name": "f5-external-acl",
+        "rules": [
+          {
+            "action": "allow",
+            "destination": "10.0.0.0/8",
+            "direction": "inbound",
+            "name": "allow-ibm-inbound",
+            "source": "161.26.0.0/16",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          },
+          {
+            "action": "allow",
+            "destination": "10.0.0.0/8",
+            "direction": "inbound",
+            "name": "allow-all-network-inbound",
+            "source": "10.0.0.0/8",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          },
+          {
+            "action": "allow",
+            "destination": "0.0.0.0/0",
+            "direction": "outbound",
+            "name": "allow-all-outbound",
+            "source": "0.0.0.0/0",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          },
+          {
+            "action": "allow",
+            "destination": "10.0.0.0/8",
+            "direction": "inbound",
+            "name": "allow-f5-external-443-inbound",
+            "source": "0.0.0.0/0",
+            "tcp": {
+              "port_max": 443,
+              "port_min": 443,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          }
+        ]
+      }
+    ],
+    "prefix": "edge",
+    "resource_group": "edge-rg",
+    "subnets": {
+      "zone-1": [
+        {
+          "acl_name": "f5-external-acl",
+          "cidr": "10.5.20.0/24",
+          "name": "f5-external-zone-1",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.5.10.0/24",
+          "name": "f5-management-zone-1",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.5.30.0/24",
+          "name": "f5-workload-zone-1",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.5.40.0/24",
+          "name": "vpe-zone-1",
+          "public_gateway":false
+        }
+      ],
+      "zone-2": [
+        {
+          "acl_name": "f5-external-acl",
+          "cidr": "10.6.20.0/24",
+          "name": "f5-external-zone-2",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.6.10.0/24",
+          "name": "f5-management-zone-2",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.6.30.0/24",
+          "name": "f5-workload-zone-2",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.6.40.0/24",
+          "name": "vpe-zone-2",
+          "public_gateway":false
+        }
+      ],
+      "zone-3": [
+        {
+          "acl_name": "f5-external-acl",
+          "cidr": "10.7.20.0/24",
+          "name": "f5-external-zone-3",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.7.10.0/24",
+          "name": "f5-management-zone-3",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.7.30.0/24",
+          "name": "f5-workload-zone-3",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.7.40.0/24",
+          "name": "vpe-zone-3",
+          "public_gateway":false
+        }
+      ]
+    },
+    "use_public_gateways": {
+      "zone-1": false,
+      "zone-2": false,
+      "zone-3": false
+    }
+  },
+  "full-tunnel": {
+    "classic_access": false,
+    "default_network_acl_name": null,
+    "default_routing_table_name": null,
+    "default_security_group_name": null,
+    "address_prefixes": {
+      "zone-1": ["10.5.0.0/16"],
+      "zone-2": ["10.6.0.0/16"],
+      "zone-3": ["10.7.0.0/16"]
+    },
+    "default_security_group_rules": [],
+    "flow_logs_bucket_name": null,
+    "network_acls": [
+      {
+        "add_cluster_rules": false,
+        "name": "edge-acl",
+        "rules": [
+          {
+            "action": "allow",
+            "destination": "10.0.0.0/8",
+            "direction": "inbound",
+            "name": "allow-ibm-inbound",
+            "source": "161.26.0.0/16",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          },
+          {
+            "action": "allow",
+            "destination": "10.0.0.0/8",
+            "direction": "inbound",
+            "name": "allow-all-network-inbound",
+            "source": "10.0.0.0/8",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          },
+          {
+            "action": "allow",
+            "destination": "0.0.0.0/0",
+            "direction": "outbound",
+            "name": "allow-all-outbound",
+            "source": "0.0.0.0/0",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          }
+        ]
+      },
+      {
+        "add_cluster_rules": false,
+        "name": "f5-external-acl",
+        "rules": [
+          {
+            "action": "allow",
+            "destination": "10.0.0.0/8",
+            "direction": "inbound",
+            "name": "allow-ibm-inbound",
+            "source": "161.26.0.0/16",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          },
+          {
+            "action": "allow",
+            "destination": "10.0.0.0/8",
+            "direction": "inbound",
+            "name": "allow-all-network-inbound",
+            "source": "10.0.0.0/8",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          },
+          {
+            "action": "allow",
+            "destination": "0.0.0.0/0",
+            "direction": "outbound",
+            "name": "allow-all-outbound",
+            "source": "0.0.0.0/0",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          },
+          {
+            "action": "allow",
+            "destination": "10.0.0.0/8",
+            "direction": "inbound",
+            "name": "allow-f5-external-443-inbound",
+            "source": "0.0.0.0/0",
+            "tcp": {
+              "port_max": 443,
+              "port_min": 443,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          }
+        ]
+      }
+    ],
+    "prefix": "edge",
+    "resource_group": "edge-rg",
+    "subnets": {
+      "zone-1": [
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.5.50.0/24",
+          "name": "f5-bastion-zone-1",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "f5-external-acl",
+          "cidr": "10.5.40.0/24",
+          "name": "f5-external-zone-1",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.5.30.0/24",
+          "name": "f5-management-zone-1",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.5.60.0/24",
+          "name": "vpe-zone-1",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.5.10.0/24",
+          "name": "vpn-1-zone-1",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.5.20.0/24",
+          "name": "vpn-2-zone-1",
+          "public_gateway":false
+        }
+      ],
+      "zone-2": [
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.6.50.0/24",
+          "name": "f5-bastion-zone-2",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "f5-external-acl",
+          "cidr": "10.6.40.0/24",
+          "name": "f5-external-zone-2",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.6.30.0/24",
+          "name": "f5-management-zone-2",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.6.60.0/24",
+          "name": "vpe-zone-2",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.6.10.0/24",
+          "name": "vpn-1-zone-2",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.6.20.0/24",
+          "name": "vpn-2-zone-2",
+          "public_gateway":false
+        }
+      ],
+      "zone-3": [
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.7.50.0/24",
+          "name": "f5-bastion-zone-3",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "f5-external-acl",
+          "cidr": "10.7.40.0/24",
+          "name": "f5-external-zone-3",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.7.30.0/24",
+          "name": "f5-management-zone-3",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.7.60.0/24",
+          "name": "vpe-zone-3",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.7.10.0/24",
+          "name": "vpn-1-zone-3",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "edge-acl",
+          "cidr": "10.7.20.0/24",
+          "name": "vpn-2-zone-3",
+          "public_gateway":false
+        }
+      ]
+    },
+    "use_public_gateways": {
+      "zone-1": false,
+      "zone-2": false,
+      "zone-3": false
+    }
+  },
+  "management-vpn-and-waf": {
+    "classic_access": false,
+    "default_network_acl_name": null,
+    "default_routing_table_name": null,
+    "default_security_group_name": null,
+    "address_prefixes": {
+      "zone-1": ["10.5.0.0/16", "10.10.10.0/16"],
+      "zone-2": ["10.6.0.0/16", "10.20.10.0/16"],
+      "zone-3": ["10.7.0.0/16", "10.30.10.0/16"]
+    },
+    "default_security_group_rules": [],
+    "flow_logs_bucket_name": "management-bucket",
+    "network_acls": [
+      {
+        "add_cluster_rules": true,
+        "name": "management-acl",
+        "rules": [
+          {
+            "action": "allow",
+            "destination": "10.0.0.0/8",
+            "direction": "inbound",
+            "name": "allow-ibm-inbound",
+            "source": "161.26.0.0/16",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          },
+          {
+            "action": "allow",
+            "destination": "10.0.0.0/8",
+            "direction": "inbound",
+            "name": "allow-all-network-inbound",
+            "source": "10.0.0.0/8",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          },
+          {
+            "action": "allow",
+            "destination": "0.0.0.0/0",
+            "direction": "outbound",
+            "name": "allow-all-outbound",
+            "source": "0.0.0.0/0",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          }
+        ]
+      },
+      {
+        "add_cluster_rules": false,
+        "name": "f5-external-acl",
+        "rules": [
+          {
+            "action": "allow",
+            "destination": "10.0.0.0/8",
+            "direction": "inbound",
+            "name": "allow-ibm-inbound",
+            "source": "161.26.0.0/16",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          },
+          {
+            "action": "allow",
+            "destination": "10.0.0.0/8",
+            "direction": "inbound",
+            "name": "allow-all-network-inbound",
+            "source": "10.0.0.0/8",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          },
+          {
+            "action": "allow",
+            "destination": "0.0.0.0/0",
+            "direction": "outbound",
+            "name": "allow-all-outbound",
+            "source": "0.0.0.0/0",
+            "tcp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          },
+          {
+            "action": "allow",
+            "destination": "10.0.0.0/8",
+            "direction": "inbound",
+            "name": "allow-f5-external-443-inbound",
+            "source": "0.0.0.0/0",
+            "tcp": {
+              "port_max": 443,
+              "port_min": 443,
+              "source_port_min": null,
+              "source_port_max": null
+            },
+            "icmp": {
+              "code": null,
+              "type": null
+            },
+            "udp": {
+              "port_max": null,
+              "port_min": null,
+              "source_port_min": null,
+              "source_port_max": null
+            }
+          }
+        ]
+      }
+    ],
+    "prefix": "management",
+    "resource_group": "management-rg",
+    "subnets": {
+      "zone-1": [
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.10.10.0/24",
+          "name": "vsi-zone-1",
+          "public_gateway": false
+        },
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.10.20.0/24",
+          "name": "vpe-zone-1",
+          "public_gateway": false
+        },
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.10.30.0/24",
+          "name": "vpn-zone-1",
+          "public_gateway": false
+        },
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.5.60.0/24",
+          "name": "f5-bastion-zone-1",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "f5-external-acl",
+          "cidr": "10.5.40.0/24",
+          "name": "f5-external-zone-1",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.5.30.0/24",
+          "name": "f5-management-zone-1",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.5.50.0/24",
+          "name": "f5-workload-zone-1",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.5.10.0/24",
+          "name": "vpn-1-zone-1",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.5.20.0/24",
+          "name": "vpn-2-zone-1",
+          "public_gateway":false
+        }
+      ],
+      "zone-2": [
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.20.10.0/24",
+          "name": "vsi-zone-2",
+          "public_gateway": false
+        },
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.20.20.0/24",
+          "name": "vpe-zone-2",
+          "public_gateway": false
+        },
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.6.60.0/24",
+          "name": "f5-bastion-zone-2",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "f5-external-acl",
+          "cidr": "10.6.40.0/24",
+          "name": "f5-external-zone-2",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.6.30.0/24",
+          "name": "f5-management-zone-2",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.6.50.0/24",
+          "name": "f5-workload-zone-2",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.6.10.0/24",
+          "name": "vpn-1-zone-2",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.6.20.0/24",
+          "name": "vpn-2-zone-2",
+          "public_gateway":false
+        }
+      ],
+      "zone-3": [
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.30.10.0/24",
+          "name": "vsi-zone-3",
+          "public_gateway": false
+        },
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.30.20.0/24",
+          "name": "vpe-zone-3",
+          "public_gateway": false
+        },
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.7.60.0/24",
+          "name": "f5-bastion-zone-3",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "f5-external-acl",
+          "cidr": "10.7.40.0/24",
+          "name": "f5-external-zone-3",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.7.30.0/24",
+          "name": "f5-management-zone-3",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.7.50.0/24",
+          "name": "f5-workload-zone-3",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.7.10.0/24",
+          "name": "vpn-1-zone-3",
+          "public_gateway":false
+        },
+        {
+          "acl_name": "management-acl",
+          "cidr": "10.7.20.0/24",
+          "name": "vpn-2-zone-3",
+          "public_gateway":false
+        }
+      ]
+    },
+    "use_public_gateways": {
+      "zone-1": false,
+      "zone-2": false,
+      "zone-3": false
+    }
+  }
+}

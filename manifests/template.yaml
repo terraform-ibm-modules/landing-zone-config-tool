@@ -1,0 +1,50 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: slzgui-template
+  annotations:
+    description: "Template for the slz gui"
+objects:
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: slzgui
+      labels:
+        app: slzgui
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: slzgui
+      template:
+        metadata:
+          labels:
+            app: slzgui
+        spec:
+          containers:
+            - name: slzgui
+              image: us.icr.io/slz_gui/frontend:${IMAGE_TAG}
+              command: ["npm", "start"]
+              ports:
+                - containerPort: 3000
+          imagePullSecrets:
+            - name: all-icr-io
+  - apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: community-ingress-resource
+    spec:
+      rules:
+        - host: slz-gui-testbed-caf539b8d718205a334907f986dcee2a-0000.us-east.containers.appdomain.cloud
+          http:
+            paths:
+              - path: /
+                pathType: Prefix
+                backend:
+                  service:
+                    name: slzgui
+                    port:
+                      number: 80
+parameters:
+  - description: Image tag
+    name: IMAGE_TAG

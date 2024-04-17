@@ -1,0 +1,36 @@
+.cds--tab-content.doc {
+  padding: 0.5rem 0;
+}
+
+.about {
+  padding: 2rem 1rem;
+  line-height: 1.5;
+}
+
+.smallerText {
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.smallFont {
+  font-size: 90%;
+  width: 58vw;
+  line-height: 1.5;
+}
+
+.smallFontPatterns {
+  font-size: 90%;
+  max-width: 40vw;
+  line-height: 1.5;
+}
+
+.smallFontEdge {
+  font-size: 95%;
+  max-width: 67.5vw;
+  line-height: 1.5;
+}
+
+.patternDocText {
+  font-size: 14.4px;
+  line-height: 1.5;
+}

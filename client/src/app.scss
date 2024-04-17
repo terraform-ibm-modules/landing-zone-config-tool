@@ -1,0 +1,295 @@
+.App {
+  text-align: center;
+  background: #fcfafa;
+}
+
+/* CSS for forms */
+.parentFloat {
+  box-shadow: -1px 1px 9px 2px #d5d2d2;
+}
+
+.subForm {
+  background: #f4f4f4;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.formInSubForm {
+  margin-top: 0rem;
+  background: #fffdfd;
+  padding: 1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Width and height */
+.minHeight {
+  // height of the screen - footer size
+  min-height: calc(100vh - 3rem);
+}
+
+.leftPanelWidth {
+  width: 62%;
+  margin-right: 2rem;
+  max-width: 62vw;
+}
+
+.rightPanelWidth {
+  min-width: 35%;
+  text-align: left;
+}
+
+.fitContent {
+  width: fit-content;
+}
+
+.fieldWidth {
+  width: 14rem;
+}
+
+.fieldWidthSmaller {
+  width: 11rem;
+}
+
+.fieldWidthSmallest {
+  width: 8rem;
+}
+
+.textInputMedium {
+  width: 20rem;
+}
+
+.textInputWide {
+  width: 30rem;
+}
+
+.inLineFormButton {
+  height: fit-content;
+}
+
+.widthOneHundredPercent {
+  width: 100%;
+}
+
+.slzFormTitleMinHeight {
+  min-height: 32px;
+}
+
+/* Margin and padding */
+.navBarAlign {
+  margin: 3.5rem 1.5rem 0rem 3.5rem;
+}
+
+.fieldPadding {
+  padding: 1.5rem 0.5rem 2rem 1rem;
+}
+
+.marginRight {
+  margin-right: 2rem;
+}
+
+.marginRightMed {
+  margin-right: 1rem;
+}
+
+.marginRightSmall {
+  margin-right: 0.5rem;
+}
+
+.marginRightHome {
+  margin-right: 1.5rem;
+}
+
+.marginBottom {
+  margin-bottom: 2rem;
+}
+
+.marginBottomSmall {
+  margin-bottom: 1rem;
+}
+
+.marginBottomLarge {
+  margin-bottom: 3rem;
+}
+
+.marginBottomXs {
+  margin-bottom: 0.5rem;
+}
+
+.marginBottomNone {
+  margin-bottom: 0rem;
+}
+
+.marginTopXs {
+  margin-top: 0.5rem;
+}
+
+.marginTopSmall {
+  margin-top: 1rem;
+}
+
+.marginTop {
+  margin-top: 1.5rem;
+}
+
+.marginTopLarge {
+  margin-top: 1.8rem;
+}
+
+.marginLeft {
+  margin-left: 2rem;
+}
+
+.popoverLeft {
+  margin-left: -1rem;
+}
+
+.noMargin {
+  margin: 0;
+}
+
+.evenSpacing {
+  gap: 3vw;
+}
+
+.subnetTileFormMargin {
+  margin-bottom: -0.5rem !important;
+  margin-top: 0.5rem;
+}
+
+.forceTertiaryButtonStyles {
+  padding-right: 0.4375rem !important;
+  padding-left: 0.4375rem !important;
+}
+
+/* Alignment */
+.displayFlex {
+  display: flex;
+}
+
+.leftTextAlign {
+  text-align: left;
+}
+
+.rightTextAlign {
+  text-align: right;
+}
+
+.spaceBetween {
+  justify-content: space-between;
+}
+
+.alignItemsCenter {
+  align-items: center;
+}
+
+.positionRelative {
+  position: relative;
+}
+
+.alignLeft {
+  float: left;
+}
+
+.floatRight {
+  float: right;
+}
+
+/* Color */
+.whiteBackground {
+  background: white;
+}
+
+.redFill {
+  fill: #da1e28 !important;
+}
+
+.greenFill {
+  fill: green;
+}
+
+/* CSS for JSON panel */
+.label {
+  margin-bottom: 0.5rem;
+  font-size: var(--cds-label-01-font-size, 0.75rem);
+  color: var(--cds-text-secondary, #525252);
+}
+
+@media only screen and (max-width: 800px) {
+  .label {
+    display: none;
+  }
+}
+
+.cm-editor .cm-content {
+  font-family: "IBM Plex Mono";
+  height: fit-content;
+}
+
+/* CSS for overriding default component styles */
+.cds--btn--ghost:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.cds--btn--ghost:hover {
+  background: transparent;
+}
+
+.cds--text-input--invalid,
+.cds--text-input--warning,
+.cds--text-input-wrapper--readonly .cds--text-input {
+  padding-right: 3rem;
+}
+
+ul.bullets {
+  list-style-type: circle;
+}
+
+ul.indent {
+  margin-left: 2rem;
+}
+
+a.tile:is(:link, :visited, :hover, :active) {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.cds--body--with-modal-open .cds--tooltip {
+  z-index: 0; /* prevent icon only button show through modal */
+}
+
+.cds--tab-content:focus {
+  outline: none;
+  border: none;
+}
+
+.cds--list-box__menu {
+  width: fit-content;
+  text-align: left;
+}
+
+/* select only the modal content and override its margin-bottom */
+.unselectedPatternModal div div.cds--modal-content {
+  margin-bottom: 1rem;
+}
+
+.cds--btn--primary.unselectedPatternModal {
+  min-width: 100%;
+  padding-left: 40%; // text is about 10%
+}
+
+/* text area font for import json */
+.cds--form-item.codeFont div.cds--text-area__wrapper {
+  font-family: monospace, monospace; // workaround for some browsers with how they handle monospace
+}
+
+// do not allow the accordion title to go over the footer
+.cds--accordion__title {
+  z-index: 0;
+}

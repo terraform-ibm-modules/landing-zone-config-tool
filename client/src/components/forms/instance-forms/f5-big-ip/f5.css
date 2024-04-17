@@ -1,0 +1,12 @@
+.passwordGenerateButton {
+  margin-top: 1.25rem;
+  margin-left: calc(-4rem - 3vw); /* remove the gap spacing*/
+}
+
+.passwordGenerateButton svg {
+  fill: var(--cds-icon-secondary, #525252) !important;
+}
+
+.passwordGenerateButton.invalid {
+  margin-left: calc(-5.75rem - 3vw); /* remove the gap spacing*/
+}

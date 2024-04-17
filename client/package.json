@@ -1,0 +1,55 @@
+{
+  "name": "slz-gui",
+  "version": "0.8.0",
+  "private": true,
+  "type": "module",
+  "repository": "git@github.com:carbon-design-system/carbon-tutorial.git",
+  "bugs": "https://github.com/carbon-design-system/carbon-tutorial/issues",
+  "license": "Apache-2.0",
+  "main": "/src/index.js",
+  "homepage": "https://pages.github.ibm.com/Alexander-Reiff/slzgui",
+  "scripts": {
+    "build": "craco build",
+    "ci-check": "npm run format:diff",
+    "clean": "yarn cache clean && yarn install",
+    "eject": "craco eject",
+    "format": "prettier --write \"**/*.{js,md,scss}\"",
+    "format:diff": "prettier --list-different \"**/*.{js,md,scss}\"",
+    "format:staged": "prettier --write",
+    "start": "NODE_ENV=development PORT=3000 craco start",
+    "test": "craco test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "dependencies": {
+    "@carbon/icons-react": "11.39.0",
+    "@carbon/react": "1.55.0",
+    "@codemirror/lang-javascript": "6.2.2",
+    "@uiw/codemirror-themes": "4.21.25",
+    "@uiw/react-codemirror": "4.21.25",
+    "gh-pages": "6.1.1",
+    "lazy-z": "1.11.18",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.22.3",
+    "regex-but-with-words": "1.5.5",
+    "sass": "1.75.0"
+  },
+  "devDependencies": {
+    "@craco/craco": "7.1.0",
+    "prettier": "3.2.5",
+    "react-scripts": "5.0.1"
+  },
+  "overrides": {
+    "express": "4.19.2",
+    "nth-check": "2.1.1",
+    "postcss": "8.4.38",
+    "webpack-dev-middleware": "5.3.4"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

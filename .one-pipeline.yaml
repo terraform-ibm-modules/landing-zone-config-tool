@@ -1,0 +1,80 @@
+version: '1'
+
+setup:
+  image: icr.io/goldeneye_images/goldeneye-ci-image:stable
+  image_pull_policy: Always
+  script: |
+    #!/usr/bin/env bash
+    set -e
+
+    # create netrc file with git token to work with GHE
+    echo -e "machine github.ibm.com\n login $(get_env git-token)" >> ~/.netrc
+
+    # If PR, checkout to latest commit from PR branch
+    if [[ "$(get_env pipeline_namespace)" == *"pr"* ]]; then
+      COMMIT_BRANCH="$(get_env head-branch)"
+      LATEST_PR_COMMIT="$(get_env head-sha)"
+      echo "COMMIT_BRANCH=${COMMIT_BRANCH}"
+      echo "LATEST_PR_COMMIT=${LATEST_PR_COMMIT}"
+      git branch
+      git checkout $COMMIT_BRANCH
+      if [[ $? -ne 0 ]]; then
+        echo "Checkout to branch ${COMMIT_BRANCH} failed."
+        exit 1;
+      fi
+      git checkout $LATEST_PR_COMMIT
+      if [[ $? -ne 0 ]]; then
+        echo "Checkout PR Commit ${LATEST_PR_COMMIT} failed."
+        exit 1;
+      fi
+    fi
+    git submodule update --init
+
+    echo "Doing cra setup"
+    export REDHAT_USERNAME=$(get_env redhat-username)
+    export REDHAT_PASSWORD=$(get_env redhat-password)
+    export DOCKERBUILDFLAGS="--build-arg REDHAT_USERNAME --build-arg REDHAT_PASSWORD --build-arg ARTIFACTORY_USERNAME --build-arg ARTIFACTORY_PASSWORD"
+    set_env cra-docker-build-context "true"
+    set_env cra-custom-script-path "./one_pipeline_cra_script.sh"
+    echo "cra setup done"
+
+test:
+  image: icr.io/goldeneye_images/goldeneye-ci-image:stable
+  dind: true
+  abort_on_failure: false
+  script: |
+    #!/usr/bin/env bash
+    set -e
+
+    # netrc file with git token required by git-submodule-version-check pre-commit hook
+    echo -e "machine github.ibm.com\n  login $(get_env git-token)" >> ~/.netrc
+
+    # run pre-commit against all files
+    make pre-commit
+
+    export ARTIFACTORY_USERNAME="$(get_env artifactory-user)"
+    export ARTIFACTORY_PASSWORD="$(get_env artifactory-password)" #pragma: allowlist secret
+    make create-npmrc
+    npm install
+    cd client
+    npm install
+    cd ..
+
+    # run unit tests
+    npm test
+
+    # check that client successfully builds
+    npm run build
+
+
+containerize:
+  dind: true
+  image: icr.io/goldeneye_images/goldeneye-ci-image:stable
+  script: |
+    #!/usr/bin/env bash
+
+release:
+  dind: true
+  image: icr.io/continuous-delivery/toolchains/devsecops/csso-image-sign:8.0.0@sha256:4fa72947d3b97c029b035f5c0b458184808f294a417b847b4935015d3c0744d3
+  script: |
+    #!/usr/bin/env bash
