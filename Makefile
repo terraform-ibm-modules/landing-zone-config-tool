@@ -1,30 +1,8 @@
 # -*- mode:makefile; coding:utf-8 -*-
-# include common-dev-assets/module-assets/config.env
-# export
-
-ifndef BUILD_DATE
-  override BUILD_DATE:=$(shell /bin/date "+%Y%m%d-%H%M%S")
-endif
-
-.DEFAULT_GOAL = dependency-pre-commit
-ifneq (,$(filter $(detected_OS), Darwin Linux))
-	.DEFAULT_GOAL = all
-endif
 
 #
-# pre-commit
+# npm
 #
-
-all: dependency-install-darwin-linux dependency-pre-commit
-
-dependency-install-darwin-linux:
-	./ci/install-deps.sh
-
-dependency-pre-commit:
-	pre-commit install
-
-pre-commit: dependency-pre-commit
-	pre-commit run --all-files
 
 clean-npmrc:
 	@rm -f .npmrc

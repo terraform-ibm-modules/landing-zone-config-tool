@@ -7,7 +7,7 @@
   "bugs": "https://github.com/carbon-design-system/carbon-tutorial/issues",
   "license": "Apache-2.0",
   "main": "/src/index.js",
-  "homepage": "https://pages.github.ibm.com/Alexander-Reiff/slzgui",
+  "homepage": "https://pages.github.ibm.com/terraform-ibm-modules/landing-zone-config-tool",
   "scripts": {
     "build": "craco build",
     "ci-check": "npm run format:diff",
