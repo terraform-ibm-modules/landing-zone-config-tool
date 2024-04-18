@@ -1,6 +1,16 @@
 # -*- mode:makefile; coding:utf-8 -*-
 
 #
+# Pre-Commit
+#
+
+dependency-pre-commit:
+	pre-commit install
+
+pre-commit: dependency-pre-commit
+	pre-commit run --all-files
+
+#
 # npm
 #
 
