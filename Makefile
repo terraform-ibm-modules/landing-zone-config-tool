@@ -5,6 +5,7 @@
 #
 
 dependency-pre-commit:
+	./ci/install-deps.sh
 	pre-commit install
 
 pre-commit: dependency-pre-commit

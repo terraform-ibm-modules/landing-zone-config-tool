@@ -31,34 +31,12 @@ npm run build
 
 ## Running the Development Server
 
-### Prerequisites
-
-Export your IBM Cloud API key to your shell environment
-
-```bash
-export SLZ_GUI_API_KEY="<your ibm cloud platform api key>"
-```
-
-### Starting the Back End Development Server
-
-From the root directory in one terminal, run the following command to start the server:
-
-```bash
-node server
-```
-
-This will start the back end server on port 8080. The front end development server will point outgoing fetch requests to `localhost:8080`
-
-### Starting the Front End Development Server
-
-With the back end server running, in a different terminal run the following command
+Run the following command:
 
 ```bash
 cd client/
 npm start
 ```
-
-Once this is done, you will be able to get API calls from the development server while allowing for the create-react-scripts to be run.
 
 ### Form Debug Mode
 
@@ -67,30 +45,6 @@ When running the development server, users can enter into form debug mode which 
 Next, navigate with your browser to `/resetState?cheats=true`. Click on the middle of the page and enter the following series of key presses: `↑` `↑` `↓` `↓` `←` `→` `←` `→` `B` `A` `Enter`. On successful entry, the browser will automatically redirect to the home path `/`.
 
 To exist form debug mode, click the Reset State button.
-
-## Creating a Container Image
-
-To create an container image of this application simply build with the Dockerfile
-
-```bash
-docker build . -t slz-gui
-```
-
-Note: Optionally, you can supply an IBM Cloud Platform API key to `generate_service_id.sh` and it will create a Service ID and associated Service ID API Key in your IBM Cloud account to view cluster versions, cluster machine types, VSI image templates, VSI machine types, etc.
-
-To have `generate_service_id.sh` set environment variables about the created Service ID on your machine run it with `source` otherwise it will output the values upon completion.
-
-```bash
-source ./generate_service_id.sh
-```
-
-To create the container image with the Service ID credentials and region, simply
-
-```bash
-docker build . --build-arg service_id_gid=<service-id-gid> --build-arg slz_gui_api_key=<slz-gui-api-key> --build-arg region=<region> -t slz-gui
-```
-
-Note: To run `generate_service_id.sh` the IBM Cloud CLI is needed along with the IAM plugin. More information can be found [here](https://cloud.ibm.com/docs/cli?topic=cli-getting-started).
 
 ---
 
