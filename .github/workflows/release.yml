@@ -1,0 +1,12 @@
+name: Release-Pipeline
+
+# Trigger on push(merge) to main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  call-terraform-release-pipeline:
+    uses: alex-reiff/landing-zone-config-tool/.github/workflows/deploy.yml@main
+    secrets: inherit
