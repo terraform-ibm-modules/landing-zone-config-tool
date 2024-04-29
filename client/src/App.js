@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import CodeMirror from "@uiw/react-codemirror";
 import { createTheme } from "@uiw/codemirror-themes";
@@ -243,10 +243,16 @@ class App extends Component {
     window.localStorage.setItem(storeName, JSON.stringify(store));
   }
 
+  handleCloseModal = () => {
+    window.location.hash = "#/home";
+    this.setState({show: false});
+  };
+
   render() {
     return (
       <div className="App">
         <Modal
+          onRequestClose={this.handleCloseModal}
           id="no-pattern-selected-modal"
           modalHeading="No Pattern Selected"
           className="leftTextAlign unselectedPatternModal"
