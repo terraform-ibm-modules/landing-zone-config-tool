@@ -1,0 +1,36 @@
+{
+  "name": "slz-gui",
+  "version": "0.9.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha unit-tests/",
+    "coverage": "npx nyc npm run test",
+    "build-local": "npm i && cd client && npm i && craco build && cp -r build ../",
+    "build": "cd client && craco build && cp -r build ../",
+    "client": "npm run build && open http://localhost:3000",
+    "start": "NODE_ENV=production && npm run build && node server.js",
+    "md": "node lib/docs-as-markdown",
+    "changelog": "node lib/changelog-as-markdown",
+    "deploy": "./deploy.sh",
+    "compatibility-tests": "./compatibility.sh"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lazy-z": "1.11.18"
+  },
+  "devDependencies": {
+    "@craco/craco": "7.1.0",
+    "chai": "5.1.0",
+    "mocha": "10.4.0",
+    "nyc": "15.1.0"
+  },
+  "overrides": {
+    "express": "4.19.2",
+    "nth-check": "2.1.1",
+    "postcss": "8.4.38",
+    "webpack-dev-middleware": "5.3.4"
+  }
+}

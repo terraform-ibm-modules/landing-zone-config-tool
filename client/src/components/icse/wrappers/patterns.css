@@ -1,0 +1,58 @@
+.iconMargin {
+  margin: 0 0.5rem -0.4rem 0;
+}
+
+.inlineIconMargin {
+  margin: -0.4rem 0.05rem;
+}
+
+.tileStyles {
+  margin: 0rem 1.5rem 0 1rem;
+  background-color: #fcfcfc;
+  width: 31rem;
+  text-align: center;
+  position: relative;
+  margin-top: -2.5rem;
+}
+
+.borderGray {
+  border: 0.1px solid #d5d2d2;
+  box-shadow: 0 0.2px 0.2px 0 #d5d2d2;
+}
+
+.description {
+  text-align: left;
+  margin-top: 0.5rem;
+}
+
+.imageMargin {
+  margin: 0.5rem 0 0 -0.5rem;
+}
+
+.cursorPointer {
+  cursor: pointer;
+}
+
+.magnifier {
+  cursor: zoom-in;
+}
+
+.imageTileSized {
+  width: 475px;
+  height: 385px;
+}
+
+.edgeTileImage {
+  height: 375px;
+}
+
+.edgeTileMargin {
+  margin-top: -3rem;
+}
+
+.edgeTile {
+  background-color: #fcfcfc;
+  width: 30rem;
+  text-align: center;
+  position: relative;
+}

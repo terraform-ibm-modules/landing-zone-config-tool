@@ -1,0 +1,11 @@
+.highlightCode {
+  color: red;
+  font-size: 95%;
+  background-color: #d8d8d8 !important;
+  padding: 0.2rem;
+  font-weight: bold;
+}
+
+.orangeText {
+  color: orange;
+}
