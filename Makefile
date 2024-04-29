@@ -4,6 +4,10 @@
 # Pre-Commit
 #
 
+# to allow re-use of terraform github actions
+dependency-install-darwin-linux:
+    @:
+
 dependency-pre-commit:
 	./ci/install-deps.sh
 	pre-commit install
