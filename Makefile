@@ -15,6 +15,9 @@ dependency-pre-commit:
 pre-commit: dependency-pre-commit
 	pre-commit run --all-files
 
+# to allow re-use of terraform github actions
+pre-commit-no-terraform: pre-commit
+
 #
 # npm
 #
@@ -35,3 +38,7 @@ clean-npm:
 	rm -f package-lock.json client/package-lock.json
 	npm install --save-dev
 	cd client; npm install --save-dev
+
+run-tests:
+	npm install --save-dev
+	npm test
