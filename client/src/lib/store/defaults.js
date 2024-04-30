@@ -109,7 +109,8 @@ function newDefaultVpcs() {
       default_security_group_rules: [],
       network_acls: [
         {
-          add_cluster_rules: true,
+          add_ibm_cloud_internal_rules: true,
+          add_vpc_connectivity_rules: true,
           name: "management-acl",
           rules: [
             {
@@ -251,7 +252,8 @@ function newDefaultVpcs() {
       flow_logs_bucket_name: "workload-bucket",
       network_acls: [
         {
-          add_cluster_rules: true,
+          add_ibm_cloud_internal_rules: true,
+          add_vpc_connectivity_rules: true,
           name: "workload-acl",
           rules: [
             {
@@ -954,7 +956,8 @@ function defaultSecurityGroups() {
 
 function newDefaultEdgeAcl() {
   return {
-    add_cluster_rules: false,
+    add_ibm_cloud_internal_rules: false,
+    add_vpc_connectivity_rules: false,
     name: "edge-acl",
     rules: [
       {
@@ -1032,7 +1035,8 @@ function newDefaultEdgeAcl() {
 
 function newDefaultF5ExternalAcl() {
   return {
-    add_cluster_rules: false,
+    add_ibm_cloud_internal_rules: false,
+    add_vpc_connectivity_rules: false,
     name: "f5-external-acl",
     rules: [
       {

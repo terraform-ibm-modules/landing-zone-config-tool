@@ -67,14 +67,28 @@ class NetworkAclForm extends Component {
           <SlzToggle
             tooltip={{
               content:
-                "Automatically add to ACL rules needed to allow cluster provisioning from private service endpoints.",
+                "Add default network ACL rules to VPC.",
               link:
                 "https://cloud.ibm.com/docs/openshift?topic=openshift-vpc-acls"
             }}
-            labelText="Use Cluster Rules"
-            toggleFieldName="add_cluster_rules"
-            defaultToggled={this.state.add_cluster_rules}
-            id={this.state.name + "acl-add-rules-toggle"}
+            labelText="Add IBM Cloud Internal Rules"
+            toggleFieldName="add_ibm_cloud_internal_rules"
+            defaultToggled={this.state.add_ibm_cloud_internal_rules}
+            id={this.state.name + "acl-add-ibm-internal-rules-toggle"}
+            onToggle={this.handleToggle}
+            isModal={this.props.isModal}
+          />
+          <SlzToggle
+            tooltip={{
+              content:
+                "Add connectivity rules across any subnet within VPC.",
+              link:
+                "https://cloud.ibm.com/docs/openshift?topic=openshift-vpc-acls"
+            }}
+            labelText="Add VPC Connectivity Rules"
+            toggleFieldName="add_vpc_connectivity_rules"
+            defaultToggled={this.state.add_vpc_connectivity_rules}
+            id={this.state.name + "acl-add-vpc-connectivity-toggle"}
             onToggle={this.handleToggle}
             isModal={this.props.isModal}
           />
@@ -101,7 +115,8 @@ class NetworkAclForm extends Component {
 NetworkAclForm.defaultProps = {
   data: {
     name: "",
-    add_cluster_rules: false
+    add_ibm_cloud_internal_rules: false,
+    add_vpc_connectivity_rules: false
   },
   isModal: false
 };
@@ -109,7 +124,8 @@ NetworkAclForm.defaultProps = {
 NetworkAclForm.propTypes = {
   data: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    add_cluster_rules: PropTypes.bool.isRequired,
+    add_ibm_cloud_internal_rules: PropTypes.bool.isRequired,
+    add_vpc_connectivity_rules: PropTypes.bool.isRequired,
     rules: PropTypes.array
   }),
   slz: PropTypes.shape({
