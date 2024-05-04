@@ -19,7 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lazy-z": "1.11.18"
+    "lazy-z": "1.12.0"
   },
   "devDependencies": {
     "@craco/craco": "7.1.0",
