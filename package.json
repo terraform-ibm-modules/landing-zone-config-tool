@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "test": "mocha unit-tests/",
     "coverage": "npx nyc npm run test",
