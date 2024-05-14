@@ -24,7 +24,13 @@ function setSshKeys(slz) {
  * @param {object} slz.store.configDotJson configuration JSON
  */
 function sshKeyInit(slz) {
-  slz.store.configDotJson.ssh_keys = [];
+  slz.store.configDotJson.ssh_keys = [
+    {
+      name: "slz-ssh-key",
+      public_key: "<REPLACE_WITH_VALID_PUBLIC_KEY>",
+      resource_group: "management-rg"
+    }
+  ];
   setSshKeys(slz);
 }
 
