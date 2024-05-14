@@ -173,7 +173,7 @@ function toggleFormComponentName(componentProps) {
     componentProps.addText === "Create a Network Access Control List"
   ) {
     return capitalize(componentProps.data.prefix) + " VPC";
-  } else if (componentProps.addText === "Create a Virtual Private Endpoint") {
+  } else if (componentProps.addText === "Create a virtual private endpoint") {
     return componentProps.data.service_name;
   } else if (componentProps.addText === "Create a Claim to Roles") {
     return componentProps.data.email;
@@ -193,7 +193,7 @@ function disableDeleteMessage(componentProps) {
   } else if (componentProps.addText === "Create a VPC") {
     return "Cannot delete VPC. At least one VPC is required";
   } else if (componentProps.submissionFieldName === "resource_groups") {
-    return "Cannot delete Resource Group. At least one Resource Group is required";
+    return "Cannot delete resource group. At least one resource group is required";
   } else {
     return undefined;
   }

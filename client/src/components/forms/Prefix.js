@@ -82,7 +82,7 @@ class PrefixForm extends Component {
     return (
       <div className="formInSubForm marginRightHome">
         <StatelessToggleForm
-          name="Environment Prefix"
+          name="Environment prefix"
           subHeading
           onIconClick={this.handleToggle}
           hide={this.state.hide}

@@ -141,7 +141,7 @@ class SubnetForm extends React.Component {
     return (
       <div id="subnets-form">
         <SlzTabPanel
-          name="VPC Subnets"
+          name="VPC subnets"
           hideFormTitleButton
           form={
             <>

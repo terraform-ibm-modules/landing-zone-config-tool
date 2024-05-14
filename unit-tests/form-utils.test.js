@@ -842,7 +842,7 @@ describe("form-utils", () => {
         disableDeleteMessage({
           submissionFieldName: "resource_groups",
         }),
-        "Cannot delete Resource Group. At least one Resource Group is required",
+        "Cannot delete resource group. At least one resource group is required",
         "it should return the correct message"
       );
     });
@@ -2038,7 +2038,7 @@ describe("form-utils", () => {
   });
   describe("subnetTierName", () => {
     it("should create a display name for all caps title", () => {
-      let expectedData = "VSI Subnet Tier";
+      let expectedData = "VSI subnet tier";
       let actualData = subnetTierName("vsi");
       assert.deepEqual(
         actualData,

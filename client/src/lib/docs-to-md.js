@@ -79,7 +79,7 @@ function docsToMd(docsJson) {
       doc += `### ${item.subHeading}\n\n`;
     }
   });
-  doc += "### Related Links\n\n";
+  doc += "### Related links\n\n";
   docsJson.relatedLinks.forEach(link => {
     let title = link.length === 1 ? "Docs" : link[1];
     doc += `- [${title}](${link[0]})\n`;
@@ -96,9 +96,9 @@ function allDocs() {
         : heading === "vpcs"
         ? "VPCs"
         : heading === "network_acls"
-        ? "Network Access Control Lists"
+        ? "Network access control lists"
         : heading === "vsi"
-        ? "Virtual Server Instance Deployments"
+        ? "Virtual server instance deployments"
         : heading === "appid"
         ? "App ID"
         : heading === "teleport"

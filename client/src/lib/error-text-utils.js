@@ -29,13 +29,13 @@ const nonArrayForms = ["key_management", "appid", "secrets_manager"];
  */
 function hasInvalidName(componentName, value, componentProps, useData) {
   let returnData = {
-    invalidText: `Invalid Name. Must match the regular expression: /[A-z][a-z0-9-]*[a-z0-9]/`
+    invalidText: `Invalid name. Must match the regular expression: /[A-z][a-z0-9-]*[a-z0-9]/`
   };
 
   // if using data, send only no name provided
   if (useData) {
     returnData.invalid = value.length === 0;
-    returnData.invalidText = `Invalid Name. No name provided.`;
+    returnData.invalidText = `Invalid name. No name provided.`;
   } else {
     returnData.invalid =
       validName(value) === false || value.match(/[A-Z]{2,}/g) !== null; // fix edge case where all caps string matches

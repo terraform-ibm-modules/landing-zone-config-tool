@@ -52,7 +52,7 @@ class ResourceGroupForm extends Component {
             tooltip={{
               content: "If true, get data from an existing resource group"
             }}
-            labelText="Use Existing Instance"
+            labelText="Use existing instance"
             toggleFieldName="create"
             defaultToggled={!this.state.create}
             id={composedId + "-create-toggle"}
@@ -77,9 +77,9 @@ class ResourceGroupForm extends Component {
             <SlzToggle
               tooltip={{
                 content:
-                  "Append your environment prefix to the beginning of the resource group."
+                  "Add your environment prefix to the beginning of the resource group name."
               }}
-              labelText="Use Prefix"
+              labelText="Use prefix"
               defaultToggled={this.state.use_prefix}
               id={composedId + "-use-prefix-toggle"}
               onToggle={this.handleToggle}

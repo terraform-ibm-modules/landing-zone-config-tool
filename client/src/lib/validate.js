@@ -22,10 +22,10 @@ const simpleErrors = {
     return `OpenShift clusters require a cos instance. Cluster \`${clusterName}\` cos_name is null.`;
   },
   noVpeVpcs: serviceName => {
-    return `Virtual Private Endpoints must have at least one VPC. Service name \`${serviceName}\` got 0.`;
+    return `Virtual private endpoints must have at least one VPC. Service name \`${serviceName}\` got 0.`;
   },
   noVpeSubnets: (serviceName, vpcName) => {
-    return `Virtual Private Endpoints must have at least one VPC subnet. Service name \`${serviceName}\` VPC Name \`${vpcName}\` has 0.`;
+    return `Virtual private endpoints must have at least one VPC subnet. Service name \`${serviceName}\` VPC Name \`${vpcName}\` has 0.`;
   },
   noDeploymentSshKeys: deploymentName => {
     return `${deploymentName} must have at least one SSH Key, got 0.`;
@@ -74,7 +74,7 @@ const validate = function(configDotJson, isDownload) {
     // plural require
     let pluralRequire = contains(
       [
-        "Transit Gateway",
+        "Transit gateway",
         "App ID",
         "Secrets Manager",
       ],
@@ -228,7 +228,7 @@ const validate = function(configDotJson, isDownload) {
 
     // test for empty pool subnets
     cluster.worker_pools.forEach(pool => {
-      emptySubnetNamesTest("Worker Pools", pool, {
+      emptySubnetNamesTest("Worker pools", pool, {
         parentName: "`workload-cluster` worker_pool"
       });
     });
@@ -284,8 +284,8 @@ const validate = function(configDotJson, isDownload) {
 
   // vpn gateways
   configDotJson.vpn_gateways.forEach(gateway => {
-    nullVpcNameTest("VPN Gateways", gateway);
-    validationTest("VPN Gateways", gateway, "subnet name", "subnet_name");
+    nullVpcNameTest("VPN gateways", gateway);
+    validationTest("VPN gateways", gateway, "subnet name", "subnet_name");
   });
 
   /**
@@ -502,7 +502,7 @@ const validate = function(configDotJson, isDownload) {
     nullResourceGroupTest("Atracker", configDotJson.atracker);
     nullResourceGroupTest("Key Management", configDotJson.key_management);
     nullResourceGroupTest(
-      "Transit Gateway",
+      "Transit gateway",
       {},
       {
         overrideValue: configDotJson.transit_gateway_resource_group,
@@ -546,9 +546,9 @@ const validate = function(configDotJson, isDownload) {
 
     // vpn gateways
     configDotJson.vpn_gateways.forEach(gateway => {
-      nullResourceGroupTest("VPN Gateways", gateway);
-      nullVpcNameTest("VPN Gateways", gateway);
-      validationTest("VPN Gateways", gateway, "subnet name", "subnet_name");
+      nullResourceGroupTest("VPN gateways", gateway);
+      nullVpcNameTest("VPN gateways", gateway);
+      validationTest("VPN gateways", gateway, "subnet name", "subnet_name");
     });
 
     if (configDotJson.secrets_manager.use_secrets_manager) {
@@ -572,7 +572,7 @@ const validate = function(configDotJson, isDownload) {
     configDotJson.ssh_keys.forEach(key => {
       /* istanbul ignore next */
       if (!validSshKey(key.public_key)) {
-        throw new Error(`SSH Keys require a valid public key. Invalid public key for SSH key "${
+        throw new Error(`SSH keys require a valid public key. Invalid public key for SSH key "${
           key.name
         }"`);
       }

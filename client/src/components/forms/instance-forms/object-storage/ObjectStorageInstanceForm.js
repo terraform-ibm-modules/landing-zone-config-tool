@@ -56,10 +56,10 @@ class ObjectStorageInstancesForm extends Component {
           <SlzToggle
             tooltip={{
               content:
-                "Object storage bucket names must be unique across an account. Append a random suffix to maintain unique names across deployments."
+                "Object Storage bucket names must be unique across an account. Append a random suffix to maintain unique names across deployments."
             }}
             id={composedId + "random-suffix"}
-            labelText="Append Random Suffix to Names"
+            labelText="Append random suffix to names"
             toggleFieldName="random_suffix"
             defaultToggled={this.state.random_suffix}
             onToggle={this.handleInputChange}

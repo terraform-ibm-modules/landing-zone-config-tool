@@ -180,7 +180,7 @@ class SubnetTierForm extends React.Component {
               <SlzNumberSelect
                 max={3}
                 value={this.state.zones}
-                labelText="Subnet Tier Zones"
+                labelText="Subnet tier zones"
                 name="zones"
                 handleInputChange={this.handleChange}
                 className="fieldWidthSmaller"
@@ -191,7 +191,7 @@ class SubnetTierForm extends React.Component {
               <SlzSelect
                 tooltip={{
                   content:
-                    "Changing this field will overwrite existing Network ACL changes to subnets in this tier."
+                    "Changing this field will overwrite existing network ACL changes to subnets in this tier."
                 }}
                 component={this.props.tier.name}
                 className="fieldWidthSmaller"
@@ -210,10 +210,10 @@ class SubnetTierForm extends React.Component {
                 tooltip={{
                   content: subnetTierVpcHasNoEnabledGateways(this.props)
                     ? "This VPC has no public gateways enabled. To add public gateways, return to the VPC page."
-                    : "Changing this field will overwrite existing Public Gateway changes to subnets in this tier."
+                    : "Changing this field will overwrite existing public gateway changes to subnets in this tier."
                 }}
                 id={composedId + "-public-gateway"}
-                labelText="Use Public Gateways"
+                labelText="Use public gateways"
                 defaultToggled={this.state.addPublicGateway}
                 onToggle={this.handleToggle}
                 isModal={this.props.isModal}

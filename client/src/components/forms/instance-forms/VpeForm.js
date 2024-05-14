@@ -165,10 +165,10 @@ class VPEForm extends Component {
             value={this.state.vpe.resource_group}
           />
           <SlzSelect
-            tooltip={{ content: "Currently only Object Storage is supported." }}
+            tooltip={{ content: "Currently, only Object Storage is supported." }}
             component={this.props.data.service_name + "-service"}
             store={this.props.slz.store}
-            labelText="Service Type"
+            labelText="Service type"
             value={this.state.vpe.service_type}
             handleInputChange={this.handleInputChange}
             name="service_type"
@@ -229,7 +229,7 @@ class VPEForm extends Component {
                     );
                   }}
                   className="fieldWidthSmaller"
-                  labelText="Security Group Name"
+                  labelText="Security group name"
                   groups={this.props.slz.store.securityGroups[vpc.name]}
                   invalidText="Select a security group."
                 />

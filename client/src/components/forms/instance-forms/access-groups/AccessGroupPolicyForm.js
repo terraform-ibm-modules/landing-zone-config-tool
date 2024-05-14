@@ -85,7 +85,7 @@ class AccessGroupPolicyForm extends React.Component {
         <SlzFormGroup>
           <ResourceGroupSelect
             isModal={this.props.isModal}
-            labelText="Resource Group"
+            labelText="Resource group"
             tooltip={{
               content: "Name of the resource group the policy will apply to",
               alignModal: "bottom-left"
@@ -124,7 +124,7 @@ class AccessGroupPolicyForm extends React.Component {
               alignModal: "bottom-left",
               align: "top-left"
             }}
-            labelText="Service Type"
+            labelText="Service type"
             field="service"
             value={this.state.resources.service}
             componentProps={this.props}

@@ -33,9 +33,9 @@ const About = () => {
       <table>
         <thead>
           <tr>
-            <th>Virtual Server Pattern</th>
-            <th>Red Hat Openshift Pattern</th>
-            <th>VPC Pattern</th>
+            <th>VSI on VPC landing zone</th>
+            <th>Red Hat Openshift Container Platform on VPC landing zone</th>
+            <th>VPC landing zone</th>
           </tr>
         </thead>
         <tbody>
@@ -52,7 +52,7 @@ const About = () => {
           </tr>
         </tbody>
       </table>
-      <p>Each of these patterns creates:</p>
+      <p>By customizing the override.json, you can create the following:</p>
       <ul>
         <li>A resource group for cloud services and for each VPC.</li>
         <li>Object storage instances for flow logs and activity tracker</li>
@@ -63,7 +63,7 @@ const About = () => {
         <li>A management and workload VPC connected by a transit gateway</li>
         <li>A flow log collector for each VPC</li>
         <li>All necessary networking rules to allow communication</li>
-        <li>Virtual Private endpoints for Cloud Object storage in each VPC</li>
+        <li>Virtual private endpoints for Cloud Object Storage in each VPC</li>
         <li>A VPN Gateway in the Management VPC</li>
       </ul>
       <p>Each pattern will create an identical deployment on the VPC</p>
@@ -329,7 +329,7 @@ const About = () => {
       </p>
       <hr />
       <p>
-        Related Links
+        Related links
         <br />
         <a
           href="https://ibm.box.com/s/hy5svbs3r5it4o5ut2dak98hgfqn3wul"
