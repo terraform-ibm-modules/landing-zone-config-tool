@@ -81,7 +81,7 @@ class Summary extends React.Component {
                     </li>
                     <li>
                       • Configuration files over 15000 characters can still be
-                      used by local SLZ deployments.
+                      used by local landing zone configuration tool deployments.
                     </li>
                   </ul>
                   <div className="marginBottom">
