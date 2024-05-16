@@ -281,8 +281,8 @@ const Clusters = props => {
 const ClusterWorkerPools = props => {
   return (
     <SlzArrayForm
-      name="Worker Pools"
-      addText="Create a Worker Pool"
+      name="Worker pools"
+      addText="Create a worker pool"
       configDotJsonField="clusters"
       configDotJsonSubField="worker_pools"
       form={WorkerPoolForm}
@@ -302,8 +302,8 @@ const ClusterWorkerPools = props => {
 const EncryptionKeys = props => {
   return (
     <SlzArrayForm
-      name="Encryption Keys"
-      addText="Create an Encryption Key"
+      name="Encryption keys"
+      addText="Create an encryption key"
       configDotJsonField="key_management"
       configDotJsonSubField="keys"
       slz={props.slz}
@@ -364,8 +364,8 @@ const ObjectStorageBuckets = props => {
 const ObjectStorageKeys = props => {
   return (
     <SlzArrayForm
-      name="Service Credentials"
-      addText="Create a Service Credential"
+      name="Service credentials"
+      addText="Create a service credential"
       configDotJsonField="cos"
       configDotJsonSubField="keys"
       form={ObjectStorageKeyForm}
@@ -391,8 +391,8 @@ const ObjectStorageKeys = props => {
 const ResourceGroups = props => {
   return (
     <SlzArrayForm
-      name="Resource Groups"
-      addText="Create a Resource Group"
+      name="Resource groups"
+      addText="Create a resource group"
       configDotJsonField="resource_groups"
       slz={props.slz}
       form={ResourceGroupForm}
@@ -410,8 +410,8 @@ const ResourceGroups = props => {
 const SecurityGroups = props => {
   return (
     <SlzArrayForm
-      name="Security Groups"
-      addText="Create a Security Group"
+      name="Security groups"
+      addText="Create a security group"
       configDotJsonField="security_groups"
       slz={props.slz}
       form={SecurityGroupForm}
@@ -429,8 +429,8 @@ const SecurityGroups = props => {
 const SshKeys = props => {
   return (
     <SlzArrayForm
-      name="SSH Keys"
-      addText="Create an SSH Key"
+      name="SSH keys"
+      addText="Create an SSH key"
       configDotJsonField="ssh_keys"
       slz={props.slz}
       form={SSHKeyForm}
@@ -464,7 +464,7 @@ const TeleportClaimToRoles = props => {
 const Vpc = props => {
   return (
     <SlzArrayForm
-      name="Virtual Private Clouds"
+      name="Virtual private clouds"
       addText="Create a VPC"
       configDotJsonField="vpcs"
       slz={props.slz}
@@ -483,8 +483,8 @@ const Vpc = props => {
 const VpcAcl = props => {
   return (
     <SlzArrayForm
-      name="VPC Access Control"
-      addText="Create a Network Access Control List"
+      name="VPC access control"
+      addText="Create a network access control list"
       configDotJsonField="vpcs"
       slz={props.slz}
       form={VpcNaclForm}
@@ -506,7 +506,7 @@ const VpcAcl = props => {
 const NetworkAcls = props => {
   return (
     <SlzArrayForm
-      name="Network Access Control Lists"
+      name="Network access control lists"
       slz={props.slz}
       form={NetworkAclForm}
       childKey="network-acl-edit-form-"
@@ -529,8 +529,8 @@ const NetworkAcls = props => {
 const Vpe = props => {
   return (
     <SlzArrayForm
-      name="Virtual Private Endpoints"
-      addText="Create a Virtual Private Endpoint"
+      name="Virtual private endpoints"
+      addText="Create a virtual private endpoint"
       configDotJsonField="virtual_private_endpoints"
       slz={props.slz}
       form={VPEForm}
@@ -548,8 +548,8 @@ const Vpe = props => {
 const Vpn = props => {
   return (
     <SlzArrayForm
-      name="VPN Gateways"
-      addText="Create a VPN Gateway"
+      name="VPN gateways"
+      addText="Create a VPN gateway"
       configDotJsonField="vpn_gateways"
       slz={props.slz}
       form={VpnGatewayForm}
@@ -566,8 +566,8 @@ const Vpn = props => {
 const Vsi = props => {
   return (
     <SlzArrayForm
-      name="Virtual Server Instance Deployments"
-      addText="Create a Virtual Server Instance Deployment"
+      name="Virtual server instance deployments"
+      addText="Create a virtual server instance deployment"
       configDotJsonField="vsi"
       slz={props.slz}
       childKey="vsi-edit-form-index-"

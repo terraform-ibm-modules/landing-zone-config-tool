@@ -13,22 +13,22 @@
           ["_headers", "Group Name", "Description", "Optional"],
           [
             "service-rg",
-            "A resource group containing all IBM Cloud Services",
+            "A resource group containing all IBM Cloud services.",
             "false"
           ],
           [
             "management-rg",
-            "A resource group containing the compute, storage, and network services to enable the application provider's administrators to monitor, operation, and maintain the environment",
+            "A resource group containing the compute, storage, and network services to enable the application provider's administrators to monitor, operation, and maintain the environment.",
             "false"
           ],
           [
             "workload-rg",
-            "A resource group containing the compute, storage, and network services to support hosted applications and operations that deliver services to the consumer",
+            "A resource group containing the compute, storage, and network services to support hosted applications and operations that deliver services to the consumer.",
             "false"
           ],
           [
             "edge-rg",
-            "A resource group containing the compute, storage, and network services necessary for edge networking",
+            "A resource group containing the compute, storage, and network services necessary for edge networking.",
             "true"
           ]
         ]
@@ -41,7 +41,7 @@
   "cos": {
     "content": [
       {
-        "text": "IBM Cloud Object Storage (COS) is a highly available, durable, and secure platform for storing unstructured data. PDFs, media files, database backups, disk images, large structured datasets can be uploaded as objects and then organized into containers named Buckets."
+        "text": "IBM Cloud Object Storage (COS) is a highly available, durable, and secure platform for storing unstructured data. PDFs, media files, database backups, disk images, large structured datasets can be uploaded as objects and then organized into containers named buckets."
       },
       {
         "text": "The initial configuration includes two COS instances:",
@@ -52,11 +52,11 @@
           ["_headers", "Instance Name", "Description"],
           [
             "cos",
-            "A COS instance with two buckets, a management bucket and a workload bucket, where respective objects can be stored"
+            "A COS instance with two buckets, a management bucket and a workload bucket, where respective objects can be stored."
           ],
           [
             "atracker-cos",
-            "A COS instance with a bucket where Activity Tracker logs will be stored"
+            "A COS instance with a bucket where Activity Tracker logs will be stored."
           ]
         ]
       }
@@ -81,7 +81,7 @@
           ["_headers", "Service Name", "Description"],
           [
             "IBM Cloud Hyper Protect Crypto Services (HPCS)",
-            "A dedicated key management service and hardware security module (HSM) based on IBM Cloud. Built on FIPS 140-2 Level 4-certified hardware, this service allows users to take the ownership of the cloud HSM to fully manage encryption keys and perform cryptographic operations. Users cannot use SLZ to initialize HPCS. In order to use HPCS with Secure Landing Zone users will need to bring an existing instance."
+            "A dedicated key management service and hardware security module (HSM) based on IBM Cloud. Built on FIPS 140-2 Level 4-certified hardware, this service allows users to take the ownership of the cloud HSM to fully manage encryption keys and perform cryptographic operations. Users cannot use landing zone configuration tool to initialize HPCS. In order to use HPCS with the landing zone configuration tool, users will need to bring an existing instance."
           ],
           [
             "IBM Cloud Key Protect",
@@ -99,17 +99,17 @@
       {
         "table": [
           ["_headers", "Key Name", "Description"],
-          ["slz-slz-key", "An encryption key for service instances"],
+          ["slz-slz-key", "An encryption key for service instances."],
           [
             "slz-vsi-key",
-            "An encryption key for Virtual Server Instance (VSI) deployments"
+            "An encryption key for Virtual Server Instance (VSI) deployments."
           ],
           [
             "slz-roks-key",
 
-            "An encryption key for Red Hat OpenShift Kubernetes (ROKS) cluster deployments"
+            "An encryption key for Red Hat OpenShift Kubernetes (ROKS) cluster deployments."
           ],
-          ["slz-atracker-key", "An encryption key for Activity Tracker"]
+          ["slz-atracker-key", "An encryption key for Activity Tracker."]
         ]
       }
     ],
@@ -119,7 +119,7 @@
       ],
       [
         "https://cloud.ibm.com/docs/hs-crypto?topic=hs-crypto-get-started",
-        "Get Started With HyperProtect Crypto Servies"
+        "Get started with HyperProtect Crypto Services"
       ],
       [
         "https://cloud.ibm.com/docs/key-protect?topic=key-protect-about",
@@ -141,17 +141,17 @@
           ["_headers", "Network Name", "Description", "Optional"],
           [
             "management",
-            "A VPC for management to enable the application provider's administrators to monitor, operation, and maintain the environment",
+            "A VPC for management to enable the application provider's administrators to monitor, operation, and maintain the environment.",
             "false"
           ],
           [
             "workload",
-            "A VPC for workload to support hosted applications and operations that deliver services to the consumer",
+            "A VPC for workload to support hosted applications and operations that deliver services to the consumer.",
             "false"
           ],
           [
             "edge",
-            "a VPC for edge if you enable edge networking for F5",
+            "a VPC for edge if you enable edge networking for F5.",
             "true"
           ]
         ]
@@ -162,11 +162,11 @@
   "network_acls": {
     "content": [
       {
-        "text": "An Access Control List (ACL) is a built-in, virtual firewall. An ACL can be leveraged to control all incoming and outgoing traffic on a VPC.",
+        "text": "An access control list (ACL) is a built-in, virtual firewall. An ACL can be leveraged to control all incoming and outgoing traffic on a VPC.",
         "className": "marginBottomSmall"
       },
       {
-        "text": "By default, the management and workload ACLs are configured to have rules that are FS Cloud compliant. Removing the below rules may affect FS Cloud compliance for your environment.",
+        "text": "By default, the management and workload ACLs are configured to have rules that are FS Cloud compliant. Removing any of the following rules may affect FS Cloud compliance for your environment.",
         "className": "marginBottomXs"
       },
       {
@@ -178,7 +178,7 @@
         ]
       },
       {
-        "text": "If you select \"Use Cluster Rules\", these additional ACL rules will be created to allow cluster provisioning from private service endpoints",
+        "text": "If you select \"Use cluster rules\", these additional ACL rules will be created to allow cluster provisioning from private service endpoints",
         "className": "marginBottomSmall"
       },
       {
@@ -273,7 +273,7 @@
   "subnets": {
     "content": [
       {
-        "text": "Subnet Tiers are used to dynamically generate Subnets and reserve space for expansion into other zones. Subnets are networks created within a VPC; they are a fundamental mechanism within a VPC used to allocate addresses to individual resources (such as Virtual Server Instances), and enable various controls to these resources through the use of network ACLs, routing tables, and resource groups. Subnets are bound to a single zone; however, they can reach all other subnets within a VPC, across a region. They are created from a larger address space within the VPC called an address prefix; and you can provision multiple subnets per address prefix."
+        "text": "Subnet tiers are used to dynamically generate subnets and reserve space for expansion into other zones. Subnets are networks created within a VPC; they are a fundamental mechanism within a VPC used to allocate addresses to individual resources (such as virtual server instances), and enable various controls to these resources through the use of network ACLs, routing tables, and resource groups. Subnets are bound to a single zone; however, they can reach all other subnets within a VPC, across a region. They are created from a larger address space within the VPC called an address prefix, and you can provision multiple subnets per address prefix."
       },
       {
         "text": "_default_includes"
@@ -316,7 +316,7 @@
   "transit_gateway": {
     "content": [
       {
-        "text": "A Transit Gateway provides connectivity between two or more VPCs which allows distributed resources to communicate with each other."
+        "text": "A Transit gateway provides connectivity between two or more VPCs which allows distributed resources to communicate with each other."
       },
       {
         "text": "_default_includes"
@@ -338,10 +338,10 @@
   "security_groups": {
     "content": [
       {
-        "text": "An IBM Cloud Security Group is a set of IP filter rules that define how to handle incoming and outgoing traffic to both the public and private interfaces of a virtual server instance (VSI)."
+        "text": "An IBM Cloud security group is a set of IP filter rules that define how to handle incoming and outgoing traffic to both the public and private interfaces of a virtual server instance (VSI)."
       },
       {
-        "text": "By default, the management and workload VPE security groups are configured to have rules that are FS Cloud compliant. Removing the below rules may affect FS Cloud compliance for your environment.",
+        "text": "By default, the management and workload VPE security groups are configured to have rules that are FS Cloud compliant. Removing any of the following rules may affect FS Cloud compliance for your environment.",
         "className": "marginBottomSmall"
       },
       {
@@ -365,7 +365,7 @@
   "virtual_private_endpoints": {
     "content": [
       {
-        "text": "A Virtual Private Endpoint (VPE) gateway enables users to connect to supported IBM Cloud Services from their VPC network via an IP address allocated from a subnet within the VPC. The VPE gateway is a virtualized function that scales horizontally, is redundant and highly available, and spans all availability zones of the specified VPC."
+        "text": "A virtual private endpoint (VPE) gateway enables users to connect to supported IBM Cloud Services from their VPC network via an IP address allocated from a subnet within the VPC. The VPE gateway is a virtualized function that scales horizontally, is redundant and highly available, and spans all availability zones of the specified VPC."
       },
       {
         "text": "The default configuration connects the management and workload VPCs to IBM Cloud Object Storage by creating a VPE subnet in each zone of the VPC, then creating a VPE gateway for each VPE subnet."
@@ -374,7 +374,7 @@
     "relatedLinks": [
       [
         "https://cloud.ibm.com/docs/vpc?topic=vpc-vpe-supported-services",
-        "VPE Supported Services"
+        "VPE supported services"
       ],
       ["https://cloud.ibm.com/docs/vpc?topic=vpc-about-vpe"]
     ]
@@ -419,7 +419,7 @@
     ],
     "content": [
       {
-        "text": "SSH keys identify a user or device through public-key cryptography and allow access to a device without using a password. At least one SSH Key is required to create virtual server instances. Based on the pattern selected, an SSH key may or may not be configured automatically.",
+        "text": "SSH keys identify a user or device through public-key cryptography and allow access to a device without using a password. At least one SSH Key is required to create virtual server instances. Based on the deployable architecture selected, an SSH key may or may not be configured automatically.",
         "className": "marginBottomSmall"
       },
       {
@@ -435,7 +435,7 @@
   "vsi": {
     "content": [
       {
-        "text": "IBM Cloud Virtual Servers for VPC allow users to deploy fast, flexible, and secure instances. The SLZ Virtual Server Instance (VSI) Deployment allows users to create multiple instances with the same configuration on various subnets across a single VPC. Based on the pattern selected, a deployment may or may not be configured automatically."
+        "text": "IBM Cloud virtual servers for VPC allow users to deploy fast, flexible, and secure instances. The landing zone Virtual Server Instance (VSI) deployment allows users to create multiple instances with the same configuration on various subnets across a single VPC. Based on the deployable architecture selected, a deployment may or may not be configured automatically."
       },
       {
         "text": "_default_includes",
@@ -469,7 +469,7 @@
     "relatedLinks": [
       [
         "https://cloud.ibm.com/docs/openshift?topic=openshift-getting-started",
-        "Getting Started With Red Hat OpenShift Clusters on IBM Cloud"
+        "Getting started with Red Hat OpenShift clusters on IBM Cloud"
       ],
       [
         "https://cloud.ibm.com/docs/containers?topic=containers-getting-started",
@@ -478,7 +478,7 @@
     ],
     "content": [
       {
-        "text": "IBM Cloud provides users with the ability to deploy highly available, containerized apps on Red Hat OpenShift clusters and Kubernetes clusters. Based on the pattern selected, a cluster may or may not be configured automatically.",
+        "text": "IBM Cloud provides users with the ability to deploy highly available, containerized apps on Red Hat OpenShift clusters and Kubernetes clusters. Based on the deployable architecture selected, a cluster may or may not be configured automatically.",
         "className": "marginBottomSmall"
       },
       {
@@ -487,7 +487,7 @@
           ["Virtual Server Instance (VSI)", "No clusters configured."],
           [
             "Red Hat OpenShift Kubernetes (ROKS)",
-            "Two OpenShift clusters with three zones in VSI Subnet Tier with a worker pool dedicated to logging deployed in both management and workload VPCs."
+            "Two OpenShift clusters with three zones in VSI subnet tier with a worker pool dedicated to logging deployed in both management and workload VPCs."
           ],
           ["VPC", "No clusters configured."]
         ]
@@ -518,7 +518,7 @@
       ["https://cloud.ibm.com/docs/appid?topic=appid-about", "About App ID"],
       [
         "https://cloud.ibm.com/docs/appid?topic=appid-getting-started",
-        "Getting Started With App ID"
+        "Getting started With App ID"
       ]
     ],
     "content": [
@@ -668,7 +668,7 @@
         "subHeading": "Networking Rules"
       },
       {
-        "text": "By default, the Edge ACLs are configured to have rules that are FS Cloud compliant within the VPC Access Control section. Removing the below rules may affect FS Cloud compliance for your environment.",
+        "text": "By default, the edge ACLs are configured to have rules that are FS Cloud compliant within the VPC access control section. Removing any of the following rules may affect FS Cloud compliance for your environment.",
         "className": "marginBottomXs"
       },
       {
@@ -709,11 +709,11 @@
         ]
       },
       {
-        "text": "By default, the F5 and Edge VPE security groups are configured to have rules that are FS Cloud compliant within the Security Groups section. Removing the below rules may affect FS Cloud compliance for your environment.",
+        "text": "By default, the F5 and Edge VPE security groups are configured to have rules that are FS Cloud compliant within the security groups section. Removing any of the following rules may affect FS Cloud compliance for your environment.",
         "className": "marginBottomSmall"
       },
       {
-        "text": "Security groups are split up between the primary subnet tier, which contains the Management Interface Security Group, and three secondary subnet tiers, which contain the External Interface, Workload Interface , and F5 Bastion Interface Security Groups within each respectively.",
+        "text": "Security groups are split up between the primary subnet tier, which contains the Management Interface Security Group, and three secondary subnet tiers, which contain the External Interface, Workload Interface, and F5 Bastion Interface security groups within each respectively.",
         "className": "marginBottomSmall"
       },
       {
@@ -888,7 +888,7 @@
           ["_headers", "Parameter", "Description"],
           ["Resource", "The resource of the policy definition"],
           [
-            "Resource Group",
+            "Resource group",
             "Name of the resource group the policy will apply to"
           ],
           [
@@ -912,7 +912,7 @@
       ["https://www.vaultproject.io/", "HashiCorp Vault"],
       [
         "https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-getting-started",
-        "Getting Started with Secrets Manager"
+        "Getting started with Secrets Manager"
       ],
       [
         "https://cloud.ibm.com/docs/framework-financial-services?topic=framework-financial-services-shared-secrets",

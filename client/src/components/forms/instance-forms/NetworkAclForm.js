@@ -71,7 +71,7 @@ class NetworkAclForm extends Component {
               link:
                 "https://cloud.ibm.com/docs/openshift?topic=openshift-vpc-acls"
             }}
-            labelText="Use Cluster Rules"
+            labelText="Use cluster rules"
             toggleFieldName="add_cluster_rules"
             defaultToggled={this.state.add_cluster_rules}
             id={this.state.name + "acl-add-rules-toggle"}

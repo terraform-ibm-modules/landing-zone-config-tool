@@ -57,12 +57,11 @@ class Summary extends React.Component {
               </div>
               <div className="leftTextAlign">
                 <p className="marginBottomSmall">
-                  You have completed the customization of your Landing Zone.
+                  You have completed the customization of your landing zone.
                 </p>
                 <ul>
                   <p className="marginBottomSmall">
-                    • You can view and download your <em>override.json</em> file
-                    below, and then import it into{" "}
+                    • You can view and download your <em>override.json</em> file, and then import it into{" "}
                     <a
                       href="https://github.com/open-toolchain/landing-zone#ibm-secure-landing-zone"
                       rel="noreferrer noopener"
@@ -74,7 +73,7 @@ class Summary extends React.Component {
                   </p>
                   <p className="marginBottomXs">
                     • To get a stringified copy of the JSON for use in IBM
-                    Schematics, use the <em>Copy to Clipboard</em> button below.
+                    Schematics, click the <strong>Copy to Clipboard</strong> button.
                   </p>
                   <ul className="marginLeft marginBottomSmall">
                     <li className="marginBottomXs">
@@ -82,7 +81,7 @@ class Summary extends React.Component {
                     </li>
                     <li>
                       • Configuration files over 15000 characters can still be
-                      used by local SLZ deployments.
+                      used by local landing zone configuration tool deployments.
                     </li>
                   </ul>
                   <div className="marginBottom">
@@ -96,7 +95,7 @@ class Summary extends React.Component {
                       <ul>
                         <li className="marginBottomXs">
                           • This prefix <strong>must</strong> be added to your
-                          Schematics Workspace or Terraform environment as the
+                          Schematics workspace or Terraform environment as the
                           value for the variable "prefix".
                         </li>
                         <li>

@@ -139,7 +139,7 @@ class AppIdForm extends Component {
         <SlzFormGroup>
           {/* use data toggle */}
           <SlzToggle
-            labelText="Use Existing Instance"
+            labelText="Use existing instance"
             defaultToggled={this.state.use_data || false}
             toggleFieldName="use_data"
             onToggle={this.handleToggle}

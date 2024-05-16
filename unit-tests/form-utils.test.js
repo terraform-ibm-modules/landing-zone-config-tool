@@ -707,14 +707,14 @@ describe("form-utils", () => {
             prefix: "hi",
           },
         }),
-        "Hi VPC",
+        "hi VPC",
         "it should return prefix"
       );
     });
     it("should return service_name if inner form name VPEForm", () => {
       assert.deepEqual(
         toggleFormComponentName({
-          addText: "Create a Virtual Private Endpoint",
+          addText: "Create a virtual private endpoint",
           data: {
             service_name: "hi",
           },
@@ -842,7 +842,7 @@ describe("form-utils", () => {
         disableDeleteMessage({
           submissionFieldName: "resource_groups",
         }),
-        "Cannot delete Resource Group. At least one Resource Group is required",
+        "Cannot delete resource group. At least one resource group is required",
         "it should return the correct message"
       );
     });
@@ -1311,10 +1311,7 @@ describe("form-utils", () => {
       assert.deepEqual(formatFieldName("vpcs"), "VPCs");
     });
     it("should split on underscore", () => {
-      assert.deepEqual(formatFieldName("foo_bar"), "Foo Bar");
-    });
-    it("should capitalize", () => {
-      assert.deepEqual(formatFieldName("hello world"), "Hello World");
+      assert.deepEqual(formatFieldName("foo_bar"), "foo bar");
     });
   });
   describe("subnetGatewayToggleShouldBeDisabled", () => {
@@ -2038,7 +2035,7 @@ describe("form-utils", () => {
   });
   describe("subnetTierName", () => {
     it("should create a display name for all caps title", () => {
-      let expectedData = "VSI Subnet Tier";
+      let expectedData = "VSI subnet tier";
       let actualData = subnetTierName("vsi");
       assert.deepEqual(
         actualData,
@@ -2047,7 +2044,7 @@ describe("form-utils", () => {
       );
     });
     it("should create a display name for modal", () => {
-      let expectedData = "New Subnet Tier";
+      let expectedData = "New subnet tier";
       let actualData = subnetTierName("");
       assert.deepEqual(
         actualData,
@@ -2056,7 +2053,7 @@ describe("form-utils", () => {
       );
     });
     it("should create a display name", () => {
-      let expectedData = "Frog Subnet Tier";
+      let expectedData = "frog subnet tier";
       let actualData = subnetTierName("frog");
       assert.deepEqual(
         actualData,

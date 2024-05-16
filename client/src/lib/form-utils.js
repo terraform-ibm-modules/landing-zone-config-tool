@@ -6,7 +6,6 @@ import {
   transpose,
   getObjectFromArray,
   flatten,
-  capitalize,
   revision,
   arraySplatIndex,
   splatContains,
@@ -172,8 +171,8 @@ function toggleFormComponentName(componentProps) {
   } else if (
     componentProps.addText === "Create a Network Access Control List"
   ) {
-    return capitalize(componentProps.data.prefix) + " VPC";
-  } else if (componentProps.addText === "Create a Virtual Private Endpoint") {
+    return componentProps.data.prefix + " VPC";
+  } else if (componentProps.addText === "Create a virtual private endpoint") {
     return componentProps.data.service_name;
   } else if (componentProps.addText === "Create a Claim to Roles") {
     return componentProps.data.email;
@@ -193,7 +192,7 @@ function disableDeleteMessage(componentProps) {
   } else if (componentProps.addText === "Create a VPC") {
     return "Cannot delete VPC. At least one VPC is required";
   } else if (componentProps.submissionFieldName === "resource_groups") {
-    return "Cannot delete Resource Group. At least one Resource Group is required";
+    return "Cannot delete resource group. At least one resource group is required";
   } else {
     return undefined;
   }
@@ -466,12 +465,12 @@ function formatFieldName(field) {
   let fieldWords = "";
   splitField.forEach(word => {
     if (fieldWords === "") {
-      fieldWords += capitalize(word);
+      fieldWords += word;
     } else {
-      fieldWords += " " + capitalize(word);
+      fieldWords += " " + word;
     }
   });
-  return fieldWords.replace(/Vpc/g, "VPC");
+  return fieldWords.replace(/vpc/g, "VPC");
 }
 
 /**
@@ -728,11 +727,11 @@ function subnetTierFormList(stateData, componentProps) {
  */
 function subnetTierName(tierName) {
   if (contains(["vsi", "vpe", "vpn", "vpn-1", "vpn-2"], tierName)) {
-    return tierName.toUpperCase() + " Subnet Tier";
+    return tierName.toUpperCase() + " subnet tier";
   } else if (tierName === "") {
-    return "New Subnet Tier";
+    return "New subnet tier";
   } else {
-    return capitalize(tierName) + " Subnet Tier";
+    return tierName + " subnet tier";
   }
 }
 

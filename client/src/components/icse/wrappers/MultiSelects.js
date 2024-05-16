@@ -51,8 +51,8 @@ export const SshKeyMultiSelect = props => {
     <SlzMultiSelect
       id={props.id + "-ssh-key-multiselect"}
       useTitleInItem
-      label="SSH Keys"
-      titleText="SSH Keys"
+      label="SSH keys"
+      titleText="SSH keys"
       invalidText="At least one SSH Key is required"
       invalid={
         props.initialSelectedItems
@@ -89,7 +89,7 @@ export const SecurityGroupMultiSelect = props => {
     <MultiSelect
       id={props.id + "-security-group-multiselect"}
       label={props.label}
-      titleText="Security Groups"
+      titleText="Security groups"
       className="fieldWidthSmaller cds--form-item"
       initialSelectedItems={props.initialSelectedItems}
       vpcName={props.vpcName}
@@ -111,7 +111,7 @@ export const SecurityGroupMultiSelect = props => {
 
 SecurityGroupMultiSelect.defaultProps = {
   disabled: false,
-  label: "Select Security Groups"
+  label: "Select"
 };
 
 SecurityGroupMultiSelect.propTypes = {

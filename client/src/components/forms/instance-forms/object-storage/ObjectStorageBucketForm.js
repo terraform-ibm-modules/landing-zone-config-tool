@@ -65,7 +65,7 @@ class ObjectStorageBucketForm extends Component {
             name="storage_class"
             groups={["Standard", "Vault", "Cold", "Smart"]}
             value={capitalize(this.state.storage_class)}
-            labelText="Bucket Class"
+            labelText="Bucket class"
             handleInputChange={event =>
               this.handleInputChange(
                 "storage_class",
