@@ -8,6 +8,9 @@
   "license": "Apache-2.0",
   "main": "/src/index.js",
   "homepage": "https://terraform-ibm-modules.github.io/landing-zone-config-tool/",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "build": "craco build",
     "ci-check": "npm run format:diff",

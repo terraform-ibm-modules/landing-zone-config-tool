@@ -76,9 +76,8 @@ class SubnetTile extends React.Component {
             id={this.props.subnet.name + "-cidr"}
             invalidText="Invalid error message."
             labelText="Subnet CIDR"
-            value={this.props.subnet.cidr}
+            defaultValue={this.props.subnet.cidr}
             className="fieldWidthSmaller"
-            readOnly
           />
         </SlzFormGroup>
         <SlzFormGroup className="marginBottomSmall">
