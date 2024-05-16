@@ -553,7 +553,7 @@ const validate = function(configDotJson, isDownload) {
 
     if (configDotJson.secrets_manager.use_secrets_manager) {
       nullResourceGroupTest("Secrets Manager", configDotJson.secrets_manager, {
-        overrideName: "Secrets Manager Resource Group"
+        overrideName: "Secrets Manager resource group"
       });
       nullEncryptionKeyTest(
         "Secrets Manager",

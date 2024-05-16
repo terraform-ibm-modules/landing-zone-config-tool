@@ -52,7 +52,7 @@ describe("error text utils", () => {
     it("should return the error text and validation when use data and ends in hyphen", () => {
       let expectedData = {
         invalid: false,
-        invalidText: `Invalid Name. No name provided.`,
+        invalidText: `Invalid name. No name provided.`,
       };
       let actualData = hasInvalidName(
         "resource_groups",
@@ -89,7 +89,7 @@ describe("error text utils", () => {
     it("should not return invalid if using data and not duplicate", () => {
       let expectedData = {
         invalid: false,
-        invalidText: `Invalid Name. No name provided.`,
+        invalidText: `Invalid name. No name provided.`,
       };
       assert.deepEqual(
         hasInvalidName(

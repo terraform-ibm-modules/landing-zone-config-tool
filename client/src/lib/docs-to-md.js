@@ -1,4 +1,4 @@
-import { matchLength, eachKey, titleCase } from "lazy-z";
+import { matchLength, eachKey, capitalize, titleCase } from "lazy-z";
 import slzDocs from "../docs/slz-docs.json" assert { type: "json" };
 import fs from "fs";
 /**
@@ -91,7 +91,13 @@ function allDocs() {
   let doc = "";
   eachKey(slzDocs, heading => {
     let header =
-      heading === "cos"
+      heading === "iam_account_settings"
+        ? "IAM Account Settings"
+        : heading === "access_groups"
+        ? "Access Groups"
+        : heading === "secrets_manager"
+        ? "Secrets Manager"
+        : heading === "cos"
         ? "Cloud Object Storage"
         : heading === "vpcs"
         ? "VPCs"
@@ -107,7 +113,7 @@ function allDocs() {
         ? "F5 Big IP"
         : heading === "atracker"
         ? "Activity Tracker"
-        : titleCase(heading)
+        : capitalize(titleCase(heading).toLowerCase())
             .replace(/Ssh/g, "SSH") // capitalize these
             .replace("Vpn", "VPN")
             .replace("Iam", "IAM");

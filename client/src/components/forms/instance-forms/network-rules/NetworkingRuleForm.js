@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { TextInput } from "@carbon/react";
-import { capitalize, titleCase, kebabCase } from "lazy-z";
+import { kebabCase } from "lazy-z";
 import { buildFormFunctions } from "../../../component-utils.js";
 import {
   DynamicRender,
@@ -411,7 +411,7 @@ const NetworkingRuleProtocolTextField = props => {
   return (
     <TextInput
       id={`${props.state.name}-nw-${kebabCase(props.name)}-input`}
-      labelText={titleCase(props.name)}
+      labelText={props.name}
       placeholder={String(props.state.rule[props.name] || "")}
       value={props.state.rule[props.name] || ""}
       onChange={e => props.onChange(props.name, e)}
@@ -443,8 +443,8 @@ const NetworkingRuleSelect = props => {
       component={props.state.name + "-nw-rule-" + props.name}
       name={props.name}
       groups={props.groups}
-      value={capitalize(props.state[props.name])}
-      labelText={capitalize(props.name)}
+      value={props.state[props.name]}
+      labelText={props.name}
       handleInputChange={e => props.onChange(props.name, e, true)}
       className="fieldWidthSmaller"
     />

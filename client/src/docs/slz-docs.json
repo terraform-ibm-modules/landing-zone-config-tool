@@ -316,7 +316,7 @@
   "transit_gateway": {
     "content": [
       {
-        "text": "A Transit Gateway provides connectivity between two or more VPCs which allows distributed resources to communicate with each other."
+        "text": "A Transit gateway provides connectivity between two or more VPCs which allows distributed resources to communicate with each other."
       },
       {
         "text": "_default_includes"
@@ -469,7 +469,7 @@
     "relatedLinks": [
       [
         "https://cloud.ibm.com/docs/openshift?topic=openshift-getting-started",
-        "Getting started With Red Hat OpenShift clusters on IBM Cloud"
+        "Getting started with Red Hat OpenShift clusters on IBM Cloud"
       ],
       [
         "https://cloud.ibm.com/docs/containers?topic=containers-getting-started",
@@ -713,7 +713,7 @@
         "className": "marginBottomSmall"
       },
       {
-        "text": "Security groups are split up between the primary subnet tier, which contains the Management Interface Security Group, and three secondary subnet tiers, which contain the External Interface, Workload Interface , and F5 Bastion Interface security groups within each respectively.",
+        "text": "Security groups are split up between the primary subnet tier, which contains the Management Interface Security Group, and three secondary subnet tiers, which contain the External Interface, Workload Interface, and F5 Bastion Interface security groups within each respectively.",
         "className": "marginBottomSmall"
       },
       {

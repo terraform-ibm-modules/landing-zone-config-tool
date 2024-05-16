@@ -6,7 +6,7 @@ import {
 import { SlzFormGroup, SlzToggle, SlzNameInput } from "../../icse/index.js";
 import PropTypes from "prop-types";
 
-/** Resource Groups
+/** Resource groups
  * @param {Object} props
  * @param {configDotJson} props.configDotJson config dot json
  * @param {slz} props.slz slz state store

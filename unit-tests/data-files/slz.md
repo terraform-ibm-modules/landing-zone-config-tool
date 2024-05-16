@@ -5,8 +5,8 @@ Resource groups aid in the organization of account resources in an IBM Cloud acc
 
 The default configuration includes:
 
-Group Name    | Description                                                                                                                                                                    | Optional
---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------
+Group Name    | Description                                                                                                                                                                     | Optional
+--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------
 service-rg    | A resource group containing all IBM Cloud services.                                                                                                                             | false
 management-rg | A resource group containing the compute, storage, and network services to enable the application provider's administrators to monitor, operation, and maintain the environment. | false
 workload-rg   | A resource group containing the compute, storage, and network services to support hosted applications and operations that deliver services to the consumer.                     | false
@@ -25,7 +25,7 @@ IBM Cloud Object Storage (COS) is a highly available, durable, and secure platfo
 The initial configuration includes two COS instances:
 
 Instance Name | Description
---------------|--------------------------------------------------------------------------------------------------------------------
+--------------|---------------------------------------------------------------------------------------------------------------------
 cos           | A COS instance with two buckets, a management bucket and a workload bucket, where respective objects can be stored.
 atracker-cos  | A COS instance with a bucket where Activity Tracker logs will be stored.
 
@@ -42,8 +42,8 @@ A key management service is used to create, import, rotate, and manage encryptio
 IBM Cloud offers two solutions for key management:
 
 Service Name                                   | Description
------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-IBM Cloud Hyper Protect Crypto Services (HPCS) | A dedicated key management service and hardware security module (HSM) based on IBM Cloud. Built on FIPS 140-2 Level 4-certified hardware, this service allows users to take the ownership of the cloud HSM to fully manage encryption keys and perform cryptographic operations. Users cannot use SLZ to initialize HPCS. In order to use HPCS with Secure Landing Zone users will need to bring an existing instance.
+-----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+IBM Cloud Hyper Protect Crypto Services (HPCS) | A dedicated key management service and hardware security module (HSM) based on IBM Cloud. Built on FIPS 140-2 Level 4-certified hardware, this service allows users to take the ownership of the cloud HSM to fully manage encryption keys and perform cryptographic operations. Users cannot use landing zone configuration tool to initialize HPCS. In order to use HPCS with the landing zone configuration tool, users will need to bring an existing instance.
 IBM Cloud Key Protect                          | A full-service encryption solution that allows data to be secured and stored in IBM Cloud using the latest envelope encryption techniques that leverage FIPS 140-2 Level 3 certified cloud-based hardware security modules.
 
 To be FS Cloud compliant, data at rest is to always be encrypted using your keys.
@@ -51,7 +51,7 @@ To be FS Cloud compliant, data at rest is to always be encrypted using your keys
 The default configuration includes:
 
 Key Name         | Description
------------------|-------------------------------------------------------------------------------
+-----------------|--------------------------------------------------------------------------------
 slz-slz-key      | An encryption key for service instances.
 slz-vsi-key      | An encryption key for Virtual Server Instance (VSI) deployments.
 slz-roks-key     | An encryption key for Red Hat OpenShift Kubernetes (ROKS) cluster deployments.
@@ -71,8 +71,8 @@ A Virtual Private Cloud (VPC) is a public cloud offering that lets an enterprise
 
 The default configuration includes:
 
-Network Name | Description                                                                                                                  | Optional
--------------|------------------------------------------------------------------------------------------------------------------------------|----------
+Network Name | Description                                                                                                                   | Optional
+-------------|-------------------------------------------------------------------------------------------------------------------------------|----------
 management   | A VPC for management to enable the application provider's administrators to monitor, operation, and maintain the environment. | false
 workload     | A VPC for workload to support hosted applications and operations that deliver services to the consumer.                       | false
 edge         | a VPC for edge if you enable edge networking for F5.                                                                          | true
@@ -135,7 +135,7 @@ workload   | vpe         | 10.50.10.0/24 | 10.50.20.0/24 | 10.50.30.0/24
 
 ## Transit gateway
 
-A transit gateway provides connectivity between two or more VPCs which allows distributed resources to communicate with each other.
+A Transit gateway provides connectivity between two or more VPCs which allows distributed resources to communicate with each other.
 
 The default configuration includes:
 
@@ -171,7 +171,7 @@ Rule Name
 
 ## Virtual private endpoints
 
-A Virtual Private Endpoint (VPE) gateway enables users to connect to supported IBM Cloud Services from their VPC network via an IP address allocated from a subnet within the VPC. The VPE gateway is a virtualized function that scales horizontally, is redundant and highly available, and spans all availability zones of the specified VPC.
+A virtual private endpoint (VPE) gateway enables users to connect to supported IBM Cloud Services from their VPC network via an IP address allocated from a subnet within the VPC. The VPE gateway is a virtualized function that scales horizontally, is redundant and highly available, and spans all availability zones of the specified VPC.
 
 The default configuration connects the management and workload VPCs to IBM Cloud Object Storage by creating a VPE subnet in each zone of the VPC, then creating a VPE gateway for each VPE subnet.
 
@@ -364,7 +364,7 @@ F5 Bastion Interface    | Created only when using F5 patterns that supports full
 
 ### Networking Rules
 
-By default, the Edge ACLs are configured to have rules that are FS Cloud compliant within the VPC access control section. Removing any of the following rules may affect FS Cloud compliance for your environment.
+By default, the edge ACLs are configured to have rules that are FS Cloud compliant within the VPC access control section. Removing any of the following rules may affect FS Cloud compliance for your environment.
 
 Name                      | Action | Direction | Source        | Destination | Protocol
 --------------------------|--------|-----------|---------------|-------------|----------
@@ -372,9 +372,9 @@ allow-ibm-inbound         | Allow  | Inbound   | 161.26.0.0/16 | 10.0.0.0/8  | A
 allow-all-network-inbound | Allow  | Inbound   | 10.0.0.0/8    | 10.0.0.0/8  | ALL
 allow-all-outbound        | Allow  | Outbound  | 0.0.0.0/0     | 0.0.0.0/0   | ALL
 
-By default, the F5 and Edge VPE security groups are configured to have rules that are FS Cloud compliant within the Security Groups section. Removing any of the following rules may affect FS Cloud compliance for your environment.
+By default, the F5 and Edge VPE security groups are configured to have rules that are FS Cloud compliant within the security groups section. Removing any of the following rules may affect FS Cloud compliance for your environment.
 
-Security groups are split up between the primary subnet tier, which contains the Management Interface Security Group, and three secondary subnet tiers, which contain the External Interface, Workload Interface , and F5 Bastion Interface Security Groups within each respectively.
+Security groups are split up between the primary subnet tier, which contains the Management Interface Security Group, and three secondary subnet tiers, which contain the External Interface, Workload Interface, and F5 Bastion Interface security groups within each respectively.
 
 Interface     | Direction | Protocol | Source                                                                                       | Port
 --------------|-----------|----------|----------------------------------------------------------------------------------------------|-----------------
