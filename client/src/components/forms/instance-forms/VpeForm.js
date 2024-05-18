@@ -205,7 +205,7 @@ class VPEForm extends Component {
                   id={composedId + "-" + vpc.name}
                   componentName="VPE"
                   field="vpc_name"
-                  labelText={"VPC Name"}
+                  labelText={"VPC name"}
                   invalid="matchName"
                   value={vpc.name}
                   onChange={() => {}}

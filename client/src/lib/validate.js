@@ -25,7 +25,7 @@ const simpleErrors = {
     return `Virtual private endpoints must have at least one VPC. Service name \`${serviceName}\` got 0.`;
   },
   noVpeSubnets: (serviceName, vpcName) => {
-    return `Virtual private endpoints must have at least one VPC subnet. Service name \`${serviceName}\` VPC Name \`${vpcName}\` has 0.`;
+    return `Virtual private endpoints must have at least one VPC subnet. Service name \`${serviceName}\` VPC name \`${vpcName}\` has 0.`;
   },
   noDeploymentSshKeys: deploymentName => {
     return `${deploymentName} must have at least one SSH key, got 0.`;
@@ -146,7 +146,7 @@ const validate = function(configDotJson, isDownload) {
    * @param {Object} component component
    */
   function nullVpcNameTest(componentName, component) {
-    validationTest(componentName, component, "VPC Name", "vpc_name");
+    validationTest(componentName, component, "VPC name", "vpc_name");
   }
 
   /**

@@ -63,7 +63,7 @@ class ObjectStorageBucketForm extends Component {
           <SlzSelect
             component={this.props.data.name}
             name="storage_class"
-            groups={["Standard", "Vault", "Cold", "Smart"]}
+            groups={["Standard", "Vault", "Cold Vault", "Smart Tier"]}
             value={capitalize(this.state.storage_class)}
             labelText="Bucket class"
             handleInputChange={event =>

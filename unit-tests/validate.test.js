@@ -462,7 +462,7 @@ describe("validate", () => {
       let task = () => validate(testData);
       assert.throws(
         task,
-        "Clusters require a VPC Name, `workload-cluster` vpc_name is null."
+        "Clusters require a VPC name, `workload-cluster` vpc_name is null."
       );
     });
     it("should throw an error if a cluster has no subnet names", () => {
@@ -578,7 +578,7 @@ describe("validate", () => {
       let task = () => validate(testData);
       assert.throws(
         task,
-        "Virtual private endpoints must have at least one VPC subnet. Service name `cos` VPC Name `management` has 0."
+        "Virtual private endpoints must have at least one VPC subnet. Service name `cos` VPC name `management` has 0."
       );
     });
   });
@@ -1043,7 +1043,7 @@ describe("validate", () => {
         let task = () => validate(testData, true);
         assert.throws(
           task,
-          "Clusters require a VPC Name, `workload-cluster` vpc_name is null."
+          "Clusters require a VPC name, `workload-cluster` vpc_name is null."
         );
       });
       it("should throw an error if a cluster has null resource group", () => {
@@ -1123,7 +1123,7 @@ describe("validate", () => {
         let task = () => validate(testData);
         assert.throws(
           task,
-          "Virtual private endpoints must have at least one VPC subnet. Service name `cos` VPC Name `management` has 0."
+          "Virtual private endpoints must have at least one VPC subnet. Service name `cos` VPC name `management` has 0."
         );
       });
     });

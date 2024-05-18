@@ -342,7 +342,7 @@ const ObjectStorage = props => {
 const ObjectStorageBuckets = props => {
   return (
     <SlzArrayForm
-      name="Buckets"
+      name="buckets"
       addText="Create a Bucket"
       configDotJsonField="cos"
       configDotJsonSubField="buckets"
