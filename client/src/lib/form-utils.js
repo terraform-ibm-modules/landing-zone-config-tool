@@ -188,7 +188,7 @@ function toggleFormComponentName(componentProps) {
  */
 function disableDeleteMessage(componentProps) {
   if (componentProps.submissionFieldName === "ssh_keys") {
-    return "Cannot delete SSH Key. This key is currently used by virtual servers.";
+    return "Cannot delete SSH key. This key is currently used by virtual servers.";
   } else if (componentProps.addText === "Create a VPC") {
     return "Cannot delete VPC. At least one VPC is required";
   } else if (componentProps.submissionFieldName === "resource_groups") {

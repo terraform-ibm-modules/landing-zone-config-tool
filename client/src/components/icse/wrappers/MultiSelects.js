@@ -53,7 +53,7 @@ export const SshKeyMultiSelect = props => {
       useTitleInItem
       label="SSH keys"
       titleText="SSH keys"
-      invalidText="At least one SSH Key is required"
+      invalidText="At least one SSH key is required"
       invalid={
         props.initialSelectedItems
           ? props.initialSelectedItems.length === 0
@@ -89,7 +89,7 @@ export const SecurityGroupMultiSelect = props => {
     <MultiSelect
       id={props.id + "-security-group-multiselect"}
       label={props.label}
-      titleText="Security groups"
+      titleText="security groups"
       className="fieldWidthSmaller cds--form-item"
       initialSelectedItems={props.initialSelectedItems}
       vpcName={props.vpcName}

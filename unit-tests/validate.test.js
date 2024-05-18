@@ -598,7 +598,7 @@ describe("validate", () => {
       let testData = minimumValidJson();
       testData.vsi[0].ssh_keys = [];
       let task = () => validate(testData);
-      assert.throws(task, "VSIs must have at least one SSH Key, got 0.");
+      assert.throws(task, "VSIs must have at least one SSH key, got 0.");
     });
     it("should throw an error when no subnets are provided", () => {
       let testData = minimumValidJson();
@@ -699,7 +699,7 @@ describe("validate", () => {
         ],
       });
       let task = () => validate(testData);
-      assert.throws(task, "F5 VSIs must have at least one SSH Key, got 0.");
+      assert.throws(task, "F5 VSIs must have at least one SSH key, got 0.");
     });
   });
   describe("addUnfoundListFields", () => {

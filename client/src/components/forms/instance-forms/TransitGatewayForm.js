@@ -72,7 +72,7 @@ class TransitGatewayForm extends Component {
           />
           <SlzTextInput
             onChange={this.handleTextInput}
-            componentName="Transit gateway"
+            componentName="transit gateway"
             field="Name"
             labelText="Name"
             value={this.props.slz.store.prefix + "-transit-gateway"}
@@ -81,7 +81,7 @@ class TransitGatewayForm extends Component {
         </SlzFormGroup>
         <SlzFormGroup>
           <ResourceGroupSelect
-            component="Transit gateway"
+            component="transit gateway"
             slz={this.props.slz}
             value={this.state.transit_gateway_resource_group}
             handleInputChange={this.handleResourceGroupSelect}

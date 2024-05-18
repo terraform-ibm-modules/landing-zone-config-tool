@@ -259,7 +259,7 @@ SlzArrayForm.propTypes = {
 const Clusters = props => {
   return (
     <SlzArrayForm
-      name="Clusters"
+      name="clusters"
       addText="Create a Cluster"
       configDotJsonField="clusters"
       slz={props.slz}
@@ -302,7 +302,7 @@ const ClusterWorkerPools = props => {
 const EncryptionKeys = props => {
   return (
     <SlzArrayForm
-      name="Encryption keys"
+      name="encryption keys"
       addText="Create an encryption key"
       configDotJsonField="key_management"
       configDotJsonSubField="keys"
@@ -364,7 +364,7 @@ const ObjectStorageBuckets = props => {
 const ObjectStorageKeys = props => {
   return (
     <SlzArrayForm
-      name="Service credentials"
+      name="service credentials"
       addText="Create a service credential"
       configDotJsonField="cos"
       configDotJsonSubField="keys"
@@ -391,7 +391,7 @@ const ObjectStorageKeys = props => {
 const ResourceGroups = props => {
   return (
     <SlzArrayForm
-      name="Resource groups"
+      name="resource groups"
       addText="Create a resource group"
       configDotJsonField="resource_groups"
       slz={props.slz}
@@ -410,7 +410,7 @@ const ResourceGroups = props => {
 const SecurityGroups = props => {
   return (
     <SlzArrayForm
-      name="Security groups"
+      name="security groups"
       addText="Create a security group"
       configDotJsonField="security_groups"
       slz={props.slz}
@@ -464,7 +464,7 @@ const TeleportClaimToRoles = props => {
 const Vpc = props => {
   return (
     <SlzArrayForm
-      name="Virtual private clouds"
+      name="virtual private clouds"
       addText="Create a VPC"
       configDotJsonField="vpcs"
       slz={props.slz}
@@ -529,7 +529,7 @@ const NetworkAcls = props => {
 const Vpe = props => {
   return (
     <SlzArrayForm
-      name="Virtual private endpoints"
+      name="virtual private endpoints"
       addText="Create a virtual private endpoint"
       configDotJsonField="virtual_private_endpoints"
       slz={props.slz}
@@ -566,7 +566,7 @@ const Vpn = props => {
 const Vsi = props => {
   return (
     <SlzArrayForm
-      name="Virtual server instance deployments"
+      name="virtual server instance deployments"
       addText="Create a virtual server instance deployment"
       configDotJsonField="vsi"
       slz={props.slz}

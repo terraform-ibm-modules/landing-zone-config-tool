@@ -824,7 +824,7 @@ describe("form-utils", () => {
     it("should provide correct message for ssh key form", () => {
       assert.deepEqual(
         disableDeleteMessage({ submissionFieldName: "ssh_keys" }),
-        "Cannot delete SSH Key. This key is currently used by virtual servers.",
+        "Cannot delete SSH key. This key is currently used by virtual servers.",
         "it should return the correct message"
       );
     });

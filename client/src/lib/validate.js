@@ -28,7 +28,7 @@ const simpleErrors = {
     return `Virtual private endpoints must have at least one VPC subnet. Service name \`${serviceName}\` VPC Name \`${vpcName}\` has 0.`;
   },
   noDeploymentSshKeys: deploymentName => {
-    return `${deploymentName} must have at least one SSH Key, got 0.`;
+    return `${deploymentName} must have at least one SSH key, got 0.`;
   },
   noDeploymentPrimarySubnet: (deploymentName, subnetField) => {
     return `${deploymentName} must have a valid subnet at ${subnetField}, got null.`;
