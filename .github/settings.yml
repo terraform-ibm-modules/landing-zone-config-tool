@@ -22,7 +22,7 @@ repository:
 
   # Uncomment this description property
   # and update the description to the current repo description.
-  description: "A GUI for generating Secure Landing Zone compatible custom environment override JSON."
+  description: "A GUI for generating IBM Secure Landing Zone compatible custom environment override JSON."
 
   # Use a comma-separated list of topics to set on the repo (ensure not to use any caps in the topic string).
   topics: terraform, ibm-cloud, json, override, landing-zone, config-tool, core-team

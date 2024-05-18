@@ -302,7 +302,7 @@ Teleport VSI Deployment         | A VSI deployment that will allow users to depl
 
 The F5 BIG-IP Virtual Edition will enable you to setup a client-to-site full tunnel VPN to connect to your management/edge VPC and/or a web application firewall (WAF) to enable consumers to connect to your workload VPC over the public internet.
 
-Through Secure Landing Zone, users can optionally provision the F5 BIG-IP so that one can either setup the implemented solution of a client-to-site VPN or web application firewall (WAF).
+Through IBM Secure Landing Zone, users can optionally provision the F5 BIG-IP so that one can either setup the implemented solution of a client-to-site VPN or web application firewall (WAF).
 
 F5 BIG-IP can be provisioned in a separate edge VPC or in the existing management VPC. Best practice is to configure F5 in the edge VPC. To enable edge networking, return to the home page.
 

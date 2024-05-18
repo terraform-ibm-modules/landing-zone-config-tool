@@ -117,7 +117,7 @@ class SlzHeader extends React.Component {
             isActive={this.state.expanded}
           />
           <HeaderName href="/home" prefix="">
-            Secure Landing Zone
+            landing zone configuration tool
           </HeaderName>
           <HeaderGlobalBar>
             <HeaderGlobalAction
