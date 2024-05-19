@@ -506,7 +506,7 @@ const VpcAcl = props => {
 const NetworkAcls = props => {
   return (
     <SlzArrayForm
-      name="Network access control lists"
+      name="network access control lists"
       slz={props.slz}
       form={NetworkAclForm}
       childKey="network-acl-edit-form-"
