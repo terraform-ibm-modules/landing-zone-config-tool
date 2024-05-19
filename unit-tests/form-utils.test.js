@@ -702,7 +702,7 @@ describe("form-utils", () => {
     it("should return prefix if inner form name VpcNaclForm", () => {
       assert.deepEqual(
         toggleFormComponentName({
-          addText: "Create a Network Access Control List",
+          addText: "Create a network access control list",
           data: {
             prefix: "hi",
           },

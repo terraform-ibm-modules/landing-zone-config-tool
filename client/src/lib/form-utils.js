@@ -169,7 +169,7 @@ function toggleFormComponentName(componentProps) {
   if (componentProps.addText === "Create a VPC") {
     return componentProps.data.prefix;
   } else if (
-    componentProps.addText === "Create a Network Access Control List"
+    componentProps.addText === "Create a network access control list"
   ) {
     return componentProps.data.prefix + " VPC";
   } else if (componentProps.addText === "Create a virtual private endpoint") {
