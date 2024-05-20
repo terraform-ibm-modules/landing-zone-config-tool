@@ -169,7 +169,7 @@ function toggleFormComponentName(componentProps) {
   if (componentProps.addText === "Create a VPC") {
     return componentProps.data.prefix;
   } else if (
-    componentProps.addText === "Create a Network Access Control List"
+    componentProps.addText === "Create a network access control list"
   ) {
     return componentProps.data.prefix + " VPC";
   } else if (componentProps.addText === "Create a virtual private endpoint") {
@@ -188,7 +188,7 @@ function toggleFormComponentName(componentProps) {
  */
 function disableDeleteMessage(componentProps) {
   if (componentProps.submissionFieldName === "ssh_keys") {
-    return "Cannot delete SSH Key. This key is currently used by virtual servers.";
+    return "Cannot delete SSH key. This key is currently used by virtual servers.";
   } else if (componentProps.addText === "Create a VPC") {
     return "Cannot delete VPC. At least one VPC is required";
   } else if (componentProps.submissionFieldName === "resource_groups") {

@@ -153,7 +153,7 @@ class NetworkingRulesOrderCard extends Component {
           }
         />
         <InstanceFormModal
-          name="Create a Network Rule"
+          name="Create a network rule"
           show={this.state.showModal}
           onRequestSubmit={this.handleSubmit}
           onRequestClose={this.toggleModal}
@@ -180,7 +180,7 @@ class NetworkingRulesOrderCard extends Component {
           />
         </InstanceFormModal>
         <EmptyResourceTile
-          name="Network Rules"
+          name="network rules"
           showIfEmpty={this.state.rules}
         />
         {this.state.rules.map((rule, index) => (

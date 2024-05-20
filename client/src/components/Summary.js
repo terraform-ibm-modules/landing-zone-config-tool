@@ -63,11 +63,11 @@ class Summary extends React.Component {
                   <p className="marginBottomSmall">
                     • You can view and download your <em>override.json</em> file, and then import it into{" "}
                     <a
-                      href="https://github.com/open-toolchain/landing-zone#ibm-secure-landing-zone"
+                      href="https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone"
                       rel="noreferrer noopener"
                       target="_blank"
                     >
-                      Secure Landing Zone
+                      IBM Secure Landing Zone
                     </a>
                     .
                   </p>

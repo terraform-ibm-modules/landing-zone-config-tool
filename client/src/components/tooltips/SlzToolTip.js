@@ -28,11 +28,9 @@ const SlzToolTip = props => {
             {props.link && (
               <>
                 {" "}
-                Visit{" "}
                 <Link onClick={() => window.open(props.link, "_blank")}>
-                  this link
+                  Learn more
                 </Link>{" "}
-                for more information.
               </>
             )}
           </p>

@@ -459,7 +459,7 @@ SubnetNameDropdown.propTypes = {
 export const KmsKeySelect = props => {
   return (
     <SlzSelect
-      labelText="Encryption key"
+      labelText="encryption key"
       invalidText="Select a valid encryption key."
       component={props.component}
       name={props.name}

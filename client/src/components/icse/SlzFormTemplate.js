@@ -105,7 +105,7 @@ class SlzFormTemplate extends Component {
                   arrayParentName: this.props.arrayParentName,
                   onShowToggle: this.onChildToggle,
                   onChildShowToggle:
-                    this.props.name === "VPC Access Control"
+                    this.props.name === "VPC access control"
                       ? this.onChildToggle // pass through to child component if nacl
                       : false,
                   index: index,

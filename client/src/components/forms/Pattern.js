@@ -196,7 +196,7 @@ class PatternForm extends Component {
               <PatternDocs />
               <SlzFormGroup>
                 <RadioButtonGroup
-                  legendText="Pattern"
+                  legendText="Deployable architecture"
                   name="pattern-select"
                   defaultSelected={this.state.pattern}
                   className="leftTextAlign marginBottomSmall"

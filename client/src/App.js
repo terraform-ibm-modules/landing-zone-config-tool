@@ -248,7 +248,7 @@ class App extends Component {
       <div className="App">
         <Modal
           id="no-pattern-selected-modal"
-          modalHeading="No Pattern Selected"
+          modalHeading="No deployable architecture selected"
           className="leftTextAlign unselectedPatternModal"
           alert={true}
           danger={true}
@@ -261,8 +261,7 @@ class App extends Component {
           passiveModal
         >
           <div>
-            Uh oh! It looks like you haven't selected a pattern yet. Select a
-            pattern from the home page to begin customization.
+            Select a deployable architecture from the home page to begin customization.
           </div>
           <div>
             <Button

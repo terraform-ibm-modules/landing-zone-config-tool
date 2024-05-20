@@ -14,7 +14,7 @@ const Home = props => {
         <TabPanels>
           <TabPanel>
             <div>
-              <h2>Secure Landing Zone</h2>
+              <h2>landing zone configuration tool</h2>
               <PatternForm slz={props.slz} />
             </div>
           </TabPanel>

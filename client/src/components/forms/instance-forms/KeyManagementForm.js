@@ -63,7 +63,7 @@ class KeyManagementForm extends Component {
             name="system"
             groups={["Key Protect", "HPCS"]}
             value={this.state.use_hs_crypto ? "HPCS" : "Key Protect"}
-            labelText="Key management system"
+            labelText="key management system"
             handleInputChange={this.handleSystemDropdown}
             className="fieldWidth"
           />
@@ -90,7 +90,7 @@ class KeyManagementForm extends Component {
           />
           <ResourceGroupSelect
             slz={this.props.slz}
-            component="Key management"
+            component="key management"
             value={this.state.resource_group}
             handleInputChange={this.handleInputChange}
             className="fieldWidth"

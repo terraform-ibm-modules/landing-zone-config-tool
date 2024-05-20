@@ -199,6 +199,7 @@ class NetworkingRuleForm extends Component {
                     )}
                     <NetworkingRuleSelect
                       name="direction"
+                      labelText="Direction"
                       state={this.state}
                       onChange={this.handleInput}
                       groups={["Inbound", "Outbound"]}
@@ -208,6 +209,7 @@ class NetworkingRuleForm extends Component {
                     {this.props.isSecurityGroup && (
                       <NetworkingRuleTextField
                         name="source"
+                        labelText="Source"
                         state={this.state}
                         onChange={this.handleInput}
                       />
@@ -220,6 +222,7 @@ class NetworkingRuleForm extends Component {
                       <>
                         <NetworkingRuleTextField
                           name="source"
+                          labelText="Source"
                           state={this.state}
                           onChange={this.handleInput}
                         />
@@ -371,6 +374,7 @@ NetworkingRuleForm.propTypes = {
  * readability shortcut for nw rules
  * @param {*} props
  * @param {string} props.name field to update
+ * @param {string} props.labelText display field
  * @param {Object} props.state parent state
  * @param {Function} props.onChange onchange function
  */
@@ -380,7 +384,7 @@ const NetworkingRuleTextField = props => {
     <SlzTextInput
       componentName="Networking rule"
       field={props.name}
-      labelText={props.name}
+      labelText={props.labelText}
       value={String(props.state[props.name])}
       onChange={e => props.onChange(props.name, e)}
       className="fieldWidthSmaller"
@@ -433,6 +437,7 @@ NetworkingRuleProtocolTextField.propTypes = {
  * readability shortcut for nw rules
  * @param {*} props
  * @param {string} props.name field to update
+ * @param {string} props.labelText display field
  * @param {Object} props.state parent state
  * @param {Function} props.onChange onchange function
  * @param {Array<string>} props.groups list of groups for select
@@ -444,7 +449,7 @@ const NetworkingRuleSelect = props => {
       name={props.name}
       groups={props.groups}
       value={props.state[props.name]}
-      labelText={props.name}
+      labelText={props.labelText}
       handleInputChange={e => props.onChange(props.name, e, true)}
       className="fieldWidthSmaller"
     />

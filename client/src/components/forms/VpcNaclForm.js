@@ -41,7 +41,7 @@ class VpcNaclForm extends React.Component {
           />
         </InstanceFormModal>
         <SlzHeading
-          name="Network access control lists"
+          name="network access control lists"
           className="marginRight marginBottomSmall"
           type="subHeading"
           buttons={

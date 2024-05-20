@@ -52,7 +52,7 @@ class SlzTabPanel extends React.Component {
     );
 
     let hasBuiltInHeading = contains(
-      ["Network access control lists"], // prevent double rendering of heading for nacl
+      ["network access control lists"], // prevent double rendering of heading for nacl
       this.props.name
     );
 
@@ -70,7 +70,7 @@ class SlzTabPanel extends React.Component {
                   this.props.hideFormTitleButton ||
                   this.state.tabIndex !== 0 ||
                   !isFunction(this.props.onClick) ||
-                  this.props.name === "Network access control lists"
+                  this.props.name === "network access control lists"
                 }
                 show={
                   <SaveAddButton
