@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "engines": {
-    "node": "20.13.1"
+    "node": "20.14.0"
   },
   "scripts": {
     "test": "mocha unit-tests/",
@@ -22,7 +22,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lazy-z": "1.12.0"
+    "lazy-z": "1.12.1"
   },
   "devDependencies": {
     "@craco/craco": "7.1.0",
