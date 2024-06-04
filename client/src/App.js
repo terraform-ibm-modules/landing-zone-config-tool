@@ -43,20 +43,20 @@ const slzStateStore = new slzState();
 
 const pathToNameMap = {
   "/home": "Home",
-  "/resourceGroups": "Resource Groups",
-  "/keyManagement": "Key Management",
+  "/resourceGroups": "Resource groups",
+  "/keyManagement": "Key management",
   "/objectStorage": "Object Storage",
-  "/vpcs": "Virtual Private Clouds",
-  "/nacls": "VPC Access Control",
-  "/subnets": "VPC Subnets",
-  "/transitGateway": "Transit Gateway",
-  "/securityGroups": "Security Groups",
-  "/vpe": "Virtual Private Endpoints",
+  "/vpcs": "Virtual private clouds",
+  "/nacls": "VPC access control",
+  "/subnets": "VPC subnets",
+  "/transitGateway": "Transit gateway",
+  "/securityGroups": "Security groups",
+  "/vpe": "Virtual private endpoints",
   "/activityTracker": "Activity Tracker",
-  "/sshKeys": "SSH Keys",
-  "/vsi": "Virtual Server Instance Deployments",
+  "/sshKeys": "SSH keys",
+  "/vsi": "Virtual server instance deployments",
   "/clusters": "Clusters",
-  "/vpn": "VPN Gateways",
+  "/vpn": "VPN gateways",
   "/appID": "App ID",
   "/teleport": "Teleport Bastion Host",
   "/f5BigIP": "F5 Big IP",
@@ -254,7 +254,7 @@ class App extends Component {
         <Modal
           onRequestClose={this.handleCloseModal}
           id="no-pattern-selected-modal"
-          modalHeading="No Pattern Selected"
+          modalHeading="No deployable architecture selected"
           className="leftTextAlign unselectedPatternModal"
           alert={true}
           danger={true}
@@ -267,8 +267,7 @@ class App extends Component {
           passiveModal
         >
           <div>
-            Uh oh! It looks like you haven't selected a pattern yet. Select a
-            pattern from the home page to begin customization.
+            Select a deployable architecture from the home page to begin customization.
           </div>
           <div>
             <Button

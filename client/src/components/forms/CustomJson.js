@@ -72,7 +72,7 @@ class CustomJson extends React.Component {
   render() {
     return (
       <div>
-        <SlzHeading name="Import existing override.json data for Secure Landing Zone terraform deployment." />
+        <SlzHeading name="Import existing override.json data for landing zone configuration tool terraform deployment." />
         <div className="marginTop displayFlex marginBottomSmall">
           <p>
             {"For more information, visit the "}
@@ -87,7 +87,7 @@ class CustomJson extends React.Component {
         </div>
         <SlzFormGroup>
           <TextArea
-            labelText="Custom SLZ Data"
+            labelText="Custom landing zone configuration tool data"
             rows={20}
             cols={75}
             value={this.state.textData}

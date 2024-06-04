@@ -5,6 +5,7 @@ import { DynamicToolTipWrapper } from "../../wrappers/Tooltips.js";
 import { EditCloseIcon } from "./Buttons.js";
 import { ToastNotification } from "@carbon/react";
 import "./notification.css";
+import { capitalize } from "lazy-z";
 
 /**
  * render a form
@@ -55,11 +56,11 @@ export const SlzHeading = props => {
         tooltip={props.tooltip}
         innerForm={() => {
           return props.type === "subHeading" ? (
-            <h5>{props.name}</h5>
+            <h5>{capitalize(props.name)}</h5>
           ) : props.type === "p" ? (
             <p>{props.name}</p>
           ) : (
-            <h4>{props.name}</h4>
+            <h4>{capitalize(props.name)}</h4>
           );
         }}
       />

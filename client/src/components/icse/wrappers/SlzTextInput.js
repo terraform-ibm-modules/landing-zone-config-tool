@@ -154,7 +154,7 @@ export const SlzNameInput = props => {
         {...invalid}
         className={addClassName("fieldWidth leftTextAlign ", props)}
         field="name"
-        labelText="name"
+        labelText="Name"
         helperText={helperText}
       />
     </DynamicToolTipWrapper>

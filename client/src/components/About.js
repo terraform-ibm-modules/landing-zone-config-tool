@@ -6,16 +6,16 @@ import vpc from "../images/vpc.png";
 const About = () => {
   return (
     <div className="about">
-      <h1 id="what-is-secure-landing-zone-">What is Secure Landing Zone?</h1>
+      <h1 id="what-is-secure-landing-zone-">What is IBM Secure Landing Zone?</h1>
       <p>
         <a
-          href="https://github.com/open-toolchain/landing-zone"
+          href="https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone?tab=readme-ov-file#ibm-secure-landing-zone-module"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Secure Landing Zone
+          IBM Secure Landing Zone
         </a>{" "}
-        (SLZ) provides users with the ability to create a fully customizable,{" "}
+        provides users with the ability to create a fully customizable,{" "}
         <a
           href="https://www.ibm.com/cloud/financial-services"
           target="_blank"
@@ -33,9 +33,9 @@ const About = () => {
       <table>
         <thead>
           <tr>
-            <th>Virtual Server Pattern</th>
-            <th>Red Hat Openshift Pattern</th>
-            <th>VPC Pattern</th>
+            <th>VSI on VPC landing zone</th>
+            <th>Red Hat Openshift Container Platform on VPC landing zone</th>
+            <th>VPC landing zone</th>
           </tr>
         </thead>
         <tbody>
@@ -52,7 +52,7 @@ const About = () => {
           </tr>
         </tbody>
       </table>
-      <p>Each of these patterns creates:</p>
+      <p>By customizing the override.json, you can create the following:</p>
       <ul>
         <li>A resource group for cloud services and for each VPC.</li>
         <li>Object storage instances for flow logs and activity tracker</li>
@@ -63,7 +63,7 @@ const About = () => {
         <li>A management and workload VPC connected by a transit gateway</li>
         <li>A flow log collector for each VPC</li>
         <li>All necessary networking rules to allow communication</li>
-        <li>Virtual Private endpoints for Cloud Object storage in each VPC</li>
+        <li>Virtual private endpoints for Cloud Object Storage in each VPC</li>
         <li>A VPN Gateway in the Management VPC</li>
       </ul>
       <p>Each pattern will create an identical deployment on the VPC</p>
@@ -270,7 +270,7 @@ const About = () => {
         workload VPC over the public internet.{" "}
       </p>
       <p>
-        Through Secure Landing Zone, users can optionally provision the F5
+        Through IBM Secure Landing Zone, users can optionally provision the F5
         BIG-IP so that one can either setup the implemented solution of a
         client-to-site VPN or web application firewall (WAF) which is described{" "}
         <a
@@ -306,7 +306,7 @@ const About = () => {
         .
       </p>
       <p>
-        Through Secure Landing Zone, users can optionally{" "}
+        Through IBM Secure Landing Zone, users can optionally{" "}
         <a
           href="https://us-south.git.cloud.ibm.com/open-toolchain/landing-zone/-/blob/main/.docs/bastion/bastion.md"
           target="_blank"
@@ -329,7 +329,7 @@ const About = () => {
       </p>
       <hr />
       <p>
-        Related Links
+        Related links
         <br />
         <a
           href="https://ibm.box.com/s/hy5svbs3r5it4o5ut2dak98hgfqn3wul"

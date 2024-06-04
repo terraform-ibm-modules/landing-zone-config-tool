@@ -1,4 +1,4 @@
-import { matchLength, eachKey, titleCase } from "lazy-z";
+import { matchLength, eachKey, capitalize, titleCase } from "lazy-z";
 import slzDocs from "../docs/slz-docs.json" assert { type: "json" };
 import fs from "fs";
 /**
@@ -79,7 +79,7 @@ function docsToMd(docsJson) {
       doc += `### ${item.subHeading}\n\n`;
     }
   });
-  doc += "### Related Links\n\n";
+  doc += "### Related links\n\n";
   docsJson.relatedLinks.forEach(link => {
     let title = link.length === 1 ? "Docs" : link[1];
     doc += `- [${title}](${link[0]})\n`;
@@ -91,14 +91,20 @@ function allDocs() {
   let doc = "";
   eachKey(slzDocs, heading => {
     let header =
-      heading === "cos"
+      heading === "iam_account_settings"
+        ? "IAM Account Settings"
+        : heading === "access_groups"
+        ? "Access Groups"
+        : heading === "secrets_manager"
+        ? "Secrets Manager"
+        : heading === "cos"
         ? "Cloud Object Storage"
         : heading === "vpcs"
         ? "VPCs"
         : heading === "network_acls"
-        ? "Network Access Control Lists"
+        ? "Network access control lists"
         : heading === "vsi"
-        ? "Virtual Server Instance Deployments"
+        ? "Virtual server instance deployments"
         : heading === "appid"
         ? "App ID"
         : heading === "teleport"
@@ -107,7 +113,7 @@ function allDocs() {
         ? "F5 Big IP"
         : heading === "atracker"
         ? "Activity Tracker"
-        : titleCase(heading)
+        : capitalize(titleCase(heading).toLowerCase())
             .replace(/Ssh/g, "SSH") // capitalize these
             .replace("Vpn", "VPN")
             .replace("Iam", "IAM");

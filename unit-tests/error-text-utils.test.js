@@ -15,7 +15,7 @@ describe("error text utils", () => {
     it("should return the error text and validation", () => {
       let expectedData = {
         invalid: true,
-        invalidText: `Invalid Name. Must match the regular expression: /[A-z][a-z0-9-]*[a-z0-9]/`,
+        invalidText: `Invalid name. Must match the regular expression: /[A-z][a-z0-9-]*[a-z0-9]/`,
       };
       let actualData = hasInvalidName("resource_groups", "44444");
       assert.deepEqual(
@@ -52,7 +52,7 @@ describe("error text utils", () => {
     it("should return the error text and validation when use data and ends in hyphen", () => {
       let expectedData = {
         invalid: false,
-        invalidText: `Invalid Name. No name provided.`,
+        invalidText: `Invalid name. No name provided.`,
       };
       let actualData = hasInvalidName(
         "resource_groups",
@@ -77,7 +77,7 @@ describe("error text utils", () => {
     it("should return the error text and validation when all caps name", () => {
       let expectedData = {
         invalid: true,
-        invalidText: `Invalid Name. Must match the regular expression: /[A-z][a-z0-9-]*[a-z0-9]/`,
+        invalidText: `Invalid name. Must match the regular expression: /[A-z][a-z0-9-]*[a-z0-9]/`,
       };
       let actualData = hasInvalidName("resource_groups", "MMMMMM");
       assert.deepEqual(
@@ -89,7 +89,7 @@ describe("error text utils", () => {
     it("should not return invalid if using data and not duplicate", () => {
       let expectedData = {
         invalid: false,
-        invalidText: `Invalid Name. No name provided.`,
+        invalidText: `Invalid name. No name provided.`,
       };
       assert.deepEqual(
         hasInvalidName(
@@ -312,7 +312,7 @@ describe("error text utils", () => {
       let expectedData = {
         invalid: true,
         invalidText:
-          "Invalid Name. Must match the regular expression: /[A-z][a-z0-9-]*[a-z0-9]/",
+          "Invalid name. Must match the regular expression: /[A-z][a-z0-9-]*[a-z0-9]/",
       };
       let actualData = hasInvalidName("access_groups", "$$$$", {});
       assert.deepEqual(
@@ -325,7 +325,7 @@ describe("error text utils", () => {
       let expectedData = {
         invalid: true,
         invalidText:
-          "Invalid Name. Must match the regular expression: /[A-z][a-z0-9-]*[a-z0-9]/",
+          "Invalid name. Must match the regular expression: /[A-z][a-z0-9-]*[a-z0-9]/",
       };
       let actualData = hasInvalidName("policies", "$$$$", {});
       assert.deepEqual(
@@ -338,7 +338,7 @@ describe("error text utils", () => {
       let expectedData = {
         invalid: true,
         invalidText:
-          "Invalid Name. Must match the regular expression: /[A-z][a-z0-9-]*[a-z0-9]/",
+          "Invalid name. Must match the regular expression: /[A-z][a-z0-9-]*[a-z0-9]/",
       };
       let actualData = hasInvalidName("dynamic_policies", "$$$$", {});
       assert.deepEqual(

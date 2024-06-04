@@ -116,7 +116,7 @@ class ClusterInstance extends Component {
           {/* kube type */}
           <SlzSelect
             name="kube_type"
-            labelText="Kube Type"
+            labelText="Kube type"
             className="fieldWidthSmaller"
             groups={["OpenShift"]}
             handleInputChange={this.handleInputChange}
@@ -153,7 +153,7 @@ class ClusterInstance extends Component {
               component={clusterComponent}
               groups={splat(this.props.slz.store.configDotJson.cos, "name")}
               value={this.state.cluster.cos_name}
-              labelText="Cloud Object Storage Instance"
+              labelText="Cloud Object Storage instance"
               handleInputChange={this.handleInputChange}
               className="fieldWidthSmaller"
               invalidText="Select an Object Storage instance"

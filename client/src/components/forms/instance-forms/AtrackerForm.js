@@ -63,16 +63,16 @@ class AtrackerForm extends Component {
       <div id="atracker-form">
         <SlzModal
           id="atracker-fs-cloud"
-          heading="Environment May No Longer Be FS Cloud Compliant"
+          heading="Environment will no longer be FS Cloud compliant"
           onRequestClose={() => this.handleToggle("showFsModal")}
           onRequestSubmit={() => this.handleToggle("add_route")}
           open={this.state.showFsModal}
           alert
           danger
-          primaryButtonText="Disable Activity Tracker Route"
-          secondaryButtonText="Dismiss Changes"
+          primaryButtonText="Continue"
+          secondaryButtonText="Cancel"
         >
-          Disabling the Activity Tracker Route means your environment will{" "}
+          Disabling the Activity Tracker route means your environment will{" "}
           <strong>no longer be FS Cloud Compliant.</strong> Are you sure you
           want to continue with this change?
         </SlzModal>
@@ -107,7 +107,7 @@ class AtrackerForm extends Component {
             value={this.state.collector_bucket_name || ""}
             handleInputChange={this.handleInputChange}
             className="fieldWidth"
-            labelText="Object Storage Log Bucket"
+            labelText="Object Storage log bucket"
             invalidText="Select an Object Storage bucket."
           />
           <SlzToggle
@@ -115,7 +115,7 @@ class AtrackerForm extends Component {
               content:
                 "Must be enabled in order to forward all logs to the Cloud Object Storage bucket"
             }}
-            labelText="Create Activity Tracker Route"
+            labelText="Create Activity Tracker route"
             defaultToggled={this.state.add_route}
             toggleFieldName="add_route"
             onToggle={this.handleToggle}
@@ -132,7 +132,7 @@ class AtrackerForm extends Component {
             name="atracker_key"
             groups={this.props.slz.store.cosKeys}
             value={this.state.atracker_key || ""}
-            labelText="Privileged IAM Object Storage Key"
+            labelText="Privileged IAM Object Storage key"
             handleInputChange={this.handleInputChange}
             className="fieldWidth"
             invalidText="Select an Object Storage key."

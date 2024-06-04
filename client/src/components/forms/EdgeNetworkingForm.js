@@ -184,7 +184,7 @@ class EdgeNetworkingForm extends Component {
                     className="marginBottomSmall"
                   />
                   <div className="leftTextAlign">
-                    <div className="smallerText">Related Links</div>
+                    <div className="smallerText">Related links</div>
                     <a
                       href="https://clouddocs.f5.com/"
                       target="_blank"

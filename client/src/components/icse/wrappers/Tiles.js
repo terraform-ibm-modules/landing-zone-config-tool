@@ -14,7 +14,7 @@ export const EmptyResourceTile = props => {
       No {props.name}.{" "}
       {props.instructions || (
         <>
-          Click
+          Click the
           <Add size="24" className="inlineIconMargin" />
           button to add one.
         </>

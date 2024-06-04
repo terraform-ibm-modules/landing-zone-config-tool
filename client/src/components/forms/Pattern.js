@@ -174,11 +174,11 @@ class PatternForm extends Component {
     return (
       <Form id="pattern-form">
         <div className="subForm">
-          <h5 className="leftTextAlign marginBottomSmall">Select a Pattern</h5>
+          <h5 className="leftTextAlign marginBottomSmall">Select a deployable architecture</h5>
           <div className="displayFlex spaceBetween">
             <div>
               <Modal
-                modalHeading="Change Pattern"
+                modalHeading="Change deployable architecture"
                 className="leftTextAlign"
                 alert={true}
                 danger={true}
@@ -187,16 +187,16 @@ class PatternForm extends Component {
                 onRequestSubmit={() =>
                   this.handleRadioChange(this.state.selectedPattern)
                 }
-                primaryButtonText="Change Pattern"
+                primaryButtonText="Continue"
                 secondaryButtonText="Cancel"
               >
-                Selecting a new pattern will overwrite existing components. This
+                Selecting a new deployable architecture will overwrite existing components. This
                 cannot be undone.
               </Modal>
               <PatternDocs />
               <SlzFormGroup>
                 <RadioButtonGroup
-                  legendText="Pattern"
+                  legendText="Deployable architecture"
                   name="pattern-select"
                   defaultSelected={this.state.pattern}
                   className="leftTextAlign marginBottomSmall"
@@ -229,7 +229,7 @@ class PatternForm extends Component {
                   component="pattern"
                   max={3}
                   value={this.state.zones}
-                  labelText="Availability Zones"
+                  labelText="Availability zones"
                   handleInputChange={this.handleZoneChange}
                   disabled={
                     this.props.slz.store.pattern === "custom" ||
@@ -238,11 +238,11 @@ class PatternForm extends Component {
                   name="zones"
                   tooltip={{
                     content:
-                      "Change the initial number of Availability Zones for your infrastructure."
+                      "Availability zones reduce single points of failure by each being an additional copy of the resource."
                   }}
                   helperText={
                     this.state.pattern === ""
-                      ? "Select a pattern to edit availability zones"
+                      ? "Select a deployable architecture to edit availability zones"
                       : this.state.pattern === "custom"
                       ? "Availability zones must be changed manually for custom deployments"
                       : ""

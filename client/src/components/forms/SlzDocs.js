@@ -60,7 +60,7 @@ SlzDocTable.propTypes = {
 const RelatedLinks = props => {
   return (
     <>
-      <div className="smallerText">Related Links</div>
+      <div className="smallerText">Related links</div>
       {props.links.map((link, index) => (
         <div key={"related-link-" + index}>
           <a
@@ -286,13 +286,10 @@ export const PatternDocs = () => {
     >
       <div className="marginBottomSmall">
         <p className="patternDocText">
-          A <em>Pattern</em> is a starter template that can be used to quickly
-          get started with Secure Landing Zone (SLZ), a fully customizable, FS
-          Cloud Compliant, Virtual Private Cloud (VPC) environment within a
-          single region.
+          Use the landing zone configuration tool to customize your deployable architecture landing zone's override.json file.
         </p>
       </div>
-      <h6>Each of these patterns creates:</h6>
+      <h6>By customizing the override.json, you can create the following:</h6>
       <ul className="bullets indent">
         <li>A resource group for cloud services and for each VPC</li>
         <li>Object storage instances for flow logs and activity tracker</li>
@@ -303,12 +300,10 @@ export const PatternDocs = () => {
         <li>A management and workload VPC connected by a transit gateway</li>
         <li>A flow log collector for each VPC</li>
         <li>All necessary networking rules to allow communication</li>
-        <li>Virtual Private endpoints for Cloud Object storage in each VPC</li>
-        <li>
-          <em>A VPN Gateway in the Management VPC</em>
-        </li>
+        <li>Virtual private endpoints for Cloud Object Storage in each VPC</li>
+        <li>A VPN Gateway in the Management VPC</li>
       </ul>
-      <p>This tool was last verified to work with SLZ version: <a href="https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone/releases/tag/v5.1.0">5.1.0</a></p>
+      <p>This tool is verified to work with landing zone deployable architecture version: <a href="https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone/releases/tag/v5.11.0">5.11.0</a></p>
     </div>
   );
 };

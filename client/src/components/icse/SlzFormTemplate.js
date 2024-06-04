@@ -18,7 +18,7 @@ class SlzFormTemplate extends Component {
     this.toggleModal = this.toggleModal.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     // add an array for each vpc to track open and closed acls
-    if (this.props.name === "VPC Access Control") {
+    if (this.props.name === "VPC access control") {
       this.props.arrayData.forEach(() => this.state.shownChildForms.push([]));
     }
   }
@@ -105,7 +105,7 @@ class SlzFormTemplate extends Component {
                   arrayParentName: this.props.arrayParentName,
                   onShowToggle: this.onChildToggle,
                   onChildShowToggle:
-                    this.props.name === "VPC Access Control"
+                    this.props.name === "VPC access control"
                       ? this.onChildToggle // pass through to child component if nacl
                       : false,
                   index: index,

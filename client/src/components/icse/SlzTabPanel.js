@@ -37,13 +37,13 @@ class SlzTabPanel extends React.Component {
       [
         "Policies",
         "Dynamic Policies",
-        "Encryption Keys",
-        "Service Credentials",
+        "Encryption keys",
+        "Service credentials",
         "Buckets",
-        "Worker Pools",
+        "Worker pools",
         "Teleport VSI",
         "Claims to Roles",
-        "Network Access Control Lists", // prevent rendering on nacl inner form
+        "Network access control lists", // prevent rendering on nacl inner form
         undefined // prevent rendering on subnet tier inner form
         // neither of those forms is a top level component but
         // each behaves like one.
@@ -52,7 +52,7 @@ class SlzTabPanel extends React.Component {
     );
 
     let hasBuiltInHeading = contains(
-      ["Network Access Control Lists"], // prevent double rendering of heading for nacl
+      ["network access control lists"], // prevent double rendering of heading for nacl
       this.props.name
     );
 
@@ -70,7 +70,7 @@ class SlzTabPanel extends React.Component {
                   this.props.hideFormTitleButton ||
                   this.state.tabIndex !== 0 ||
                   !isFunction(this.props.onClick) ||
-                  this.props.name === "Network Access Control Lists"
+                  this.props.name === "network access control lists"
                 }
                 show={
                   <SaveAddButton

@@ -436,21 +436,21 @@ const iamItems = {
 };
 const patterns = [
   {
-    title: "Virtual Server Pattern",
+    title: "VSI on VPC landing zone",
     description:
-      "Virtual Server (VSI) Pattern will deploy identical virtual servers across the VSI subnet tier in each VPC.",
+      "Deploys identical virtual servers across the VSI subnet tier in each VPC.",
     id: "vsi"
   },
   {
-    title: "Red Hat OpenShift Pattern",
+    title: "Red Hat OpenShift Container Platform on VPC landing zone",
     description:
-      "Red Hat OpenShift Kubernetes (ROKS) Pattern will deploy identical clusters across the VSI subnet tier in each VPC.",
+      "Deploys identical clusters across the VSI subnet tier in each VPC.",
     id: "roks"
   },
   {
-    title: "VPC Pattern",
+    title: "VPC landing zone",
     description:
-      "VPC Pattern will deploy a simple IBM Cloud VPC infrastructure without any compute resources.",
+      "Deploys a simple IBM Cloud VPC infrastructure without any compute resources.",
     id: "vpc"
   }
 ];
