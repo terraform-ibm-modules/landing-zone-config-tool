@@ -303,7 +303,7 @@ export const PatternDocs = () => {
         <li>Virtual private endpoints for Cloud Object Storage in each VPC</li>
         <li>A VPN Gateway in the Management VPC</li>
       </ul>
-      <p>This tool is verified to work with landing zone deployable architecture version: <a href="https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone/releases/tag/v5.11.0">5.11.0</a></p>
+      <p>This tool is verified to work with landing zone deployable architecture version: <a href="https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone/releases/tag/v5.24.0">5.24.0</a></p>
     </div>
   );
 };
