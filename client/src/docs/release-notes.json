@@ -63,7 +63,7 @@
   {
     "version": "0.6.0",
     "features": [
-      "Renamed Network ACLs to \"VPC Access Control\"",
+      "Renamed Network ACLs to \"VPC access control\"",
       "Added a save button to VSI security group networking rules",
       "Removed [GUI] from top nav bar",
       "Added an API key from the service ID generated in generate_serviceid.sh",

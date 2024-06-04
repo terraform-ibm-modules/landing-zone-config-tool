@@ -65,14 +65,14 @@ class TransitGatewayForm extends Component {
       <div id="transit-gateway-form">
         <SlzFormGroup>
           <SlzToggle
-            labelText="Use Transit Gateway"
+            labelText="Use transit gateway"
             id="tg-enable"
             onToggle={this.handleEnableToggle}
             defaultToggled={this.state.enable_transit_gateway}
           />
           <SlzTextInput
             onChange={this.handleTextInput}
-            componentName="Transit Gateway"
+            componentName="transit gateway"
             field="Name"
             labelText="Name"
             value={this.props.slz.store.prefix + "-transit-gateway"}
@@ -81,7 +81,7 @@ class TransitGatewayForm extends Component {
         </SlzFormGroup>
         <SlzFormGroup>
           <ResourceGroupSelect
-            component="Transit Gateway"
+            component="transit gateway"
             slz={this.props.slz}
             value={this.state.transit_gateway_resource_group}
             handleInputChange={this.handleResourceGroupSelect}

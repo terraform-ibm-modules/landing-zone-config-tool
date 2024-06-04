@@ -107,7 +107,7 @@ const Footer = props => {
             <FooterHighlight navigate={props.navigate}>
               <div className="caretMargin rightTextAlign">
                 {window.location.hash === "#/home" || window.location.hash === "" ? (
-                  <div>Begin Customization</div>
+                  <div>Start</div>
                 ) : (
                   <>
                     <div className="smallerTextFooter">

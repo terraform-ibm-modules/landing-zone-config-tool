@@ -34,7 +34,7 @@ export const KeyManagement = props => {
       onSave={props.slz.key_management.save}
       noDeleteButton
       tabPanel={{
-        name: "Key Management",
+        name: "key management",
         hideFormTitleButton: true
       }}
     >
@@ -71,7 +71,7 @@ export const TransitGateway = props => {
       onSave={props.slz.transit_gateway.save}
       noDeleteButton
       tabPanel={{
-        name: "Transit Gateway",
+        name: "transit gateway",
         hideFormTitleButton: true
       }}
     />

@@ -1,13 +1,12 @@
 import {
-  capitalize,
   contains,
+  deepEqual,
   getObjectFromArray,
   isString,
   splat
 } from "lazy-z";
 import React from "react";
 import { SubnetTierForm } from "./instance-forms/index.js";
-import { deepEqual } from "lazy-z";
 import {
   SlzHeading,
   StatelessToggleForm,
@@ -141,15 +140,15 @@ class SubnetForm extends React.Component {
     return (
       <div id="subnets-form">
         <SlzTabPanel
-          name="VPC Subnets"
+          name="VPC subnets"
           hideFormTitleButton
           form={
             <>
               {/* subnet tier creation modal */}
               <InstanceFormModal
-                name={`Add a Subnet Tier in ${capitalize(
+                name={`Add a Subnet Tier in ${
                   this.state.vpcName || "default"
-                )} VPC`}
+                } VPC`}
                 show={this.state.showModal}
                 onRequestClose={this.toggleModal}
                 onRequestSubmit={this.onModalSubmit}
@@ -168,7 +167,7 @@ class SubnetForm extends React.Component {
                   key={"subnets-" + network.prefix}
                 >
                   <StatelessToggleForm
-                    name={capitalize(network.prefix) + " VPC"}
+                    name={network.prefix + " VPC"}
                     onIconClick={() => this.mapToggle(network.prefix, true)}
                     hide={
                       contains(this.state.shownVpcs, network.prefix) === false

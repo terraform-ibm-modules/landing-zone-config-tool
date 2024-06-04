@@ -13,7 +13,7 @@ U2F MFA         | users authentication by using a hardware security key that gen
 
 If enabled, the multi-factor authentication should be set to the U2F MFA type for all users in your account. Based on the FIDO U2F standard, this method offers the highest level of security. This security is needed because the IBM Cloud Framework for Financial Services requires a smart card or hardware token that is designed and operated to FIPS 140-2 level 2 or higher or equivalent (for example, ANSI X9.24 or ISO 13491-1:2007).
 
-### Related Links
+### Related links
 
 - [Setting up MFA Settings](https://cloud.ibm.com/docs/account?topic=account-account-getting-started)
 - [IAM on IBM Cloud for Financial Services Setup](https://cloud.ibm.com/docs/framework-financial-services?topic=framework-financial-services-shared-account-setup)

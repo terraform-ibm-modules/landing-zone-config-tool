@@ -103,7 +103,7 @@ class VpcNetworkForm extends React.Component {
             value={this.state.resource_group}
           />
           <SlzSelect
-            labelText="Flow Logs Bucket Name"
+            labelText="Flow logs bucket name"
             component={this.props.data.prefix}
             name="flow_logs_bucket_name"
             groups={this.props.slz.store.cosBuckets}
@@ -118,7 +118,7 @@ class VpcNetworkForm extends React.Component {
             invalidText="Select a bucket"
           />
         </SlzFormGroup>
-        <SlzHeading name="VPC Options" type="subHeading" />
+        <SlzHeading name="VPC options" type="subHeading" />
         {/* vpc classic access and use manual address prefixes */}
         <SlzFormGroup>
           <SlzToggle
@@ -164,11 +164,11 @@ class VpcNetworkForm extends React.Component {
         </SlzFormGroup>
         {/* vpc public gateways */}
         <SlzHeading
-          name="Public Gateways"
+          name="Public gateways"
           type="subHeading"
           tooltip={{
             content:
-              "Public Gateways allow for all resources in a zone to communicate with the public internet. Public Gateways are not needed for subnets where a VPN gateway is created."
+              "Public gateways allow for all resources in a zone to communicate with the public internet. Public gateways are not needed for subnets where a VPN gateway is created."
           }}
         />
         <SlzFormGroup noMarginBottom>
@@ -177,7 +177,7 @@ class VpcNetworkForm extends React.Component {
             <SlzToggle
               key={this.props.data.prefix + "-gateway-toggle-" + zone}
               id={this.props.data.prefix + "-pgw-" + zone}
-              labelText={"Create in Zone " + parseIntFromZone(zone)}
+              labelText={"Create in zone " + parseIntFromZone(zone)}
               defaultToggled={this.state.use_public_gateways[zone]}
               onToggle={() => this.handPgwToggle(zone)}
               className={

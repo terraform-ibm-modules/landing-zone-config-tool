@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { TextInput } from "@carbon/react";
-import { capitalize, titleCase, kebabCase } from "lazy-z";
+import { kebabCase } from "lazy-z";
 import { buildFormFunctions } from "../../../component-utils.js";
 import {
   DynamicRender,
@@ -199,6 +199,7 @@ class NetworkingRuleForm extends Component {
                     )}
                     <NetworkingRuleSelect
                       name="direction"
+                      labelText="Direction"
                       state={this.state}
                       onChange={this.handleInput}
                       groups={["Inbound", "Outbound"]}
@@ -208,6 +209,7 @@ class NetworkingRuleForm extends Component {
                     {this.props.isSecurityGroup && (
                       <NetworkingRuleTextField
                         name="source"
+                        labelText="Source"
                         state={this.state}
                         onChange={this.handleInput}
                       />
@@ -220,6 +222,7 @@ class NetworkingRuleForm extends Component {
                       <>
                         <NetworkingRuleTextField
                           name="source"
+                          labelText="Source"
                           state={this.state}
                           onChange={this.handleInput}
                         />
@@ -371,6 +374,7 @@ NetworkingRuleForm.propTypes = {
  * readability shortcut for nw rules
  * @param {*} props
  * @param {string} props.name field to update
+ * @param {string} props.labelText display field
  * @param {Object} props.state parent state
  * @param {Function} props.onChange onchange function
  */
@@ -380,7 +384,7 @@ const NetworkingRuleTextField = props => {
     <SlzTextInput
       componentName="Networking rule"
       field={props.name}
-      labelText={props.name}
+      labelText={props.labelText}
       value={String(props.state[props.name])}
       onChange={e => props.onChange(props.name, e)}
       className="fieldWidthSmaller"
@@ -411,7 +415,7 @@ const NetworkingRuleProtocolTextField = props => {
   return (
     <TextInput
       id={`${props.state.name}-nw-${kebabCase(props.name)}-input`}
-      labelText={titleCase(props.name)}
+      labelText={props.name}
       placeholder={String(props.state.rule[props.name] || "")}
       value={props.state.rule[props.name] || ""}
       onChange={e => props.onChange(props.name, e)}
@@ -433,6 +437,7 @@ NetworkingRuleProtocolTextField.propTypes = {
  * readability shortcut for nw rules
  * @param {*} props
  * @param {string} props.name field to update
+ * @param {string} props.labelText display field
  * @param {Object} props.state parent state
  * @param {Function} props.onChange onchange function
  * @param {Array<string>} props.groups list of groups for select
@@ -443,8 +448,8 @@ const NetworkingRuleSelect = props => {
       component={props.state.name + "-nw-rule-" + props.name}
       name={props.name}
       groups={props.groups}
-      value={capitalize(props.state[props.name])}
-      labelText={capitalize(props.name)}
+      value={props.state[props.name]}
+      labelText={props.labelText}
       handleInputChange={e => props.onChange(props.name, e, true)}
       className="fieldWidthSmaller"
     />

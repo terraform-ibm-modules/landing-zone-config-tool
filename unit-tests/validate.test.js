@@ -464,7 +464,7 @@ describe("validate", () => {
       let task = () => validate(testData);
       assert.throws(
         task,
-        "Clusters require a VPC Name, `workload-cluster` vpc_name is null."
+        "Clusters require a VPC name, `workload-cluster` vpc_name is null."
       );
     });
     it("should throw an error if a cluster has no subnet names", () => {
@@ -485,7 +485,7 @@ describe("validate", () => {
         let task = () => validate(testData);
         assert.throws(
           task,
-          "Worker Pools require at least one subnet to provision, `workload-cluster` worker_pool `logging-worker-pool` subnet_names is []."
+          "Worker pools require at least one subnet to provision, `workload-cluster` worker_pool `logging-worker-pool` subnet_names is []."
         );
       });
     });
@@ -571,7 +571,7 @@ describe("validate", () => {
       let task = () => validate(testData);
       assert.throws(
         task,
-        "Virtual Private Endpoints must have at least one VPC. Service name `cos` got 0."
+        "Virtual private endpoints must have at least one VPC. Service name `cos` got 0."
       );
     });
     it("should throw an error if a vpe vpc has no subnets", () => {
@@ -580,7 +580,7 @@ describe("validate", () => {
       let task = () => validate(testData);
       assert.throws(
         task,
-        "Virtual Private Endpoints must have at least one VPC subnet. Service name `cos` VPC Name `management` has 0."
+        "Virtual private endpoints must have at least one VPC subnet. Service name `cos` VPC name `management` has 0."
       );
     });
   });
@@ -591,7 +591,7 @@ describe("validate", () => {
       let task = () => validate(testData);
       assert.throws(
         task,
-        "VPN Gateways require a subnet name, `management-gateway` subnet_name is null."
+        "VPN gateways require a subnet name, `management-gateway` subnet_name is null."
       );
     });
   });
@@ -600,7 +600,7 @@ describe("validate", () => {
       let testData = minimumValidJson();
       testData.vsi[0].ssh_keys = [];
       let task = () => validate(testData);
-      assert.throws(task, "VSIs must have at least one SSH Key, got 0.");
+      assert.throws(task, "VSIs must have at least one SSH key, got 0.");
     });
     it("should throw an error when no subnets are provided", () => {
       let testData = minimumValidJson();
@@ -701,7 +701,7 @@ describe("validate", () => {
         ],
       });
       let task = () => validate(testData);
-      assert.throws(task, "F5 VSIs must have at least one SSH Key, got 0.");
+      assert.throws(task, "F5 VSIs must have at least one SSH key, got 0.");
     });
   });
   describe("addUnfoundListFields", () => {
@@ -1045,7 +1045,7 @@ describe("validate", () => {
         let task = () => validate(testData, true);
         assert.throws(
           task,
-          "Clusters require a VPC Name, `workload-cluster` vpc_name is null."
+          "Clusters require a VPC name, `workload-cluster` vpc_name is null."
         );
       });
       it("should throw an error if a cluster has null resource group", () => {
@@ -1086,7 +1086,7 @@ describe("validate", () => {
           let task = () => validate(testData, true);
           assert.throws(
             task,
-            "Worker Pools require at least one subnet to provision, `workload-cluster` worker_pool `logging-worker-pool` subnet_names is []."
+            "Worker pools require at least one subnet to provision, `workload-cluster` worker_pool `logging-worker-pool` subnet_names is []."
           );
         });
         it("should not throw an error when no worker pools", () => {
@@ -1105,7 +1105,7 @@ describe("validate", () => {
         let task = () => validate(testData, true);
         assert.throws(
           task,
-          "Transit Gateway requires a resource group, transit_gateway_resource_group is null."
+          "Transit gateway requires a resource group, transit_gateway_resource_group is null."
         );
       });
     });
@@ -1116,7 +1116,7 @@ describe("validate", () => {
         let task = () => validate(testData);
         assert.throws(
           task,
-          "Virtual Private Endpoints must have at least one VPC. Service name `cos` got 0."
+          "Virtual private endpoints must have at least one VPC. Service name `cos` got 0."
         );
       });
       it("should throw an error if a vpe vpc has no subnets", () => {
@@ -1125,7 +1125,7 @@ describe("validate", () => {
         let task = () => validate(testData);
         assert.throws(
           task,
-          "Virtual Private Endpoints must have at least one VPC subnet. Service name `cos` VPC Name `management` has 0."
+          "Virtual private endpoints must have at least one VPC subnet. Service name `cos` VPC name `management` has 0."
         );
       });
     });
@@ -1147,7 +1147,7 @@ describe("validate", () => {
         let task = () => validate(testData, true);
         assert.throws(
           task,
-          "VPN Gateways require a subnet name, `management-gateway` subnet_name is null."
+          "VPN gateways require a subnet name, `management-gateway` subnet_name is null."
         );
       });
     });
@@ -1177,7 +1177,7 @@ describe("validate", () => {
         let task = () => validate(testData, true);
         assert.throws(
           task,
-          "Secrets Manager requires a resource group, Secrets Manager Resource Group is null."
+          "Secrets Manager requires a resource group, Secrets Manager resource group is null."
         );
       });
       it("should throw an error if secrets manager is enabled and encryption key is null", () => {
@@ -1208,7 +1208,7 @@ describe("validate", () => {
         let task = () => validate(testData, true);
         assert.throws(
           task,
-          'SSH Keys require a valid public key. Invalid public key for SSH key "bad key"'
+          'SSH keys require a valid public key. Invalid public key for SSH key "bad key"'
         );
       });
     });

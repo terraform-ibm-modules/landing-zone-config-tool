@@ -63,13 +63,13 @@ class KeyManagementForm extends Component {
             name="system"
             groups={["Key Protect", "HPCS"]}
             value={this.state.use_hs_crypto ? "HPCS" : "Key Protect"}
-            labelText="Key Management System"
+            labelText="key management system"
             handleInputChange={this.handleSystemDropdown}
             className="fieldWidth"
           />
           <SlzToggle
             tooltip={{ content: "Get Key Management from Data Source" }}
-            labelText="Use Existing Instance"
+            labelText="Use existing instance"
             key={this.state.use_data}
             defaultToggled={this.state.use_data}
             onToggle={() => this.handleToggle("use_data")}
@@ -90,7 +90,7 @@ class KeyManagementForm extends Component {
           />
           <ResourceGroupSelect
             slz={this.props.slz}
-            component="Key Management"
+            component="key management"
             value={this.state.resource_group}
             handleInputChange={this.handleInputChange}
             className="fieldWidth"

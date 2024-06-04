@@ -45,12 +45,12 @@ const onClickDocumentation = () => {
 
 const requiredComponents = [
   {
-    title: "Resource Groups",
+    title: "Resource groups",
     path: "/resourceGroups",
     icon: GroupResource
   },
   {
-    title: "Key Management",
+    title: "Key management",
     path: "/keyManagement",
     icon: IbmCloudKeyProtect
   },
@@ -60,20 +60,20 @@ const requiredComponents = [
     icon: ObjectStorage
   },
   {
-    title: "Virtual Private Clouds",
+    title: "Virtual private clouds",
     path: "/vpcs",
     icon: VirtualPrivateCloud
   },
-  { title: "VPC Access Control", path: "/nacls", icon: SubnetAclRules },
-  { title: "VPC Subnets", path: "/subnets", icon: IbmCloudSubnets },
+  { title: "VPC access control", path: "/nacls", icon: SubnetAclRules },
+  { title: "VPC subnets", path: "/subnets", icon: IbmCloudSubnets },
   {
-    title: "Transit Gateway",
+    title: "Transit gateway",
     path: "/transitGateway",
     icon: IbmCloudTransitGateway
   },
-  { title: "Security Groups", path: "/securityGroups", icon: Security },
+  { title: "Security groups", path: "/securityGroups", icon: Security },
   {
-    title: "Virtual Private Endpoints",
+    title: "Virtual private endpoints",
     path: "/vpe",
     icon: IbmCloudVpcEndpoints
   },
@@ -82,7 +82,7 @@ const requiredComponents = [
     path: "/activityTracker",
     icon: CloudAuditing
   },
-  { title: "SSH Keys", path: "/sshKeys", icon: Password },
+  { title: "SSH keys", path: "/sshKeys", icon: Password },
   {
     title: "Virtual Server Instances",
     path: "/vsi",
@@ -93,7 +93,7 @@ const requiredComponents = [
     path: "/clusters",
     icon: IbmCloudKubernetesService
   },
-  { title: "VPN Gateways", path: "/vpn", icon: GatewayVpn }
+  { title: "VPN gateways", path: "/vpn", icon: GatewayVpn }
 ];
 
 const optionalComponents = [

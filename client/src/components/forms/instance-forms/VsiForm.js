@@ -186,7 +186,7 @@ class VsiForm extends Component {
 
           {/* VSI per subnet*/}
           <NumberInput
-            label="Instances per Subnet"
+            label="Instances per subnet"
             id={composedId + "-vsi-per-subnet"}
             allowEmpty={false}
             value={this.state.vsi_per_subnet}
@@ -246,7 +246,7 @@ class VsiForm extends Component {
 
           <SlzToggle
             id={composedId + "-fips-toggle"}
-            labelText="Enable Floating IP"
+            labelText="Enable floating IP"
             defaultToggled={this.state.enable_floating_ip}
             onToggle={this.handleToggle}
           />
@@ -306,7 +306,7 @@ class VsiForm extends Component {
                 <div className="marginBottomSmall">
                   <SlzTextInput
                     field="security_group_name"
-                    labelText={"Security Group Name"}
+                    labelText={"Security group name"}
                     componentName="Security Group"
                     className="fieldWidthSmaller forceLeft"
                     value={this.state.security_group.name}

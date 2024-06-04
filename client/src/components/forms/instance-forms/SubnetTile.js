@@ -76,9 +76,8 @@ class SubnetTile extends React.Component {
             id={this.props.subnet.name + "-cidr"}
             invalidText="Invalid error message."
             labelText="Subnet CIDR"
-            value={this.props.subnet.cidr}
+            defaultValue={this.props.subnet.cidr}
             className="fieldWidthSmaller"
-            readOnly
           />
         </SlzFormGroup>
         <SlzFormGroup className="marginBottomSmall">
@@ -103,7 +102,7 @@ class SubnetTile extends React.Component {
                 "A Public Gateway must be enabled in this zone to use. To enable public gateways, see the VPC page."
             }}
             id={"new-subnet-public-gateway-" + this.props.subnet.name}
-            labelText="Use Public Gateway"
+            labelText="Use public gateway"
             defaultToggled={this.state.public_gateway}
             onToggle={this.handleToggle}
             disabled={

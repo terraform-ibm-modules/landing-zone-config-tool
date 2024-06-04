@@ -1,18 +1,18 @@
 
-## Resource Groups
+## Resource groups
 
 Resource groups aid in the organization of account resources in an IBM Cloud account.
 
 The default configuration includes:
 
-Group Name    | Description                                                                                                                                                                    | Optional
---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------
-service-rg    | A resource group containing all IBM Cloud Services                                                                                                                             | false
-management-rg | A resource group containing the compute, storage, and network services to enable the application provider's administrators to monitor, operation, and maintain the environment | false
-workload-rg   | A resource group containing the compute, storage, and network services to support hosted applications and operations that deliver services to the consumer                     | false
-edge-rg       | A resource group containing the compute, storage, and network services necessary for edge networking                                                                           | true
+Group Name    | Description                                                                                                                                                                     | Optional
+--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------
+service-rg    | A resource group containing all IBM Cloud services.                                                                                                                             | false
+management-rg | A resource group containing the compute, storage, and network services to enable the application provider's administrators to monitor, operation, and maintain the environment. | false
+workload-rg   | A resource group containing the compute, storage, and network services to support hosted applications and operations that deliver services to the consumer.                     | false
+edge-rg       | A resource group containing the compute, storage, and network services necessary for edge networking.                                                                           | true
 
-### Related Links
+### Related links
 
 - [Docs](https://cloud.ibm.com/docs/account?topic=account-rgs&interface=ui)
 
@@ -20,30 +20,30 @@ edge-rg       | A resource group containing the compute, storage, and network se
 
 ## Cloud Object Storage
 
-IBM Cloud Object Storage (COS) is a highly available, durable, and secure platform for storing unstructured data. PDFs, media files, database backups, disk images, large structured datasets can be uploaded as objects and then organized into containers named Buckets.
+IBM Cloud Object Storage (COS) is a highly available, durable, and secure platform for storing unstructured data. PDFs, media files, database backups, disk images, large structured datasets can be uploaded as objects and then organized into containers named buckets.
 
 The initial configuration includes two COS instances:
 
 Instance Name | Description
---------------|--------------------------------------------------------------------------------------------------------------------
-cos           | A COS instance with two buckets, a management bucket and a workload bucket, where respective objects can be stored
-atracker-cos  | A COS instance with a bucket where Activity Tracker logs will be stored
+--------------|---------------------------------------------------------------------------------------------------------------------
+cos           | A COS instance with two buckets, a management bucket and a workload bucket, where respective objects can be stored.
+atracker-cos  | A COS instance with a bucket where Activity Tracker logs will be stored.
 
-### Related Links
+### Related links
 
 - [Docs](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage)
 
 -----
 
-## Key Management
+## Key management
 
 A key management service is used to create, import, rotate, and manage encryption keys.
 
 IBM Cloud offers two solutions for key management:
 
 Service Name                                   | Description
------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-IBM Cloud Hyper Protect Crypto Services (HPCS) | A dedicated key management service and hardware security module (HSM) based on IBM Cloud. Built on FIPS 140-2 Level 4-certified hardware, this service allows users to take the ownership of the cloud HSM to fully manage encryption keys and perform cryptographic operations. Users cannot use SLZ to initialize HPCS. In order to use HPCS with Secure Landing Zone users will need to bring an existing instance.
+-----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+IBM Cloud Hyper Protect Crypto Services (HPCS) | A dedicated key management service and hardware security module (HSM) based on IBM Cloud. Built on FIPS 140-2 Level 4-certified hardware, this service allows users to take the ownership of the cloud HSM to fully manage encryption keys and perform cryptographic operations. Users cannot use landing zone configuration tool to initialize HPCS. In order to use HPCS with the landing zone configuration tool, users will need to bring an existing instance.
 IBM Cloud Key Protect                          | A full-service encryption solution that allows data to be secured and stored in IBM Cloud using the latest envelope encryption techniques that leverage FIPS 140-2 Level 3 certified cloud-based hardware security modules.
 
 To be FS Cloud compliant, data at rest is to always be encrypted using your keys.
@@ -51,16 +51,16 @@ To be FS Cloud compliant, data at rest is to always be encrypted using your keys
 The default configuration includes:
 
 Key Name         | Description
------------------|-------------------------------------------------------------------------------
-slz-slz-key      | An encryption key for service instances
-slz-vsi-key      | An encryption key for Virtual Server Instance (VSI) deployments
-slz-roks-key     | An encryption key for Red Hat OpenShift Kubernetes (ROKS) cluster deployments
-slz-atracker-key | An encryption key for Activity Tracker
+-----------------|--------------------------------------------------------------------------------
+slz-slz-key      | An encryption key for service instances.
+slz-vsi-key      | An encryption key for Virtual Server Instance (VSI) deployments.
+slz-roks-key     | An encryption key for Red Hat OpenShift Kubernetes (ROKS) cluster deployments.
+slz-atracker-key | An encryption key for Activity Tracker.
 
-### Related Links
+### Related links
 
 - [Docs](https://cloud.ibm.com/docs/framework-financial-services?topic=framework-financial-services-shared-encryption-at-rest)
-- [Get Started With HyperProtect Crypto Servies](https://cloud.ibm.com/docs/hs-crypto?topic=hs-crypto-get-started)
+- [Get started with HyperProtect Crypto Services](https://cloud.ibm.com/docs/hs-crypto?topic=hs-crypto-get-started)
 - [IBM Cloud Key Protect](https://cloud.ibm.com/docs/key-protect?topic=key-protect-about)
 
 -----
@@ -71,30 +71,30 @@ A Virtual Private Cloud (VPC) is a public cloud offering that lets an enterprise
 
 The default configuration includes:
 
-Network Name | Description                                                                                                                  | Optional
--------------|------------------------------------------------------------------------------------------------------------------------------|----------
-management   | A VPC for management to enable the application provider's administrators to monitor, operation, and maintain the environment | false
-workload     | A VPC for workload to support hosted applications and operations that deliver services to the consumer                       | false
-edge         | a VPC for edge if you enable edge networking for F5                                                                          | true
+Network Name | Description                                                                                                                   | Optional
+-------------|-------------------------------------------------------------------------------------------------------------------------------|----------
+management   | A VPC for management to enable the application provider's administrators to monitor, operation, and maintain the environment. | false
+workload     | A VPC for workload to support hosted applications and operations that deliver services to the consumer.                       | false
+edge         | a VPC for edge if you enable edge networking for F5.                                                                          | true
 
-### Related Links
+### Related links
 
 - [Docs](https://www.ibm.com/cloud/learn/vpc)
 
 -----
 
-## Network Access Control Lists
+## Network access control lists
 
-An Access Control List (ACL) is a built-in, virtual firewall. An ACL can be leveraged to control all incoming and outgoing traffic on a VPC.
+An access control list (ACL) is a built-in, virtual firewall. An ACL can be leveraged to control all incoming and outgoing traffic on a VPC.
 
-By default, the management and workload ACLs are configured to have rules that are FS Cloud compliant. Removing the below rules may affect FS Cloud compliance for your environment.
+By default, the management and workload ACLs are configured to have rules that are FS Cloud compliant. Removing any of the following rules may affect FS Cloud compliance for your environment.
 
 Rule Name
 - `allow-ibm-inbound`
 - `allow-all-network-inbound`
 - `allow-all-outbound`
 
-If you select "Use Cluster Rules", these additional ACL rules will be created to allow cluster provisioning from private service endpoints
+If you select "Use cluster rules", these additional ACL rules will be created to allow cluster provisioning from private service endpoints
 
 Rule Name                           | Action | Direction | Source        | Destination   | Protocol | Port
 ------------------------------------|--------|-----------|---------------|---------------|----------|-------------
@@ -107,7 +107,7 @@ allow-app-outgoing-traffic-requests | Allow  | Outbound  | 10.0.0.0/8    | 10.0.
 allow-lb-incoming-traffic-requests  | Allow  | Inbound   | 10.0.0.0/8    | 10.0.0.0/8    | TCP      | 443
 allow-lb-outgoing-traffic-requests  | Allow  | Outbound  | 10.0.0.0/8    | 10.0.0.0/8    | TCP      | 443
 
-### Related Links
+### Related links
 
 - [Docs](https://cloud.ibm.com/docs/vpc?topic=vpc-using-acls)
 
@@ -115,7 +115,7 @@ allow-lb-outgoing-traffic-requests  | Allow  | Outbound  | 10.0.0.0/8    | 10.0.
 
 ## Subnets
 
-Subnet Tiers are used to dynamically generate Subnets and reserve space for expansion into other zones. Subnets are networks created within a VPC; they are a fundamental mechanism within a VPC used to allocate addresses to individual resources (such as Virtual Server Instances), and enable various controls to these resources through the use of network ACLs, routing tables, and resource groups. Subnets are bound to a single zone; however, they can reach all other subnets within a VPC, across a region. They are created from a larger address space within the VPC called an address prefix; and you can provision multiple subnets per address prefix.
+Subnet tiers are used to dynamically generate subnets and reserve space for expansion into other zones. Subnets are networks created within a VPC; they are a fundamental mechanism within a VPC used to allocate addresses to individual resources (such as virtual server instances), and enable various controls to these resources through the use of network ACLs, routing tables, and resource groups. Subnets are bound to a single zone; however, they can reach all other subnets within a VPC, across a region. They are created from a larger address space within the VPC called an address prefix, and you can provision multiple subnets per address prefix.
 
 The default configuration includes:
 
@@ -127,15 +127,15 @@ management | vpn         | 10.30.10.0/24 | -             | -
 workload   | vsi         | 10.40.10.0/24 | 10.40.20.0/24 | 10.40.30.0/24
 workload   | vpe         | 10.50.10.0/24 | 10.50.20.0/24 | 10.50.30.0/24
 
-### Related Links
+### Related links
 
 - [Docs](https://cloud.ibm.com/docs/vpc?topic=vpc-about-subnets-vpc&interface=ui)
 
 -----
 
-## Transit Gateway
+## Transit gateway
 
-A Transit Gateway provides connectivity between two or more VPCs which allows distributed resources to communicate with each other.
+A Transit gateway provides connectivity between two or more VPCs which allows distributed resources to communicate with each other.
 
 The default configuration includes:
 
@@ -143,17 +143,17 @@ Service Name        | Description
 --------------------|-----------------------------------------------------------------------------------------------------------
 slz-transit-gateway | A transit gateway deployed in the SLZ service resource group connecting the management and workload VPCs.
 
-### Related Links
+### Related links
 
 - [Docs](https://cloud.ibm.com/docs/transit-gateway?topic=transit-gateway-about)
 
 -----
 
-## Security Groups
+## Security groups
 
-An IBM Cloud Security Group is a set of IP filter rules that define how to handle incoming and outgoing traffic to both the public and private interfaces of a virtual server instance (VSI).
+An IBM Cloud security group is a set of IP filter rules that define how to handle incoming and outgoing traffic to both the public and private interfaces of a virtual server instance (VSI).
 
-By default, the management and workload VPE security groups are configured to have rules that are FS Cloud compliant. Removing the below rules may affect FS Cloud compliance for your environment.
+By default, the management and workload VPE security groups are configured to have rules that are FS Cloud compliant. Removing any of the following rules may affect FS Cloud compliance for your environment.
 
 Rule Name
 - `allow-ibm-inbound`
@@ -163,21 +163,21 @@ Rule Name
 - `allow-ibm-tcp-80-outbound`
 - `allow-ibm-tcp-433-outbound`
 
-### Related Links
+### Related links
 
 - [Docs](https://cloud.ibm.com/docs/security-groups?topic=security-groups-about-ibm-security-groups)
 
 -----
 
-## Virtual Private Endpoints
+## Virtual private endpoints
 
-A Virtual Private Endpoint (VPE) gateway enables users to connect to supported IBM Cloud Services from their VPC network via an IP address allocated from a subnet within the VPC. The VPE gateway is a virtualized function that scales horizontally, is redundant and highly available, and spans all availability zones of the specified VPC.
+A virtual private endpoint (VPE) gateway enables users to connect to supported IBM Cloud Services from their VPC network via an IP address allocated from a subnet within the VPC. The VPE gateway is a virtualized function that scales horizontally, is redundant and highly available, and spans all availability zones of the specified VPC.
 
 The default configuration connects the management and workload VPCs to IBM Cloud Object Storage by creating a VPE subnet in each zone of the VPC, then creating a VPE gateway for each VPE subnet.
 
-### Related Links
+### Related links
 
-- [VPE Supported Services](https://cloud.ibm.com/docs/vpc?topic=vpc-vpe-supported-services)
+- [VPE supported services](https://cloud.ibm.com/docs/vpc?topic=vpc-vpe-supported-services)
 - [Docs](https://cloud.ibm.com/docs/vpc?topic=vpc-about-vpe)
 
 -----
@@ -195,15 +195,15 @@ atracker-cos    | A Cloud Object Storage instance deployed in the service resour
 atracker-bucket | A Cloud Object Storage bucket where Activity Tracker logs will be stored.
 cos-bind-key    | An IAM API key that has writer access to the Cloud Object Storage instance.
 
-### Related Links
+### Related links
 
 - [Docs](https://cloud.ibm.com/docs/activity-tracker?topic=activity-tracker-getting-started)
 
 -----
 
-## SSH Keys
+## SSH keys
 
-SSH keys identify a user or device through public-key cryptography and allow access to a device without using a password. At least one SSH Key is required to create virtual server instances. Based on the pattern selected, an SSH key may or may not be configured automatically.
+SSH keys identify a user or device through public-key cryptography and allow access to a device without using a password. At least one SSH Key is required to create virtual server instances. Based on the deployable architecture selected, an SSH key may or may not be configured automatically.
 
 Pattern                             | Configuration
 ------------------------------------|-------------------------
@@ -211,15 +211,15 @@ Virtual Server Instance (VSI)       | One SSH key configured.
 Red Hat OpenShift Kubernetes (ROKS) | No SSH key configured.
 VPC                                 | No SSH key configured.
 
-### Related Links
+### Related links
 
 - [Docs](https://cloud.ibm.com/docs/ssh-keys?topic=ssh-keys-about-ssh-keys)
 
 -----
 
-## Virtual Server Instance Deployments
+## Virtual server instance deployments
 
-IBM Cloud Virtual Servers for VPC allow users to deploy fast, flexible, and secure instances. The SLZ Virtual Server Instance (VSI) Deployment allows users to create multiple instances with the same configuration on various subnets across a single VPC. Based on the pattern selected, a deployment may or may not be configured automatically.
+IBM Cloud virtual servers for VPC allow users to deploy fast, flexible, and secure instances. The landing zone Virtual Server Instance (VSI) deployment allows users to create multiple instances with the same configuration on various subnets across a single VPC. Based on the deployable architecture selected, a deployment may or may not be configured automatically.
 
 The default configuration includes:
 
@@ -229,7 +229,7 @@ Virtual Server Instance (VSI)       | Two VSI deployments for three VSIs distrib
 Red Hat OpenShift Kubernetes (ROKS) | No VSI deployments configured.
 VPC                                 | No VSI deployments configured.
 
-### Related Links
+### Related links
 
 - [Docs](https://cloud.ibm.com/docs/vpc?topic=vpc-about-advanced-virtual-servers)
 
@@ -237,22 +237,22 @@ VPC                                 | No VSI deployments configured.
 
 ## Clusters
 
-IBM Cloud provides users with the ability to deploy highly available, containerized apps on Red Hat OpenShift clusters and Kubernetes clusters. Based on the pattern selected, a cluster may or may not be configured automatically.
+IBM Cloud provides users with the ability to deploy highly available, containerized apps on Red Hat OpenShift clusters and Kubernetes clusters. Based on the deployable architecture selected, a cluster may or may not be configured automatically.
 
 Pattern                             | Configuration
 ------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------
 Virtual Server Instance (VSI)       | No clusters configured.
-Red Hat OpenShift Kubernetes (ROKS) | Two OpenShift clusters with three zones in VSI Subnet Tier with a worker pool dedicated to logging deployed in both management and workload VPCs.
+Red Hat OpenShift Kubernetes (ROKS) | Two OpenShift clusters with three zones in VSI subnet tier with a worker pool dedicated to logging deployed in both management and workload VPCs.
 VPC                                 | No clusters configured.
 
-### Related Links
+### Related links
 
-- [Getting Started With Red Hat OpenShift Clusters on IBM Cloud](https://cloud.ibm.com/docs/openshift?topic=openshift-getting-started)
+- [Getting started with Red Hat OpenShift clusters on IBM Cloud](https://cloud.ibm.com/docs/openshift?topic=openshift-getting-started)
 - [Getting started with IBM Cloud Kubernetes Service](https://cloud.ibm.com/docs/containers?topic=containers-getting-started)
 
 -----
 
-## VPN Gateways
+## VPN gateways
 
 VPN Gateway service for VPC provides secure, encrypted connectivity from a user's on-premise network to the IBM Cloud VPC network.
 
@@ -261,7 +261,7 @@ The default configuration includes:
 management-gateway | A VPN gateway service deployed in the management resource group on the VPN subnet tier of the management VPC.
 -------------------|---------------------------------------------------------------------------------------------------------------
 
-### Related Links
+### Related links
 
 - [Docs](https://cloud.ibm.com/docs/vpc?topic=vpc-vpn-overview)
 
@@ -273,10 +273,10 @@ IBM Cloud App ID allows user to easily add authentication to web and mobile appl
 
 By default, App ID is not enabled but can be easily configured if desired.
 
-### Related Links
+### Related links
 
 - [About App ID](https://cloud.ibm.com/docs/appid?topic=appid-about)
-- [Getting Started With App ID](https://cloud.ibm.com/docs/appid?topic=appid-getting-started)
+- [Getting started With App ID](https://cloud.ibm.com/docs/appid?topic=appid-getting-started)
 
 -----
 
@@ -291,7 +291,7 @@ Value                           | Description
 Teleport Template Configuration | The specs required for configuring all bastion hosts to use Teleport
 Teleport VSI Deployment         | A VSI deployment that will allow users to deploy multiple instances on a single subnet in a VPC with the same configuration.
 
-### Related Links
+### Related links
 
 - [Docs](https://cloud.ibm.com/docs/framework-financial-services?topic=framework-financial-services-vpc-architecture-connectivity-bastion-tutorial-teleport)
 - [Teleport](https://goteleport.com/)
@@ -302,7 +302,7 @@ Teleport VSI Deployment         | A VSI deployment that will allow users to depl
 
 The F5 BIG-IP Virtual Edition will enable you to setup a client-to-site full tunnel VPN to connect to your management/edge VPC and/or a web application firewall (WAF) to enable consumers to connect to your workload VPC over the public internet.
 
-Through Secure Landing Zone, users can optionally provision the F5 BIG-IP so that one can either setup the implemented solution of a client-to-site VPN or web application firewall (WAF).
+Through IBM Secure Landing Zone, users can optionally provision the F5 BIG-IP so that one can either setup the implemented solution of a client-to-site VPN or web application firewall (WAF).
 
 F5 BIG-IP can be provisioned in a separate edge VPC or in the existing management VPC. Best practice is to configure F5 in the edge VPC. To enable edge networking, return to the home page.
 
@@ -364,7 +364,7 @@ F5 Bastion Interface    | Created only when using F5 patterns that supports full
 
 ### Networking Rules
 
-By default, the Edge ACLs are configured to have rules that are FS Cloud compliant within the VPC Access Control section. Removing the below rules may affect FS Cloud compliance for your environment.
+By default, the edge ACLs are configured to have rules that are FS Cloud compliant within the VPC access control section. Removing any of the following rules may affect FS Cloud compliance for your environment.
 
 Name                      | Action | Direction | Source        | Destination | Protocol
 --------------------------|--------|-----------|---------------|-------------|----------
@@ -372,9 +372,9 @@ allow-ibm-inbound         | Allow  | Inbound   | 161.26.0.0/16 | 10.0.0.0/8  | A
 allow-all-network-inbound | Allow  | Inbound   | 10.0.0.0/8    | 10.0.0.0/8  | ALL
 allow-all-outbound        | Allow  | Outbound  | 0.0.0.0/0     | 0.0.0.0/0   | ALL
 
-By default, the F5 and Edge VPE security groups are configured to have rules that are FS Cloud compliant within the Security Groups section. Removing the below rules may affect FS Cloud compliance for your environment.
+By default, the F5 and Edge VPE security groups are configured to have rules that are FS Cloud compliant within the security groups section. Removing any of the following rules may affect FS Cloud compliance for your environment.
 
-Security groups are split up between the primary subnet tier, which contains the Management Interface Security Group, and three secondary subnet tiers, which contain the External Interface, Workload Interface , and F5 Bastion Interface Security Groups within each respectively.
+Security groups are split up between the primary subnet tier, which contains the Management Interface Security Group, and three secondary subnet tiers, which contain the External Interface, Workload Interface, and F5 Bastion Interface security groups within each respectively.
 
 Interface     | Direction | Protocol | Source                                                                                       | Port
 --------------|-----------|----------|----------------------------------------------------------------------------------------------|-----------------
@@ -396,7 +396,7 @@ Note:
 
 For more information on Networking rules, reference Deploying and configuring F5 BIG-IP on FS Cloud.
 
-### Related Links
+### Related links
 
 - [Deploying and configuring F5 BIG-IP on FS Cloud](https://cloud.ibm.com/docs/framework-financial-services?topic=framework-financial-services-vpc-architecture-connectivity-f5-tutorial)
 - [Landing Zone Documentation](https://github.com/open-toolchain/landing-zone/blob/main/.docs/f5-big-ip/f5-big-ip.md)
@@ -422,7 +422,7 @@ U2F MFA         | Users authentication by using a hardware security key that gen
 
 If enabled, the multi-factor authentication should be set to the U2F MFA type for all users in your account. Based on the FIDO U2F standard, this method offers the highest level of security. This security is needed because the IBM Cloud Framework for Financial Services requires a smart card or hardware token that is designed and operated to FIPS 140-2 level 2 or higher or equivalent (for example, ANSI X9.24 or ISO 13491-1:2007).
 
-### Related Links
+### Related links
 
 - [Setting up MFA Settings](https://cloud.ibm.com/docs/account?topic=account-account-getting-started)
 - [IAM on IBM Cloud for Financial Services Setup](https://cloud.ibm.com/docs/framework-financial-services?topic=framework-financial-services-shared-account-setup)
@@ -446,12 +446,12 @@ You can create dynamic rules and policies to automatically add federated users t
 Parameter            | Description
 ---------------------|-------------------------------------------------------------------
 Resource             | The resource of the policy definition
-Resource Group       | Name of the resource group the policy will apply to
+Resource group       | Name of the resource group the policy will apply to
 Resource Instance ID | ID of a service instance to give permissions
 Service              | Name of the service type of the policy ex. "cloud-object-storage"
 Resource Type        | Name of the resource type for the policy
 
-### Related Links
+### Related links
 
 - [Docs](https://cloud.ibm.com/docs/account?topic=account-groups&interface=ui)
 
@@ -471,10 +471,10 @@ Secret Types
 
 Please note, IBM Cloud Secrets Manager is not yet Financial Services Validated. For this reason, it is not enabled in the initial configuration but can be enabled if desired.
 
-### Related Links
+### Related links
 
 - [HashiCorp Vault](https://www.vaultproject.io/)
-- [Getting Started with Secrets Manager](https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-getting-started)
+- [Getting started with Secrets Manager](https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-getting-started)
 - [Handling and Securing Secrets on FS Cloud](https://cloud.ibm.com/docs/framework-financial-services?topic=framework-financial-services-shared-secrets)
 - [FS Cloud Best Practices](https://cloud.ibm.com/docs/framework-financial-services?topic=framework-financial-services-best-practices#best-practices-financial-services-validated-services)
 

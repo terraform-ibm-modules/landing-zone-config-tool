@@ -141,7 +141,7 @@ export class ClusterVersionSelect extends React.Component {
   render() {
     return (
       <SlzSelect
-        labelText="Kube Version"
+        labelText="Kube version"
         handleInputChange={this.props.handleInputChange}
         name="kube_version"
         className={this.props.className}
@@ -201,7 +201,7 @@ export class FlavorSelect extends React.Component {
   render() {
     return (
       <SlzSelect
-        labelText="Instance Profile"
+        labelText="Instance profile"
         handleInputChange={this.props.handleInputChange}
         name={this.props.name}
         className={this.props.className}
@@ -279,7 +279,7 @@ export class ImageSelect extends React.Component {
   render() {
     return (
       <SlzSelect
-        labelText="OS Image Name"
+        labelText="OS image name"
         handleInputChange={this.handleInputChange}
         name="image_name"
         component="vsi"
@@ -393,7 +393,7 @@ export const WorkersPerSubnetDropdown = props => {
       name="workers_per_subnet"
       groups={buildNumberDropdownList(10, 1)}
       value={props.value.toString()}
-      labelText="Workers per Subnet"
+      labelText="Workers per subnet"
       handleInputChange={props.handleInputChange}
       className={props.fieldWidthSmaller ? "fieldWidth" : "fieldWidthSmaller"}
       component={props.component}
@@ -459,7 +459,7 @@ SubnetNameDropdown.propTypes = {
 export const KmsKeySelect = props => {
   return (
     <SlzSelect
-      labelText="Encryption Key"
+      labelText="encryption key"
       invalidText="Select a valid encryption key."
       component={props.component}
       name={props.name}
@@ -497,7 +497,7 @@ export const ResourceGroupSelect = props => {
   return (
     <SlzSelect
       name="resource_group"
-      invalidText="Select a Resource Group."
+      invalidText="Select a resource group."
       component={`${kebabCase(props.component)}-rg-select`}
       labelText={props.labelText}
       disableInvalid={props.disableInvalid}
@@ -511,7 +511,7 @@ export const ResourceGroupSelect = props => {
 
 ResourceGroupSelect.defaultProps = {
   disableInvalid: false, // used in access group dynamic policies/policies
-  labelText: "Resource Group"
+  labelText: "Resource group"
 };
 
 ResourceGroupSelect.propTypes = {
