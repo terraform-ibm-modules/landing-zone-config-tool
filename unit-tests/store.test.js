@@ -2351,7 +2351,7 @@ describe("store", () => {
         assert.deepEqual(state.store.configDotJson.ssh_keys, [
           {
             name: "slz-ssh-key",
-            public_key: "<user-determined-value>",
+            public_key: "<REPLACE_WITH_VALID_PUBLIC_KEY>",
             resource_group: "management-rg",
           },
         ]);
@@ -3542,7 +3542,8 @@ describe("store", () => {
             flow_logs_bucket_name: "workload-bucket",
             network_acls: [
               {
-                add_cluster_rules: true,
+                add_ibm_cloud_internal_rules: true,
+                add_vpc_connectivity_rules: true,
                 name: "workload-acl",
                 rules: [
                   {
@@ -4844,12 +4845,13 @@ describe("store", () => {
         it("should create an acl", () => {
           let slz = newState();
           slz.vpcs.network_acls.create(
-            { name: "new", add_cluster_rules: true },
+            { name: "new", add_ibm_cloud_internal_rules: true, add_vpc_connectivity_rules: true },
             { vpc_name: "management" }
           );
           let expectedData = {
             name: "new",
-            add_cluster_rules: true,
+            add_ibm_cloud_internal_rules: true,
+            add_vpc_connectivity_rules: true,
             rules: [],
           };
           assert.deepEqual(
@@ -4945,7 +4947,7 @@ describe("store", () => {
         it("should update an acl", () => {
           let slz = newState();
           slz.vpcs.network_acls.save(
-            { name: "new", add_cluster_rules: false },
+            { name: "new", add_ibm_cloud_internal_rules: false, add_vpc_connectivity_rules: false },
             { data: { name: "management-acl" }, arrayParentName: "management" }
           );
           assert.deepEqual(
@@ -4954,7 +4956,12 @@ describe("store", () => {
             "it should create acl"
           );
           assert.deepEqual(
-            slz.store.configDotJson.vpcs[0].network_acls[0].add_cluster_rules,
+            slz.store.configDotJson.vpcs[0].network_acls[0].add_ibm_cloud_internal_rules,
+            false,
+            "it should create acl"
+          );
+          assert.deepEqual(
+            slz.store.configDotJson.vpcs[0].network_acls[0].add_vpc_connectivity_rules,
             false,
             "it should create acl"
           );
@@ -4962,11 +4969,16 @@ describe("store", () => {
         it("should update an acl with no name change", () => {
           let slz = newState();
           slz.vpcs.network_acls.save(
-            { name: "management-acl", add_cluster_rules: false },
+            { name: "management-acl", add_ibm_cloud_internal_rules: false, add_vpc_connectivity_rules: false },
             { data: { name: "management-acl" }, arrayParentName: "management" }
           );
           assert.deepEqual(
-            slz.store.configDotJson.vpcs[0].network_acls[0].add_cluster_rules,
+            slz.store.configDotJson.vpcs[0].network_acls[0].add_ibm_cloud_internal_rules,
+            false,
+            "it should create acl"
+          );
+          assert.deepEqual(
+            slz.store.configDotJson.vpcs[0].network_acls[0].add_vpc_connectivity_rules,
             false,
             "it should create acl"
           );

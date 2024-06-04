@@ -106,7 +106,8 @@ const minimumValidJson = (data) => {
         flow_logs_bucket_name: "management-bucket",
         network_acls: [
           {
-            add_cluster_rules: true,
+            add_ibm_cloud_internal_rules: true,
+            add_vpc_connectivity_rules: true,
             name: "management-acl",
             rules: [
               {
@@ -196,7 +197,8 @@ const minimumValidJson = (data) => {
         flow_logs_bucket_name: "workload-bucket",
         network_acls: [
           {
-            add_cluster_rules: true,
+            add_ibm_cloud_internal_rules: true,
+            add_vpc_connectivity_rules: true,
             name: "workload-acl",
             rules: [
               {
@@ -1206,7 +1208,7 @@ describe("validate", () => {
         let task = () => validate(testData, true);
         assert.throws(
           task,
-          'SSH keys require a valid public key. Invalid public key for SSH key "bad key"'
+          'SSH keys require a valid public key. Invalid public key for SSH key "bad key": "frog"'
         );
       });
     });
