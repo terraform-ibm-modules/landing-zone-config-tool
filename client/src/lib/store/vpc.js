@@ -645,7 +645,8 @@ function subnetTierCreate(slz, stateData, componentProps) {
  * @param {object} slz.store.configDotJson configuration JSON
  * @param {Array<object>} slz.store.configDotJson.vpcs
  * @param {Object} stateData
- * @param {boolean} stateData.add_cluster_rules
+ * @param {boolean} stateData.add_ibm_cloud_internal_rules
+ * @param {boolean} stateData.add_vpc_connectivity_rules
  * @param {string} stateData.name
  * @param {object} componentProps
  * @param {string} componentProps.vpc_name vpc name
@@ -655,7 +656,8 @@ function naclCreate(slz, stateData, componentProps) {
     .child("vpcs", componentProps.vpc_name, "prefix")
     .then(data => {
       data.network_acls.push({
-        add_cluster_rules: stateData.add_cluster_rules,
+        add_ibm_cloud_internal_rules: stateData.add_ibm_cloud_internal_rules,
+        add_vpc_connectivity_rules: stateData.add_vpc_connectivity_rules,
         name: stateData.name,
         rules: []
       });
@@ -690,7 +692,8 @@ function naclDelete(slz, stateData, componentProps) {
  * @param {object} slz.store.configDotJson configuration JSON
  * @param {Array<object>} slz.store.configDotJson.vpcs
  * @param {Object} stateData
- * @param {boolean} stateData.add_cluster_rules
+ * @param {boolean} stateData.add_ibm_cloud_internal_rules
+ * @param {boolean} stateData.add_vpc_connectivity_rules
  * @param {string} stateData.name
  * @param {object} componentProps
  * @param {string} componentProps.arrayParentName vpc name
