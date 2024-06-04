@@ -2351,7 +2351,7 @@ describe("store", () => {
         assert.deepEqual(state.store.configDotJson.ssh_keys, [
           {
             name: "slz-ssh-key",
-            public_key: "<user-determined-value>",
+            public_key: "<REPLACE_WITH_VALID_PUBLIC_KEY>",
             resource_group: "management-rg",
           },
         ]);

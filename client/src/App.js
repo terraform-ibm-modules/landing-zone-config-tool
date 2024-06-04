@@ -243,10 +243,16 @@ class App extends Component {
     window.localStorage.setItem(storeName, JSON.stringify(store));
   }
 
+  handleCloseModal = () => {
+    window.location.hash = "#/home";
+    this.setState({show: false});
+  };
+
   render() {
     return (
       <div className="App">
         <Modal
+          onRequestClose={this.handleCloseModal}
           id="no-pattern-selected-modal"
           modalHeading="No deployable architecture selected"
           className="leftTextAlign unselectedPatternModal"

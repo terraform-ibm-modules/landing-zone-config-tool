@@ -574,7 +574,7 @@ const validate = function(configDotJson, isDownload) {
       if (!validSshKey(key.public_key)) {
         throw new Error(`SSH keys require a valid public key. Invalid public key for SSH key "${
           key.name
-        }"`);
+        }": "${key.public_key}"`);
       }
     });
   }

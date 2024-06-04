@@ -1,4 +1,4 @@
-import { splat, contains } from "lazy-z";
+import { splat } from "lazy-z";
 import {
   setUnfoundResourceGroup,
   pushAndUpdate,
@@ -27,7 +27,7 @@ function sshKeyInit(slz) {
   slz.store.configDotJson.ssh_keys = [
     {
       name: "slz-ssh-key",
-      public_key: "<user-determined-value>",
+      public_key: "<REPLACE_WITH_VALID_PUBLIC_KEY>",
       resource_group: "management-rg"
     }
   ];

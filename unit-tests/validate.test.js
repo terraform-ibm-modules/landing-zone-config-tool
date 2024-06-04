@@ -1208,7 +1208,7 @@ describe("validate", () => {
         let task = () => validate(testData, true);
         assert.throws(
           task,
-          'SSH keys require a valid public key. Invalid public key for SSH key "bad key"'
+          'SSH keys require a valid public key. Invalid public key for SSH key "bad key": "frog"'
         );
       });
     });
