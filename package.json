@@ -28,7 +28,7 @@
     "@craco/craco": "7.1.0",
     "chai": "5.1.1",
     "mocha": "10.4.0",
-    "nyc": "15.1.0"
+    "nyc": "17.0.0"
   },
   "overrides": {
     "express": "4.19.2",
