@@ -36,11 +36,11 @@
     "react-dom": "18.3.1",
     "react-router-dom": "6.23.1",
     "regex-but-with-words": "1.5.5",
-    "sass": "1.77.4"
+    "sass": "1.77.5"
   },
   "devDependencies": {
     "@craco/craco": "7.1.0",
-    "prettier": "3.3.1",
+    "prettier": "3.3.2",
     "react-scripts": "5.0.1"
   },
   "overrides": {
