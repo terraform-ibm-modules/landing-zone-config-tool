@@ -66,7 +66,7 @@ class CustomJson extends React.Component {
   handleSubmit() {
     this.props.slz.hardSetConfigDotJson(this.state.validJson);
     this.toggleModal();
-    window.location.pathname = "/resourceGroups";
+    window.location.hash = "#/resourceGroups";
   }
 
   render() {
