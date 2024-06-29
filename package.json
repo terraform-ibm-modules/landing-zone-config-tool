@@ -33,7 +33,7 @@
   "overrides": {
     "express": "4.19.2",
     "nth-check": "2.1.1",
-    "postcss": "8.4.38",
+    "postcss": "8.4.39",
     "webpack-dev-middleware": "7.2.1"
   }
 }
