@@ -38,6 +38,10 @@ cd client/
 npm start
 ```
 
+### Generating Dropdown Form Contents
+
+Content in dropdown menus is cached. To update the caches, run [this script](../client/src/components/icse/wrappers/caches/cacheAPIcalls.py).
+
 ### Form Debug Mode
 
 When running the development server, users can enter into form debug mode which causes all collapsed forms to be open by default. To enable form debug mode, select a pattern from the root directory `/`.
@@ -56,46 +60,6 @@ All SLZ GUI documentation can be exported as a single markdown file. Use the fol
 npm run md <file path>
 ```
 
-## Deploying to Code Engine (without Tekton Toolchain) with `deploy.sh`
-
-Within the root directory is a script `deploy.sh` which deploys this slzgui application to IBM Code Engine. At a minimum an IBM Cloud API key will be needed that has sufficient permissions to provision a Code Engine project, application, and secrets. In addition, this API key must be able to create a IBM Container Registry namespace. See below for a simple use case using the default parameters.
-
-```bash
-npm run deploy -- -a <API_KEY>
-```
-
-This script can also delete the resources when the delete flag `-d` is passed
-
-```bash
-npm run deploy -- -d -a <API_KEY>
-```
-
-Below is the full list of parameters and their default values
-
-```
-Syntax: $ deploy.sh [-h] [-d] [-a API KEY] [-r REGION] [-g RESOURCE GROUP] [-p PROJECT NAME] [-n ICR NAMESPACE]
-Options:
-  a     IBM Cloud Platform API Key (REQUIRED).
-  d     Delete resources.
-  g     Resource group to deploy resources in. Default value = 'default'
-  h     Print help.
-  n     IBM Cloud Container Registry namespace. Default value = 'slz-gui-namespace'
-  p     Name of Code Engine project. Default value = 'slz-gui'
-  r     Region to deploy resources in. Default value = 'us-south'
-```
-
-or run
-
-```bash
-npm run deploy -- -h
-```
-
-Note: For creation/deletion of resources named other than the defaults want to be created or deleted then those values must be passed in as arguments. For example to delete a code engine project named `example-project` and ICR namespace named `example-namespace`
-
-```bash
-npm run deploy -- -d -a <API_KEY> -p example-project -n example-namespace
-```
-
 ## Running Compatibility Tests
 
 To run compatibility tests to ensure the SLZ GUI pattern configurations are compatible with the landing zone module, run
@@ -108,35 +72,6 @@ To run compatibility tests in quiet mode and minimize terraform output, run
 
 ```bash
 npm run compatibility-tests -- -q
-```
-
-## Adding Code Engine Environment Variables to Tekton Toolchain
-
-In order to add additional environment variables to Code Engine you will need to modify three files within the .tekton directory `ci-listener.yml`, `ci-pipeline.yml`, `task-deploy-to-code-engine.yml`.
-
-### `ci-listener.yml` & `ci-pipeline.yml`
-
-In these two files you will need to add a a param under the top level spec params. For example,
-
-```
-- name: port
-  description: port where the application is listening
-  default: "http1:8080"
-```
-
-You will also need to add this new param later in the file. The best way to find the correct spot based on which file is being edited is to use the other params above your new addition to search the file for the other references and place the new one at the bottom. Continuing the above example,
-
-```
-- name: port
-  value: $(params.port)
-```
-
-### `task-deploy-to-code-engine.yml`
-
-Here you will need to edit the `ibmcloud ce app update` and `ibmcloud ce app create` command to include a new line with your new environment variable. For example,
-
-```
---env newEnvVar=<new-env-var>
 ```
 
 ## Contributing
