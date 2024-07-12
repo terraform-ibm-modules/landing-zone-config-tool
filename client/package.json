@@ -9,7 +9,7 @@
   "main": "/src/index.js",
   "homepage": "https://terraform-ibm-modules.github.io/landing-zone-config-tool/",
   "engines": {
-    "node": "20.15.0"
+    "node": "20.15.1"
   },
   "scripts": {
     "build": "craco build",
@@ -36,7 +36,7 @@
     "react-dom": "18.3.1",
     "react-router-dom": "6.24.1",
     "regex-but-with-words": "1.5.5",
-    "sass": "1.77.6"
+    "sass": "1.77.8"
   },
   "devDependencies": {
     "@craco/craco": "7.1.0",
