@@ -25,8 +25,8 @@
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
-    "@carbon/icons-react": "11.47.1",
-    "@carbon/react": "1.64.1",
+    "@carbon/icons-react": "11.48.0",
+    "@carbon/react": "1.65.0",
     "@codemirror/lang-javascript": "6.2.2",
     "@uiw/codemirror-themes": "4.23.0",
     "@uiw/react-codemirror": "4.23.0",
