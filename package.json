@@ -22,7 +22,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lazy-z": "1.12.1"
+    "lazy-z": "2.0.0"
   },
   "devDependencies": {
     "@craco/craco": "7.1.0",
