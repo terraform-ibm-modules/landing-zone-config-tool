@@ -36,7 +36,7 @@
     "react-dom": "18.3.1",
     "react-router-dom": "6.27.0",
     "regex-but-with-words": "1.5.5",
-    "sass": "1.80.4"
+    "sass": "1.80.6"
   },
   "devDependencies": {
     "@craco/craco": "7.1.0",
