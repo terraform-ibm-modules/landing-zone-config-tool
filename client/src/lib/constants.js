@@ -293,6 +293,7 @@ const requiredOptionalFields = {
       clusters: {
         setToNull: [
           "kube_version",
+          "operating_system",
           "entitlement",
           "cos_name"
         ],

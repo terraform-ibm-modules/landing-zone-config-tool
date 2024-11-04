@@ -15,6 +15,7 @@ import {
   VpcSelect,
   WorkersPerSubnetDropdown,
   ClusterVersionSelect,
+  ClusterOperatingSystemSelect,
   FlavorSelect,
   ImageSelect
 } from "./Dropdowns.js";
@@ -80,6 +81,7 @@ export {
   SlzSubForm,
   Notification,
   ClusterVersionSelect,
+  ClusterOperatingSystemSelect,
   FlavorSelect,
   ImageSelect
 };

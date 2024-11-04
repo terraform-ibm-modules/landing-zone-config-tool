@@ -159,6 +159,7 @@ function newFormClusterInstance() {
     entitlement: null,
     kube_type: "",
     kube_version: "",
+    operating_system: "",
     machine_type: "",
     kms_config: {
       crk_name: "",

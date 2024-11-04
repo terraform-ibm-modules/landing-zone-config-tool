@@ -20,6 +20,7 @@ describe("builders", () => {
           entitlement: "cloud_pak",
           kube_type: "openshift",
           kube_version: "default",
+          operating_system: "REDHAT_8_64",
           machine_type: "bx2.16x64",
           name: "management-cluster",
           resource_group: "management-rg",
@@ -250,6 +251,7 @@ describe("builders", () => {
         entitlement: null,
         kube_type: "",
         kube_version: "",
+        operating_system: "",
         machine_type: "",
         kms_config: {
           crk_name: "",
@@ -276,6 +278,7 @@ describe("builders", () => {
         entitlement: null,
         kube_type: "",
         kube_version: "",
+        operating_system: "",
         machine_type: "",
         kms_config: {
           crk_name: "",

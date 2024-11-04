@@ -125,6 +125,7 @@ WorkerPoolForm.propTypes = {
     entitlement: PropTypes.string, // can be null
     kube_type: PropTypes.string.isRequired,
     kube_version: PropTypes.string.isRequired,
+    operating_system: PropTypes.string.isRequired,
     machine_type: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     resource_group: PropTypes.string,

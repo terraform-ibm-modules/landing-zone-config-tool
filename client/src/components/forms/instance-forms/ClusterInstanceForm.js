@@ -9,6 +9,7 @@ import {
   SubnetMultiSelect,
   SlzFormGroup,
   ClusterVersionSelect,
+  ClusterOperatingSystemSelect,
   FlavorSelect,
   SlzNameInput
 } from "../../icse/index.js";
@@ -54,6 +55,7 @@ class ClusterInstance extends Component {
       cluster[name] = kubeTypes[value];
       cluster.cos_name = "";
       cluster.kube_version = ""; // reset kube version on change
+      cluster.operating_system = ""; // reset kube version on change
     } else if (name === "workers_per_subnet") {
       cluster[name] = Number(value);
     } else if (name === "vpc_name") {
@@ -207,6 +209,23 @@ class ClusterInstance extends Component {
             kube_type={this.state.cluster.kube_type}
             invalid={isNullOrEmptyString(this.state.cluster.kube_version)}
           />
+          <ClusterOperatingSystemSelect
+            id={clusterComponent}
+            value={this.state.cluster.operating_system}
+            handleInputChange={this.handleInputChange}
+            className="fieldWidthSmaller"
+            kube_type={this.state.cluster.kube_type}
+            invalid={isNullOrEmptyString(this.state.cluster.operating_system)}
+          />
+          {/* <SlzSelect
+            name="operating_system"
+            labelText="Operating system"
+            className="fieldWidthSmaller"
+            groups={["REDHAT_8_64", "RHCOS"]}
+            handleInputChange={this.handleInputChange}
+            invalidText="Select an operating system."
+            component={clusterComponent}
+          /> */}
         </SlzFormGroup>
         {!this.props.isModal && (
           <>
@@ -229,6 +248,7 @@ ClusterInstance.defaultProps = {
     cos_name: "",
     kube_type: "openshift",
     kube_version: "default",
+    operating_system: "REDHAT_8_64",
     machine_type: "bx2.16x64",
     name: "",
     kms_config: { crk_name: "" },
@@ -247,6 +267,7 @@ ClusterInstance.propTypes = {
     entitlement: PropTypes.string, // can be null
     kube_type: PropTypes.string.isRequired,
     kube_version: PropTypes.string.isRequired,
+    operating_system: PropTypes.string.isRequired,
     machine_type: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     resource_group: PropTypes.string,
