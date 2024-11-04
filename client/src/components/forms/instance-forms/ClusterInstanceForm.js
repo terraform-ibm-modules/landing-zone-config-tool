@@ -55,7 +55,7 @@ class ClusterInstance extends Component {
       cluster[name] = kubeTypes[value];
       cluster.cos_name = "";
       cluster.kube_version = ""; // reset kube version on change
-      cluster.operating_system = ""; // reset kube version on change
+      cluster.operating_system = ""; // reset kube operating system on change
     } else if (name === "workers_per_subnet") {
       cluster[name] = Number(value);
     } else if (name === "vpc_name") {
@@ -217,15 +217,6 @@ class ClusterInstance extends Component {
             kube_type={this.state.cluster.kube_type}
             invalid={isNullOrEmptyString(this.state.cluster.operating_system)}
           />
-          {/* <SlzSelect
-            name="operating_system"
-            labelText="Operating system"
-            className="fieldWidthSmaller"
-            groups={["REDHAT_8_64", "RHCOS"]}
-            handleInputChange={this.handleInputChange}
-            invalidText="Select an operating system."
-            component={clusterComponent}
-          /> */}
         </SlzFormGroup>
         {!this.props.isModal && (
           <>
