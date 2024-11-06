@@ -19,6 +19,7 @@
       "entitlement": "cloud_pak",
       "kube_type": "openshift",
       "kube_version": "default",
+      "operating_system": "REDHAT_8_64",
       "machine_type": "bx2.16x64",
       "name": "workload-cluster",
       "resource_group": "Default",

@@ -170,6 +170,45 @@ ClusterVersionSelect.propTypes = {
   kube_type: PropTypes.string.isRequired
 };
 
+export class ClusterOperatingSystemSelect extends React.Component {
+  _isMounted = false;
+  constructor(props) {
+    super(props);
+    this.state = {
+      operating_systems: []
+    };
+  }
+  componentDidMount() {
+    this._isMounted = true;
+    if (isEmpty(this.state.operating_systems)) {
+      let data = ["REDHAT_8_64", "RHCOS"];
+      if (this._isMounted) this.setState({ operating_systems: data });
+    }
+  }
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+  render() {
+    return (
+      <SlzSelect
+        labelText="Kube operating system"
+        handleInputChange={this.props.handleInputChange}
+        name="operating_system"
+        className={this.props.className}
+        component="cluster"
+        groups={this.state.operating_systems}
+        value={this.props.value}
+      />
+    );
+  }
+}
+
+ClusterOperatingSystemSelect.propTypes = {
+  handleInputChange: PropTypes.func.isRequired,
+  className: PropTypes.string, // can be null or undefined
+  value: PropTypes.string, // can be null or undefined
+};
+
 export class FlavorSelect extends React.Component {
   _isMounted = false;
   constructor(props) {

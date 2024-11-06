@@ -212,6 +212,7 @@ function stateInit(componentName, componentProps) {
         "entitlement",
         "kube_type",
         "kube_version",
+        "operating_system",
         "machine_type",
         "name",
         "subnet_names",

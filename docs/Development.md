@@ -38,19 +38,10 @@ cd client/
 npm start
 ```
 
-### Generating Dropdown Form Contents
+## Generating Dropdown Form Contents
 
 Content in dropdown menus is cached. To update the caches, run [this script](../client/src/components/icse/wrappers/caches/cacheAPIcalls.py).
 
-### Form Debug Mode
-
-When running the development server, users can enter into form debug mode which causes all collapsed forms to be open by default. To enable form debug mode, select a pattern from the root directory `/`.
-
-Next, navigate with your browser to `/resetState?cheats=true`. Click on the middle of the page and enter the following series of key presses: `↑` `↑` `↓` `↓` `←` `→` `←` `→` `B` `A` `Enter`. On successful entry, the browser will automatically redirect to the home path `/`.
-
-To exist form debug mode, click the Reset State button.
-
----
 
 ## Creating Markdown Documentation
 

@@ -38,6 +38,7 @@ import {
   SlzSubForm,
   Notification,
   ClusterVersionSelect,
+  ClusterOperatingSystemSelect,
   FlavorSelect,
   ImageSelect
 } from "./wrappers/index.js";
@@ -89,6 +90,7 @@ export {
   SlzSubForm,
   Notification,
   ClusterVersionSelect,
+  ClusterOperatingSystemSelect,
   FlavorSelect,
   ImageSelect
 };

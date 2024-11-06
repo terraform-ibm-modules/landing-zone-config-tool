@@ -671,6 +671,7 @@ describe("disableSave", () => {
               },
               machine_type: "aaaaaaa",
               kube_version: "aaaaaaa",
+              operating_system: "aaaaaaa",
             },
           },
           {
@@ -714,6 +715,7 @@ describe("disableSave", () => {
               },
               machine_type: "aaaaaaa",
               kube_version: "aaaaaaa",
+              operating_system: "aaaaaaa",
             },
           },
           {
