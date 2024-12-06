@@ -31,7 +31,7 @@
     "nyc": "17.1.0"
   },
   "overrides": {
-    "express": "4.21.1",
+    "express": "4.21.2",
     "nth-check": "2.1.1",
     "postcss": "8.4.49",
     "webpack-dev-middleware": "7.4.2"
