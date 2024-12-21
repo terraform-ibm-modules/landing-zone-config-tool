@@ -34,7 +34,7 @@
     "lazy-z": "1.12.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "react-router-dom": "6.28.0",
+    "react-router-dom": "6.28.1",
     "regex-but-with-words": "1.5.5",
     "sass": "1.83.0"
   },
