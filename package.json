@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "engines": {
-    "node": "20.18.2"
+    "node": "20.18.3"
   },
   "scripts": {
     "test": "mocha unit-tests/",
@@ -26,14 +26,14 @@
   },
   "devDependencies": {
     "@craco/craco": "7.1.0",
-    "chai": "5.1.2",
+    "chai": "5.2.0",
     "mocha": "10.8.2",
     "nyc": "17.1.0"
   },
   "overrides": {
     "express": "4.21.2",
     "nth-check": "2.1.1",
-    "postcss": "8.5.1",
+    "postcss": "8.5.2",
     "webpack-dev-middleware": "7.4.2"
   }
 }
