@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/landing-zone-config-tool/static/css/main.3fe73628.css",
-    "main.js": "/landing-zone-config-tool/static/js/main.4b4b5bf8.js",
+    "main.css": "/landing-zone-config-tool/static/css/main.313b714e.css",
+    "main.js": "/landing-zone-config-tool/static/js/main.8eac4324.js",
     "static/media/roks.png": "/landing-zone-config-tool/static/media/roks.752e7e4aeb906d837a03.png",
     "static/media/vsi.png": "/landing-zone-config-tool/static/media/vsi.6911e7a30ff5ed693fec.png",
     "static/media/vpc.png": "/landing-zone-config-tool/static/media/vpc.fd173234cfaa3f72ae4e.png",
@@ -97,11 +97,11 @@
     "static/media/IBMPlexMono-Light-Latin3.woff2": "/landing-zone-config-tool/static/media/IBMPlexMono-Light-Latin3.8a014da16bb5df1e9830.woff2",
     "static/media/IBMPlexMono-Regular-Latin3.woff2": "/landing-zone-config-tool/static/media/IBMPlexMono-Regular-Latin3.cacfd1d7dbd14067b970.woff2",
     "index.html": "/landing-zone-config-tool/index.html",
-    "main.3fe73628.css.map": "/landing-zone-config-tool/static/css/main.3fe73628.css.map",
-    "main.4b4b5bf8.js.map": "/landing-zone-config-tool/static/js/main.4b4b5bf8.js.map"
+    "main.313b714e.css.map": "/landing-zone-config-tool/static/css/main.313b714e.css.map",
+    "main.8eac4324.js.map": "/landing-zone-config-tool/static/js/main.8eac4324.js.map"
   },
   "entrypoints": [
-    "static/css/main.3fe73628.css",
-    "static/js/main.4b4b5bf8.js"
+    "static/css/main.313b714e.css",
+    "static/js/main.8eac4324.js"
   ]
 }
