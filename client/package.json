@@ -9,7 +9,7 @@
   "main": "/src/index.js",
   "homepage": "https://terraform-ibm-modules.github.io/landing-zone-config-tool/",
   "engines": {
-    "node": "20.19.1"
+    "node": "20.19.2"
   },
   "scripts": {
     "build": "craco build",
@@ -27,7 +27,7 @@
   "dependencies": {
     "@carbon/icons-react": "11.60.0",
     "@carbon/react": "1.82.1",
-    "@codemirror/lang-javascript": "6.2.3",
+    "@codemirror/lang-javascript": "6.2.4",
     "@uiw/codemirror-themes": "4.23.12",
     "@uiw/react-codemirror": "4.23.12",
     "gh-pages": "6.3.0",
@@ -36,7 +36,7 @@
     "react-dom": "18.3.1",
     "react-router-dom": "6.30.0",
     "regex-but-with-words": "1.5.5",
-    "sass": "1.87.0"
+    "sass": "1.89.0"
   },
   "devDependencies": {
     "@craco/craco": "7.1.0",
