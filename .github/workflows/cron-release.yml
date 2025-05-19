@@ -57,9 +57,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-  create-failure-notifications:
-    needs: [ Release ]
-    uses: ./.github/workflows/create-gh-issue-and-slack-message.yml
-    if: ${{ failure() }}
-    secrets: inherit
