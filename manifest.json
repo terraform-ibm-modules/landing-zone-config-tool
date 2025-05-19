@@ -1,6 +1,6 @@
 {
   "short_name": "React App",
-  "name": "Landing Zone Configuration Tool v0.8.0",
+  "name": "Landing Zone Configuration Tool",
   "icons": [
     {
       "src": "favicon.ico",
@@ -12,5 +12,5 @@
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff",
-  "version": "v0.8.0"
+  "timestamp": "1747683910"
 }
