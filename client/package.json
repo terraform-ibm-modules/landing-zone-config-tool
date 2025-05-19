@@ -21,7 +21,7 @@
     "format:staged": "prettier --write",
     "start": "NODE_ENV=development PORT=3000 craco start",
     "test": "craco test",
-    "predeploy": "npm run build",
+    "rebuild": "./rebuild.sh",
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
