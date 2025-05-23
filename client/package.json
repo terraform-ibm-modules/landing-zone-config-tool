@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@carbon/icons-react": "11.60.0",
-    "@carbon/react": "1.82.1",
+    "@carbon/react": "1.83.0",
     "@codemirror/lang-javascript": "6.2.4",
     "@uiw/codemirror-themes": "4.23.12",
     "@uiw/react-codemirror": "4.23.12",
@@ -34,7 +34,7 @@
     "lazy-z": "1.12.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "react-router-dom": "6.30.0",
+    "react-router-dom": "6.30.1",
     "regex-but-with-words": "1.5.5",
     "sass": "1.89.0"
   },
