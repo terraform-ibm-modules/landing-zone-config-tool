@@ -75,6 +75,7 @@ jobs:
           npm test
       - name: npm rebuild
         run: |
+          npm run build
           git config --local user.name "Your Name"
           git config --local user.email "alex.reiff@ibm.com"
           npm run deploy
