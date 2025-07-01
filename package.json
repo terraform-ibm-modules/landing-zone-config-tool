@@ -16,7 +16,7 @@
     "start": "NODE_ENV=production && npm run build && node server.js",
     "md": "node lib/docs-as-markdown",
     "changelog": "node lib/changelog-as-markdown",
-    "rebuild": "cd client && npm run rebuild",
+    "rebuild": "cd client && npm run rebuild && cp -r build ../",
     "deploy": "cd client && npm run deploy",
     "compatibility-tests": "./compatibility.sh"
   },
