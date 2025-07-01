@@ -81,5 +81,4 @@ jobs:
         run: |
           git config --global user.name "Your Name"
           git config --global user.email "alex.reiff@ibm.com"
-          git remote set-url origin git@github.com:alex-reiff/landing-zone-config-tool.git
           npm run deploy
