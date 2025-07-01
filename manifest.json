@@ -1,6 +1,6 @@
 {
   "short_name": "React App",
-  "name": "Landing Zone Configuration Tool",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",
@@ -11,6 +11,5 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff",
-  "timestamp": "1747683910"
+  "background_color": "#ffffff"
 }
