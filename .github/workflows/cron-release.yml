@@ -1,6 +1,7 @@
 name: Github Pages Cron Release
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
