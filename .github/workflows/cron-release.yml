@@ -59,6 +59,18 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
       
-      - name: Deploy to GithubPages
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ./node_modules
+            ./client/node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+      - name: npm install
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          make clean-npm
+      - name: npm deploy
         run: |
           npm run deploy
