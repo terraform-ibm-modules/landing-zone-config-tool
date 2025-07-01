@@ -2,9 +2,9 @@ name: Github Pages Cron Release
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
 
 jobs:
   Build:
@@ -52,9 +52,29 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ./node_modules
+            ./client/node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+      - name: npm install
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          make clean-npm
+      - name: npm test
+        run: |
+          npm test
+      - name: npm rebuild
+        run: |
+          git config --local user.name "Your Name"
+          git config --local user.email "alex.reiff@ibm.com"
+          npm run deploy

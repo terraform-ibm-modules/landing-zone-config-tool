@@ -13,7 +13,7 @@
     "build-local": "npm i && cd client && npm i && craco build && cp -r build ../",
     "build": "cd client && npm run build && cp -r build ../",
     "client": "npm run build && open http://localhost:3000",
-    "start": "NODE_ENV=production && npm run build && node server.js",
+    "start": "cd client && npm run start",
     "md": "node lib/docs-as-markdown",
     "changelog": "node lib/changelog-as-markdown",
     "rebuild": "cd client && npm run rebuild && cp -r build ../",
