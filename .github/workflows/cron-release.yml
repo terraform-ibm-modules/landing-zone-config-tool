@@ -73,9 +73,12 @@ jobs:
       - name: npm test
         run: |
           npm test
-      - name: npm rebuild
+      - name: npm build
         run: |
           npm run build
+      - name: npm deploy
+        run: |
           git config --local user.name "Your Name"
           git config --local user.email "alex.reiff@ibm.com"
+          git remote set-url origin git@github.com:alex-reiff/landing-zone-config-tool.git
           npm run deploy
