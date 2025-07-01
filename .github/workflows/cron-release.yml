@@ -59,6 +59,8 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: setup node
         uses: actions/setup-node@v4
         with:
