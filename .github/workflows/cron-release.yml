@@ -39,6 +39,8 @@ jobs:
           path: './build/'
       - name: npm deploy
         run: |
+          git config user.email "alex.reiff@ibm.com"
+          git config user.name "Alex Reiff"
           npm run deploy
   Release:
     # The type of runner that the job will run on
