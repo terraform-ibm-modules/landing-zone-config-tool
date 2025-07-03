@@ -74,9 +74,9 @@ jobs:
       - name: npm test
         run: |
           npm test
-      - name: npm build
-        run: |
-          npm run build
+      # - name: npm build
+      #   run: |
+      #     npm run build
       # - name: npm deploy
       #   run: |
       #     git config --global user.name "Alex Reiff"
