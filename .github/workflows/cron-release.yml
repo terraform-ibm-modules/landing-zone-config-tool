@@ -31,8 +31,8 @@ jobs:
       - name: npm test
         run: |
           npm test
-      - name: npm rebuild
-        run: npm run rebuild
+      # - name: npm rebuild
+      #   run: npm run rebuild
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -89,4 +89,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: './build/'
-          enable_jekyll: true
+          # enable_jekyll: true
