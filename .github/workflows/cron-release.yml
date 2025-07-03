@@ -77,6 +77,10 @@ jobs:
       - name: npm build
         run: |
           npm run build
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './build/'
       # - name: npm deploy
       #   run: |
       #     git config --global user.name "Alex Reiff"
@@ -88,4 +92,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: './'
+          publish_dir: './build'
