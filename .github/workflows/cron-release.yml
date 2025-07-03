@@ -31,11 +31,11 @@ jobs:
       - name: npm test
         run: |
           npm test
-      - name: npm rebuild
-        run: |
-          rm -rf ./client/build/
-          rm -rf ./build/
-          npm run rebuild
+      # - name: npm rebuild # this breaks everything
+      #   run: |
+      #     rm -rf ./client/build/
+      #     rm -rf ./build/
+      #     npm run rebuild
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
