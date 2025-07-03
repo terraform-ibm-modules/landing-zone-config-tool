@@ -79,6 +79,6 @@ jobs:
           npm run build
       - name: npm deploy
         run: |
-          git config --global user.name "Your Name"
-          git config --global user.email "alex.reiff@ibm.com"
           npm run deploy
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN}}
