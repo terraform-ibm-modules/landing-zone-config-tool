@@ -77,10 +77,15 @@ jobs:
       - name: npm build
         run: |
           npm run build
-      - name: npm deploy
-        run: |
-          git config --global user.name "Alex Reiff"
-          git config --global user.email "alex.reiff@ibm.com"
-          npm run deploy
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+      # - name: npm deploy
+      #   run: |
+      #     git config --global user.name "Alex Reiff"
+      #     git config --global user.email "alex.reiff@ibm.com"
+      #     npm run deploy
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./client
