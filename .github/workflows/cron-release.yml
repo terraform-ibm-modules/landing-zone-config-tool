@@ -25,14 +25,13 @@ jobs:
             ./client/node_modules
           key: modules-${{ hashFiles('package-lock.json') }}
       - name: npm install
-        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           make clean-npm
       - name: npm test
         run: |
           npm test
-      # - name: npm rebuild
-      #   run: npm run rebuild
+      - name: npm rebuild
+        run: npm run rebuild
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
