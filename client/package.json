@@ -1,10 +1,8 @@
 {
-  "name": "slz-gui",
-  "version": "0.8.0",
+  "name": "landing-zone-config-tool",
+  "version": "0.10.0",
   "private": true,
   "type": "module",
-  "repository": "git@github.com:carbon-design-system/carbon-tutorial.git",
-  "bugs": "https://github.com/carbon-design-system/carbon-tutorial/issues",
   "license": "Apache-2.0",
   "main": "/src/index.js",
   "homepage": "https://terraform-ibm-modules.github.io/landing-zone-config-tool/",
@@ -14,12 +12,11 @@
   "scripts": {
     "build": "vite build",
     "start": "vite",
-    "serve": "vite preview",
+    "preview": "vite preview",
     "ci-check": "npm run format:diff",
     "format": "prettier --write \"**/*.{js,md,scss}\"",
     "format:diff": "prettier --list-different \"**/*.{js,md,scss}\"",
-    "format:staged": "prettier --write",
-    "deploy": "gh-pages -d build"
+    "format:staged": "prettier --write"
   },
   "dependencies": {
     "@carbon/icons-react": "11.62.0",
