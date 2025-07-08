@@ -1,23 +1,18 @@
 {
-  "name": "slz-gui",
-  "version": "0.9.0",
-  "description": "",
+  "name": "landing-zone-config-tool",
+  "version": "0.10.0",
+  "description": "GUI for configuring Landing Zone override.json",
   "main": "index.js",
   "type": "module",
   "engines": {
     "node": "20.19.3"
   },
   "scripts": {
-    "test": "mocha unit-tests/",
+    "build": "cd client && npm run build && cp -r build ../",
+    "compatibility-tests": "./compatibility.sh",
     "coverage": "npx nyc npm run test",
-    "build-local": "npm i && cd client && npm i && craco build && cp -r build ../",
-    "build": "cd client && craco build && cp -r build ../",
-    "client": "npm run build && open http://localhost:3000",
-    "start": "NODE_ENV=production && npm run build && node server.js",
-    "md": "node lib/docs-as-markdown",
-    "changelog": "node lib/changelog-as-markdown",
-    "deploy": "./deploy.sh",
-    "compatibility-tests": "./compatibility.sh"
+    "full-build": "npm install && cd client && npm install && cd .. && npm run build",
+    "test": "mocha unit-tests/"
   },
   "author": "",
   "license": "ISC",
@@ -25,7 +20,6 @@
     "lazy-z": "1.12.1"
   },
   "devDependencies": {
-    "@craco/craco": "7.1.0",
     "chai": "5.2.0",
     "mocha": "10.8.2",
     "nyc": "17.1.0"
