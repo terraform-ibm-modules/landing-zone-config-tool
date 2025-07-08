@@ -5,13 +5,14 @@
   ],
   "packageRules": [
     {
-      "packagePatterns": [
-        "*"
+      "description": "Group all npm package updates into a single PR",
+      "matchManagers": [
+        "npm"
       ],
-      "enabled": false
+      "groupName": "npm dependencies"
     }
   ],
-  "regexManagers": [
+   "regexManagers": [
     {
       "fileMatch": [
         "^.one-pipeline.yaml$"
