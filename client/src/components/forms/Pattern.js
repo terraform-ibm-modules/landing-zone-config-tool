@@ -6,7 +6,7 @@ import {
   newDefaultManagementServer,
   newDefaultWorkloadServer,
   newDefaultManagementCluster,
-  subnetTierInitState
+  subnetTierInitState,
 } from "../../lib/index.js";
 import { carve, getObjectFromArray, contains, eachKey } from "lazy-z";
 import PrefixForm from "./Prefix.js";
@@ -28,8 +28,8 @@ import {
   updateSubnetTier,
   vpeInit,
   vpnInit,
-  clusterInit
-} from "../../lib/store/index.js";// import from store here to prevent dependency errors
+  clusterInit,
+} from "../../lib/store/index.js"; // import from store here to prevent dependency errors
 
 /**
  * PatternForm
@@ -44,7 +44,7 @@ class PatternForm extends Component {
       showModal: false,
       selectedPattern: null,
       patternSetOnPage: !this.props.slz.store.pattern,
-      zones: this.props.slz.store.zones || 3
+      zones: this.props.slz.store.zones || 3,
     };
     this.updatePattern = this.updatePattern.bind(this);
     this.handleRadioChange = this.handleRadioChange.bind(this);
@@ -58,7 +58,7 @@ class PatternForm extends Component {
   toggleModal() {
     this.setState({
       showModal: !this.state.showModal,
-      pattern: this.props.slz.store.pattern
+      pattern: this.props.slz.store.pattern,
     });
   }
 
@@ -68,7 +68,7 @@ class PatternForm extends Component {
    */
   updatePattern(pattern) {
     let slz = {
-      store: { ...this.props.slz.store }
+      store: { ...this.props.slz.store },
     };
     slz.store.pattern = pattern;
     resourceGroupInit(slz);
@@ -90,7 +90,7 @@ class PatternForm extends Component {
     teleportInit(slz);
     clusterInit(slz);
 
-    switch(pattern) {
+    switch (pattern) {
       case "roks":
         slz.store.configDotJson.key_management.keys.pop();
         slz.store.configDotJson.ssh_keys = [];
@@ -104,7 +104,7 @@ class PatternForm extends Component {
         carve(
           slz.store.configDotJson.key_management.keys,
           "name",
-          "slz-roks-key"
+          "slz-roks-key",
         );
         sshKeyInit(slz);
         break;
@@ -137,7 +137,7 @@ class PatternForm extends Component {
     } else {
       this.setState({
         selectedPattern: id,
-        showModal: true
+        showModal: true,
       });
     }
   }
@@ -148,19 +148,19 @@ class PatternForm extends Component {
    */
   handleZoneChange(event) {
     let zones = event.target.value;
-    eachKey(this.props.slz.store.subnetTiers, vpc => {
-      this.props.slz.store.subnetTiers[vpc].forEach(tier => {
+    eachKey(this.props.slz.store.subnetTiers, (vpc) => {
+      this.props.slz.store.subnetTiers[vpc].forEach((tier) => {
         if (tier.name !== "vpn") {
           let newState = subnetTierInitState({
             tier: tier,
             slz: this.props.slz,
-            vpc_name: vpc
+            vpc_name: vpc,
           });
           newState.zones = zones;
           updateSubnetTier(this.props.slz, newState, {
             tier: tier,
             slz: this.props.slz,
-            vpc_name: vpc
+            vpc_name: vpc,
           });
         }
       });
@@ -174,7 +174,9 @@ class PatternForm extends Component {
     return (
       <Form id="pattern-form">
         <div className="subForm">
-          <h5 className="leftTextAlign marginBottomSmall">Select a deployable architecture</h5>
+          <h5 className="leftTextAlign marginBottomSmall">
+            Select a deployable architecture
+          </h5>
           <div className="displayFlex spaceBetween">
             <div>
               <Modal
@@ -190,8 +192,8 @@ class PatternForm extends Component {
                 primaryButtonText="Continue"
                 secondaryButtonText="Cancel"
               >
-                Selecting a new deployable architecture will overwrite existing components. This
-                cannot be undone.
+                Selecting a new deployable architecture will overwrite existing
+                components. This cannot be undone.
               </Modal>
               <PatternDocs />
               <SlzFormGroup>
@@ -211,12 +213,12 @@ class PatternForm extends Component {
                             {
                               title: "Custom Imported JSON",
                               description: "Custom imported pattern",
-                              id: "custom"
-                            }
+                              id: "custom",
+                            },
                           ]
-                        : []
+                        : [],
                     )
-                    .map(pattern => (
+                    .map((pattern) => (
                       <RadioButton
                         labelText={pattern.title}
                         value={pattern.id}
@@ -238,14 +240,14 @@ class PatternForm extends Component {
                   name="zones"
                   tooltip={{
                     content:
-                      "Availability zones reduce single points of failure by each being an additional copy of the resource."
+                      "Availability zones reduce single points of failure by each being an additional copy of the resource.",
                   }}
                   helperText={
                     this.state.pattern === ""
                       ? "Select a deployable architecture to edit availability zones"
                       : this.state.pattern === "custom"
-                      ? "Availability zones must be changed manually for custom deployments"
-                      : ""
+                        ? "Availability zones must be changed manually for custom deployments"
+                        : ""
                   }
                 />
               </SlzFormGroup>

@@ -4,11 +4,11 @@ import {
   SubnetNameDropdown,
   VpcSelect,
   SlzFormGroup,
-  SlzNameInput
+  SlzNameInput,
 } from "../../icse/index.js";
 import {
   buildFormDefaultInputMethods,
-  buildFormFunctions
+  buildFormFunctions,
 } from "../../component-utils.js";
 import { stateInit } from "../../../lib/index.js";
 import PropTypes from "prop-types";
@@ -33,7 +33,7 @@ class VpnGatewayForm extends Component {
     if (event.target.name === "vpc_name") {
       this.setState({
         vpc_name: event.target.value,
-        subnet_name: ""
+        subnet_name: "",
       });
     } else {
       this.setState(this.eventTargetToNameAndValue(event));
@@ -95,9 +95,9 @@ VpnGatewayForm.defaultProps = {
     name: "",
     resource_group: "",
     vpc_name: "",
-    subnet_name: null
+    subnet_name: null,
   },
-  isModal: false
+  isModal: false,
 };
 
 VpnGatewayForm.propTypes = {
@@ -105,10 +105,10 @@ VpnGatewayForm.propTypes = {
     name: PropTypes.string.isRequired,
     resource_group: PropTypes.string, // can be null
     vpc_name: PropTypes.string, // can be null
-    subnet_name: PropTypes.string // can be null
+    subnet_name: PropTypes.string, // can be null
   }).isRequired,
   slz: PropTypes.shape({}).isRequired,
-  isModal: PropTypes.bool.isRequired
+  isModal: PropTypes.bool.isRequired,
 };
 
 export default VpnGatewayForm;

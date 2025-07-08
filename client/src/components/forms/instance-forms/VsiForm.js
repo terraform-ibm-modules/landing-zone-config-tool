@@ -3,7 +3,7 @@ import { TextArea, TextInput, NumberInput } from "@carbon/react";
 import SecurityGroupForm from "./SecurityGroupForm.js";
 import {
   buildFormDefaultInputMethods,
-  buildFormFunctions
+  buildFormFunctions,
 } from "../../component-utils.js";
 import { stateInit, disableSave, hasInvalidName } from "../../../lib/index.js";
 import { transpose, splat, deepEqual } from "lazy-z";
@@ -25,7 +25,7 @@ import {
   SshKeyMultiSelect,
   SlzToggle,
   FlavorSelect,
-  ImageSelect
+  ImageSelect,
 } from "../../icse/index.js";
 import PropTypes from "prop-types";
 
@@ -39,7 +39,7 @@ class VsiForm extends Component {
     super(props);
     this.state = {
       ...stateInit("vsi", { ...this.props }),
-      hideSecurityGroup: true
+      hideSecurityGroup: true,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleMultiSelectChange = this.handleMultiSelectChange.bind(this);
@@ -58,7 +58,7 @@ class VsiForm extends Component {
   handleInputChange(event) {
     let { name, value } = event.target;
     let stateChangeParams = {
-      [name]: name === "vsi_per_subnet" ? Number(value) : value
+      [name]: name === "vsi_per_subnet" ? Number(value) : value,
     };
     if (name === "vpc_name")
       transpose({ subnet_names: [], subnet_name: "" }, stateChangeParams);
@@ -85,8 +85,8 @@ class VsiForm extends Component {
     this.props.networkRuleOrderDidChange(
       deepEqual(
         splat(rules, "name"),
-        splat([...this.props.data.security_group.rules], "name")
-      )
+        splat([...this.props.data.security_group.rules], "name"),
+      ),
     );
     sg.rules = rules;
     this.setState({ security_group: sg }); // update rules state when an update occurs
@@ -174,10 +174,10 @@ class VsiForm extends Component {
               slz={this.props.slz}
               vpc_name={this.state.vpc_name}
               initialSelectedItems={this.state.subnet_names}
-              onChange={value =>
+              onChange={(value) =>
                 this.handleMultiSelectChange(
                   "subnet_names",
-                  value.selectedItems
+                  value.selectedItems,
                 )
               }
               className="fieldWidthSmaller cds--form-item"
@@ -205,7 +205,9 @@ class VsiForm extends Component {
             id={composedId}
             slz={this.props.slz}
             initialSelectedItems={this.state.ssh_keys}
-            onChange={value => this.handleMultiSelectChange("ssh_keys", value)}
+            onChange={(value) =>
+              this.handleMultiSelectChange("ssh_keys", value)
+            }
           />
           {/* image name */}
           <ImageSelect
@@ -238,7 +240,7 @@ class VsiForm extends Component {
             vpcName={this.state.vpc_name}
             initialSelectedItems={this.state.security_groups}
             className="fieldWidthSmaller cds--form-item"
-            onChange={value =>
+            onChange={(value) =>
               this.handleMultiSelectChange("security_groups", value)
             }
           />
@@ -280,7 +282,7 @@ class VsiForm extends Component {
               type="subHeading"
               tooltip={{
                 content:
-                  "This security group is created and associated specifically to the primary network interface for the virtual server instance. This security group cannot be deleted."
+                  "This security group is created and associated specifically to the primary network interface for the virtual server instance. This security group cannot be deleted.",
               }}
             />
             <StatelessToggleForm
@@ -314,7 +316,7 @@ class VsiForm extends Component {
                     {...hasInvalidName(
                       "security_groups",
                       this.state.security_group.name,
-                      this.props
+                      this.props,
                     )}
                   />
                 </div>
@@ -345,10 +347,10 @@ VsiForm.defaultProps = {
     subnet_names: [],
     enable_floating_ip: false,
     name: "",
-    vpc_name: ""
+    vpc_name: "",
   },
   isModal: false,
-  isTeleport: false
+  isTeleport: false,
 };
 
 VsiForm.propTypes = {
@@ -356,13 +358,13 @@ VsiForm.propTypes = {
   isTeleport: PropTypes.bool.isRequired,
   slz: PropTypes.shape({}).isRequired,
   data: PropTypes.shape({
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
   }).isRequired,
   // only used when not modal
   saveFromChildForm: PropTypes.shape({
     onSave: PropTypes.func.isRequired,
-    disableSave: PropTypes.bool
-  })
+    disableSave: PropTypes.bool,
+  }),
 };
 
 export default VsiForm;

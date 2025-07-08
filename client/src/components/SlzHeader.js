@@ -6,7 +6,7 @@ import {
   HeaderName,
   HeaderMenuButton,
   Modal,
-  Theme
+  Theme,
 } from "@carbon/react";
 import { Reset, Download, Copy, Code, CodeHide } from "@carbon/icons-react";
 import { azsort, keys, prettyJSON } from "lazy-z";
@@ -24,9 +24,18 @@ export const formatConfig = (parent, isCopy, isRender) => {
     // sort fields from a-z to match override.json in landing zone
     keys(parent.props.slz.store.configDotJson)
       .sort(azsort)
-      .forEach(key => {
+      .forEach((key) => {
         // modules that are not exposed in catalog
-        if(key !== "appid" && key !== "f5_template_data" && key !== "f5_vsi" && key !== "teleport_config" && key !== "teleport_vsi" && key !== "iam_account_settings" && key !== "secrets_manager" && key !== "access_groups") {
+        if (
+          key !== "appid" &&
+          key !== "f5_template_data" &&
+          key !== "f5_vsi" &&
+          key !== "teleport_config" &&
+          key !== "teleport_vsi" &&
+          key !== "iam_account_settings" &&
+          key !== "secrets_manager" &&
+          key !== "access_groups"
+        ) {
           newOverrideJson[key] = parent.props.slz.store.configDotJson[key];
         }
       });
@@ -66,7 +75,7 @@ class SlzHeader extends React.Component {
     this.state = {
       fileDownloadUrl: "",
       showModal: false,
-      expanded: false
+      expanded: false,
     };
     this.resetState = this.resetState.bind(this);
     this.copyToClipBoard = this.copyToClipBoard.bind(this);
@@ -161,7 +170,7 @@ class SlzHeader extends React.Component {
             className="hidden" // hidden button to allow download
             download="override.json"
             href={this.state.fileDownloadUrl}
-            ref={e => (this.dofileDownload = e)} // set to the ID of the anchor element
+            ref={(e) => (this.dofileDownload = e)} // set to the ID of the anchor element
           >
             download it
           </a>
@@ -179,7 +188,7 @@ class SlzHeader extends React.Component {
                 window.location.hash = "#/home";
                 this.props.slz.store.pattern = "";
                 this.state.showModal = false;
-                this.setState({show: false});
+                this.setState({ show: false });
                 window.location.reload();
               }}
               onRequestClose={this.onModalClose}

@@ -1,12 +1,16 @@
 import React from "react";
 import {
   buildFormFunctions,
-  buildFormDefaultInputMethods
+  buildFormDefaultInputMethods,
 } from "../../../component-utils.js";
 import { stateInit } from "../../../../lib/index.js";
 import { AccessGroupPolicies } from "../../SlzArrayForms.js";
 import { AccessGroupDynamicPolicies } from "../../SlzArrayForms.js";
-import { SlzTextInput, SlzNameInput, SlzFormGroup } from "../../../icse/index.js";
+import {
+  SlzTextInput,
+  SlzNameInput,
+  SlzFormGroup,
+} from "../../../icse/index.js";
 import PropTypes from "prop-types";
 
 class AccessGroupForm extends React.Component {
@@ -16,7 +20,7 @@ class AccessGroupForm extends React.Component {
     buildFormDefaultInputMethods(this);
 
     this.state = {
-      ...stateInit("access_groups", this.props)
+      ...stateInit("access_groups", this.props),
     };
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -50,7 +54,7 @@ class AccessGroupForm extends React.Component {
             id="description"
             componentName="description"
             tooltip={{
-              content: "Description of the access group"
+              content: "Description of the access group",
             }}
             field="description"
             labelText="Description"
@@ -82,18 +86,18 @@ class AccessGroupForm extends React.Component {
 AccessGroupForm.defaultProps = {
   data: {
     name: "",
-    description: ""
+    description: "",
   },
-  isModal: false
+  isModal: false,
 };
 
 AccessGroupForm.propTypes = {
   data: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired
+    description: PropTypes.string.isRequired,
   }).isRequired,
   slz: PropTypes.shape({}).isRequired,
-  isModal: PropTypes.bool.isRequired
+  isModal: PropTypes.bool.isRequired,
 };
 
 export default AccessGroupForm;

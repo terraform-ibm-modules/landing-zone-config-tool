@@ -2,7 +2,7 @@ import React from "react";
 import {
   checkNullorEmptyString,
   hasInvalidName,
-  vpcFieldCheck
+  vpcFieldCheck,
 } from "../../../lib/index.js";
 import PropTypes from "prop-types";
 import {
@@ -11,18 +11,18 @@ import {
   SlzHeading,
   SlzFormGroup,
   SlzToggle,
-  SlzTextInput
+  SlzTextInput,
 } from "../../icse/index.js";
 import {
   buildFormDefaultInputMethods,
-  buildFormFunctions
+  buildFormFunctions,
 } from "../../component-utils.js";
 import { kebabCase, parseIntFromZone } from "lazy-z";
 
 const nameFields = [
   "default_network_acl_name",
   "default_routing_table_name",
-  "default_security_group_name"
+  "default_security_group_name",
 ];
 
 class VpcNetworkForm extends React.Component {
@@ -78,14 +78,14 @@ class VpcNetworkForm extends React.Component {
               content:
                 "This name will be prepended to all components within this VPC.",
               alignModal: "bottom-left",
-              align: "top-left"
+              align: "top-left",
             }}
             id={composedId + "-prefix"}
             componentName="VPC Network"
             field="Name"
             labelText={"Name"}
             value={this.state.prefix}
-            onChange={event =>
+            onChange={(event) =>
               this.handleInputChange("prefix", event.target.value)
             }
             className={this.props.isModal ? "fieldWidthSmaller" : "fieldWidth"}
@@ -94,7 +94,7 @@ class VpcNetworkForm extends React.Component {
           />
           {/* resource group */}
           <ResourceGroupSelect
-            handleInputChange={event =>
+            handleInputChange={(event) =>
               this.handleInputChange("resource_group", event.target.value)
             }
             className={this.props.isModal ? "fieldWidthSmaller" : "fieldWidth"}
@@ -108,10 +108,10 @@ class VpcNetworkForm extends React.Component {
             name="flow_logs_bucket_name"
             groups={this.props.slz.store.cosBuckets}
             value={this.state.flow_logs_bucket_name || ""}
-            handleInputChange={event =>
+            handleInputChange={(event) =>
               this.handleInputChange(
                 "flow_logs_bucket_name",
-                event.target.value
+                event.target.value,
               )
             }
             className={this.props.isModal ? "fieldWidthSmaller" : "fieldWidth"}
@@ -134,7 +134,7 @@ class VpcNetworkForm extends React.Component {
           />
         </SlzFormGroup>
         <SlzFormGroup>
-          {nameFields.map(field => {
+          {nameFields.map((field) => {
             let invalidName = vpcFieldCheck(field, this.state, this.props);
             if (checkNullorEmptyString(this.state[field])) {
               invalidName.invalid = false;
@@ -150,7 +150,7 @@ class VpcNetworkForm extends React.Component {
                   field={field}
                   labelText={field}
                   value={this.state[field]}
-                  onChange={event =>
+                  onChange={(event) =>
                     this.handleInputChange(field, event.target.value)
                   }
                   className={
@@ -168,12 +168,12 @@ class VpcNetworkForm extends React.Component {
           type="subHeading"
           tooltip={{
             content:
-              "Public gateways allow for all resources in a zone to communicate with the public internet. Public gateways are not needed for subnets where a VPN gateway is created."
+              "Public gateways allow for all resources in a zone to communicate with the public internet. Public gateways are not needed for subnets where a VPN gateway is created.",
           }}
         />
         <SlzFormGroup noMarginBottom>
           {/* for each zone build a toggle */}
-          {["zone-1", "zone-2", "zone-3"].map(zone => (
+          {["zone-1", "zone-2", "zone-3"].map((zone) => (
             <SlzToggle
               key={this.props.data.prefix + "-gateway-toggle-" + zone}
               id={this.props.data.prefix + "-pgw-" + zone}
@@ -204,9 +204,9 @@ VpcNetworkForm.defaultProps = {
     use_public_gateways: {
       "zone-1": false,
       "zone-2": false,
-      "zone-3": false
-    }
-  }
+      "zone-3": false,
+    },
+  },
 };
 
 VpcNetworkForm.propTypes = {
@@ -218,8 +218,8 @@ VpcNetworkForm.propTypes = {
     default_security_group_name: PropTypes.string,
     default_routing_table_name: PropTypes.string,
     classic_access: PropTypes.bool.isRequired,
-    use_public_gateways: PropTypes.object.isRequired
-  })
+    use_public_gateways: PropTypes.object.isRequired,
+  }),
 };
 
 export default VpcNetworkForm;

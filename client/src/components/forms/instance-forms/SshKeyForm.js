@@ -2,11 +2,15 @@ import React, { Component } from "react";
 import { TextInput } from "@carbon/react";
 import {
   buildFormDefaultInputMethods,
-  buildFormFunctions
+  buildFormFunctions,
 } from "../../component-utils.js";
 import { hasInvalidSshPublicKey } from "../../../lib/index.js";
 import PropTypes from "prop-types";
-import { SlzNameInput, SlzFormGroup, ResourceGroupSelect } from "../../icse/index.js";
+import {
+  SlzNameInput,
+  SlzFormGroup,
+  ResourceGroupSelect,
+} from "../../icse/index.js";
 
 /**
  * ssh key form
@@ -51,15 +55,17 @@ class SSHKeyForm extends Component {
         </SlzFormGroup>
         <SlzFormGroup noMarginBottom>
           <div className="textInputWide leftTextAlign">
-            <form><TextInput.PasswordInput
-              labelText="Public Key"
-              name="public_key"
-              autoComplete="public_key"
-              id={this.props.data.name + "-ssh-public-key"}
-              {...invalidPublicKey}
-              value={this.state.public_key}
-              onChange={this.handleInputChange}
-            /></form>
+            <form>
+              <TextInput.PasswordInput
+                labelText="Public Key"
+                name="public_key"
+                autoComplete="public_key"
+                id={this.props.data.name + "-ssh-public-key"}
+                {...invalidPublicKey}
+                value={this.state.public_key}
+                onChange={this.handleInputChange}
+              />
+            </form>
           </div>
         </SlzFormGroup>
       </>
@@ -71,19 +77,19 @@ SSHKeyForm.defaultProps = {
   data: {
     name: "",
     resource_group: "",
-    public_key: ""
+    public_key: "",
   },
-  isModal: false
+  isModal: false,
 };
 
 SSHKeyForm.propTypes = {
   data: PropTypes.shape({
     name: PropTypes.string.isRequired,
     resource_group: PropTypes.string,
-    public_key: PropTypes.string.isRequired
+    public_key: PropTypes.string.isRequired,
   }).isRequired,
   slz: PropTypes.shape({}).isRequired,
-  isModal: PropTypes.bool.isRequired
+  isModal: PropTypes.bool.isRequired,
 };
 
 export default SSHKeyForm;

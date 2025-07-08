@@ -17,7 +17,7 @@ class SlzTabPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tabIndex: 0
+      tabIndex: 0,
     };
     this.setSelectedIndex = this.setSelectedIndex.bind(this);
   }
@@ -44,16 +44,16 @@ class SlzTabPanel extends React.Component {
         "Teleport VSI",
         "Claims to Roles",
         "Network access control lists", // prevent rendering on nacl inner form
-        undefined // prevent rendering on subnet tier inner form
+        undefined, // prevent rendering on subnet tier inner form
         // neither of those forms is a top level component but
         // each behaves like one.
       ],
-      this.props.name
+      this.props.name,
     );
 
     let hasBuiltInHeading = contains(
       ["network access control lists"], // prevent double rendering of heading for nacl
-      this.props.name
+      this.props.name,
     );
 
     return (
@@ -111,7 +111,7 @@ class SlzTabPanel extends React.Component {
 
 SlzTabPanel.defaultProps = {
   subHeading: false,
-  hideFormTitleButton: false
+  hideFormTitleButton: false,
 };
 
 SlzTabPanel.propTypes = {
@@ -123,7 +123,7 @@ SlzTabPanel.propTypes = {
   onClick: PropTypes.func, // can be null
   shouldDisableSave: PropTypes.func, // can be null
   about: PropTypes.node, // can be null
-  form: PropTypes.node.isRequired
+  form: PropTypes.node.isRequired,
 };
 
 export default SlzTabPanel;

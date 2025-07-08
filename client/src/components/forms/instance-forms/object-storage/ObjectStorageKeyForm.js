@@ -3,11 +3,11 @@ import {
   SlzSelect,
   SlzFormGroup,
   SlzToggle,
-  SlzNameInput
+  SlzNameInput,
 } from "../../../icse/index.js";
 import {
   buildFormDefaultInputMethods,
-  buildFormFunctions
+  buildFormFunctions,
 } from "../../../component-utils.js";
 import { parentHasRandomSuffix } from "../../../../lib/form-utils.js";
 import PropTypes from "prop-types";
@@ -18,7 +18,7 @@ class ObjectStorageKeyForm extends Component {
     this.state = {
       name: this.props.data.name,
       role: this.props.data.role || "Writer",
-      enable_HMAC: this.props.data.enable_HMAC
+      enable_HMAC: this.props.data.enable_HMAC,
     };
     buildFormFunctions(this);
     buildFormDefaultInputMethods(this);
@@ -73,7 +73,7 @@ class ObjectStorageKeyForm extends Component {
               "Content Reader",
               "Reader",
               "Writer",
-              "Manager"
+              "Manager",
             ]}
             value={this.state.role}
             labelText="Role"
@@ -83,10 +83,9 @@ class ObjectStorageKeyForm extends Component {
           {/* use hmac */}
           <SlzToggle
             tooltip={{
-              link:
-                "https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-uhc-hmac-credentials-main",
+              link: "https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-uhc-hmac-credentials-main",
               content:
-                "HMAC (hash-based message authentication code) is required for Teleport VSI instances."
+                "HMAC (hash-based message authentication code) is required for Teleport VSI instances.",
             }}
             id={composedId + "cos-instance-key-hmac"}
             labelText="Enable HMAC"
@@ -106,8 +105,8 @@ class ObjectStorageKeyForm extends Component {
 ObjectStorageKeyForm.defaultProps = {
   data: {
     name: "",
-    enable_HMAC: false
-  }
+    enable_HMAC: false,
+  },
 };
 
 ObjectStorageKeyForm.propTypes = {
@@ -116,7 +115,7 @@ ObjectStorageKeyForm.propTypes = {
   data: PropTypes.shape({
     enable_HMAC: PropTypes.bool.isRequired,
     name: PropTypes.string.isRequired,
-    role: PropTypes.string
+    role: PropTypes.string,
   }),
   shouldDisableSave: PropTypes.func,
   shouldDisableSubmit: PropTypes.func,
@@ -124,10 +123,10 @@ ObjectStorageKeyForm.propTypes = {
   slz: PropTypes.shape({
     store: PropTypes.shape({
       configDotJson: PropTypes.shape({
-        cos: PropTypes.array.isRequired
-      })
-    })
-  })
+        cos: PropTypes.array.isRequired,
+      }),
+    }),
+  }),
 };
 
 export default ObjectStorageKeyForm;

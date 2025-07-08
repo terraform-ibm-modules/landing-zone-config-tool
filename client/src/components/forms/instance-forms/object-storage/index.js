@@ -5,5 +5,5 @@ import ObjectStorageKeyForm from "./ObjectStorageKeyForm.js";
 export {
   ObjectStorageBucketForm,
   ObjectStorageInstancesForm,
-  ObjectStorageKeyForm
+  ObjectStorageKeyForm,
 };

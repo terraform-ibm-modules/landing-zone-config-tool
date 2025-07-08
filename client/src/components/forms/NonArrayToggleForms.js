@@ -5,7 +5,7 @@ import {
   IamAccountSettingsForm,
   KeyManagementForm,
   SecretsManagerForm,
-  TransitGatewayForm
+  TransitGatewayForm,
 } from "./instance-forms/index.js";
 import { EncryptionKeys } from "./SlzArrayForms.js";
 import {
@@ -16,13 +16,13 @@ import {
   TeleportDocs,
   SecretsManagerDocs,
   AppIdDocs,
-  F5Docs
+  F5Docs,
 } from "./SlzDocs.js";
 import TeleportBastionHost from "./TeleportBastionHost.js";
 import PropTypes from "prop-types";
 import { SlzTabPanel, EmptyResourceTile, ToggleForm } from "../icse/index.js";
 
-export const KeyManagement = props => {
+export const KeyManagement = (props) => {
   return (
     <ToggleForm
       name={props.slz.store.configDotJson.key_management.name}
@@ -35,7 +35,7 @@ export const KeyManagement = props => {
       noDeleteButton
       tabPanel={{
         name: "key management",
-        hideFormTitleButton: true
+        hideFormTitleButton: true,
       }}
     >
       <EncryptionKeys slz={props.slz} />
@@ -49,18 +49,18 @@ KeyManagement.propTypes = {
     store: PropTypes.shape({
       configDotJson: PropTypes.shape({
         key_management: PropTypes.shape({
-          name: PropTypes.string.isRequired
-        }).isRequired
-      }).isRequired
+          name: PropTypes.string.isRequired,
+        }).isRequired,
+      }).isRequired,
     }).isRequired,
     // function data
     key_management: PropTypes.shape({
-      save: PropTypes.func.isRequired
-    }).isRequired
-  }).isRequired
+      save: PropTypes.func.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
-export const TransitGateway = props => {
+export const TransitGateway = (props) => {
   return (
     <ToggleForm
       name={props.slz.store.prefix + "-transit-gateway"}
@@ -72,7 +72,7 @@ export const TransitGateway = props => {
       noDeleteButton
       tabPanel={{
         name: "transit gateway",
-        hideFormTitleButton: true
+        hideFormTitleButton: true,
       }}
     />
   );
@@ -82,16 +82,16 @@ TransitGateway.propTypes = {
   slz: PropTypes.shape({
     // store data
     store: PropTypes.shape({
-      prefix: PropTypes.string.isRequired
+      prefix: PropTypes.string.isRequired,
     }).isRequired,
     // function data
     transit_gateway: PropTypes.shape({
-      save: PropTypes.func.isRequired
-    }).isRequired
-  }).isRequired
+      save: PropTypes.func.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
-export const Atracker = props => {
+export const Atracker = (props) => {
   return (
     <ToggleForm
       name={props.slz.store.prefix + "-atracker"}
@@ -103,7 +103,7 @@ export const Atracker = props => {
       noDeleteButton
       tabPanel={{
         name: "Activity Tracker",
-        hideFormTitleButton: true
+        hideFormTitleButton: true,
       }}
     />
   );
@@ -113,16 +113,16 @@ Atracker.propTypes = {
   slz: PropTypes.shape({
     // store data
     store: PropTypes.shape({
-      prefix: PropTypes.string.isRequired
+      prefix: PropTypes.string.isRequired,
     }).isRequired,
     // function data
     atracker: PropTypes.shape({
-      save: PropTypes.func.isRequired
-    }).isRequired
-  }).isRequired
+      save: PropTypes.func.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
-export const AppId = props => {
+export const AppId = (props) => {
   return (
     <ToggleForm
       name={
@@ -140,9 +140,9 @@ export const AppId = props => {
             name: stateData.name,
             resource_group: stateData.resource_group,
             use_data: stateData.use_data,
-            keys: stateData.keys
+            keys: stateData.keys,
           },
-          componentProps
+          componentProps,
         )
       }
       onDelete={() => {
@@ -150,7 +150,7 @@ export const AppId = props => {
       }}
       tabPanel={{
         name: "App ID",
-        hideFormTitleButton: true
+        hideFormTitleButton: true,
       }}
       useAddButton={props.slz.store.configDotJson.appid.use_appid === false}
     />
@@ -164,18 +164,18 @@ AppId.propTypes = {
       configDotJson: PropTypes.shape({
         appid: PropTypes.shape({
           name: PropTypes.string, // can be null
-          use_appid: PropTypes.bool.isRequired
-        }).isRequired
-      }).isRequired
+          use_appid: PropTypes.bool.isRequired,
+        }).isRequired,
+      }).isRequired,
     }).isRequired,
     // function data
     appid: PropTypes.shape({
-      save: PropTypes.func.isRequired
-    }).isRequired
-  }).isRequired
+      save: PropTypes.func.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
-export const F5BigIp = props => {
+export const F5BigIp = (props) => {
   return props.slz.store.edge_pattern ? (
     <ToggleForm
       slz={props.slz}
@@ -188,7 +188,7 @@ export const F5BigIp = props => {
       submissionFieldName="f5_template_data"
       tabPanel={{
         name: "F5 Big IP",
-        hideFormTitleButton: true
+        hideFormTitleButton: true,
       }}
     />
   ) : (
@@ -210,12 +210,12 @@ export const F5BigIp = props => {
 F5BigIp.propTypes = {
   slz: PropTypes.shape({
     store: PropTypes.shape({
-      edge_pattern: PropTypes.string
-    }).isRequired
-  }).isRequired
+      edge_pattern: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
 };
 
-export const Teleport = props => {
+export const Teleport = (props) => {
   return props.slz.store.configDotJson.appid.use_appid ? (
     <ToggleForm
       name={
@@ -230,13 +230,13 @@ export const Teleport = props => {
       onSave={props.slz.teleport_config.save}
       onDelete={() =>
         props.slz.teleport_config.save({
-          enableTeleport: false
+          enableTeleport: false,
         })
       }
       noSaveButton
       tabPanel={{
         name: "Teleport Bastion Host",
-        hideFormTitleButton: true
+        hideFormTitleButton: true,
       }}
       useAddButton={props.slz.store.enableTeleport === false}
     />
@@ -260,16 +260,16 @@ Teleport.propTypes = {
   slz: PropTypes.shape({
     // store data
     store: PropTypes.shape({
-      enableTeleport: PropTypes.bool.isRequired
+      enableTeleport: PropTypes.bool.isRequired,
     }).isRequired,
     // function data
     teleport_config: PropTypes.shape({
-      save: PropTypes.func.isRequired
-    }).isRequired
-  }).isRequired
+      save: PropTypes.func.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
-export const IamAccountSettings = props => {
+export const IamAccountSettings = (props) => {
   let notEnabled =
     props.slz.store.configDotJson.iam_account_settings.enable === false;
   return (
@@ -288,7 +288,7 @@ export const IamAccountSettings = props => {
       useAddButton={notEnabled}
       tabPanel={{
         name: "IAM Account Settings",
-        hideFormTitleButton: true
+        hideFormTitleButton: true,
       }}
     />
   );
@@ -300,18 +300,18 @@ IamAccountSettings.propTypes = {
     store: PropTypes.shape({
       configDotJson: PropTypes.shape({
         iam_account_settings: PropTypes.shape({
-          enable: PropTypes.bool.isRequired
-        }).isRequired
-      }).isRequired
+          enable: PropTypes.bool.isRequired,
+        }).isRequired,
+      }).isRequired,
     }).isRequired,
     // function data
     iam_account_settings: PropTypes.shape({
-      save: PropTypes.func.isRequired
-    }).isRequired
-  }).isRequired
+      save: PropTypes.func.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
-export const SecretsManager = props => {
+export const SecretsManager = (props) => {
   let notEnabled =
     props.slz.store.configDotJson.secrets_manager.use_secrets_manager === false;
   return (
@@ -328,11 +328,11 @@ export const SecretsManager = props => {
       submissionFieldName="secrets_manager"
       tabPanel={{
         name: "Secrets Manager",
-        hideFormTitleButton: true
+        hideFormTitleButton: true,
       }}
       onDelete={() =>
         props.slz.secrets_manager.save({
-          use_secrets_manager: false
+          use_secrets_manager: false,
         })
       }
       useAddButton={notEnabled}
@@ -347,13 +347,13 @@ SecretsManager.propTypes = {
       configDotJson: PropTypes.shape({
         secrets_manager: PropTypes.shape({
           use_secrets_manager: PropTypes.bool.isRequired,
-          name: PropTypes.string // can be null
-        }).isRequired
-      }).isRequired
+          name: PropTypes.string, // can be null
+        }).isRequired,
+      }).isRequired,
     }).isRequired,
     // function data
     secrets_manager: PropTypes.shape({
-      save: PropTypes.func.isRequired
-    }).isRequired
-  }).isRequired
+      save: PropTypes.func.isRequired,
+    }).isRequired,
+  }).isRequired,
 };

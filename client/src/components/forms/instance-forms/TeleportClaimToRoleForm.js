@@ -10,7 +10,7 @@ class TeleportClaimToRoleForm extends Component {
     this.state = {
       show: this.props.show,
       email: this.props.data.email,
-      roles: this.props.data.roles || ["teleport-admin"]
+      roles: this.props.data.roles || ["teleport-admin"],
     };
     this.onChangeTextInput = this.onChangeTextInput.bind(this);
     this.handleShowToggle = this.handleShowToggle.bind(this);
@@ -59,7 +59,7 @@ class TeleportClaimToRoleForm extends Component {
             labelText="Email"
             invalid={this.state.email.match(emailValidationExp) === null}
             value={this.state.email}
-            onChange={event =>
+            onChange={(event) =>
               this.onChangeTextInput("email", event.target.value)
             }
             className="fieldWidth"
@@ -70,7 +70,7 @@ class TeleportClaimToRoleForm extends Component {
             field="roles"
             labelText="Roles"
             value={this.state.roles[0] || ""}
-            onChange={event =>
+            onChange={(event) =>
               this.onChangeTextInput("roles", event.target.value)
             }
             invalid={
@@ -90,17 +90,17 @@ class TeleportClaimToRoleForm extends Component {
 TeleportClaimToRoleForm.defaultProps = {
   data: {
     email: "",
-    roles: []
+    roles: [],
   },
-  show: false
+  show: false,
 };
 
 TeleportClaimToRoleForm.propTypes = {
   show: PropTypes.bool.isRequired,
   data: PropTypes.shape({
     email: PropTypes.string.isRequired,
-    roles: PropTypes.array.isRequired
-  }).isRequired
+    roles: PropTypes.array.isRequired,
+  }).isRequired,
 };
 
 export default TeleportClaimToRoleForm;
