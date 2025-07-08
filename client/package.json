@@ -12,26 +12,26 @@
     "node": "20.19.3"
   },
   "scripts": {
-    "build": "craco build",
+    "build": "vite build",
+    "start": "vite",
+    "serve": "vite preview",
     "ci-check": "npm run format:diff",
-    "clean": "yarn cache clean && yarn install",
-    "eject": "craco eject",
     "format": "prettier --write \"**/*.{js,md,scss}\"",
     "format:diff": "prettier --list-different \"**/*.{js,md,scss}\"",
     "format:staged": "prettier --write",
-    "start": "NODE_ENV=development PORT=3000 craco start",
-    "test": "craco test",
-    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@carbon/icons-react": "11.62.0",
     "@carbon/react": "1.85.1",
+    "@carbon/styles": "1.84.0",
     "@codemirror/lang-javascript": "6.2.4",
+    "@lezer/highlight": "1.2.1",
     "@uiw/codemirror-themes": "4.23.14",
     "@uiw/react-codemirror": "4.23.14",
     "gh-pages": "6.3.0",
     "lazy-z": "1.12.1",
+    "prop-types": "15.8.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-is": "18.3.1",
@@ -40,9 +40,9 @@
     "sass": "1.89.2"
   },
   "devDependencies": {
-    "@craco/craco": "7.1.0",
+    "@vitejs/plugin-react": "4.6.0",
     "prettier": "3.6.2",
-    "react-scripts": "5.0.1"
+    "vite": "7.0.3"
   },
   "overrides": {
     "express": "4.21.2",
