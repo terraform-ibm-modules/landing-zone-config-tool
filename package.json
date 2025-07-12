@@ -20,7 +20,7 @@
     "lazy-z": "1.12.1"
   },
   "devDependencies": {
-    "chai": "5.2.0",
+    "chai": "5.2.1",
     "mocha": "10.8.2",
     "nyc": "17.1.0"
   },
