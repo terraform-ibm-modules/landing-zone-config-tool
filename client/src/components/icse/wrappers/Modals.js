@@ -16,7 +16,7 @@ import PropTypes from "prop-types";
  * @param {string} props.type can be `delete` or `unsaved` defaults to `unsaved`
  * @param {boolean=} props.useAddButton use + button instead of edit
  */
-export const SlzModal = props => {
+export const SlzModal = (props) => {
   let name = <strong>{props.name}</strong>;
   return (
     <Modal
@@ -77,7 +77,7 @@ SlzModal.defaultProps = {
   heading: "Unsaved Changes",
   useAddButton: false,
   type: "unsaved",
-  id: "default-slz-modal"
+  id: "default-slz-modal",
 };
 
 SlzModal.propTypes = {
@@ -92,7 +92,7 @@ SlzModal.propTypes = {
   onRequestSubmit: PropTypes.func.isRequired,
   onRequestClose: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
-  open: PropTypes.bool.isRequired
+  open: PropTypes.bool.isRequired,
 };
 
 /**
@@ -103,7 +103,7 @@ SlzModal.propTypes = {
  * @param {Function} props.onModalClose function for on close
  * @param {Function} props.onModalSubmit function for on submit
  */
-export const DeleteModal = props => {
+export const DeleteModal = (props) => {
   return (
     <SlzModal
       id={props.name + "-delete"}
@@ -119,14 +119,14 @@ export const DeleteModal = props => {
 };
 
 DeleteModal.defaultProps = {
-  modalOpen: false
+  modalOpen: false,
 };
 
 DeleteModal.propTypes = {
   name: PropTypes.string.isRequired,
   modalOpen: PropTypes.bool.isRequired,
   onModalClose: PropTypes.func.isRequired,
-  onModalSubmit: PropTypes.func.isRequired
+  onModalSubmit: PropTypes.func.isRequired,
 };
 
 /**
@@ -138,7 +138,7 @@ DeleteModal.propTypes = {
  * @param {Function} props.onModalSubmit function for on submit
  */
 
-export const UnsavedChangesModal = props => {
+export const UnsavedChangesModal = (props) => {
   return (
     <div className="unsaved-changes-modal-area">
       <SlzModal
@@ -155,7 +155,7 @@ export const UnsavedChangesModal = props => {
 
 UnsavedChangesModal.defaultProps = {
   modalOpen: false,
-  useDefaultUnsavedMessage: true
+  useDefaultUnsavedMessage: true,
 };
 
 UnsavedChangesModal.propTypes = {
@@ -163,5 +163,5 @@ UnsavedChangesModal.propTypes = {
   modalOpen: PropTypes.bool.isRequired,
   onModalClose: PropTypes.func.isRequired,
   onModalSubmit: PropTypes.func.isRequired,
-  useDefaultUnsavedMessage: PropTypes.bool
+  useDefaultUnsavedMessage: PropTypes.bool,
 };

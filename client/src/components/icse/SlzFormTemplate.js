@@ -12,7 +12,7 @@ class SlzFormTemplate extends Component {
     this.state = {
       showModal: false,
       shownArrayForms: [], // list of array forms to keep open on save
-      shownChildForms: [] // list of child forms to keep open on save
+      shownChildForms: [], // list of child forms to keep open on save
     };
     this.onChildToggle = this.onChildToggle.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
@@ -114,14 +114,14 @@ class SlzFormTemplate extends Component {
                         this.props.parentToggle.shownChildren[
                           this.props.parentToggle.index
                         ],
-                        index
+                        index,
                       ) // show children
                     : contains(this.state.shownArrayForms, index),
                   shownChildren: this.state.shownChildForms,
-                  addText: this.props.addText
+                  addText: this.props.addText,
                 };
                 // set onSave and onDelete methods to child component
-                ["onSave", "onDelete"].forEach(dataField => {
+                ["onSave", "onDelete"].forEach((dataField) => {
                   if (this.props[dataField])
                     mapData[dataField] = this.props[dataField];
                 });
@@ -135,34 +135,39 @@ class SlzFormTemplate extends Component {
                 onRequestClose={this.toggleModal}
                 arrayParentName={this.props.arrayParentName}
               >
-                {// render the form inside the modal
-                RenderForm(this.props.innerForm, {
-                  slz: this.props.slz,
-                  enableSubmitField: enableSubmitField,
-                  isTeleport: this.props.isTeleport,
-                  arrayParentName: this.props.arrayParentName,
-                  isModal: true,
-                  cluster: this.props.cluster,
-                  shouldDisableSubmit: function() {
-                    // references to `this` in funtion are intentionally vague
-                    // in order to pass the correct funtions and field values to the
-                    // child modal component
-                    // by passing `this` in a function that it scoped to the component
-                    // we allow the function to be successfully bound to the modal form
-                    // while still referencing the local value `enableSubmitField`
-                    // to use it's own values for state and props including enableModal
-                    // and disableModal, which are dynamically added to the component
-                    // at time of render
-                    if (
-                      disableSave(enableSubmitField, this.state, this.props) ===
-                      false
-                    ) {
-                      this.props.enableModal();
-                    } else {
-                      this.props.disableModal();
-                    }
-                  }
-                })}
+                {
+                  // render the form inside the modal
+                  RenderForm(this.props.innerForm, {
+                    slz: this.props.slz,
+                    enableSubmitField: enableSubmitField,
+                    isTeleport: this.props.isTeleport,
+                    arrayParentName: this.props.arrayParentName,
+                    isModal: true,
+                    cluster: this.props.cluster,
+                    shouldDisableSubmit: function () {
+                      // references to `this` in funtion are intentionally vague
+                      // in order to pass the correct funtions and field values to the
+                      // child modal component
+                      // by passing `this` in a function that it scoped to the component
+                      // we allow the function to be successfully bound to the modal form
+                      // while still referencing the local value `enableSubmitField`
+                      // to use it's own values for state and props including enableModal
+                      // and disableModal, which are dynamically added to the component
+                      // at time of render
+                      if (
+                        disableSave(
+                          enableSubmitField,
+                          this.state,
+                          this.props,
+                        ) === false
+                      ) {
+                        this.props.enableModal();
+                      } else {
+                        this.props.disableModal();
+                      }
+                    },
+                  })
+                }
               </InstanceFormModal>
             </>
           }
@@ -177,7 +182,7 @@ SlzFormTemplate.defaultProps = {
   hideFormTitleButton: false,
   subHeading: false,
   arrayParentName: null,
-  isTeleport: false
+  isTeleport: false,
 };
 
 SlzFormTemplate.propTypes = {
@@ -187,7 +192,7 @@ SlzFormTemplate.propTypes = {
     // used to track open and closed acls
     callback: PropTypes.func.isRequired,
     shownChildren: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number))
-      .isRequired
+      .isRequired,
   }),
   onSubmit: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
@@ -201,7 +206,7 @@ SlzFormTemplate.propTypes = {
   tooltip: PropTypes.object, // used only for cos keys
   slz: PropTypes.shape({}).isRequired,
   arrayParentName: PropTypes.string,
-  cluster: PropTypes.object // used for worker pools
+  cluster: PropTypes.object, // used for worker pools
 };
 
 export default SlzFormTemplate;

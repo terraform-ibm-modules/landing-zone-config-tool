@@ -18,7 +18,7 @@ import {
   TeleportClaimToRoleForm,
   AccessGroupForm,
   AccessGroupPolicyForm,
-  AccessGroupDynamicPolicyForm
+  AccessGroupDynamicPolicyForm,
 } from "./instance-forms/index.js";
 import {
   AccessGroupDocs,
@@ -31,13 +31,13 @@ import {
   ClusterDocs,
   SshKeysDocs,
   SecurityGroupsDocs,
-  AclDocs
+  AclDocs,
 } from "./SlzDocs.js";
 import VpcNaclForm from "./VpcNaclForm.js";
 import {
   getFormCrudOperations,
   getSlzArrayFormArrayData,
-  toggleFormComponentName
+  toggleFormComponentName,
 } from "../../lib/index.js";
 import PropTypes from "prop-types";
 
@@ -54,7 +54,7 @@ import PropTypes from "prop-types";
  * @param {slzStoreField} props.slz slz state store
  * @param {ReactElement} props.form form element
  */
-const SlzArrayForm = props => {
+const SlzArrayForm = (props) => {
   // get submission field name for enableSubmit and disableSave
   let submissionFieldName = props.enableSubmitField || props.configDotJsonField;
   // params for form template
@@ -72,7 +72,7 @@ const SlzArrayForm = props => {
     cluster: props.cluster, // cluster for worker pools
     docs: props.docs, // docs
     tooltip: props.tooltip, // tooltip
-    parentToggle: props.parentToggle // keep nacl open callback
+    parentToggle: props.parentToggle, // keep nacl open callback
   };
   // params for inner form
   let innerFormParams = {
@@ -83,7 +83,7 @@ const SlzArrayForm = props => {
     cluster: props.cluster, // cluster for worker pools
     isTeleport: props.isTeleport, // is teleport for vsi
     addText: props.addText, // add text
-    addButtonAtFormTitle: props.addButtonAtFormTitle // add button for nacl form
+    addButtonAtFormTitle: props.addButtonAtFormTitle, // add button for nacl form
   };
   return (
     <SlzFormTemplate
@@ -111,7 +111,7 @@ SlzArrayForm.defaultProps = {
   hideFormTitleButton: false,
   subHeading: false,
   isTeleport: false,
-  addButtonAtFormTitle: false
+  addButtonAtFormTitle: false,
 };
 
 SlzArrayForm.propTypes = {
@@ -140,16 +140,16 @@ SlzArrayForm.propTypes = {
       worker_pools: PropTypes.shape({
         create: PropTypes.func.isRequired,
         save: PropTypes.func.isRequired,
-        delete: PropTypes.func.isRequired
-      }).isRequired
+        delete: PropTypes.func.isRequired,
+      }).isRequired,
     }).isRequired,
     key_management: PropTypes.shape({
       // kms key functions
       keys: PropTypes.shape({
         create: PropTypes.func.isRequired,
         save: PropTypes.func.isRequired,
-        delete: PropTypes.func.isRequired
-      }).isRequired
+        delete: PropTypes.func.isRequired,
+      }).isRequired,
     }).isRequired,
     // cos
     cos: PropTypes.shape({
@@ -160,40 +160,40 @@ SlzArrayForm.propTypes = {
       buckets: PropTypes.shape({
         create: PropTypes.func.isRequired,
         save: PropTypes.func.isRequired,
-        delete: PropTypes.func.isRequired
+        delete: PropTypes.func.isRequired,
       }).isRequired,
       // keys
       keys: PropTypes.shape({
         create: PropTypes.func.isRequired,
         save: PropTypes.func.isRequired,
-        delete: PropTypes.func.isRequired
-      }).isRequired
+        delete: PropTypes.func.isRequired,
+      }).isRequired,
     }).isRequired,
     // resource gorups
     resource_groups: PropTypes.shape({
       create: PropTypes.func.isRequired,
       save: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }).isRequired,
     // security groups
     security_groups: PropTypes.shape({
       create: PropTypes.func.isRequired,
       save: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }).isRequired,
     // ssh keys
     ssh_keys: PropTypes.shape({
       create: PropTypes.func.isRequired,
       save: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }).isRequired,
     // teleport claims to rules
     teleport_config: PropTypes.shape({
       claims_to_roles: PropTypes.shape({
         create: PropTypes.func.isRequired,
         save: PropTypes.func.isRequired,
-        delete: PropTypes.func.isRequired
-      }).isRequired
+        delete: PropTypes.func.isRequired,
+      }).isRequired,
     }).isRequired,
     // vpcs
     vpcs: PropTypes.shape({
@@ -204,32 +204,32 @@ SlzArrayForm.propTypes = {
       network_acls: PropTypes.shape({
         create: PropTypes.func.isRequired,
         save: PropTypes.func.isRequired,
-        delete: PropTypes.func.isRequired
-      }).isRequired
+        delete: PropTypes.func.isRequired,
+      }).isRequired,
     }).isRequired,
     // vpe
     virtual_private_endpoints: PropTypes.shape({
       create: PropTypes.func.isRequired,
       save: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }).isRequired,
     // vpn
     vpn_gateways: PropTypes.shape({
       create: PropTypes.func.isRequired,
       save: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }).isRequired,
     // vsi
     vsi: PropTypes.shape({
       create: PropTypes.func.isRequired,
       save: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }).isRequired,
     // teleport vsi
     teleport_vsi: PropTypes.shape({
       create: PropTypes.func.isRequired,
       save: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }).isRequired,
     // access groups
     access_groups: PropTypes.shape({
@@ -240,23 +240,23 @@ SlzArrayForm.propTypes = {
       policies: PropTypes.shape({
         create: PropTypes.func.isRequired,
         save: PropTypes.func.isRequired,
-        delete: PropTypes.func.isRequired
+        delete: PropTypes.func.isRequired,
       }).isRequired,
       // dynamic policies
       dynamic_policies: PropTypes.shape({
         create: PropTypes.func.isRequired,
         save: PropTypes.func.isRequired,
-        delete: PropTypes.func.isRequired
-      }).isRequired
-    }).isRequired
-  }).isRequired
+        delete: PropTypes.func.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 /**
  * Below are pages that utilize the SlzArrayForm to render
  */
 
-const Clusters = props => {
+const Clusters = (props) => {
   return (
     <SlzArrayForm
       name="clusters"
@@ -278,7 +278,7 @@ const Clusters = props => {
  * @param {string} props.arrayParentName name
  * @returns {SlzFormTemplate} editable array form
  */
-const ClusterWorkerPools = props => {
+const ClusterWorkerPools = (props) => {
   return (
     <SlzArrayForm
       name="Worker pools"
@@ -299,7 +299,7 @@ const ClusterWorkerPools = props => {
  * @param {Object} props
  * @returns {SlzFormTemplate} editable array form
  */
-const EncryptionKeys = props => {
+const EncryptionKeys = (props) => {
   return (
     <SlzArrayForm
       name="encryption keys"
@@ -319,7 +319,7 @@ const EncryptionKeys = props => {
  * @param {Object} props
  * @returns {SlzFormTemplate} editable array form
  */
-const ObjectStorage = props => {
+const ObjectStorage = (props) => {
   return (
     <SlzArrayForm
       name="Object Storage"
@@ -339,7 +339,7 @@ const ObjectStorage = props => {
  * @param {string} props.arrayParentName cos instance name
  * @returns {SlzFormTemplate} editable array form
  */
-const ObjectStorageBuckets = props => {
+const ObjectStorageBuckets = (props) => {
   return (
     <SlzArrayForm
       name="buckets"
@@ -361,7 +361,7 @@ const ObjectStorageBuckets = props => {
  * @param {string} props.arrayParentName cos instance name
  * @returns {SlzFormTemplate} editable array form
  */
-const ObjectStorageKeys = props => {
+const ObjectStorageKeys = (props) => {
   return (
     <SlzArrayForm
       name="service credentials"
@@ -375,8 +375,7 @@ const ObjectStorageKeys = props => {
       tooltip={{
         content:
           "A service credential allows for a service instance to connect to Object Storage.",
-        link:
-          "https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-service-credentials"
+        link: "https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-service-credentials",
       }}
       {...props}
     />
@@ -388,7 +387,7 @@ const ObjectStorageKeys = props => {
  * @param {slzStateStore} props.slz
  * @returns {SlzFormTemplate} editable array form
  */
-const ResourceGroups = props => {
+const ResourceGroups = (props) => {
   return (
     <SlzArrayForm
       name="resource groups"
@@ -407,7 +406,7 @@ const ResourceGroups = props => {
  * @param {slzStateStore} props.slz
  * @returns {SlzFormTemplate} editable array form
  */
-const SecurityGroups = props => {
+const SecurityGroups = (props) => {
   return (
     <SlzArrayForm
       name="security groups"
@@ -426,7 +425,7 @@ const SecurityGroups = props => {
  * @param {slzStateStore} props.slz
  * @returns {SlzFormTemplate} editable array form
  */
-const SshKeys = props => {
+const SshKeys = (props) => {
   return (
     <SlzArrayForm
       name="SSH keys"
@@ -440,7 +439,7 @@ const SshKeys = props => {
   );
 };
 
-const TeleportClaimToRoles = props => {
+const TeleportClaimToRoles = (props) => {
   return (
     <SlzArrayForm
       name="Claims to Roles"
@@ -461,7 +460,7 @@ const TeleportClaimToRoles = props => {
  * @param {slzStateStore} props.slz
  * @returns {SlzFormTemplate} editable array form
  */
-const Vpc = props => {
+const Vpc = (props) => {
   return (
     <SlzArrayForm
       name="virtual private clouds"
@@ -480,7 +479,7 @@ const Vpc = props => {
  * @param {slzStateStore} props.slz
  * @returns {SlzFormTemplate} editable array form
  */
-const VpcAcl = props => {
+const VpcAcl = (props) => {
   return (
     <SlzArrayForm
       name="VPC access control"
@@ -503,7 +502,7 @@ const VpcAcl = props => {
  * @param {string} props.arrayParentName vpc instance name
  * @returns {SlzFormTemplate} editable array form
  */
-const NetworkAcls = props => {
+const NetworkAcls = (props) => {
   return (
     <SlzArrayForm
       name="network access control lists"
@@ -526,7 +525,7 @@ const NetworkAcls = props => {
  * @param {Object} props
  * @returns {SlzFormTemplate} editable array form
  */
-const Vpe = props => {
+const Vpe = (props) => {
   return (
     <SlzArrayForm
       name="virtual private endpoints"
@@ -545,7 +544,7 @@ const Vpe = props => {
  * @returns {SlzFormTemplate} editable array form
  */
 
-const Vpn = props => {
+const Vpn = (props) => {
   return (
     <SlzArrayForm
       name="VPN gateways"
@@ -563,7 +562,7 @@ const Vpn = props => {
  * @param {Object} props
  * @returns {SlzFormTemplate} editable array form
  */
-const Vsi = props => {
+const Vsi = (props) => {
   return (
     <SlzArrayForm
       name="virtual server instance deployments"
@@ -582,7 +581,7 @@ const Vsi = props => {
  * @param {Object} props
  * @returns {SlzFormTemplate} editable array form
  */
-const TeleportVsi = props => {
+const TeleportVsi = (props) => {
   return (
     <SlzArrayForm
       name="Teleport VSI"
@@ -597,7 +596,7 @@ const TeleportVsi = props => {
   );
 };
 
-const AccessGroups = props => {
+const AccessGroups = (props) => {
   return (
     <SlzArrayForm
       name="Access Groups"
@@ -610,7 +609,7 @@ const AccessGroups = props => {
   );
 };
 
-const AccessGroupPolicies = props => {
+const AccessGroupPolicies = (props) => {
   return (
     <SlzArrayForm
       name="Policies"
@@ -626,7 +625,7 @@ const AccessGroupPolicies = props => {
   );
 };
 
-const AccessGroupDynamicPolicies = props => {
+const AccessGroupDynamicPolicies = (props) => {
   return (
     <SlzArrayForm
       name="Dynamic Policies"
@@ -662,5 +661,5 @@ export {
   Vpn,
   AccessGroups,
   AccessGroupPolicies,
-  AccessGroupDynamicPolicies
+  AccessGroupDynamicPolicies,
 };

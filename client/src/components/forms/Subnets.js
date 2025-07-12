@@ -3,7 +3,7 @@ import {
   deepEqual,
   getObjectFromArray,
   isString,
-  splat
+  splat,
 } from "lazy-z";
 import React from "react";
 import { SubnetTierForm } from "./instance-forms/index.js";
@@ -13,7 +13,7 @@ import {
   SaveAddButton,
   SlzTabPanel,
   InstanceFormModal,
-  EmptyResourceTile
+  EmptyResourceTile,
 } from "../icse/index.js";
 import { SubnetDocs } from "./SlzDocs.js";
 import PropTypes from "prop-types";
@@ -30,10 +30,10 @@ class SubnetForm extends React.Component {
       vpcList: [...this.props.slz.store.configDotJson.vpcs],
       lastSaved: {
         vpcIndex: null,
-        tierIndex: null
-      }
+        tierIndex: null,
+      },
     };
-    this.props.slz.store.configDotJson.vpcs.forEach(network => {
+    this.props.slz.store.configDotJson.vpcs.forEach((network) => {
       this.state.vpcs[network.prefix] = { ...network.use_public_gateways };
     });
     this.toggleModal = this.toggleModal.bind(this);
@@ -54,8 +54,8 @@ class SubnetForm extends React.Component {
     this.setState({
       lastSaved: {
         vpcIndex: vpcIndex,
-        tierIndex: tierIndex
-      }
+        tierIndex: tierIndex,
+      },
     });
   }
 
@@ -67,7 +67,7 @@ class SubnetForm extends React.Component {
     let stateFieldName = isVpc ? "shownVpcs" : "shownGateways";
     let shownResources = this.state[stateFieldName];
     if (contains(shownResources, network)) {
-      shownResources = shownResources.filter(value => {
+      shownResources = shownResources.filter((value) => {
         if (value !== network) return value;
       });
     } else {
@@ -101,7 +101,7 @@ class SubnetForm extends React.Component {
 
   onModalSubmit(data) {
     this.props.slz.vpcs.subnetTiers.create(data, {
-      vpc_name: this.state.vpcName
+      vpc_name: this.state.vpcName,
     });
     this.toggleModal();
   }
@@ -114,9 +114,9 @@ class SubnetForm extends React.Component {
         data: getObjectFromArray(
           this.props.slz.store.configDotJson.vpcs,
           "prefix",
-          network
-        )
-      }
+          network,
+        ),
+      },
     );
   }
 
@@ -124,7 +124,7 @@ class SubnetForm extends React.Component {
     let gwProps = getObjectFromArray(
       this.props.slz.store.configDotJson.vpcs,
       "prefix",
-      network
+      network,
     ).use_public_gateways;
     let currentGw = this.state.vpcs[network];
     return deepEqual(gwProps, currentGw);
@@ -161,7 +161,7 @@ class SubnetForm extends React.Component {
               </InstanceFormModal>
 
               {/* render subnet forms for each VPC */}
-              {this.state.vpcList.map(network => (
+              {this.state.vpcList.map((network) => (
                 <div
                   className="subForm marginBottomNone"
                   key={"subnets-" + network.prefix}
@@ -189,12 +189,12 @@ class SubnetForm extends React.Component {
                     <EmptyResourceTile
                       name="Subnet Tiers"
                       showIfEmpty={[
-                        ...this.props.slz.store.subnetTiers[network.prefix]
+                        ...this.props.slz.store.subnetTiers[network.prefix],
                       ]}
                     />
                     {/* render each subnet tier form */}
                     {[...this.props.slz.store.subnetTiers[network.prefix]].map(
-                      tier => (
+                      (tier) => (
                         <SubnetTierForm
                           tier={tier}
                           vpc_name={network.prefix}
@@ -209,27 +209,27 @@ class SubnetForm extends React.Component {
                           slz={this.props.slz}
                           index={splat(
                             this.props.slz.store.subnetTiers[network.prefix],
-                            "name"
+                            "name",
                           ).indexOf(tier.name)}
                           vpcIndex={splat(
                             [...this.props.slz.store.configDotJson.vpcs],
-                            "prefix"
+                            "prefix",
                           ).indexOf(network.prefix)}
                           hide={
                             // force open if last saved and rerender
                             splat(
                               [...this.props.slz.store.configDotJson.vpcs],
-                              "prefix"
+                              "prefix",
                             ).indexOf(network.prefix) !==
                               this.state.lastSaved.vpcIndex &&
                             splat(
                               this.props.slz.store.subnetTiers[network.prefix],
-                              "name"
+                              "name",
                             ).indexOf(tier.name) !==
                               this.state.lastSaved.tierIndex
                           }
                         />
-                      )
+                      ),
                     )}
                   </StatelessToggleForm>
                 </div>
@@ -247,13 +247,13 @@ SubnetForm.propTypes = {
   slz: PropTypes.shape({
     store: PropTypes.shape({
       configDotJson: PropTypes.shape({
-        vpcs: PropTypes.array.isRequired
-      }).isRequired
+        vpcs: PropTypes.array.isRequired,
+      }).isRequired,
     }).isRequired,
     vpcs: PropTypes.shape({
-      save: PropTypes.func.isRequired
-    }).isRequired
-  }).isRequired
+      save: PropTypes.func.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default SubnetForm;
