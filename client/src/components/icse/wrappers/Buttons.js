@@ -9,7 +9,7 @@ import {
   CloseFilled,
   TrashCan,
   ArrowDown,
-  ArrowUp
+  ArrowUp,
 } from "@carbon/icons-react";
 import React from "react";
 import "./icon.css";
@@ -28,7 +28,7 @@ export default function F5Icon() {
  * @param {boolean} props.saveIsDisabled true if disabled
  * @returns Save Icon
  */
-export const SaveIcon = props => {
+export const SaveIcon = (props) => {
   return (
     <Save className={props.saveIsDisabled ? "" : "tertiaryButtonColors"} />
   );
@@ -44,7 +44,7 @@ export const SaveIcon = props => {
  * @param {boolean} props.disabled
  * @returns Save add button
  */
-export const SaveAddButton = props => {
+export const SaveAddButton = (props) => {
   return (
     <PopoverWrapper
       hoverText={
@@ -85,7 +85,7 @@ SaveAddButton.defaultProps = {
   type: "save",
   hoverText: "Save Changes",
   inline: false,
-  disabled: false
+  disabled: false,
 };
 
 SaveAddButton.propTypes = {
@@ -93,7 +93,7 @@ SaveAddButton.propTypes = {
   onClick: PropTypes.func,
   disabled: PropTypes.bool.isRequired,
   type: PropTypes.string.isRequired,
-  inline: PropTypes.bool.isRequired
+  inline: PropTypes.bool.isRequired,
 };
 
 /**
@@ -105,14 +105,14 @@ SaveAddButton.propTypes = {
  * @param {boolean} props.open toggle is open, defaults to false
  * @returns edit close icon
  */
-export const EditCloseIcon = props => {
+export const EditCloseIcon = (props) => {
   let hoverText = props.hoverText
     ? props.hoverText
     : props.open
-    ? "Close"
-    : props.type === "add"
-    ? "Configure Resource"
-    : "Edit Resource";
+      ? "Close"
+      : props.type === "add"
+        ? "Configure Resource"
+        : "Edit Resource";
   let icon = props.open ? (
     <CloseFilled />
   ) : props.type === "add" ? (
@@ -134,12 +134,12 @@ EditCloseIcon.propTypes = {
   onClick: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
   type: PropTypes.string,
-  open: PropTypes.bool
+  open: PropTypes.bool,
 };
 
 EditCloseIcon.defaultProps = {
   type: "edit",
-  open: false
+  open: false,
 };
 
 /**
@@ -147,7 +147,7 @@ EditCloseIcon.defaultProps = {
  * @param {*} props
  *
  */
-export const DeleteButton = props => {
+export const DeleteButton = (props) => {
   return (
     <div className="delete-area">
       <PopoverWrapper
@@ -175,16 +175,16 @@ export const DeleteButton = props => {
 
 DeleteButton.defaultProps = {
   disabled: false,
-  modalOpen: false
+  modalOpen: false,
 };
 
 DeleteButton.propTypes = {
   disabled: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
 };
 
-export const UpDownButtons = props => {
+export const UpDownButtons = (props) => {
   return (
     <>
       <Button
@@ -215,7 +215,7 @@ export const UpDownButtons = props => {
 
 UpDownButtons.defaultProps = {
   disableUp: false,
-  disableDown: false
+  disableDown: false,
 };
 
 UpDownButtons.propTypes = {
@@ -223,5 +223,5 @@ UpDownButtons.propTypes = {
   disableDown: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
   handleCardUp: PropTypes.func.isRequired,
-  handleCardDown: PropTypes.func.isRequired
+  handleCardDown: PropTypes.func.isRequired,
 };

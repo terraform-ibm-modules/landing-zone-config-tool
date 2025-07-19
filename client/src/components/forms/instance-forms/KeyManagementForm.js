@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import {
   buildFormDefaultInputMethods,
-  buildFormFunctions
+  buildFormFunctions,
 } from "../../component-utils.js";
 import {
   SlzNameInput,
   SlzSelect,
   ResourceGroupSelect,
   SlzFormGroup,
-  SlzToggle
+  SlzToggle,
 } from "../../icse/index.js";
 import PropTypes from "prop-types";
 /**
@@ -18,7 +18,7 @@ class KeyManagementForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ...this.props.slz.store.configDotJson.key_management
+      ...this.props.slz.store.configDotJson.key_management,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSystemDropdown = this.handleSystemDropdown.bind(this);
@@ -109,11 +109,11 @@ KeyManagementForm.propTypes = {
           use_hs_crypto: PropTypes.bool.isRequired,
           use_data: PropTypes.bool.isRequired,
           name: PropTypes.string.isRequired,
-          resource_group: PropTypes.string
-        }).isRequired
-      }).isRequired
-    }).isRequired
-  }).isRequired
+          resource_group: PropTypes.string,
+        }).isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default KeyManagementForm;

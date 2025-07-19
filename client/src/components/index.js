@@ -26,7 +26,7 @@ import {
   Vpe,
   Vpn,
   Vsi,
-  AccessGroups
+  AccessGroups,
 } from "./forms/index.js";
 import Footer from "./Footer.js";
 import About from "./About.js";
@@ -69,5 +69,5 @@ export {
   Vpn,
   Vsi,
   AccessGroups,
-  ReleaseNotes
+  ReleaseNotes,
 };

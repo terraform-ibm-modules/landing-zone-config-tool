@@ -4,17 +4,17 @@ import {
   isNotNullOrEmptyString,
   isEmptyOrValidUrl,
   validTmosAdminPassword,
-  stateInit
+  stateInit,
 } from "../../../../lib/index.js";
 import {
   SlzSelect,
   SlzFormGroup,
   PopoverWrapper,
-  SlzTextInput
+  SlzTextInput,
 } from "../../../icse/index.js";
 import {
   buildFormDefaultInputMethods,
-  buildFormFunctions
+  buildFormFunctions,
 } from "../../../component-utils.js";
 import { SlzToolTipWrapper } from "../../../wrappers/Tooltips.js";
 import { Password } from "@carbon/icons-react";
@@ -58,7 +58,7 @@ class F5VsiTemplateForm extends Component {
       "license_username",
       "license_password",
       "license_host",
-      "license_pool"
+      "license_pool",
     ];
     let conditionalFields = {
       none: [],
@@ -68,19 +68,19 @@ class F5VsiTemplateForm extends Component {
         "license_unit_of_measure",
         "license_sku_keyword_1",
         "license_sku_keyword_2",
-        ...pool
-      ]
+        ...pool,
+      ],
     };
 
-    this.setState(prevState => {
-      conditionalFields[prevState.license_type].forEach(field => {
+    this.setState((prevState) => {
+      conditionalFields[prevState.license_type].forEach((field) => {
         if (!conditionalFields[value].includes(field)) {
           reset[field] = "";
         }
       });
       return {
         [name]: value,
-        ...reset
+        ...reset,
       };
     });
   }
@@ -102,7 +102,7 @@ class F5VsiTemplateForm extends Component {
           <SlzSelect
             tooltip={{
               content: "The type of license.",
-              align: "top-left"
+              align: "top-left",
             }}
             labelText="License Type"
             component="f5-license-type"
@@ -117,7 +117,7 @@ class F5VsiTemplateForm extends Component {
             <SlzToolTipWrapper
               tooltip={{
                 content:
-                  "The admin account password for the F5 BIG-IP instance."
+                  "The admin account password for the F5 BIG-IP instance.",
               }}
               innerForm={PasswordInput}
               id="tmos_admin_password"
@@ -160,7 +160,7 @@ class F5VsiTemplateForm extends Component {
                   <SlzToolTipWrapper
                     tooltip={{
                       content:
-                        "Bring your own license registration key for the F5 BIG-IP instance."
+                        "Bring your own license registration key for the F5 BIG-IP instance.",
                     }}
                     innerForm={SlzTextInput}
                     value={this.state.byol_license_basekey || ""}
@@ -183,7 +183,7 @@ class F5VsiTemplateForm extends Component {
                     tooltip={{
                       content:
                         "BIGIQ username to use for the pool based licensing of the F5 BIG-IP instance.",
-                      align: "top-left"
+                      align: "top-left",
                     }}
                     innerForm={SlzTextInput}
                     value={this.state.license_username || ""}
@@ -201,7 +201,7 @@ class F5VsiTemplateForm extends Component {
                     <SlzToolTipWrapper
                       tooltip={{
                         content:
-                          "BIGIQ password to use for the pool based licensing of the F5 BIG-IP instance."
+                          "BIGIQ password to use for the pool based licensing of the F5 BIG-IP instance.",
                       }}
                       innerForm={PasswordInput}
                       labelText="License Password"
@@ -219,7 +219,7 @@ class F5VsiTemplateForm extends Component {
                     tooltip={{
                       content:
                         "BIGIQ IP or hostname to use for pool based licensing of the F5 BIG-IP instance.",
-                      align: "top-left"
+                      align: "top-left",
                     }}
                     innerForm={SlzTextInput}
                     value={this.state.license_host || ""}
@@ -234,7 +234,7 @@ class F5VsiTemplateForm extends Component {
                   <SlzToolTipWrapper
                     tooltip={{
                       content:
-                        "BIGIQ license pool name of the pool based licensing of the F5 BIG-IP instance."
+                        "BIGIQ license pool name of the pool based licensing of the F5 BIG-IP instance.",
                     }}
                     innerForm={SlzTextInput}
                     value={this.state.license_pool || ""}
@@ -250,7 +250,7 @@ class F5VsiTemplateForm extends Component {
                   {this.state.license_type == "utilitypool" && (
                     <SlzToolTipWrapper
                       tooltip={{
-                        content: "BIGIQ utility pool unit of measurement."
+                        content: "BIGIQ utility pool unit of measurement.",
                       }}
                       innerForm={SlzTextInput}
                       value={this.state.license_unit_of_measure || ""}
@@ -260,7 +260,7 @@ class F5VsiTemplateForm extends Component {
                       className="fieldWidthSmaller"
                       invalid={
                         !isNotNullOrEmptyString(
-                          this.state.license_unit_of_measure
+                          this.state.license_unit_of_measure,
                         )
                       }
                     />
@@ -273,7 +273,7 @@ class F5VsiTemplateForm extends Component {
                     <SlzToolTipWrapper
                       tooltip={{
                         content:
-                          "BIGIQ primary SKU for ELA utility licensing of the F5 BIG-IP instance."
+                          "BIGIQ primary SKU for ELA utility licensing of the F5 BIG-IP instance.",
                       }}
                       innerForm={SlzTextInput}
                       value={this.state.license_sku_keyword_1 || ""}
@@ -283,7 +283,7 @@ class F5VsiTemplateForm extends Component {
                       className="fieldWidthSmaller"
                       invalid={
                         !isNotNullOrEmptyString(
-                          this.state.license_sku_keyword_1
+                          this.state.license_sku_keyword_1,
                         )
                       }
                     />
@@ -293,7 +293,7 @@ class F5VsiTemplateForm extends Component {
                     <SlzToolTipWrapper
                       tooltip={{
                         content:
-                          "BIGIQ secondary SKU for ELA utility licensing of the F5 BIG-IP instance"
+                          "BIGIQ secondary SKU for ELA utility licensing of the F5 BIG-IP instance",
                       }}
                       innerForm={SlzTextInput}
                       value={this.state.license_sku_keyword_2 || ""}
@@ -303,7 +303,7 @@ class F5VsiTemplateForm extends Component {
                       className="fieldWidthSmaller"
                       invalid={
                         !isNotNullOrEmptyString(
-                          this.state.license_sku_keyword_2
+                          this.state.license_sku_keyword_2,
                         )
                       }
                     />
@@ -319,7 +319,7 @@ class F5VsiTemplateForm extends Component {
             tooltip={{
               content:
                 "The terraform template version for phone_home_url_metadata.",
-              align: "top-left"
+              align: "top-left",
             }}
             innerForm={SlzTextInput}
             value={this.state.template_version}
@@ -333,7 +333,7 @@ class F5VsiTemplateForm extends Component {
           <SlzToolTipWrapper
             tooltip={{
               content:
-                "The terraform template source for phone_home_url_metadata."
+                "The terraform template source for phone_home_url_metadata.",
             }}
             innerForm={SlzTextInput}
             value={this.state.template_source}
@@ -350,7 +350,7 @@ class F5VsiTemplateForm extends Component {
             tooltip={{
               content:
                 "The URL to POST status when BIG-IP is finished onboarding.",
-              align: "top-left"
+              align: "top-left",
             }}
             innerForm={SlzTextInput}
             value={this.state.phone_home_url}
@@ -364,7 +364,7 @@ class F5VsiTemplateForm extends Component {
           <SlzToolTipWrapper
             tooltip={{
               content:
-                "The terraform application id for phone_home_url_metadata."
+                "The terraform application id for phone_home_url_metadata.",
             }}
             innerForm={SlzTextInput}
             labelText="App ID"
@@ -382,7 +382,7 @@ class F5VsiTemplateForm extends Component {
             tooltip={{
               content:
                 "The URL to retrieve the f5-declarative-onboarding JSON declaration.",
-              align: "top-left"
+              align: "top-left",
             }}
             innerForm={SlzTextInput}
             value={this.state.do_declaration_url}
@@ -396,7 +396,7 @@ class F5VsiTemplateForm extends Component {
           <SlzToolTipWrapper
             tooltip={{
               content:
-                "The URL to retrieve the f5-appsvcs-extension JSON declaration."
+                "The URL to retrieve the f5-appsvcs-extension JSON declaration.",
             }}
             innerForm={SlzTextInput}
             value={this.state.as3_declaration_url}
@@ -413,7 +413,7 @@ class F5VsiTemplateForm extends Component {
             tooltip={{
               content:
                 "The URL to retrieve the f5-telemetry-streaming JSON declaration.",
-              align: "top-left"
+              align: "top-left",
             }}
             innerForm={SlzTextInput}
             value={this.state.ts_declaration_url}
@@ -427,7 +427,7 @@ class F5VsiTemplateForm extends Component {
           <SlzToolTipWrapper
             tooltip={{
               content:
-                "The URL to POST L3 addresses when tgstandby is triggered."
+                "The URL to POST L3 addresses when tgstandby is triggered.",
             }}
             innerForm={SlzTextInput}
             value={this.state.tgstandby_url}
@@ -444,7 +444,7 @@ class F5VsiTemplateForm extends Component {
             tooltip={{
               content:
                 "The URL to POST L3 addresses when tgrefresh is triggered.",
-              align: "top-left"
+              align: "top-left",
             }}
             innerForm={SlzTextInput}
             value={this.state.tgrefresh_url}
@@ -458,7 +458,7 @@ class F5VsiTemplateForm extends Component {
           <SlzToolTipWrapper
             tooltip={{
               content:
-                "The URL to POST L3 addresses when tgactive is triggered."
+                "The URL to POST L3 addresses when tgactive is triggered.",
             }}
             innerForm={SlzTextInput}
             value={this.state.tgactive_url}

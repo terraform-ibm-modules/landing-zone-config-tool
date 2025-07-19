@@ -12,7 +12,7 @@ class FooterHighlight extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isHovering: false
+      isHovering: false,
     };
     this.handleMouseOver = this.handleMouseOver.bind(this);
     this.handleMouseOut = this.handleMouseOut.bind(this);
@@ -54,16 +54,16 @@ class FooterHighlight extends React.Component {
 }
 
 FooterHighlight.defaultProps = {
-  backButton: false
+  backButton: false,
 };
 
 FooterHighlight.propTypes = {
   children: PropTypes.node.isRequired,
   backButton: PropTypes.bool,
-  navigate: PropTypes.func.isRequired
+  navigate: PropTypes.func.isRequired,
 };
 
-const Footer = props => {
+const Footer = (props) => {
   return (
     <div className="footerButton pointerEventsNone">
       <div className="buttonRight">
@@ -106,7 +106,8 @@ const Footer = props => {
           {props.next && (
             <FooterHighlight navigate={props.navigate}>
               <div className="caretMargin rightTextAlign">
-                {window.location.hash === "#/home" || window.location.hash === "" ? (
+                {window.location.hash === "#/home" ||
+                window.location.hash === "" ? (
                   <div>Start</div>
                 ) : (
                   <>
@@ -131,7 +132,7 @@ Footer.propTypes = {
   next: PropTypes.string, // can be null for conditional rendering
   previous: PropTypes.string, // can be null for conditional rendering
   navigate: PropTypes.func.isRequired,
-  toggleFooter: PropTypes.func.isRequired
+  toggleFooter: PropTypes.func.isRequired,
 };
 
 export default Footer;

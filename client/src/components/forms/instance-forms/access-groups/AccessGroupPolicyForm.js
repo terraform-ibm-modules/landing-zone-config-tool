@@ -1,7 +1,7 @@
 import React from "react";
 import {
   buildFormFunctions,
-  buildFormDefaultInputMethods
+  buildFormDefaultInputMethods,
 } from "../../../component-utils.js";
 import { stateInit } from "../../../../lib/index.js";
 import {
@@ -9,7 +9,7 @@ import {
   SlzHeading,
   SlzFormGroup,
   ResourceGroupSelect,
-  SlzTextInput
+  SlzTextInput,
 } from "../../../icse/index.js";
 import PropTypes from "prop-types";
 
@@ -19,7 +19,7 @@ class AccessGroupPolicyForm extends React.Component {
     buildFormFunctions(this);
     buildFormDefaultInputMethods(this);
     this.state = {
-      ...stateInit("policies", this.props)
+      ...stateInit("policies", this.props),
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleInputResource = this.handleInputResource.bind(this);
@@ -71,7 +71,7 @@ class AccessGroupPolicyForm extends React.Component {
             componentName="resource"
             tooltip={{
               content: "The resource of the policy definition",
-              alignModal: "bottom-left"
+              alignModal: "bottom-left",
             }}
             isModal={this.props.isModal}
             field="resource"
@@ -88,7 +88,7 @@ class AccessGroupPolicyForm extends React.Component {
             labelText="Resource group"
             tooltip={{
               content: "Name of the resource group the policy will apply to",
-              alignModal: "bottom-left"
+              alignModal: "bottom-left",
             }}
             component="resource_group"
             slz={this.props.slz}
@@ -106,7 +106,7 @@ class AccessGroupPolicyForm extends React.Component {
             field="resource_instance_id"
             value={this.state.resources.resource_instance_id}
             tooltip={{
-              content: "ID of a service instance to give permissions"
+              content: "ID of a service instance to give permissions",
             }}
             componentProps={this.props}
             invalid={false}
@@ -122,7 +122,7 @@ class AccessGroupPolicyForm extends React.Component {
               content:
                 'Name of the service type for the policy ex. "cloud-object-storage"',
               alignModal: "bottom-left",
-              align: "top-left"
+              align: "top-left",
             }}
             labelText="Service type"
             field="service"
@@ -142,7 +142,7 @@ class AccessGroupPolicyForm extends React.Component {
             tooltip={{
               content:
                 'Name of the resource type for the policy ex. "resource-group"',
-              alignModal: "bottom-left"
+              alignModal: "bottom-left",
             }}
             invalid={false}
             value={this.state.resources.resource_type}
@@ -165,10 +165,10 @@ AccessGroupPolicyForm.defaultProps = {
       resource_type: "",
       resource: "",
       service: "",
-      resource_instance_id: ""
-    }
+      resource_instance_id: "",
+    },
   },
-  isModal: false
+  isModal: false,
 };
 
 AccessGroupPolicyForm.propTypes = {
@@ -179,10 +179,10 @@ AccessGroupPolicyForm.propTypes = {
       resource_type: PropTypes.string.isRequired,
       resource: PropTypes.string.isRequired,
       service: PropTypes.string.isRequired,
-      resource_instance_id: PropTypes.string.isRequired
-    }).isRequired
+      resource_instance_id: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
-  isModal: PropTypes.bool.isRequired
+  isModal: PropTypes.bool.isRequired,
 };
 
 export default AccessGroupPolicyForm;

@@ -2,7 +2,7 @@ import React from "react";
 import { Tile, TextInput } from "@carbon/react";
 import {
   propsMatchState,
-  subnetGatewayToggleShouldBeDisabled
+  subnetGatewayToggleShouldBeDisabled,
 } from "../../../lib/index.js";
 import {
   DynamicRender,
@@ -10,7 +10,7 @@ import {
   SlzFormGroup,
   SlzSelect,
   SaveAddButton,
-  SlzToggle
+  SlzToggle,
 } from "../../icse/index.js";
 import PropTypes from "prop-types";
 
@@ -36,7 +36,7 @@ class SubnetTile extends React.Component {
   componentDidUpdate() {
     this.props.childSubnetHasChanged(
       this.state.name,
-      propsMatchState("subnet", this.state, this.props)
+      propsMatchState("subnet", this.state, this.props),
     );
   }
 
@@ -99,7 +99,7 @@ class SubnetTile extends React.Component {
           <SlzToggle
             tooltip={{
               content:
-                "A Public Gateway must be enabled in this zone to use. To enable public gateways, see the VPC page."
+                "A Public Gateway must be enabled in this zone to use. To enable public gateways, see the VPC page.",
             }}
             id={"new-subnet-public-gateway-" + this.props.subnet.name}
             labelText="Use public gateway"
@@ -117,7 +117,7 @@ class SubnetTile extends React.Component {
 }
 
 SubnetTile.defaultProps = {
-  isModal: false
+  isModal: false,
 };
 
 SubnetTile.propTypes = {
@@ -129,14 +129,14 @@ SubnetTile.propTypes = {
     name: PropTypes.string.isRequired,
     cidr: PropTypes.string.isRequired,
     public_gateway: PropTypes.bool,
-    acl_name: PropTypes.string.isRequired
+    acl_name: PropTypes.string.isRequired,
   }).isRequired,
   store: PropTypes.object.isRequired,
   slz: PropTypes.shape({
     store: PropTypes.shape({
-      networkAcls: PropTypes.object.isRequired
-    }).isRequired
-  }).isRequired
+      networkAcls: PropTypes.object.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default SubnetTile;
