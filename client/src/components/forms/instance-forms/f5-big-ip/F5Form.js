@@ -5,7 +5,7 @@ import F5VsiForm from "./F5VsiForm.js";
 import F5VsiTemplateForm from "./F5VsiTemplateForm.js";
 import PropTypes from "prop-types";
 
-export const F5Form = props => {
+export const F5Form = (props) => {
   let vsiStateData = { ...stateInit("f5_vsi", { slz: props.slz }) };
   return (
     <>
@@ -48,14 +48,14 @@ F5Form.propTypes = {
   slz: PropTypes.shape({
     f5: PropTypes.shape({
       template: PropTypes.shape({
-        save: PropTypes.func.isRequired
+        save: PropTypes.func.isRequired,
       }).isRequired,
       vsi: PropTypes.shape({
-        save: PropTypes.func.isRequired
-      }).isRequired
-    }).isRequired
+        save: PropTypes.func.isRequired,
+      }).isRequired,
+    }).isRequired,
   }).isRequired,
   saveFromChildForm: PropTypes.shape({
-    disableSave: PropTypes.bool.isRequired
-  }).isRequired
+    disableSave: PropTypes.bool.isRequired,
+  }).isRequired,
 };

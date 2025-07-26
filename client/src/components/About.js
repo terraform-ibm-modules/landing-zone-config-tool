@@ -6,7 +6,9 @@ import vpc from "../images/vpc.png";
 const About = () => {
   return (
     <div className="about">
-      <h1 id="what-is-secure-landing-zone-">What is IBM Secure Landing Zone?</h1>
+      <h1 id="what-is-secure-landing-zone-">
+        What is IBM Secure Landing Zone?
+      </h1>
       <p>
         <a
           href="https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone?tab=readme-ov-file#ibm-secure-landing-zone-module"
@@ -76,7 +78,9 @@ const About = () => {
           Red Hat OpenShift Kubernetes (ROKS) Pattern will deploy identical
           clusters across the VSI subnet tier in each VPC
         </li>
-        <li>The VPC pattern will provision neither virtual servers nor clusters</li>
+        <li>
+          The VPC pattern will provision neither virtual servers nor clusters
+        </li>
       </ul>
       <hr />
       <h3 id="2-customizing-your-environment">2. Customize your environment</h3>

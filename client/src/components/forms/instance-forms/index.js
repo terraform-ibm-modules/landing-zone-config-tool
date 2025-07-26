@@ -1,7 +1,7 @@
 import {
   AccessGroupDynamicPolicyForm,
   AccessGroupForm,
-  AccessGroupPolicyForm
+  AccessGroupPolicyForm,
 } from "./access-groups/index.js";
 import AppIdForm from "./AppIdForm.js";
 import AtrackerForm from "./AtrackerForm.js";
@@ -10,12 +10,15 @@ import EncryptionKeyForm from "./EncryptionKeyForm.js";
 import { F5Form, F5VsiForm, F5VsiTemplateForm } from "./f5-big-ip/index.js";
 import IamAccountSettingsForm from "./IamAccountSettingsForm.js";
 import KeyManagementForm from "./KeyManagementForm.js";
-import { NetworkingRuleForm, NetworkingRulesOrderCard } from "./network-rules/index.js";
+import {
+  NetworkingRuleForm,
+  NetworkingRulesOrderCard,
+} from "./network-rules/index.js";
 import NetworkAclForm from "./NetworkAclForm.js";
 import {
   ObjectStorageBucketForm,
   ObjectStorageInstancesForm,
-  ObjectStorageKeyForm
+  ObjectStorageKeyForm,
 } from "./object-storage/index.js";
 import ResourceGroupForm from "./ResourceGroupForm.js";
 import SecretsManagerForm from "./SecretsManagerForm.js";
@@ -66,5 +69,5 @@ export {
   VsiForm,
   IamAccountSettingsForm,
   EncryptionKeyForm,
-  WorkerPoolForm
+  WorkerPoolForm,
 };
