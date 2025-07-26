@@ -20,8 +20,8 @@
   },
   "dependencies": {
     "@carbon/icons-react": "11.63.0",
-    "@carbon/react": "1.87.0",
-    "@carbon/styles": "1.86.0",
+    "@carbon/react": "1.87.1",
+    "@carbon/styles": "1.86.1",
     "@codemirror/lang-javascript": "6.2.4",
     "@lezer/highlight": "1.2.1",
     "@uiw/codemirror-themes": "4.24.1",
@@ -39,7 +39,7 @@
   "devDependencies": {
     "@vitejs/plugin-react": "4.7.0",
     "prettier": "3.6.2",
-    "vite": "7.0.5"
+    "vite": "7.0.6"
   },
   "overrides": {
     "express": "4.21.2",
