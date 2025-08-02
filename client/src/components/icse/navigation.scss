@@ -20,21 +20,24 @@
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .cds--side-nav__items {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
-.nav-popover-obj { // make the container wide enough for text
+.nav-popover-obj {
+  // make the container wide enough for text
   width: 25rem;
 }
 
 .cds--side-nav__overlay-active {
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(22, 22, 22, 0.5);
-    background-color: var(--cds-overlay, rgba(22, 22, 22, 0.5));
-    opacity: 1;
-    transition: opacity 300ms cubic-bezier(0.5, 0, 0.1, 1), background-color 300ms cubic-bezier(0.5, 0, 0.1, 1);
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(22, 22, 22, 0.5);
+  background-color: var(--cds-overlay, rgba(22, 22, 22, 0.5));
+  opacity: 1;
+  transition:
+    opacity 300ms cubic-bezier(0.5, 0, 0.1, 1),
+    background-color 300ms cubic-bezier(0.5, 0, 0.1, 1);
 }
 
 a.cds--side-nav__link {
@@ -42,7 +45,7 @@ a.cds--side-nav__link {
   border: none !important;
 }
 
-  // make navigation wide enough, hide scroll bar
+// make navigation wide enough, hide scroll bar
 .cds--side-nav--ux .cds--side-nav__items {
   width: fit-content;
 }
@@ -61,7 +64,9 @@ a.cds--side-nav__link {
   background-color: rgba(22, 22, 22, 0.5);
   background-color: var(--cds-overlay, rgba(22, 22, 22, 0.5));
   opacity: 1;
-  transition: opacity 300ms cubic-bezier(0.5, 0, 0.1, 1), background-color 300ms cubic-bezier(0.5, 0, 0.1, 1);
+  transition:
+    opacity 300ms cubic-bezier(0.5, 0, 0.1, 1),
+    background-color 300ms cubic-bezier(0.5, 0, 0.1, 1);
 }
 
 a.cds--side-nav__link {
@@ -90,8 +95,8 @@ a.cds--side-nav__link {
 }
 
 .cds--side-nav__divider.railDivider {
-    width: 4.5rem;
-    margin-left: -20px;
+  width: 4.5rem;
+  margin-left: -20px;
 }
 
 .cds--side-nav__divider.expandedDivider {

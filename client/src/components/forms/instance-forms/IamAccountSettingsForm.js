@@ -7,7 +7,7 @@ import {
   defaultToEmptyStringIfValueNull,
   iamAccountSettingsInvalidIpString,
   iamAccountSettingsInvalidNumber,
-  iamAccountSettingsInvalidRange
+  iamAccountSettingsInvalidRange,
 } from "../../../lib/index.js";
 import { buildFormFunctions } from "../../component-utils.js";
 import { SlzToolTipWrapper } from "../../wrappers/Tooltips.js";
@@ -46,7 +46,7 @@ class IamAccountSettingsForm extends Component {
     if (
       contains(
         ["session_expiration_in_seconds", "session_invalidation_in_seconds"],
-        name
+        name,
       ) &&
       value.length > 0
     ) {
@@ -98,7 +98,7 @@ class IamAccountSettingsForm extends Component {
             tooltip={{
               content:
                 'Version of the account settings to update, if no value is supplied then the default value "*" is used to indicate to update any version available. This might result in stale updates.',
-              align: "top-left"
+              align: "top-left",
             }}
             innerForm={NumberInput}
             id="iam-if-match"
@@ -124,7 +124,7 @@ class IamAccountSettingsForm extends Component {
               "TOTP4ALL",
               "Email-Based MFA",
               "TOTP MFA",
-              "U2F MFA"
+              "U2F MFA",
             ]}
             value={iamItems[this.state.mfa].display || "NONE"}
             labelText="Multi-Factor Authentication"
@@ -138,7 +138,7 @@ class IamAccountSettingsForm extends Component {
             tooltip={{
               content:
                 "Defines if the entity history is included in the response.",
-              align: "top-left"
+              align: "top-left",
             }}
             labelText="Include History"
             defaultToggled={this.state.include_history}
@@ -181,7 +181,7 @@ class IamAccountSettingsForm extends Component {
             id="iam-max-sessions-per-id"
             allowEmpty={true}
             value={defaultToEmptyStringIfValueNull(
-              this.state.max_sessions_per_identity
+              this.state.max_sessions_per_identity,
             )}
             min={1}
             step={1}
@@ -189,7 +189,7 @@ class IamAccountSettingsForm extends Component {
             name="max_sessions_per_identity"
             hideSteppers={true}
             {...iamAccountSettingsInvalidNumber(
-              this.state.max_sessions_per_identity
+              this.state.max_sessions_per_identity,
             )}
             className="fieldWidthSmaller leftTextAlign"
           />
@@ -209,7 +209,7 @@ class IamAccountSettingsForm extends Component {
             {...iamAccountSettingsInvalidRange(
               this.state.session_expiration_in_seconds,
               900,
-              86400
+              86400,
             )}
             className="fieldWidth leftTextAlign"
           />
@@ -220,7 +220,7 @@ class IamAccountSettingsForm extends Component {
             id="iam-session-invalidation-seconds"
             allowEmpty={true}
             value={defaultToEmptyStringIfValueNull(
-              this.state.session_invalidation_in_seconds
+              this.state.session_invalidation_in_seconds,
             )}
             step={1}
             onChange={this.handleInputChange}
@@ -229,7 +229,7 @@ class IamAccountSettingsForm extends Component {
             {...iamAccountSettingsInvalidRange(
               this.state.session_invalidation_in_seconds,
               900,
-              7200
+              7200,
             )}
             className="fieldWidth leftTextAlign"
             min={900}
@@ -242,7 +242,7 @@ class IamAccountSettingsForm extends Component {
             tooltip={{
               content:
                 "IP addresses and subnets from which IAM tokens can be created for the account",
-              align: "top-left"
+              align: "top-left",
             }}
             className="fitContent"
             innerForm={TextArea}
@@ -253,7 +253,7 @@ class IamAccountSettingsForm extends Component {
               this.state.allowed_ip_addresses || "X.X.X.X, X.X.X.X/X, ..."
             }
             {...iamAccountSettingsInvalidIpString(
-              this.state.allowed_ip_addresses
+              this.state.allowed_ip_addresses,
             )}
           />
         </SlzFormGroup>
@@ -266,10 +266,10 @@ IamAccountSettingsForm.propTypes = {
   slz: PropTypes.shape({
     store: PropTypes.shape({
       configDotJson: PropTypes.shape({
-        iam_account_settings: PropTypes.shape({}).isRequired
-      }).isRequired
-    })
-  })
+        iam_account_settings: PropTypes.shape({}).isRequired,
+      }).isRequired,
+    }),
+  }),
 };
 
 export default IamAccountSettingsForm;

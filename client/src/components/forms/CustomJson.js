@@ -13,7 +13,7 @@ class CustomJson extends React.Component {
       errorList: "",
       isValid: false,
       showModal: false,
-      validJson: null
+      validJson: null,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,7 +30,7 @@ class CustomJson extends React.Component {
     let isValid = false; // submission valid
     let validatedConfigJson = null; // configuration
     // function to mock slz.sendError
-    let getErrors = function(message) {
+    let getErrors = function (message) {
       errorText = message;
     };
 
@@ -55,7 +55,7 @@ class CustomJson extends React.Component {
       textData: data,
       errorList: errorText,
       isValid: isValid,
-      validJson: isValid ? validatedConfigJson : null
+      validJson: isValid ? validatedConfigJson : null,
     });
   }
 
@@ -136,8 +136,8 @@ class CustomJson extends React.Component {
 
 CustomJson.propTypes = {
   slz: PropTypes.shape({
-    hardSetConfigDotJson: PropTypes.func.isRequired
-  }).isRequired
+    hardSetConfigDotJson: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default CustomJson;

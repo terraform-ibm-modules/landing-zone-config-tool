@@ -3,7 +3,7 @@ import React from "react";
 import { SlzHeading } from "./icse/index.js";
 import releaseNotes from "../docs/release-notes.json";
 
-const ReleaseNote = props => {
+const ReleaseNote = (props) => {
   return (
     <AccordionItem title={props.note.version}>
       <div className="smallFont leftTextAlign">
@@ -30,7 +30,7 @@ const ReleaseNotes = () => {
       <SlzHeading name="Release Notes" />
       <hr />
       <Accordion align="start">
-        {releaseNotes.map(note => (
+        {releaseNotes.map((note) => (
           <ReleaseNote key={note.version} note={note} />
         ))}
       </Accordion>
