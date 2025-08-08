@@ -4,7 +4,7 @@ import {
   StructuredListHead,
   StructuredListBody,
   StructuredListRow,
-  StructuredListCell
+  StructuredListCell,
 } from "@carbon/react";
 import PropTypes from "prop-types";
 import "./slzDocs.css";
@@ -13,7 +13,7 @@ import docs from "../../docs/slz-docs.json";
 /**
  * Text field
  */
-const SlzDocTextField = props => {
+const SlzDocTextField = (props) => {
   return (
     <div
       className={
@@ -30,18 +30,18 @@ const SlzDocTextField = props => {
 };
 
 SlzDocTextField.defaultProps = {
-  className: "marginBottom"
+  className: "marginBottom",
 };
 
 SlzDocTextField.propTypes = {
   className: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
 };
 
 /**
  * table rendered this way to pass key param
  */
-const SlzDocTable = props => {
+const SlzDocTable = (props) => {
   let headers = [];
   if (props.list[0][0] === "_headers") {
     headers = props.list.shift(); // set headers to header row
@@ -51,13 +51,13 @@ const SlzDocTable = props => {
 };
 
 SlzDocTable.propTypes = {
-  list: PropTypes.array.isRequired
+  list: PropTypes.array.isRequired,
 };
 
 /**
  * related links
  */
-const RelatedLinks = props => {
+const RelatedLinks = (props) => {
   return (
     <>
       <div className="smallerText">Related links</div>
@@ -79,14 +79,14 @@ const RelatedLinks = props => {
 
 RelatedLinks.propTypes = {
   links: PropTypes.arrayOf(
-    PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
-  ).isRequired
+    PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  ).isRequired,
 };
 
 /*
  * Doc form to force props after retrieve from json
  */
-const SlzDocForm = props => {
+const SlzDocForm = (props) => {
   return (
     <div className="subForm leftTextAlign about">
       {props.content.map((field, index) =>
@@ -101,7 +101,7 @@ const SlzDocForm = props => {
         ) : (
           // table
           <SlzDocTable key={index} list={field.table} />
-        )
+        ),
       )}
       {props.relatedLinks && <RelatedLinks links={props.relatedLinks} />}
     </div>
@@ -114,14 +114,14 @@ SlzDocForm.propTypes = {
       text: PropTypes.string,
       className: PropTypes.string,
       table: PropTypes.array,
-      subHeading: PropTypes.string
-    })
+      subHeading: PropTypes.string,
+    }),
   ).isRequired,
-  relatedLinks: PropTypes.array
+  relatedLinks: PropTypes.array,
 };
 
 // Show items in a structured list
-const StructuredList = props => {
+const StructuredList = (props) => {
   return (
     <StructuredListWrapper className="marginBottom">
       {props.headers && (
@@ -150,13 +150,13 @@ const StructuredList = props => {
 
 StructuredList.propTypes = {
   headers: PropTypes.array,
-  list: PropTypes.array.isRequired
+  list: PropTypes.array.isRequired,
 };
 
 /**
  * slz docs component
  */
-export const SlzDocs = component => {
+export const SlzDocs = (component) => {
   let docJson = docs[component];
   return <SlzDocForm {...docJson} />;
 };
@@ -286,7 +286,8 @@ export const PatternDocs = () => {
     >
       <div className="marginBottomSmall">
         <p className="patternDocText">
-          Use the landing zone configuration tool to customize your deployable architecture landing zone's override.json file.
+          Use the landing zone configuration tool to customize your deployable
+          architecture landing zone's override.json file.
         </p>
       </div>
       <h6>By customizing the override.json, you can create the following:</h6>
@@ -303,7 +304,13 @@ export const PatternDocs = () => {
         <li>Virtual private endpoints for Cloud Object Storage in each VPC</li>
         <li>A VPN Gateway in the Management VPC</li>
       </ul>
-      <p>This tool is verified to work with landing zone deployable architecture version: <a href="https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone/releases/tag/v5.24.0">5.24.0</a></p>
+      <p>
+        This tool is verified to work with landing zone deployable architecture
+        version:{" "}
+        <a href="https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone/releases/tag/v5.24.0">
+          5.24.0
+        </a>
+      </p>
     </div>
   );
 };

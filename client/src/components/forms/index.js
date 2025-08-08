@@ -8,7 +8,7 @@ import {
   KeyManagement,
   SecretsManager,
   Teleport,
-  TransitGateway
+  TransitGateway,
 } from "./NonArrayToggleForms.js";
 import PatternForm from "./Pattern.js";
 import PrefixForm from "./Prefix.js";
@@ -28,7 +28,7 @@ import {
   Vpe,
   Vpn,
   Vsi,
-  AccessGroups
+  AccessGroups,
 } from "./SlzArrayForms.js";
 export {
   CustomJson,
@@ -58,5 +58,5 @@ export {
   KeyManagement,
   SecretsManager,
   Teleport,
-  TransitGateway
+  TransitGateway,
 };

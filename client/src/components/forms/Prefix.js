@@ -6,7 +6,7 @@ import {
   StatelessToggleForm,
   SlzFormGroup,
   SaveAddButton,
-  UnsavedChangesModal
+  UnsavedChangesModal,
 } from "../icse/index.js";
 import { isInvalidPrefix } from "../../lib/index.js";
 import PropTypes from "prop-types";
@@ -22,7 +22,7 @@ class PrefixForm extends Component {
     this.state = {
       name: this.props.slz.store.prefix,
       hide: true,
-      UnsavedChangesModal: false
+      UnsavedChangesModal: false,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSave = this.handleSave.bind(this);
@@ -65,7 +65,7 @@ class PrefixForm extends Component {
     this.setState({
       showUnsavedModal: false,
       name: this.props.slz.store.prefix,
-      hide: true
+      hide: true,
     });
   }
 
@@ -74,7 +74,7 @@ class PrefixForm extends Component {
    */
   closeUnsavedModal() {
     this.setState({
-      showUnsavedModal: false
+      showUnsavedModal: false,
     });
   }
 
@@ -126,6 +126,6 @@ export default PrefixForm;
 
 PrefixForm.propTypes = {
   slz: PropTypes.shape({
-    store: PropTypes.shape({ prefix: PropTypes.string.isRequired }).isRequired
-  })
+    store: PropTypes.shape({ prefix: PropTypes.string.isRequired }).isRequired,
+  }),
 };

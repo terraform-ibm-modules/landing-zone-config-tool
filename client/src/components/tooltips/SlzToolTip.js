@@ -2,7 +2,7 @@ import {
   Toggletip,
   ToggletipButton,
   ToggletipContent,
-  Link
+  Link,
 } from "@carbon/react";
 import React from "react";
 import { Information } from "@carbon/icons-react";
@@ -15,7 +15,7 @@ import { Information } from "@carbon/icons-react";
  * @param {string=} props.align alignment
  * @returns slz tooltip component
  */
-const SlzToolTip = props => {
+const SlzToolTip = (props) => {
   return (
     <>
       <Toggletip align={props.align}>

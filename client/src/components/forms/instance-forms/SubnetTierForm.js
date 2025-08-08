@@ -8,7 +8,7 @@ import {
   reservedSubnetNameExp,
   disableSave,
   propsMatchState,
-  hasInvalidName
+  hasInvalidName,
 } from "../../../lib/index.js";
 import {
   SlzNameInput,
@@ -21,7 +21,7 @@ import {
   DeleteButton,
   SaveAddButton,
   DeleteModal,
-  SlzToggle
+  SlzToggle,
 } from "../../icse/index.js";
 import SubnetTileForm from "./SubnetTileForm.js";
 import PropTypes from "prop-types";
@@ -191,7 +191,7 @@ class SubnetTierForm extends React.Component {
               <SlzSelect
                 tooltip={{
                   content:
-                    "Changing this field will overwrite existing network ACL changes to subnets in this tier."
+                    "Changing this field will overwrite existing network ACL changes to subnets in this tier.",
                 }}
                 component={this.props.tier.name}
                 className="fieldWidthSmaller"
@@ -210,7 +210,7 @@ class SubnetTierForm extends React.Component {
                 tooltip={{
                   content: subnetTierVpcHasNoEnabledGateways(this.props)
                     ? "This VPC has no public gateways enabled. To add public gateways, return to the VPC page."
-                    : "Changing this field will overwrite existing public gateway changes to subnets in this tier."
+                    : "Changing this field will overwrite existing public gateway changes to subnets in this tier.",
                 }}
                 id={composedId + "-public-gateway"}
                 labelText="Use public gateways"
@@ -240,29 +240,29 @@ class SubnetTierForm extends React.Component {
 SubnetTierForm.defaultProps = {
   tier: {
     name: "",
-    zones: 1
+    zones: 1,
   },
   isModal: false,
-  hide: true
+  hide: true,
 };
 
 SubnetTierForm.propTypes = {
   isModal: PropTypes.bool.isRequired,
   tier: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    zones: PropTypes.number.isRequired
+    zones: PropTypes.number.isRequired,
   }),
   hide: PropTypes.bool.isRequired,
   onSaveCallback: PropTypes.func,
   slz: PropTypes.shape({
     vpcs: PropTypes.shape({
       save: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
-    }).isRequired
+      delete: PropTypes.func.isRequired,
+    }).isRequired,
   }).isRequired,
   enableModal: PropTypes.func,
   disableModal: PropTypes.func,
-  vpc_name: PropTypes.string.isRequired
+  vpc_name: PropTypes.string.isRequired,
 };
 
 export default SubnetTierForm;

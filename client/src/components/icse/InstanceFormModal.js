@@ -15,7 +15,7 @@ class InstanceFormModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isDisabled: false
+      isDisabled: false,
     };
     this.modalForm = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -60,15 +60,15 @@ class InstanceFormModal extends Component {
             primaryButtonDisabled={this.state.isDisabled}
           >
             {this.props.show &&
-              React.Children.map(this.props.children, child =>
+              React.Children.map(this.props.children, (child) =>
                 // clone react child
                 React.cloneElement(child, {
                   // add modal specific methods
                   disableModal: this.disableModal,
                   enableModal: this.enableModal,
                   isModal: true,
-                  ref: this.modalForm
-                })
+                  ref: this.modalForm,
+                }),
               )}
           </Modal>
         }
@@ -78,14 +78,14 @@ class InstanceFormModal extends Component {
 }
 
 InstanceFormModal.defaultProps = {
-  show: false
+  show: false,
 };
 
 InstanceFormModal.propTypes = {
   show: PropTypes.bool.isRequired,
   onRequestSubmit: PropTypes.func.isRequired,
   name: PropTypes.string, // undefined for loaded modal not rendered
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export default InstanceFormModal;

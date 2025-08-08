@@ -2,7 +2,7 @@ import {
   SideNav,
   SideNavDivider,
   SideNavItems,
-  SideNavLink
+  SideNavLink,
 } from "@carbon/react";
 import {
   Home,
@@ -29,7 +29,7 @@ import {
   Report,
   Help,
   Launch,
-  Bullhorn
+  Bullhorn,
 } from "@carbon/icons-react";
 import React from "react";
 import "./navigation.scss";
@@ -39,7 +39,7 @@ import PropTypes from "prop-types";
 const onClickDocumentation = () => {
   window.open(
     "https://github.com/open-toolchain/landing-zone#ibm-secure-landing-zone",
-    "_blank"
+    "_blank",
   );
 };
 
@@ -47,58 +47,57 @@ const requiredComponents = [
   {
     title: "Resource groups",
     path: "/resourceGroups",
-    icon: GroupResource
+    icon: GroupResource,
   },
   {
     title: "Key management",
     path: "/keyManagement",
-    icon: IbmCloudKeyProtect
+    icon: IbmCloudKeyProtect,
   },
   {
     title: "Object Storage",
     path: "/objectStorage",
-    icon: ObjectStorage
+    icon: ObjectStorage,
   },
   {
     title: "Virtual private clouds",
     path: "/vpcs",
-    icon: VirtualPrivateCloud
+    icon: VirtualPrivateCloud,
   },
   { title: "VPC access control", path: "/nacls", icon: SubnetAclRules },
   { title: "VPC subnets", path: "/subnets", icon: IbmCloudSubnets },
   {
     title: "Transit gateway",
     path: "/transitGateway",
-    icon: IbmCloudTransitGateway
+    icon: IbmCloudTransitGateway,
   },
   { title: "Security groups", path: "/securityGroups", icon: Security },
   {
     title: "Virtual private endpoints",
     path: "/vpe",
-    icon: IbmCloudVpcEndpoints
+    icon: IbmCloudVpcEndpoints,
   },
   {
     title: "Activity Tracker",
     path: "/activityTracker",
-    icon: CloudAuditing
+    icon: CloudAuditing,
   },
   { title: "SSH keys", path: "/sshKeys", icon: Password },
   {
     title: "Virtual Server Instances",
     path: "/vsi",
-    icon: BareMetalServer_02
+    icon: BareMetalServer_02,
   },
   {
     title: "Clusters",
     path: "/clusters",
-    icon: IbmCloudKubernetesService
+    icon: IbmCloudKubernetesService,
   },
-  { title: "VPN gateways", path: "/vpn", icon: GatewayVpn }
+  { title: "VPN gateways", path: "/vpn", icon: GatewayVpn },
 ];
 
 const optionalComponents = [
   // not exposed in the catalog version
-
   // { title: "App ID", path: "/appID", icon: CloudApp },
   // {
   //   title: "Teleport Bastion Host",
@@ -119,7 +118,7 @@ const optionalComponents = [
   // }
 ];
 
-const Navigation = props => {
+const Navigation = (props) => {
   let dividerClass = props.expanded ? "expandedDivider" : "railDivider";
   return (
     <SideNav
@@ -147,7 +146,7 @@ const Navigation = props => {
               item={{
                 path: "/releaseNotes",
                 icon: Bullhorn,
-                title: "Release Notes"
+                title: "Release Notes",
               }}
               key="ReleaseNotes"
               expanded={props.expanded}
@@ -166,8 +165,13 @@ const Navigation = props => {
         {props.expanded && (
           <SideNavLink href="#">Required Components</SideNavLink>
         )}
-        {requiredComponents.map(item => (
-          <NavItem item={item} key={item.title} expanded={props.expanded}  navigate={props.navigate} />
+        {requiredComponents.map((item) => (
+          <NavItem
+            item={item}
+            key={item.title}
+            expanded={props.expanded}
+            navigate={props.navigate}
+          />
         ))}
         {/* <SideNavDivider className={dividerClass} />
         {props.expanded && (
@@ -194,7 +198,7 @@ const Navigation = props => {
 };
 
 Navigation.defaultProps = {
-  expanded: false
+  expanded: false,
 };
 
 Navigation.propTypes = {

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { NetworkingRulesOrderCard } from "./network-rules/index.js";
 import {
   buildFormDefaultInputMethods,
-  buildFormFunctions
+  buildFormFunctions,
 } from "../../component-utils.js";
 import { splat, deepEqual } from "lazy-z";
 import PropTypes from "prop-types";
@@ -10,7 +10,7 @@ import {
   SlzNameInput,
   SlzFormGroup,
   ResourceGroupSelect,
-  VpcSelect
+  VpcSelect,
 } from "../../icse/index.js";
 
 /**
@@ -45,7 +45,10 @@ class SecurityGroupForm extends Component {
    */
   networkRuleOrderDidChange(rules) {
     this.props.networkRuleOrderDidChange(
-      deepEqual(splat(rules, "name"), splat([...this.props.data.rules], "name"))
+      deepEqual(
+        splat(rules, "name"),
+        splat([...this.props.data.rules], "name"),
+      ),
     );
 
     this.setState({ rules: rules }); // if the order of the rules changed, update rules state
@@ -121,10 +124,10 @@ SecurityGroupForm.defaultProps = {
     name: "",
     resource_group: "",
     vpc_name: "",
-    rules: []
+    rules: [],
   },
   isModal: false,
-  isTeleport: false
+  isTeleport: false,
 };
 
 SecurityGroupForm.propTypes = {
@@ -132,13 +135,13 @@ SecurityGroupForm.propTypes = {
     name: PropTypes.string.isRequired,
     vpc_name: PropTypes.string,
     resource_group: PropTypes.string,
-    rules: PropTypes.array
+    rules: PropTypes.array,
   }).isRequired,
   vsiName: PropTypes.string,
   isModal: PropTypes.bool.isRequired,
   isTeleport: PropTypes.bool.isRequired,
   networkRuleOrderDidChange: PropTypes.func,
-  slz: PropTypes.shape({}).isRequired
+  slz: PropTypes.shape({}).isRequired,
 };
 
 export default SecurityGroupForm;

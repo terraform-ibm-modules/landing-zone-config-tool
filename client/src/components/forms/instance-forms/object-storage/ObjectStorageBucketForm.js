@@ -5,7 +5,7 @@ import {
   KmsKeySelect,
   SlzFormGroup,
   SlzToggle,
-  SlzNameInput
+  SlzNameInput,
 } from "../../../icse/index.js";
 import { buildFormFunctions } from "../../../component-utils.js";
 import PropTypes from "prop-types";
@@ -22,7 +22,7 @@ class ObjectStorageBucketForm extends Component {
       force_delete: this.props.data.force_delete,
       kms_key: this.props.isModal ? "" : this.props.data.kms_key,
       name: this.props.data.name,
-      storage_class: this.props.data.storage_class
+      storage_class: this.props.data.storage_class,
     };
     buildFormFunctions(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -51,7 +51,7 @@ class ObjectStorageBucketForm extends Component {
             id={this.state.name + "-name"}
             componentName={this.props.data.name}
             component="buckets"
-            onChange={event =>
+            onChange={(event) =>
               this.handleInputChange("name", event.target.value)
             }
             componentProps={this.props}
@@ -66,10 +66,10 @@ class ObjectStorageBucketForm extends Component {
             groups={["Standard", "Vault", "Cold Vault", "Smart Tier"]}
             value={capitalize(this.state.storage_class)}
             labelText="Bucket class"
-            handleInputChange={event =>
+            handleInputChange={(event) =>
               this.handleInputChange(
                 "storage_class",
-                event.target.value.toLowerCase()
+                event.target.value.toLowerCase(),
               )
             }
           />
@@ -80,7 +80,7 @@ class ObjectStorageBucketForm extends Component {
             component={this.props.data.name}
             slz={this.props.slz}
             value={this.state.kms_key}
-            handleInputChange={event =>
+            handleInputChange={(event) =>
               this.handleInputChange("kms_key", event.target.value)
             }
           />
@@ -88,7 +88,7 @@ class ObjectStorageBucketForm extends Component {
           <SlzToggle
             tooltip={{
               content:
-                "Toggling this on will force delete contents of the bucket after the bucket is deleted"
+                "Toggling this on will force delete contents of the bucket after the bucket is deleted",
             }}
             id={composedId + "force-delete"}
             labelText="Force Delete Contents"
@@ -107,8 +107,8 @@ ObjectStorageBucketForm.defaultProps = {
   data: {
     force_delete: false,
     name: "",
-    storage_class: "Standard"
-  }
+    storage_class: "Standard",
+  },
 };
 
 ObjectStorageBucketForm.propTypes = {
@@ -118,17 +118,17 @@ ObjectStorageBucketForm.propTypes = {
     force_delete: PropTypes.bool.isRequired,
     name: PropTypes.string.isRequired,
     storage_class: PropTypes.string.isRequired,
-    kms_key: PropTypes.string
+    kms_key: PropTypes.string,
   }),
   shouldDisableSave: PropTypes.func,
   shouldDisableSubmit: PropTypes.func,
   slz: PropTypes.shape({
     store: PropTypes.shape({
       configDotJson: PropTypes.shape({
-        cos: PropTypes.array.isRequired
-      })
-    })
-  })
+        cos: PropTypes.array.isRequired,
+      }),
+    }),
+  }),
 };
 
 export default ObjectStorageBucketForm;

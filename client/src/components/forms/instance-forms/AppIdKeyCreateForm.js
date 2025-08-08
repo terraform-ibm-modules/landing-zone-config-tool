@@ -38,13 +38,13 @@ class AppIdKeyCreateForm extends Component {
             !validName(this.state.key_name) ||
             contains(
               this.props.slz.store.configDotJson.appid.keys,
-              this.state.key_name
+              this.state.key_name,
             )
           }
           invalidText={
             contains(
               this.props.slz.store.configDotJson.appid.keys,
-              this.state.key_name
+              this.state.key_name,
             )
               ? `Key name ${this.state.key_name} already in use.`
               : `Invalid Key Name. Must match the regular expression: /[A-z][a-z0-9-]*[a-z0-9]`
@@ -57,23 +57,23 @@ class AppIdKeyCreateForm extends Component {
 
 AppIdKeyCreateForm.defaultProps = {
   data: {
-    key_name: ""
-  }
+    key_name: "",
+  },
 };
 
 AppIdKeyCreateForm.propTypes = {
   data: PropTypes.shape({
-    key_name: PropTypes.string.isRequired
+    key_name: PropTypes.string.isRequired,
   }),
   slz: PropTypes.shape({
     store: PropTypes.shape({
       configDotJson: PropTypes.shape({
         appid: PropTypes.shape({
-          keys: PropTypes.arrayOf(PropTypes.string).isRequired
-        }).isRequired
-      }).isRequired
-    })
-  })
+          keys: PropTypes.arrayOf(PropTypes.string).isRequired,
+        }).isRequired,
+      }).isRequired,
+    }),
+  }),
 };
 
 export default AppIdKeyCreateForm;

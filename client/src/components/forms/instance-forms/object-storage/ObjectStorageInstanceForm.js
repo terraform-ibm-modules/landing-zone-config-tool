@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import {
   buildFormDefaultInputMethods,
-  buildFormFunctions
+  buildFormFunctions,
 } from "../../../component-utils.js";
-import { ObjectStorageBuckets, ObjectStorageKeys } from "../../SlzArrayForms.js";
+import {
+  ObjectStorageBuckets,
+  ObjectStorageKeys,
+} from "../../SlzArrayForms.js";
 import PropTypes from "prop-types";
 import {
   ResourceGroupSelect,
   SlzFormGroup,
   SlzToggle,
-  SlzNameInput
+  SlzNameInput,
 } from "../../../icse/index.js";
 
 /**
@@ -43,7 +46,7 @@ class ObjectStorageInstancesForm extends Component {
           <SlzToggle
             tooltip={{
               content:
-                "Service credentials and buckets will be created for your environment even when using an existing Object Storage instance."
+                "Service credentials and buckets will be created for your environment even when using an existing Object Storage instance.",
             }}
             id={composedId + "use-data"}
             toggleFieldName="use_data"
@@ -56,7 +59,7 @@ class ObjectStorageInstancesForm extends Component {
           <SlzToggle
             tooltip={{
               content:
-                "Object Storage bucket names must be unique across an account. Append a random suffix to maintain unique names across deployments."
+                "Object Storage bucket names must be unique across an account. Append a random suffix to maintain unique names across deployments.",
             }}
             id={composedId + "random-suffix"}
             labelText="Append random suffix to names"
@@ -74,7 +77,7 @@ class ObjectStorageInstancesForm extends Component {
             componentName={this.props.data.name}
             component="cos"
             value={this.state.name}
-            onChange={event =>
+            onChange={(event) =>
               this.handleInputChange("name", event.target.value)
             }
             componentProps={this.props}
@@ -86,7 +89,7 @@ class ObjectStorageInstancesForm extends Component {
             slz={this.props.slz}
             component={this.props.data.name}
             value={this.state.resource_group}
-            handleInputChange={event =>
+            handleInputChange={(event) =>
               this.handleInputChange("resource_group", event.target.value)
             }
             className="fieldWidth"
@@ -117,8 +120,8 @@ ObjectStorageInstancesForm.defaultProps = {
     resource_group: "",
     random_suffix: true,
     keys: [],
-    buckets: []
-  }
+    buckets: [],
+  },
 };
 
 ObjectStorageInstancesForm.propTypes = {
@@ -129,17 +132,17 @@ ObjectStorageInstancesForm.propTypes = {
     resource_group: PropTypes.string,
     random_suffix: PropTypes.bool.isRequired,
     keys: PropTypes.array,
-    buckets: PropTypes.array
+    buckets: PropTypes.array,
   }),
   shouldDisableSave: PropTypes.func,
   shouldDisableSubmit: PropTypes.func,
   slz: PropTypes.shape({
     store: PropTypes.shape({
       configDotJson: PropTypes.shape({
-        cos: PropTypes.array.isRequired
-      })
-    })
-  })
+        cos: PropTypes.array.isRequired,
+      }),
+    }),
+  }),
 };
 
 export default ObjectStorageInstancesForm;
