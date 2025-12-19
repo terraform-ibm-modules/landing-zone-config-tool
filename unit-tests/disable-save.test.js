@@ -1,4 +1,5 @@
-import { assert } from "chai";
+import chai from "chai";
+const { assert } = chai;
 import { disableSave } from "../client/src/lib/disable-save.js";
 
 describe("disableSave", () => {

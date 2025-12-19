@@ -1,4 +1,5 @@
-import { assert } from "chai";
+import chai from "chai";
+const { assert } = chai;
 import { changelogToMarkdown } from "../client/src/lib/changelog-to-markdown.js";
 
 describe("changelog-to-markdown", () => {

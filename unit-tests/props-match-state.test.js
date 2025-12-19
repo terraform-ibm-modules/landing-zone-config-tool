@@ -1,4 +1,5 @@
-import { assert } from "chai";
+import chai from "chai";
+const { assert } = chai;
 import { propsMatchState } from "../client/src/lib/props-match-state.js";
 
 describe("propsMatchState", () => {

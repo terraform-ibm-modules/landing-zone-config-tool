@@ -1,4 +1,5 @@
-import { assert } from "chai";
+import chai from "chai";
+const { assert } = chai;
 import { contains, splat } from "lazy-z";
 import { slzState as state } from "../client/src/lib/state.js";
 const defaultWorkloadCluster = {

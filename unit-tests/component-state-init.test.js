@@ -1,4 +1,5 @@
-import { assert } from "chai";
+import chai from "chai";
+const { assert } = chai;
 import { stateInit } from "../client/src/lib/component-state-init.js";
 
 describe("state initializtion functions", () => {

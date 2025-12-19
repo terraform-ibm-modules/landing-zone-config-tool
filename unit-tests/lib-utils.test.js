@@ -1,4 +1,5 @@
-import { assert } from "chai";
+import chai from "chai";
+const { assert } = chai;
 import { tmosAdminPasswordValidationExp } from "../client/src/lib/constants.js";
 import {
   minStringSize,
