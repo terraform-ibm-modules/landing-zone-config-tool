@@ -1,4 +1,4 @@
-import chai from "chai";
+import * as chai from "chai";
 const { assert } = chai;
 import overrideWithEdge from "./data-files/override-with-edge.json" assert { type: "json" };
 import {

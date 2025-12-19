@@ -1,4 +1,4 @@
-import chai from "chai";
+import * as chai from "chai";
 const { assert } = chai;
 import { stateInit } from "../client/src/lib/component-state-init.js";
 

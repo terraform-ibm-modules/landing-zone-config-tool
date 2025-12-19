@@ -1,4 +1,4 @@
-import chai from "chai";
+import * as chai from "chai";
 const { assert } = chai;
 import { disableSave } from "../client/src/lib/disable-save.js";
 

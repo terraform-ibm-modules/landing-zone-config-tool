@@ -1,4 +1,4 @@
-import chai from "chai";
+import * as chai from "chai";
 const { assert } = chai;
 import { validate }  from "../client/src/lib/validate.js";
 import { slzState as slzStore } from "../client/src/lib/state.js";
