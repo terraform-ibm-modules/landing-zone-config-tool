@@ -7,7 +7,7 @@ import vsi from "../../../images/vsi.png";
 import roks from "../../../images/roks.png";
 import vpc from "../../../images/vpc.png";
 
-export const EmptyResourceTile = props => {
+export const EmptyResourceTile = (props) => {
   return props.showIfEmpty === false || props.showIfEmpty.length === 0 ? (
     <Tile className="marginBottomXs">
       <CloudAlerting size="24" className="iconMargin" />
@@ -26,15 +26,16 @@ export const EmptyResourceTile = props => {
 };
 
 EmptyResourceTile.defaultProps = {
-  name: "items in this list."
+  name: "items in this list.",
 };
 
 EmptyResourceTile.propTypes = {
   name: PropTypes.string.isRequired,
-  showIfEmpty: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]).isRequired
+  showIfEmpty: PropTypes.oneOfType([PropTypes.array, PropTypes.bool])
+    .isRequired,
 };
 
-export const PatternTile = props => {
+export const PatternTile = (props) => {
   let patternImage =
     props.state.id === "vsi" ? vsi : props.state.id === "roks" ? roks : vpc;
   return (
@@ -61,6 +62,6 @@ PatternTile.propTypes = {
   state: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired
-  }).isRequired
+    description: PropTypes.string.isRequired,
+  }).isRequired,
 };

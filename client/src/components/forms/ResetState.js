@@ -15,7 +15,7 @@ const konamiCode = [
   "ArrowRight",
   "b",
   "a",
-  "Enter"
+  "Enter",
 ];
 
 class ResetState extends React.Component {
@@ -23,7 +23,7 @@ class ResetState extends React.Component {
     super(props);
     this.state = {
       cheatsEnabled: false,
-      keysPressed: []
+      keysPressed: [],
     };
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
@@ -50,7 +50,7 @@ class ResetState extends React.Component {
       if (deepEqual(stateKeys, konamiCode)) {
         // get json data
         let storeData = JSON.parse(
-          window.localStorage.getItem(this.props.storeName)
+          window.localStorage.getItem(this.props.storeName),
         );
         // enable cheats
         storeData.cheatsEnabled = true;
