@@ -1,4 +1,5 @@
-import { assert } from "chai";
+import * as chai from "chai";
+const { assert } = chai;
 import { validate } from "../client/src/lib/validate.js";
 import { eachKey, splat } from "lazy-z";
 import goodOverride from "./data-files/good-override.json" assert { type: "json" };

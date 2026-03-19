@@ -1,4 +1,5 @@
-import { assert } from "chai";
+import * as chai from "chai";
+const { assert } = chai;
 import fs from "fs";
 import { docsToMd, allDocs } from "../client/src/lib/docs-to-md.js";
 

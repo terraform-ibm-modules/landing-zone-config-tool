@@ -37,7 +37,7 @@
       "Fixed alignment of the \"Use Pretty JSON\" toggle on the summary page",
       "Fixed a bug that caused the IAM Account Settings page to not load",
       "Fixed an issue where networking rule port value types were inconsistent",
-      "Users can no longer toggle \"Use public gateway\" if a gatway has not been created in that zone"
+      "Users can no longer toggle \"Use public gateway\" if a gateway has not been created in that zone"
     ]
   },
   {
