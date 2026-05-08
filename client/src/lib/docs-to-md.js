@@ -1,5 +1,5 @@
 import { matchLength, eachKey, capitalize, titleCase } from "lazy-z";
-import slzDocs from "../docs/slz-docs.json" assert { type: "json" };
+import slzDocs from "../docs/slz-docs.json" with { type: "json" };
 import fs from "fs";
 /**
  * get longest entry from col index

@@ -1,7 +1,7 @@
 import { assert } from "chai";
 import { validate }  from "../client/src/lib/validate.js";
 import { slzState as slzStore } from "../client/src/lib/state.js";
-import overrideJson from "./data-files/override.json" assert { type: "json" };
+import overrideJson from "./data-files/override.json" with { type: "json" };
 
 describe("slzState", () => {
   describe("hardSetConfigDotJson", () => {

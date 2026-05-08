@@ -8,7 +8,7 @@ import {
   newF5VpeSg,
   defaultSecurityGroups,
 } from "../client/src/lib/store/defaults.js";
-import edgeDefaults from "./data-files/f5-config.json" assert { type: "json" };
+import edgeDefaults from "./data-files/f5-config.json" with { type: "json" };
 const defaultEdgeVpnAndWaf = edgeDefaults["vpn-and-waf"];
 const managementEdgeVpnAndWaf = edgeDefaults["management-vpn-and-waf"];
 const defaultEdgeFullTunnel = edgeDefaults["full-tunnel"];

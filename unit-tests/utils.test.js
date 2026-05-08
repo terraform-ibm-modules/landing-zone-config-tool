@@ -1,5 +1,5 @@
 import { assert } from "chai";
-import overrideWithEdge from "./data-files/override-with-edge.json" assert { type: "json" };
+import overrideWithEdge from "./data-files/override-with-edge.json" with { type: "json" };
 import {
   cidrBlocksOverlap,
   updateNetworkingRule,

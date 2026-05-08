@@ -1,8 +1,8 @@
 import { assert } from "chai";
 import { validate } from "../client/src/lib/validate.js";
 import { eachKey, splat } from "lazy-z";
-import goodOverride from "./data-files/good-override.json" assert { type: "json" };
-import overrideVersion from "./data-files/override-versions.json" assert { type: "json" };
+import goodOverride from "./data-files/good-override.json" with { type: "json" };
+import overrideVersion from "./data-files/override-versions.json" with { type: "json" };
 
 const minimumValidJson = (data) => {
   let newData = {
