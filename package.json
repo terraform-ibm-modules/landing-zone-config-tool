@@ -3,7 +3,6 @@
   "version": "0.10.0",
   "description": "GUI for configuring Landing Zone override.json",
   "main": "index.js",
-  "type": "module",
   "engines": {
     "node": "24.15.0"
   },
@@ -17,7 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lazy-z": "2.0.0"
+    "lazy-z": "1.12.1"
   },
   "devDependencies": {
     "chai": "6.2.2",

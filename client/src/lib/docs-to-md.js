@@ -1,6 +1,11 @@
 import { matchLength, eachKey, capitalize, titleCase } from "lazy-z";
-import slzDocs from "../docs/slz-docs.json" with { type: "json" };
 import fs from "fs";
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const slzDocs = JSON.parse(fs.readFileSync(join(__dirname, '../docs/slz-docs.json'), 'utf8'));
 /**
  * get longest entry from col index
  * @param {Array} arr

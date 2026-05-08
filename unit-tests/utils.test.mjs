@@ -1,5 +1,12 @@
 import { assert } from "chai";
-import overrideWithEdge from "./data-files/override-with-edge.json" with { type: "json" };
+import fs from "fs";
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const overrideWithEdge = JSON.parse(fs.readFileSync(join(__dirname, './data-files/override-with-edge.json'), 'utf8'));
+
 import {
   cidrBlocksOverlap,
   updateNetworkingRule,
