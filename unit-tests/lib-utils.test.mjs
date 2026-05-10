@@ -580,7 +580,7 @@ describe("lib utils", () => {
     });
     it("should return true if valid password", () => {
       assert.isTrue(
-        validTmosAdminPassword("abcdefabcdefABC1"),
+        validTmosAdminPassword("abcdefabcdefABC1"),  // pragma: allowlist secret
         "it should be true"
       );
     });
