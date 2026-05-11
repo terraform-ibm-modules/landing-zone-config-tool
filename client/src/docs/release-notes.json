@@ -8,7 +8,7 @@
       "Added automated CHANGELOG.md creation",
       "Users can now scale the number of availability zones for starting infrastructure when using a default pattern once a pattern has been selected",
       "Added `helperText` prop to SlzNumberSelect and SlzSelect",
-      "Added `disabled` prop to SlzNubmerSelect",
+      "Added `disabled` prop to SlzNumberSelect",
       "Added modal prompt to notify users when disabling Activity Tracker Route that doing so will result in an environment that is not FS Cloud Compliant."
     ],
     "fixes": ["Fixed an issue that caused the home page to not load"]
@@ -37,7 +37,7 @@
       "Fixed alignment of the \"Use Pretty JSON\" toggle on the summary page",
       "Fixed a bug that caused the IAM Account Settings page to not load",
       "Fixed an issue where networking rule port value types were inconsistent",
-      "Users can no longer toggle \"Use public gateway\" if a gatway has not been created in that zone"
+      "Users can no longer toggle \"Use public gateway\" if a gateway has not been created in that zone"
     ]
   },
   {

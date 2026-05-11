@@ -1,7 +1,13 @@
 import { assert } from "chai";
 import { validate }  from "../client/src/lib/validate.js";
 import { slzState as slzStore } from "../client/src/lib/state.js";
-import overrideJson from "./data-files/override.json" assert { type: "json" };
+import fs from "fs";
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const overrideJson = JSON.parse(fs.readFileSync(join(__dirname, './data-files/override.json'), 'utf8'));
 
 describe("slzState", () => {
   describe("hardSetConfigDotJson", () => {
