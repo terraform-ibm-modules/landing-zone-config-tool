@@ -1,8 +1,14 @@
 import { assert } from "chai";
 import { validate } from "../client/src/lib/validate.js";
 import { eachKey, splat } from "lazy-z";
-import goodOverride from "./data-files/good-override.json" assert { type: "json" };
-import overrideVersion from "./data-files/override-versions.json" assert { type: "json" };
+import fs from "fs";
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const goodOverride = JSON.parse(fs.readFileSync(join(__dirname, './data-files/good-override.json'), 'utf8'));
+const overrideVersion = JSON.parse(fs.readFileSync(join(__dirname, './data-files/override-versions.json'), 'utf8'));
 
 const minimumValidJson = (data) => {
   let newData = {

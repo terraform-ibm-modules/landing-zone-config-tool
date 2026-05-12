@@ -2141,15 +2141,15 @@ describe("form-utils", () => {
     });
     it("should return json for code mirror", () => {
       let state = new slzState();
-      state.store.configDotJson.f5_template_data.tmos_admin_password = "fooooo";
-      state.store.configDotJson.f5_template_data.license_password = "fooooo";
+      state.store.configDotJson.f5_template_data.tmos_admin_password = "fooooo"; // pragma: allowlist secret
+      state.store.configDotJson.f5_template_data.license_password = "fooooo"; // pragma: allowlist secret
       let expectedData = {
         f5_template_data: {
-          tmos_admin_password: "****************************",
+          tmos_admin_password: "****************************", // pragma: allowlist secret
           license_type: "none",
           byol_license_basekey: "null",
           license_host: "null",
-          license_password: "****************************",
+          license_password: "****************************", // pragma: allowlist secret
           license_pool: "null",
           license_sku_keyword_1: "null",
           license_sku_keyword_2: "null",

@@ -2,25 +2,5 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "github>terraform-ibm-modules/common-dev-assets:commonRenovateConfig"
-  ],
-  "packageRules": [
-    {
-      "description": "Group all npm package updates into a single PR",
-      "matchManagers": [
-        "npm"
-      ],
-      "groupName": "npm dependencies"
-    }
-  ],
-   "regexManagers": [
-    {
-      "fileMatch": [
-        "^.one-pipeline.yaml$"
-      ],
-      "matchStrings": [
-        "image: (?<depName>.*?):(?<currentValue>.*?)@(?<currentDigest>sha256:[a-f0-9]+)\\s"
-      ],
-      "datasourceTemplate": "docker"
-    }
   ]
 }

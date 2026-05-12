@@ -2204,7 +2204,7 @@ describe("disableSave", () => {
     });
     it("should disable with invalid tmos_admin_password", () => {
       assert.isTrue(
-        disableSave("f5_template_data", { tmos_admin_password: "invalid" }),
+        disableSave("f5_template_data", { tmos_admin_password: "invalid" }), // pragma: allowlist secret
         "it should be disabled"
       );
     });
