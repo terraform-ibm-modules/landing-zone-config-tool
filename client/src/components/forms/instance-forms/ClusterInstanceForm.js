@@ -11,16 +11,16 @@ import {
   ClusterVersionSelect,
   ClusterOperatingSystemSelect,
   FlavorSelect,
-  SlzNameInput
+  SlzNameInput,
 } from "../../icse/index.js";
 import {
   buildFormDefaultInputMethods,
-  buildFormFunctions
+  buildFormFunctions,
 } from "../../component-utils.js";
 import {
   newFormClusterInstance,
   hasInvalidWorkers,
-  stateInit
+  stateInit,
 } from "../../../lib/index.js";
 import { ClusterWorkerPools } from "../SlzArrayForms.js";
 import { isNullOrEmptyString, splat } from "lazy-z";
@@ -36,7 +36,7 @@ class ClusterInstance extends Component {
       show: true,
       cluster: this.props.data
         ? { ...stateInit("clusters", this.props) }
-        : newFormClusterInstance()
+        : newFormClusterInstance(),
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleToggleChange = this.handleToggleChange.bind(this);
@@ -46,7 +46,7 @@ class ClusterInstance extends Component {
   }
 
   // Handle cluster input change
-  handleInputChange = event => {
+  handleInputChange = (event) => {
     let { name, value } = event.target;
     let cluster = { ...this.state.cluster };
     if (name === "kms_config") {
@@ -81,7 +81,7 @@ class ClusterInstance extends Component {
    * handle subnet
    * @param {*} event event
    */
-  handleSubnetChange = event => {
+  handleSubnetChange = (event) => {
     let cluster = { ...this.state.cluster };
     cluster.subnet_names = event.selectedItems;
     this.setState({ cluster });
@@ -123,10 +123,7 @@ class ClusterInstance extends Component {
             groups={["OpenShift"]}
             handleInputChange={this.handleInputChange}
             invalidText="Select a cluster type."
-            value={
-              this.state.cluster.kube_type === ""
-                ? "" : "OpenShift"
-            }
+            value={this.state.cluster.kube_type === "" ? "" : "OpenShift"}
             component={clusterComponent}
           />
         </SlzFormGroup>
@@ -246,9 +243,9 @@ ClusterInstance.defaultProps = {
     subnet_names: [],
     vpc_name: "",
     worker_pools: [],
-    workers_per_subnet: 2
+    workers_per_subnet: 2,
   },
-  isModal: false
+  isModal: false,
 };
 
 ClusterInstance.propTypes = {
@@ -267,13 +264,13 @@ ClusterInstance.propTypes = {
     subnet_names: PropTypes.array.isRequired,
     vpc_name: PropTypes.string.isRequired,
     worker_pools: PropTypes.array.isRequired,
-    workers_per_subnet: PropTypes.number.isRequired
+    workers_per_subnet: PropTypes.number.isRequired,
   }),
   slz: PropTypes.shape({
     store: PropTypes.shape({
       configDotJson: PropTypes.shape({
-        clusters: PropTypes.array.isRequired
-      })
-    })
-  })
+        clusters: PropTypes.array.isRequired,
+      }),
+    }),
+  }),
 };

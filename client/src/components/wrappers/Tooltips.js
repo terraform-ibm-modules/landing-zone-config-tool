@@ -4,7 +4,7 @@ import SlzToolTip from "../tooltips/SlzToolTip.js";
 import "./tooltips.css";
 import React from "react";
 
-const buildToolTip = props => {
+const buildToolTip = (props) => {
   return (
     <SlzToolTip
       content={props.tooltip.content}
@@ -26,7 +26,7 @@ const buildToolTip = props => {
  * @param {string=} props.tooltip.link optional tooltip link
  * @returns
  */
-export const SlzToolTipWrapper = props => {
+export const SlzToolTipWrapper = (props) => {
   let allProps = { ...props };
   delete allProps.innerForm;
   delete allProps.tooltip;
@@ -51,7 +51,7 @@ export const SlzToolTipWrapper = props => {
             ? React.cloneElement(props.children, {
                 // adjust props
                 labelText: " ", // set labelText to empty
-                className: props.children.props.className + " tooltip" // add tooltip class back
+                className: props.children.props.className + " tooltip", // add tooltip class back
               })
             : RenderForm(props.innerForm, allProps)}
         </>
@@ -75,7 +75,7 @@ export const SlzToolTipWrapper = props => {
  * @param {string=} props.tooltipLink optional tooltip link
  * @returns
  */
-export const DynamicToolTipWrapper = props => {
+export const DynamicToolTipWrapper = (props) => {
   return props.tooltip ? (
     <SlzToolTipWrapper {...props} />
   ) : props.children ? (

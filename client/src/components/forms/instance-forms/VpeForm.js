@@ -6,18 +6,18 @@ import {
   VpcListMultiSelect,
   SubnetMultiSelect,
   SlzFormGroup,
-  SlzSubForm
+  SlzSubForm,
 } from "../../icse/index.js";
 import {
   getObjectFromArray,
   splat,
   contains,
   containsKeys,
-  keys
+  keys,
 } from "lazy-z";
 import {
   buildComposedComponentNameHelperText,
-  hasInvalidName
+  hasInvalidName,
 } from "../../../lib/index.js";
 import { buildFormFunctions } from "../../component-utils.js";
 import { SlzToolTipWrapper } from "../../wrappers/Tooltips.js";
@@ -28,23 +28,22 @@ class VPEForm extends Component {
     super(props);
     let vpcData = {};
     if (this.props.data.vpcs)
-      this.props.data.vpcs.forEach(vpc => {
+      this.props.data.vpcs.forEach((vpc) => {
         vpcData[vpc.name] = {
           subnets: vpc.subnets,
-          security_group_name: vpc.security_group_name
+          security_group_name: vpc.security_group_name,
         };
       });
     this.state = {
       vpe: { ...this.props.data },
-      vpcData: vpcData
+      vpcData: vpcData,
     };
     buildFormFunctions(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleVpcChange = this.handleVpcChange.bind(this);
     this.handleVpcSubnetChange = this.handleVpcSubnetChange.bind(this);
-    this.handleVpcSecurityGroupChange = this.handleVpcSecurityGroupChange.bind(
-      this
-    );
+    this.handleVpcSecurityGroupChange =
+      this.handleVpcSecurityGroupChange.bind(this);
   }
 
   /**
@@ -71,7 +70,7 @@ class VPEForm extends Component {
     let vpcData = this.state.vpcData;
     let newVpcData = {};
     // for each selected item
-    selectedItems.forEach(vpc => {
+    selectedItems.forEach((vpc) => {
       if (contains(vpeVpcNames, vpc)) {
         // if exists in vpe add to new vpcs
         newVpcs.push(getObjectFromArray(vpe.vpcs, "name", vpc));
@@ -80,7 +79,7 @@ class VPEForm extends Component {
         newVpcs.push({
           name: vpc,
           subnets: [],
-          security_group_name: ""
+          security_group_name: "",
         });
       }
 
@@ -127,7 +126,7 @@ class VPEForm extends Component {
     let vpeHasInvalidName = hasInvalidName(
       "virtual_private_endpoints",
       this.state.vpe.service_name,
-      this.props
+      this.props,
     );
     return (
       <>
@@ -137,7 +136,7 @@ class VPEForm extends Component {
               content:
                 "This prefix will be prepended to each subnet's VPE gateway.",
               alignModal: "bottom-left",
-              align: "top-left"
+              align: "top-left",
             }}
             isModal={this.props.isModal}
             id={composedId}
@@ -151,8 +150,8 @@ class VPEForm extends Component {
               this.props.slz.store.prefix,
               this.state.vpe.service_name,
               {
-                suffix: "<vpc name>-<subnet name>"
-              }
+                suffix: "<vpc name>-<subnet name>",
+              },
             )}
             labelText="Prefix"
             innerForm={SlzTextInput}
@@ -165,7 +164,9 @@ class VPEForm extends Component {
             value={this.state.vpe.resource_group}
           />
           <SlzSelect
-            tooltip={{ content: "Currently, only Object Storage is supported." }}
+            tooltip={{
+              content: "Currently, only Object Storage is supported.",
+            }}
             component={this.props.data.service_name + "-service"}
             store={this.props.slz.store}
             labelText="Service type"
@@ -196,7 +197,7 @@ class VPEForm extends Component {
           id={composedId + "-subform"}
         >
           <h4 className="leftTextAlign marginBottomSmall">VPCs</h4>
-          {keys(this.state.vpcData).map(key => {
+          {keys(this.state.vpcData).map((key) => {
             let vpc = this.state.vpcData[key];
             vpc.name = key;
             return (
@@ -218,14 +219,14 @@ class VPEForm extends Component {
                     vpc.security_group_name === null
                       ? ""
                       : containsKeys(this.state.vpcData, vpc.name)
-                      ? this.state.vpcData[vpc.name].security_group_name
-                      : vpc.security_group_name
+                        ? this.state.vpcData[vpc.name].security_group_name
+                        : vpc.security_group_name
                   }
                   name="security_group_name"
-                  handleInputChange={event => {
+                  handleInputChange={(event) => {
                     this.handleVpcSecurityGroupChange(
                       vpc.name,
-                      event.target.value
+                      event.target.value,
                     );
                   }}
                   className="fieldWidthSmaller"
@@ -242,7 +243,7 @@ class VPEForm extends Component {
                       ? this.state.vpcData[vpc.name].subnets
                       : vpc.subnets // default to subnets if not found
                   }
-                  onChange={event => {
+                  onChange={(event) => {
                     this.handleVpcSubnetChange(vpc.name, event.selectedItems);
                   }}
                   className="fieldWidthSmaller leftTextAlign"
@@ -261,9 +262,9 @@ VPEForm.defaultProps = {
     service_name: "",
     resource_group: "",
     vpcs: [],
-    service_type: "cloud-object-storage"
+    service_type: "cloud-object-storage",
   },
-  isModal: false
+  isModal: false,
 };
 
 VPEForm.propTypes = {
@@ -271,15 +272,15 @@ VPEForm.propTypes = {
     service_name: PropTypes.string.isRequired,
     resource_group: PropTypes.string, // can be null
     vpcs: PropTypes.array.isRequired,
-    service_type: PropTypes.string.isRequired
+    service_type: PropTypes.string.isRequired,
   }).isRequired,
   isModal: PropTypes.bool.isRequired,
   slz: PropTypes.shape({
     store: PropTypes.shape({
       prefix: PropTypes.string.isRequired,
-      securityGroups: PropTypes.object.isRequired
-    }).isRequired
-  }).isRequired
+      securityGroups: PropTypes.object.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default VPEForm;

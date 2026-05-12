@@ -9,7 +9,7 @@ import {
   SlzSelect,
   SlzFormGroup,
   InstanceFormModal,
-  SaveAddButton
+  SaveAddButton,
 } from "../../icse/index.js";
 import { buildFormFunctions } from "../../component-utils.js";
 import {
@@ -17,7 +17,7 @@ import {
   getCosKeysFromBucket,
   hasInvalidName,
   stateInit,
-  checkNullorEmptyString
+  checkNullorEmptyString,
 } from "../../../lib/index.js";
 import { contains, isNullOrEmptyString } from "lazy-z";
 import PropTypes from "prop-types";
@@ -35,8 +35,8 @@ class TeleportConfigForm extends React.Component {
       showCosKeyModal: false,
       showAppIdKeyModal: false,
       teleport_config: {
-        ...stateInit("teleport_config", this.props)
-      }
+        ...stateInit("teleport_config", this.props),
+      },
     };
     this.teleportConfigChange = this.teleportConfigChange.bind(this);
     this.toggleCosKeyModal = this.toggleCosKeyModal.bind(this);
@@ -61,9 +61,9 @@ class TeleportConfigForm extends React.Component {
       !contains(
         getCosKeysFromBucket(
           { teleport_config: { cos_bucket_name: value } },
-          this.props
+          this.props,
         ),
-        teleportConfig.cos_key_name
+        teleportConfig.cos_key_name,
       )
     ) {
       // set cos key to ""
@@ -94,8 +94,8 @@ class TeleportConfigForm extends React.Component {
     this.props.slz.cos.keys.create(data, {
       arrayParentName: getBucketInstance(
         this.state.teleport_config.cos_bucket_name,
-        this.props
-      )
+        this.props,
+      ),
     });
     // deep copy of config
     let teleportConfig = { ...this.state.teleport_config };
@@ -103,7 +103,7 @@ class TeleportConfigForm extends React.Component {
     // hide modal and set config
     this.setState({
       teleport_config: teleportConfig,
-      showCosKeyModal: false
+      showCosKeyModal: false,
     });
   }
 
@@ -123,7 +123,7 @@ class TeleportConfigForm extends React.Component {
       newTeleportState.app_id_key_name = data.key_name;
       this.setState({
         showAppIdKeyModal: false,
-        teleport_config: newTeleportState
+        teleport_config: newTeleportState,
       });
     });
   }
@@ -222,7 +222,7 @@ class TeleportConfigForm extends React.Component {
             type="add"
             hoverText="Create a new key"
             disabled={isNullOrEmptyString(
-              this.state.teleport_config.cos_bucket_name
+              this.state.teleport_config.cos_bucket_name,
             )}
             onClick={this.toggleCosKeyModal}
             inline
@@ -256,14 +256,14 @@ class TeleportConfigForm extends React.Component {
           <ObjectStorageKeyForm
             arrayParentName={getBucketInstance(
               this.state.teleport_config.cos_bucket_name,
-              this.props
+              this.props,
             )}
             name="new-cos-key"
             key="new-key"
             role={[""]}
             slz={this.props.slz}
             isTeleport
-            shouldDisableSubmit={function() {
+            shouldDisableSubmit={function () {
               if (
                 // check for invalid name
                 hasInvalidName("cos_keys", this.state.name, this.props).invalid
@@ -285,12 +285,12 @@ class TeleportConfigForm extends React.Component {
         >
           <AppIdKeyCreateForm
             slz={this.props.slz}
-            shouldDisableSubmit={function() {
+            shouldDisableSubmit={function () {
               if (
                 !validName(this.state.key_name) ||
                 contains(
                   this.props.slz.store.configDotJson.appid.keys,
-                  this.state.key_name
+                  this.state.key_name,
                 )
               ) {
                 this.props.disableModal();
@@ -319,13 +319,13 @@ TeleportConfigForm.propTypes = {
   slz: PropTypes.shape({
     cos: PropTypes.shape({
       keys: PropTypes.shape({
-        create: PropTypes.func.isRequired
-      }).isRequired
+        create: PropTypes.func.isRequired,
+      }).isRequired,
     }).isRequired,
     store: PropTypes.shape({
-      cosBuckets: PropTypes.array.isRequired
-    }).isRequired
-  }).isRequired
+      cosBuckets: PropTypes.array.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default TeleportConfigForm;

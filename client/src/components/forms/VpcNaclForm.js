@@ -13,7 +13,7 @@ class VpcNaclForm extends React.Component {
   }
   onModalSubmit(data) {
     this.props.slz.vpcs.network_acls.create(data, {
-      vpc_name: this.props.data.prefix
+      vpc_name: this.props.data.prefix,
     });
     this.props.handleModalToggle();
   }
@@ -29,7 +29,7 @@ class VpcNaclForm extends React.Component {
           <NetworkAclForm
             vpc_name={this.props.data.prefix}
             slz={this.props.slz}
-            shouldDisableSubmit={function() {
+            shouldDisableSubmit={function () {
               // set modal form enable submit
               if (disableSave("acl", this.state, this.props) === false) {
                 this.props.enableModal();
@@ -58,7 +58,7 @@ class VpcNaclForm extends React.Component {
           parentToggle={{
             callback: this.props.onChildShowToggle,
             index: this.props.index,
-            shownChildren: this.props.shownChildren
+            shownChildren: this.props.shownChildren,
           }}
         />
       </>

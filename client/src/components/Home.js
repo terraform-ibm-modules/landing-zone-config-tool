@@ -3,7 +3,7 @@ import { Tabs, TabList, TabPanels, TabPanel, Tab } from "@carbon/react";
 import CustomJson from "./forms/CustomJson.js";
 import PatternForm from "./forms/Pattern.js";
 
-const Home = props => {
+const Home = (props) => {
   return (
     <div>
       <Tabs>

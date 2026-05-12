@@ -9,18 +9,18 @@ class SubnetTileForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      subnetData: {}
+      subnetData: {},
     };
     if (!this.props.isModal) {
       let vpcNetwork = getObjectFromArray(
         this.props.slz.store.configDotJson.vpcs,
         "prefix",
-        this.props.vpc_name
+        this.props.vpc_name,
       );
       let subnetMap = this.props.isModal
         ? this.props.subnets
         : getTierSubnetsFromVpcData(vpcNetwork, this.props.tier);
-      subnetMap.forEach(subnet => {
+      subnetMap.forEach((subnet) => {
         this.state.subnetData[subnet.name] = true;
       });
     }
@@ -38,7 +38,7 @@ class SubnetTileForm extends React.Component {
 
   allSubnetsMatch() {
     let propsMatchState = true;
-    eachKey(this.state.subnetData, subnetName => {
+    eachKey(this.state.subnetData, (subnetName) => {
       if (this.state.subnetData[subnetName] === false) {
         propsMatchState = false;
       }
@@ -60,7 +60,7 @@ class SubnetTileForm extends React.Component {
           className="marginBottomSmall"
         />
         <div className="displayFlex">
-          {subnetMap.map(subnet => (
+          {subnetMap.map((subnet) => (
             <SubnetTile // change so doesn't show buttons
               key={`${subnet.name}-tile-${this.props.tier}-${
                 this.props.vpc_name
@@ -83,7 +83,7 @@ class SubnetTileForm extends React.Component {
 export default SubnetTileForm;
 
 SubnetTileForm.defaultProps = {
-  isModal: false
+  isModal: false,
 };
 
 SubnetTileForm.propTypes = {
@@ -91,11 +91,11 @@ SubnetTileForm.propTypes = {
   slz: PropTypes.shape({
     store: PropTypes.shape({
       configDotJson: PropTypes.shape({
-        vpcs: PropTypes.array.isRequired
-      }).isRequired
-    }).isRequired
+        vpcs: PropTypes.array.isRequired,
+      }).isRequired,
+    }).isRequired,
   }).isRequired,
   vpc_name: PropTypes.string.isRequired,
   tier: PropTypes.string.isRequired,
-  onSave: PropTypes.func
+  onSave: PropTypes.func,
 };

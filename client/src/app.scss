@@ -286,7 +286,8 @@ a.tile:is(:link, :visited, :hover, :active) {
 
 /* text area font for import json */
 .cds--form-item.codeFont div.cds--text-area__wrapper {
-  font-family: monospace, monospace; // workaround for some browsers with how they handle monospace
+  font-family:
+    monospace, monospace; // workaround for some browsers with how they handle monospace
 }
 
 // do not allow the accordion title to go over the footer

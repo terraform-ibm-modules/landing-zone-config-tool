@@ -6,13 +6,13 @@ import { addClassName, checkNullorEmptyString } from "../../../lib/index.js";
 /**
  * slz multiselect template
  */
-export const SlzMultiSelect = props => {
+export const SlzMultiSelect = (props) => {
   return (
     <FilterableMultiSelect
       id={props.id}
       className={addClassName("fieldWidth leftTextAlign cds--select", props)}
       titleText={props.titleText}
-      itemToString={item => (item ? item : "")}
+      itemToString={(item) => (item ? item : "")}
       invalid={props.invalid}
       invalidText={props.invalidText}
       initialSelectedItems={props.initialSelectedItems}
@@ -26,7 +26,7 @@ export const SlzMultiSelect = props => {
 };
 
 SlzMultiSelect.defaultProps = {
-  disabled: false
+  disabled: false,
 };
 
 SlzMultiSelect.propTypes = {
@@ -40,13 +40,13 @@ SlzMultiSelect.propTypes = {
   items: PropTypes.arrayOf(PropTypes.string).isRequired,
   useTitleInItem: PropTypes.bool,
   label: PropTypes.string,
-  disabled: PropTypes.bool.isRequired
+  disabled: PropTypes.bool.isRequired,
 };
 
 /**
  * ssh key multiselect
  */
-export const SshKeyMultiSelect = props => {
+export const SshKeyMultiSelect = (props) => {
   return (
     <SlzMultiSelect
       id={props.id + "-ssh-key-multiselect"}
@@ -61,7 +61,7 @@ export const SshKeyMultiSelect = props => {
       }
       items={props.slz.store.sshKeys}
       initialSelectedItems={props.initialSelectedItems || []}
-      onChange={event => {
+      onChange={(event) => {
         props.onChange(event.selectedItems);
       }}
       className="fieldWidthSmaller cds--form-item"
@@ -75,16 +75,16 @@ SshKeyMultiSelect.propTypes = {
   onChange: PropTypes.func.isRequired,
   slz: PropTypes.shape({
     store: PropTypes.shape({
-      sshKeys: PropTypes.arrayOf(PropTypes.string).isRequired
-    }).isRequired
-  }).isRequired
+      sshKeys: PropTypes.arrayOf(PropTypes.string).isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 /**
  * sg multiselect
  */
 
-export const SecurityGroupMultiSelect = props => {
+export const SecurityGroupMultiSelect = (props) => {
   return (
     <MultiSelect
       id={props.id + "-security-group-multiselect"}
@@ -95,7 +95,7 @@ export const SecurityGroupMultiSelect = props => {
       vpcName={props.vpcName}
       invalid={false}
       invalidText="Invalid Selection"
-      onChange={event => {
+      onChange={(event) => {
         props.onChange(event.selectedItems);
       }}
       disabled={props.disabled}
@@ -104,14 +104,14 @@ export const SecurityGroupMultiSelect = props => {
           ? []
           : props.slz.store.securityGroups[props.vpcName]
       }
-      itemToString={item => (item ? item : "")}
+      itemToString={(item) => (item ? item : "")}
     />
   );
 };
 
 SecurityGroupMultiSelect.defaultProps = {
   disabled: false,
-  label: "Select"
+  label: "Select",
 };
 
 SecurityGroupMultiSelect.propTypes = {
@@ -125,16 +125,16 @@ SecurityGroupMultiSelect.propTypes = {
   disabled: PropTypes.bool.isRequired,
   slz: PropTypes.shape({
     store: PropTypes.shape({
-      securityGroups: PropTypes.object.isRequired
-    }).isRequired
-  }).isRequired
+      securityGroups: PropTypes.object.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 /**
  * vpc subnet multiselect
  */
 
-export const SubnetMultiSelect = props => {
+export const SubnetMultiSelect = (props) => {
   return (
     <SlzMultiSelect
       id={props.id + "-subnet-multiselect"}
@@ -163,7 +163,7 @@ export const SubnetMultiSelect = props => {
 SubnetMultiSelect.defaultProps = {
   name: "subnet_names",
   label: "Subnets",
-  disabled: false
+  disabled: false,
 };
 
 SubnetMultiSelect.propTypes = {
@@ -172,21 +172,21 @@ SubnetMultiSelect.propTypes = {
   vpc_name: PropTypes.string, // not required, `null` needs to be passed here
   slz: PropTypes.shape({
     store: PropTypes.shape({
-      subnets: PropTypes.object.isRequired
-    })
+      subnets: PropTypes.object.isRequired,
+    }),
   }),
   disabled: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   initialSelectedItems: PropTypes.array.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 };
 
 /**
  * VPC List MultiSelect
  */
 
-export const VpcListMultiSelect = props => {
+export const VpcListMultiSelect = (props) => {
   return (
     <SlzMultiSelect
       invalidText="At least one VPC must be selected."
@@ -211,7 +211,7 @@ VpcListMultiSelect.propTypes = {
   initialSelectedItems: PropTypes.array.isRequired,
   slz: PropTypes.shape({
     store: PropTypes.shape({
-      vpcList: PropTypes.arrayOf(PropTypes.string).isRequired
-    })
-  })
+      vpcList: PropTypes.arrayOf(PropTypes.string).isRequired,
+    }),
+  }),
 };

@@ -15,7 +15,7 @@ import { capitalize } from "lazy-z";
  */
 export function RenderForm(form, formProps) {
   return React.createElement(form, {
-    ...formProps
+    ...formProps,
   });
 }
 
@@ -26,7 +26,7 @@ export function RenderForm(form, formProps) {
  * @param {boolean=} props.show component to show when hide is false
  * @returns empty string when hidden, component when visible
  */
-export const DynamicRender = props => {
+export const DynamicRender = (props) => {
   return props.hide === true ? "" : props.show;
 };
 
@@ -37,18 +37,18 @@ export const DynamicRender = props => {
  * @param {string=} props.type can be `subHeading` or `p`, defaults to `heading`
  * @returns Slz Heading
  */
-export const SlzHeading = props => {
+export const SlzHeading = (props) => {
   let titleFormDivClass = props.toggleFormTitle
     ? ""
     : props.name === ""
-    ? ""
-    : " slzFormTitleMinHeight";
+      ? ""
+      : " slzFormTitleMinHeight";
   return (
     <div
       className={
         addClassName(
           "displayFlex spaceBetween widthOneHundredPercent alignItemsCenter",
-          props
+          props,
         ) + titleFormDivClass
       }
     >
@@ -70,25 +70,25 @@ export const SlzHeading = props => {
 };
 
 SlzHeading.defaultProps = {
-  type: "heading"
+  type: "heading",
 };
 
 SlzHeading.propTypes = {
   name: PropTypes.string.isRequired,
-  type: PropTypes.string
+  type: PropTypes.string,
 };
 
 /**
  * wrapper for title groups
  */
-export const TitleGroup = props => {
+export const TitleGroup = (props) => {
   return (
     <div
       className={addClassName(
         `displayFlex fitContent forceLeft alignItemsCenter widthOneHundredPercent ${toggleMarginBottom(
-          props.hide
+          props.hide,
         )}`,
-        props
+        props,
       )}
     >
       {props.children}
@@ -97,17 +97,17 @@ export const TitleGroup = props => {
 };
 
 TitleGroup.defaultProps = {
-  hide: true
+  hide: true,
 };
 
 TitleGroup.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 /**
  * All of the toggle form functionality without injecting anything on render
  */
-export const StatelessToggleForm = props => {
+export const StatelessToggleForm = (props) => {
   return props.hideTitle ? (
     props.children
   ) : (
@@ -125,8 +125,8 @@ export const StatelessToggleForm = props => {
             props.toggleFormTitle
               ? "p"
               : props.subHeading
-              ? "subHeading"
-              : "heading"
+                ? "subHeading"
+                : "heading"
           }
           name={props.name}
           buttons={
@@ -145,7 +145,7 @@ export const StatelessToggleForm = props => {
 StatelessToggleForm.defaultProps = {
   hide: true,
   iconType: "edit",
-  name: "Stateless Toggle Form"
+  name: "Stateless Toggle Form",
 };
 
 StatelessToggleForm.propTypes = {
@@ -157,10 +157,10 @@ StatelessToggleForm.propTypes = {
   name: PropTypes.string.isRequired,
   buttons: PropTypes.node,
   toggleFormTitle: PropTypes.bool,
-  alwaysShowButtons: PropTypes.bool
+  alwaysShowButtons: PropTypes.bool,
 };
 
-export const SlzFormGroup = props => {
+export const SlzFormGroup = (props) => {
   let formGroupClassName = "displayFlex marginBottom fitContent evenSpacing";
   // remove margin bottom from formGroup for VPC
   if (props.noMarginBottom) {
@@ -174,23 +174,23 @@ export const SlzFormGroup = props => {
 };
 
 SlzFormGroup.defaultProps = {
-  noMarginBottom: false
+  noMarginBottom: false,
 };
 
 SlzFormGroup.propTypes = {
   noMarginBottom: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
-export const SlzSubForm = props => {
+export const SlzSubForm = (props) => {
   return (
     <div
       className={addClassName(
         props.formInSubForm
           ? "formInSubForm positionRelative"
           : "subForm marginBottomSmall",
-        props
+        props,
       )}
       id={props.id}
     >
@@ -200,17 +200,17 @@ export const SlzSubForm = props => {
 };
 
 SlzSubForm.defaultProps = {
-  formInSubForm: false
+  formInSubForm: false,
 };
 
 SlzSubForm.propTypes = {
   id: PropTypes.string.isRequired,
   formInSubForm: PropTypes.bool.isRequired,
   className: PropTypes.string,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
-export const Notification = props => {
+export const Notification = (props) => {
   return (
     <ToastNotification
       lowContrast
@@ -226,11 +226,11 @@ export const Notification = props => {
 Notification.defaultProps = {
   kind: "success",
   title: "An error occured",
-  timeout: 0
+  timeout: 0,
 };
 
 Notification.propTypes = {
   kind: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  timeout: PropTypes.number.isRequired
+  timeout: PropTypes.number.isRequired,
 };

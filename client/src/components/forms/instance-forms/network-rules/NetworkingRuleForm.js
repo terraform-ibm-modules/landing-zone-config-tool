@@ -12,14 +12,14 @@ import {
   UpDownButtons,
   SlzSelect,
   SlzNameInput,
-  SlzTextInput
+  SlzTextInput,
 } from "../../../icse/index.js";
 import {
   stateInit,
   propsMatchState,
   hasInvalidCidrOrAddress,
   hasInvalidRuleProtocol,
-  disableSave
+  disableSave,
 } from "../../../../lib/index.js";
 import PropTypes from "prop-types";
 
@@ -62,12 +62,12 @@ class NetworkingRuleForm extends Component {
    */
   handleRuleDataUpdate(inputName, event) {
     let value = parseInt(event.target.value) || null;
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       rule: {
         // object that we want to update
         ...prevState.rule, // keep all other key-value pairs
-        [inputName]: value // update the value of specific key
-      }
+        [inputName]: value, // update the value of specific key
+      },
     }));
   }
 
@@ -182,7 +182,7 @@ class NetworkingRuleForm extends Component {
                       componentProps={this.props}
                       parentName={this.props.parent_name}
                       value={this.state.name}
-                      onChange={event => this.handleInput("name", event)}
+                      onChange={(event) => this.handleInput("name", event)}
                       className="fieldWidthSmaller"
                       // network acl name is decorative, used in slz to create a map of rules
                       hideHelperText={this.props.isSecurityGroup !== true}
@@ -240,7 +240,7 @@ class NetworkingRuleForm extends Component {
                       value={this.state.ruleProtocol.toUpperCase()}
                       labelText="Protocol"
                       name="ruleProtocol"
-                      handleInputChange={event =>
+                      handleInputChange={(event) =>
                         this.handleInput("ruleProtocol", event, true)
                       }
                       className="fieldWidthSmaller"
@@ -306,7 +306,7 @@ class NetworkingRuleForm extends Component {
 
 NetworkingRuleForm.defaultProps = {
   parentRule: {
-    name: ""
+    name: "",
   },
   isAclForm: false,
   isSecurityGroup: false,
@@ -325,9 +325,9 @@ NetworkingRuleForm.defaultProps = {
       source_port_max: null,
       source_port_min: null,
       type: null,
-      code: null
-    }
-  }
+      code: null,
+    },
+  },
 };
 
 NetworkingRuleForm.propTypes = {
@@ -337,7 +337,7 @@ NetworkingRuleForm.propTypes = {
     direction: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     rule: PropTypes.object,
-    source: PropTypes.string.isRequired
+    source: PropTypes.string.isRequired,
   }),
   parentRule: PropTypes.shape({
     action: PropTypes.string, // not required for sg
@@ -347,16 +347,16 @@ NetworkingRuleForm.propTypes = {
     source: PropTypes.string, // not required
     tcp: PropTypes.shape({
       port_max: PropTypes.number, // can be null
-      port_min: PropTypes.number // can be null
+      port_min: PropTypes.number, // can be null
     }),
     udp: PropTypes.shape({
       port_max: PropTypes.number, // can be null
-      port_min: PropTypes.number // can be null
+      port_min: PropTypes.number, // can be null
     }),
     icmp: PropTypes.shape({
       code: PropTypes.number, // can be null
-      type: PropTypes.number // can be null
-    })
+      type: PropTypes.number, // can be null
+    }),
   }),
   disableDown: PropTypes.bool, // can be undefined for NetworkRuleCreate
   disableUp: PropTypes.bool, // can be undefined for NetworkRuleCreate
@@ -367,7 +367,7 @@ NetworkingRuleForm.propTypes = {
   isAclForm: PropTypes.bool.isRequired,
   isSecurityGroup: PropTypes.bool.isRequired,
   isTeleport: PropTypes.bool.isRequired,
-  isModal: PropTypes.bool.isRequired
+  isModal: PropTypes.bool.isRequired,
 };
 
 /**
@@ -378,7 +378,7 @@ NetworkingRuleForm.propTypes = {
  * @param {Object} props.state parent state
  * @param {Function} props.onChange onchange function
  */
-const NetworkingRuleTextField = props => {
+const NetworkingRuleTextField = (props) => {
   let invalidData = hasInvalidCidrOrAddress(props.state[props.name]);
   return (
     <SlzTextInput
@@ -386,7 +386,7 @@ const NetworkingRuleTextField = props => {
       field={props.name}
       labelText={props.labelText}
       value={String(props.state[props.name])}
-      onChange={e => props.onChange(props.name, e)}
+      onChange={(e) => props.onChange(props.name, e)}
       className="fieldWidthSmaller"
       placeholder="x.x.x.x"
       {...invalidData}
@@ -397,7 +397,7 @@ const NetworkingRuleTextField = props => {
 NetworkingRuleTextField.propTypes = {
   name: PropTypes.string.isRequired,
   state: PropTypes.shape({}).isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 };
 
 /**
@@ -407,10 +407,10 @@ NetworkingRuleTextField.propTypes = {
  * @param {Object} props.state parent state
  * @param {Function} props.onChange onchange function
  */
-const NetworkingRuleProtocolTextField = props => {
+const NetworkingRuleProtocolTextField = (props) => {
   let invalidRuleProtocol = hasInvalidRuleProtocol(
     props.name,
-    props.state.rule[props.name]
+    props.state.rule[props.name],
   );
   return (
     <TextInput
@@ -418,7 +418,7 @@ const NetworkingRuleProtocolTextField = props => {
       labelText={props.name}
       placeholder={String(props.state.rule[props.name] || "")}
       value={props.state.rule[props.name] || ""}
-      onChange={e => props.onChange(props.name, e)}
+      onChange={(e) => props.onChange(props.name, e)}
       {...invalidRuleProtocol}
       className="fieldWidthSmaller"
     />
@@ -428,9 +428,9 @@ const NetworkingRuleProtocolTextField = props => {
 NetworkingRuleProtocolTextField.propTypes = {
   name: PropTypes.string.isRequired,
   state: PropTypes.shape({
-    rule: PropTypes.shape({}).isRequired
+    rule: PropTypes.shape({}).isRequired,
   }).isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 };
 
 /**
@@ -442,7 +442,7 @@ NetworkingRuleProtocolTextField.propTypes = {
  * @param {Function} props.onChange onchange function
  * @param {Array<string>} props.groups list of groups for select
  */
-const NetworkingRuleSelect = props => {
+const NetworkingRuleSelect = (props) => {
   return (
     <SlzSelect
       component={props.state.name + "-nw-rule-" + props.name}
@@ -450,7 +450,7 @@ const NetworkingRuleSelect = props => {
       groups={props.groups}
       value={props.state[props.name]}
       labelText={props.labelText}
-      handleInputChange={e => props.onChange(props.name, e, true)}
+      handleInputChange={(e) => props.onChange(props.name, e, true)}
       className="fieldWidthSmaller"
     />
   );
@@ -460,10 +460,10 @@ NetworkingRuleSelect.propTypes = {
   name: PropTypes.string.isRequired,
   state: PropTypes.shape({
     rule: PropTypes.shape({}).isRequired,
-    name: PropTypes.string
+    name: PropTypes.string,
   }).isRequired,
   onChange: PropTypes.func.isRequired,
-  groups: PropTypes.array.isRequired
+  groups: PropTypes.array.isRequired,
 };
 
 export default NetworkingRuleForm;

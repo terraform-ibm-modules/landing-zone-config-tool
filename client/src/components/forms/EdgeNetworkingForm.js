@@ -5,7 +5,11 @@ import { edgeNetworkingPatterns } from "../../lib/index.js";
 import { EdgeNetworkingDocs } from "./SlzDocs.js";
 import { buildNumberDropdownList } from "lazy-z";
 import edgeNetwork from "../../images/edge-network.png";
-import { StatelessToggleForm, SaveAddButton, SlzSelect } from "../icse/index.js";
+import {
+  StatelessToggleForm,
+  SaveAddButton,
+  SlzSelect,
+} from "../icse/index.js";
 import PropTypes from "prop-types";
 
 /** EdgeNetworkingForm
@@ -21,7 +25,7 @@ class EdgeNetworkingForm extends Component {
       useManagement: this.props.useManagement,
       zones: this.props.zones,
       showModal: false,
-      hide: true
+      hide: true,
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -67,7 +71,7 @@ class EdgeNetworkingForm extends Component {
   handleVpcSelect(event) {
     let selection = event.target.value; // selected value in dropdown
     this.setState({
-      useManagement: selection === "Use the existing Management VPC"
+      useManagement: selection === "Use the existing Management VPC",
     });
   }
 
@@ -102,7 +106,7 @@ class EdgeNetworkingForm extends Component {
       // otherwise just create the edge network
       this.props.slz.createEdgeVpc(
         this.state.pattern,
-        this.state.useManagement
+        this.state.useManagement,
       );
       if (this.state.zones !== 0) {
         // in this case, create both the edge vpc and the f5vsi instance
@@ -148,7 +152,7 @@ class EdgeNetworkingForm extends Component {
                     disabled={this.props.slz.store.edge_pattern !== undefined}
                     orientation="vertical"
                   >
-                    {edgeNetworkingPatterns.map(pattern => (
+                    {edgeNetworkingPatterns.map((pattern) => (
                       <RadioButton
                         labelText={pattern.name}
                         value={pattern.id}
@@ -167,7 +171,7 @@ class EdgeNetworkingForm extends Component {
                     }
                     groups={[
                       "Create a new Edge VPC",
-                      "Use the existing Management VPC"
+                      "Use the existing Management VPC",
                     ]}
                     labelText="VPC"
                     handleInputChange={this.handleVpcSelect}
@@ -246,7 +250,7 @@ class EdgeNetworkingForm extends Component {
 }
 
 EdgeNetworkingForm.defaultProps = {
-  useManagement: false
+  useManagement: false,
 };
 
 EdgeNetworkingForm.propTypes = {
@@ -254,15 +258,15 @@ EdgeNetworkingForm.propTypes = {
   zones: PropTypes.number.isRequired,
   slz: PropTypes.shape({
     store: PropTypes.shape({
-      edge_pattern: PropTypes.string // can be null
+      edge_pattern: PropTypes.string, // can be null
     }).isRequired,
     f5: PropTypes.shape({
       vsi: PropTypes.shape({
-        save: PropTypes.func.isRequired
-      }).isRequired
+        save: PropTypes.func.isRequired,
+      }).isRequired,
     }).isRequired,
-    createEdgeVpc: PropTypes.func.isRequired
-  }).isRequired
+    createEdgeVpc: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default EdgeNetworkingForm;
