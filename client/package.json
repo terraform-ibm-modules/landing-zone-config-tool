@@ -19,33 +19,33 @@
     "format:staged": "prettier --write"
   },
   "dependencies": {
-    "@carbon/icons-react": "11.79.0",
-    "@carbon/react": "1.106.0",
-    "@carbon/styles": "1.105.0",
+    "@carbon/icons-react": "11.80.0",
+    "@carbon/react": "1.107.1",
+    "@carbon/styles": "1.106.0",
     "@codemirror/lang-javascript": "6.2.5",
     "@lezer/highlight": "1.2.3",
     "@uiw/codemirror-themes": "4.25.9",
     "@uiw/react-codemirror": "4.25.9",
     "gh-pages": "6.3.0",
-    "lazy-z": "1.12.1",
+    "lazy-z": "2.0.0",
     "prop-types": "15.8.1",
-    "react": "19.2.5",
-    "react-dom": "19.2.5",
-    "react-is": "19.2.5",
-    "react-router-dom": "7.14.2",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "react-is": "19.2.6",
+    "react-router-dom": "7.15.1",
     "regex-but-with-words": "1.5.5",
     "sass": "1.99.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "6.0.1",
+    "@vitejs/plugin-react": "6.0.2",
     "prettier": "3.8.3",
-    "vite": "8.0.10"
+    "vite": "8.0.13"
   },
   "overrides": {
     "express": "5.2.1",
     "nth-check": "3.0.1",
     "picomatch": "4.0.4",
-    "postcss": "8.5.13",
+    "postcss": "8.5.14",
     "webpack-dev-middleware": "8.0.3"
   },
   "browserslist": [
