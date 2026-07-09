@@ -1,5 +1,4 @@
-import pkg from "lazy-z";
-const { transpose, revision, buildNetworkingRule } = pkg;
+import { transpose, revision, buildNetworkingRule } from "lazy-z";
 import { defaultSecurityGroups } from "./defaults.js";
 import {
   setUnfoundResourceGroup,

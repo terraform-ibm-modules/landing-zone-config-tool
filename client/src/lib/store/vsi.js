@@ -1,5 +1,4 @@
-import pkg from "lazy-z";
-const { contains, transpose, revision, buildNetworkingRule } = pkg;
+import { contains, transpose, revision, buildNetworkingRule } from "lazy-z";
 import { newDefaultManagementServer, newTeleportSg } from "./defaults.js";
 import {
   setUnfoundEncryptionKey,

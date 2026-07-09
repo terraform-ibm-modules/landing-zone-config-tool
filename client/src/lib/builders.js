@@ -1,9 +1,4 @@
-import pkg from "lazy-z";
-const {
-  transpose,
-  azsort,
-  formatCidrBlock
-} = pkg;
+import { transpose, azsort, formatCidrBlock } from "lazy-z";
 import { firewallTiers } from "./store/defaults.js";
 /**
  * build an encryption key
