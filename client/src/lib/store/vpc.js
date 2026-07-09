@@ -1,5 +1,4 @@
-import pkg from "lazy-z";
-const {
+import {
   containsKeys,
   arraySplatIndex,
   revision,
@@ -13,7 +12,7 @@ const {
   buildNetworkingRule,
   numberToZoneList,
   parseIntFromZone
- } = pkg;
+} from "lazy-z";
 import { buildSubnet } from "../builders.js";
 import { reservedSubnetNameExp } from "../constants.js";
 import {
