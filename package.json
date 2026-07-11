@@ -26,7 +26,7 @@
   "overrides": {
     "express": "5.2.1",
     "nth-check": "3.0.1",
-    "postcss": "8.5.16",
+    "postcss": "8.5.17",
     "webpack-dev-middleware": "8.0.3"
   }
 }
