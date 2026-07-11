@@ -1,7 +1,7 @@
 import React from "react";
 import {
   buildFormFunctions,
-  buildFormDefaultInputMethods
+  buildFormDefaultInputMethods,
 } from "../../../component-utils.js";
 import { stateInit, conditionOperators } from "../../../../lib/index.js";
 import {
@@ -10,7 +10,7 @@ import {
   SlzNumberSelect,
   SlzHeading,
   SlzFormGroup,
-  SlzTextInput
+  SlzTextInput,
 } from "../../../icse/index.js";
 import { eachKey } from "lazy-z";
 import PropTypes from "prop-types";
@@ -21,7 +21,7 @@ class AccessGroupDynamicPolicyForm extends React.Component {
     buildFormFunctions(this);
     buildFormDefaultInputMethods(this);
     this.state = {
-      ...stateInit("policies", this.props)
+      ...stateInit("policies", this.props),
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleInputCondition = this.handleInputCondition.bind(this);
@@ -54,7 +54,7 @@ class AccessGroupDynamicPolicyForm extends React.Component {
 
   render() {
     let conditionOperatorGroups = [];
-    eachKey(conditionOperators, key => {
+    eachKey(conditionOperators, (key) => {
       conditionOperatorGroups.push(conditionOperators[key]);
     });
     return (
@@ -72,7 +72,7 @@ class AccessGroupDynamicPolicyForm extends React.Component {
           <SlzNumberSelect
             tooltip={{
               content:
-                "How many hours authenticated users can work before refresh"
+                "How many hours authenticated users can work before refresh",
             }}
             component="expiration"
             max={24}
@@ -88,7 +88,7 @@ class AccessGroupDynamicPolicyForm extends React.Component {
             id="identity_provider"
             tooltip={{
               content: "URI for identity provider",
-              alignModal: "bottom-left"
+              alignModal: "bottom-left",
             }}
             componentName="identity_provider"
             field="identity_provider"
@@ -109,7 +109,7 @@ class AccessGroupDynamicPolicyForm extends React.Component {
             id="claim"
             tooltip={{
               content: "Key value to evaluate the condition against",
-              alignModal: "bottom-left"
+              alignModal: "bottom-left",
             }}
             componentName="claim"
             field="claim"
@@ -125,7 +125,7 @@ class AccessGroupDynamicPolicyForm extends React.Component {
           <SlzSelect
             component="operator"
             tooltip={{
-              content: "The operation to perform on the claim."
+              content: "The operation to perform on the claim.",
             }}
             value={conditionOperators[this.state.conditions.operator]}
             groups={conditionOperatorGroups}
@@ -164,10 +164,10 @@ AccessGroupDynamicPolicyForm.defaultProps = {
     conditions: {
       claim: "",
       operator: "",
-      value: ""
-    }
+      value: "",
+    },
   },
-  isModal: false
+  isModal: false,
 };
 
 AccessGroupDynamicPolicyForm.propTypes = {
@@ -178,10 +178,10 @@ AccessGroupDynamicPolicyForm.propTypes = {
     conditions: PropTypes.shape({
       claim: PropTypes.string.isRequired,
       operator: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired
-    }).isRequired
+      value: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
-  isModal: PropTypes.bool.isRequired
+  isModal: PropTypes.bool.isRequired,
 };
 
 export default AccessGroupDynamicPolicyForm;

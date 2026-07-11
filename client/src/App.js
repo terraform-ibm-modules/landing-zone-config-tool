@@ -31,7 +31,7 @@ import {
   SubnetForm,
   Footer,
   Summary,
-  ReleaseNotes
+  ReleaseNotes,
 } from "./components/index.js";
 import { slzState, codeMirrorJson } from "./lib/index.js";
 import "./app.scss";
@@ -60,7 +60,7 @@ const pathToNameMap = {
   "/appID": "App ID",
   "/teleport": "Teleport Bastion Host",
   "/f5BigIP": "F5 Big IP",
-  "/summary": "Summary"
+  "/summary": "Summary",
 };
 
 const pageOrder = [
@@ -79,7 +79,7 @@ const pageOrder = [
   "/vsi",
   "/clusters",
   "/vpn",
-  "/summary"
+  "/summary",
 ];
 
 const carbonDesignCodemirrorTheme = createTheme({
@@ -92,7 +92,7 @@ const carbonDesignCodemirrorTheme = createTheme({
     selectionMatch: "#036dd626",
     lineHighlight: "#8a91991a",
     gutterBackground: "#F4F4F4",
-    gutterForeground: "#161616"
+    gutterForeground: "#161616",
   },
   styles: [
     { tag: t.comment, color: "#161616" },
@@ -108,8 +108,8 @@ const carbonDesignCodemirrorTheme = createTheme({
     { tag: t.typeName, color: "#161616" },
     { tag: t.angleBracket, color: "#161616" },
     { tag: t.tagName, color: "#161616" },
-    { tag: t.attributeName, color: "#161616" }
-  ]
+    { tag: t.attributeName, color: "#161616" },
+  ],
 });
 class App extends Component {
   constructor(props) {
@@ -126,7 +126,7 @@ class App extends Component {
         this.state = {
           store: slzStateStore.store,
           storeName: storeName,
-          notifications: []
+          notifications: [],
         };
       } catch (err) {
         window.location.hash = "#/resetState";
@@ -154,10 +154,10 @@ class App extends Component {
     let notification = {
       key: err.message,
       kind: "error",
-      text: err.message
+      text: err.message,
     };
-    this.setState(prevState => ({
-      notifications: [...prevState.notifications, notification]
+    this.setState((prevState) => ({
+      notifications: [...prevState.notifications, notification],
     }));
   }
 
@@ -169,11 +169,11 @@ class App extends Component {
     let notification = {
       title: "Success",
       text: "Successfully updated!",
-      timeout: 3000
+      timeout: 3000,
     };
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       store: slzStateStore.store,
-      notifications: [...prevState.notifications, notification]
+      notifications: [...prevState.notifications, notification],
     }));
   }
 
@@ -200,8 +200,8 @@ class App extends Component {
     if (nextPathIndex >= 0 && nextPathIndex < pageOrder.length) {
       window.location.hash = "#" + pageOrder[nextPathIndex];
       // trick the component into refreshing itself
-      this.setState({refresh_component: false});
-      this.setState({refresh_component: true});
+      this.setState({ refresh_component: false });
+      this.setState({ refresh_component: true });
     }
   }
 
@@ -214,8 +214,8 @@ class App extends Component {
     if (nextPathIndex >= 0 && nextPathIndex < pageOrder.length) {
       window.location.hash = "#" + pageOrder[nextPathIndex];
       // trick the component into refreshing itself
-      this.setState({refresh_component: false});
-      this.setState({refresh_component: true});
+      this.setState({ refresh_component: false });
+      this.setState({ refresh_component: true });
     }
   }
 
@@ -245,7 +245,7 @@ class App extends Component {
 
   handleCloseModal = () => {
     window.location.hash = "#/home";
-    this.setState({show: false});
+    this.setState({ show: false });
   };
 
   render() {
@@ -267,7 +267,8 @@ class App extends Component {
           passiveModal
         >
           <div>
-            Select a deployable architecture from the home page to begin customization.
+            Select a deployable architecture from the home page to begin
+            customization.
           </div>
           <div>
             <Button
@@ -275,7 +276,7 @@ class App extends Component {
               className="marginTopSmall unselectedPatternModal"
               onClick={() => {
                 window.location.hash = "#/home";
-                this.setState({show: false});
+                this.setState({ show: false });
               }}
             >
               Return to home page
@@ -285,7 +286,7 @@ class App extends Component {
         <SlzHeader
           slz={slzStateStore}
           storeName={this.state.storeName}
-          navigate= {this.navigateNavItem}
+          navigate={this.navigateNavItem}
           jsonCallback={() => this.toggleStateStoreValue("hideJson")}
         />
         <div
@@ -298,14 +299,14 @@ class App extends Component {
               slzStateStore.store.hideJson === true ||
               contains(
                 ["/home", "/summary", "/about", "/resetState", "/releaseNotes"],
-                window.location.hash.split("#")[1]
+                window.location.hash.split("#")[1],
               )
                 ? "widthOneHundredPercent"
                 : "leftPanelWidth"
             }
           >
             <Routes>
-              <Route path="/" element={ <Navigate to ="/home" />} />
+              <Route path="/" element={<Navigate to="/home" />} />
               <Route path="/home" element={<Home slz={slzStateStore} />} />
               <Route path="/about" element={<About />} />
               <Route
@@ -403,7 +404,7 @@ class App extends Component {
                   slzStateStore.store.hideJson === true ||
                   contains(
                     ["/home", "/summary", "/about", "/releaseNotes"],
-                    window.location.hash.split("#")[1]
+                    window.location.hash.split("#")[1],
                   )
                     ? "hidden"
                     : "rightPanelWidth"

@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import {
   buildFormDefaultInputMethods,
-  buildFormFunctions
+  buildFormFunctions,
 } from "../../component-utils.js";
 import { stateInit } from "../../../lib/index.js";
 import {
   SlzNameInput,
   SlzFormGroup,
   KmsKeySelect,
-  ResourceGroupSelect
+  ResourceGroupSelect,
 } from "../../icse/index.js";
 import PropTypes from "prop-types";
 
@@ -91,11 +91,11 @@ SecretsManagerForm.propTypes = {
           use_secrets_manager: PropTypes.bool.isRequired,
           name: PropTypes.string,
           resource_group: PropTypes.string,
-          kms_key_name: PropTypes.string
-        })
-      }).isRequired
-    }).isRequired
-  }).isRequired
+          kms_key_name: PropTypes.string,
+        }),
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default SecretsManagerForm;

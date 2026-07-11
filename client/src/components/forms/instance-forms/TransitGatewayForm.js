@@ -5,7 +5,7 @@ import {
   ResourceGroupSelect,
   SlzFormGroup,
   SlzToggle,
-  SlzTextInput
+  SlzTextInput,
 } from "../../icse/index.js";
 import { buildFormFunctions } from "../../component-utils.js";
 import PropTypes from "prop-types";
@@ -32,7 +32,7 @@ class TransitGatewayForm extends Component {
    */
   handleEnableToggle() {
     this.setState({
-      enable_transit_gateway: !this.state.enable_transit_gateway
+      enable_transit_gateway: !this.state.enable_transit_gateway,
     });
   }
 
@@ -107,8 +107,8 @@ TransitGatewayForm.propTypes = {
   data: PropTypes.shape({
     enable_transit_gateway: PropTypes.bool.isRequired,
     transit_gateway_connections: PropTypes.array.isRequired,
-    transit_gateway_resource_group: PropTypes.string.isRequired
-  })
+    transit_gateway_resource_group: PropTypes.string.isRequired,
+  }),
 };
 
 export default TransitGatewayForm;

@@ -4,7 +4,7 @@ import {
   addClassName,
   forceShowForm,
   disableDeleteMessage,
-  toggleFormDeleteDisabled
+  toggleFormDeleteDisabled,
 } from "../../../lib/form-utils.js";
 import { propsMatchState } from "../../../lib/props-match-state.js";
 import { disableSave } from "../../../lib/disable-save.js";
@@ -13,7 +13,7 @@ import {
   DynamicRender,
   RenderForm,
   SlzHeading,
-  StatelessToggleForm
+  StatelessToggleForm,
 } from "./Utils.js";
 import PropTypes from "prop-types";
 import SlzTabPanel from "../SlzTabPanel.js";
@@ -35,8 +35,8 @@ class ToggleForm extends React.Component {
       hide: this.props.slz.store.cheatsEnabled
         ? false
         : this.props.show
-        ? !this.props.show
-        : this.props.hide,
+          ? !this.props.show
+          : this.props.hide,
       showDeleteModal: false,
       showUnsavedChangeModal: false,
       disableSave: true,
@@ -45,7 +45,7 @@ class ToggleForm extends React.Component {
       showSubModal: false,
       propsMatchState: true,
       useDefaultUnsavedMessage: true,
-      ruleOrderChange: false
+      ruleOrderChange: false,
     };
 
     this.toggleChildren = this.toggleChildren.bind(this);
@@ -92,7 +92,7 @@ class ToggleForm extends React.Component {
         propsMatchState(
           this.props.submissionFieldName,
           stateData,
-          componentProps
+          componentProps,
         ) === false;
       if (propsDoNotMatch || this.state.useDefaultUnsavedMessage === false) {
         this.toggleUnsavedChangeModal();
@@ -116,7 +116,7 @@ class ToggleForm extends React.Component {
    */
   toggleUnsavedChangeModal() {
     this.setState({
-      showUnsavedChangeModal: !this.state.showUnsavedChangeModal
+      showUnsavedChangeModal: !this.state.showUnsavedChangeModal,
     });
   }
 
@@ -126,7 +126,7 @@ class ToggleForm extends React.Component {
   dismissChangesAndClose() {
     this.setState({
       showUnsavedChangeModal: false,
-      hide: true
+      hide: true,
     });
   }
 
@@ -145,7 +145,7 @@ class ToggleForm extends React.Component {
     if (this.props.onShowToggle) this.props.onShowToggle(this.props.index);
     this.props.onDelete(
       this.childRef.current?.state,
-      this.childRef.current?.props
+      this.childRef.current?.props,
     );
     this.setState({ hide: true, showDeleteModal: false });
   }
@@ -163,7 +163,7 @@ class ToggleForm extends React.Component {
       propsMatchState(
         this.props.submissionFieldName,
         stateData,
-        componentProps
+        componentProps,
       ) === false;
     if (
       enableSave === false &&
@@ -196,13 +196,13 @@ class ToggleForm extends React.Component {
   render() {
     if (this.props.noDeleteButton !== true && !this.props.onDelete) {
       throw new Error(
-        `ToggleForm expects onDelete Function to be passed when a delete button is rendered`
+        `ToggleForm expects onDelete Function to be passed when a delete button is rendered`,
       );
     }
 
     if (this.props.noSaveButton !== true && !this.props.onSave) {
       throw new Error(
-        `ToggleForm expects onSave Function to be passed when a save button is rendered`
+        `ToggleForm expects onSave Function to be passed when a save button is rendered`,
       );
     }
     let formTitle =
@@ -234,7 +234,7 @@ class ToggleForm extends React.Component {
                     this.props.submissionFieldName === "teleport_vsi" ||
                     this.props.innerForm.name === "TeleportClaimToRoleForm"
                     ? "marginTop paddingRight"
-                    : ""
+                    : "",
                 )}
               >
                 <StatelessToggleForm
@@ -278,7 +278,7 @@ class ToggleForm extends React.Component {
                             name={formTitle}
                             disabled={toggleFormDeleteDisabled(this.props)}
                             disableDeleteMessage={disableDeleteMessage(
-                              this.props
+                              this.props,
                             )}
                           />
                         }
@@ -335,8 +335,8 @@ class ToggleForm extends React.Component {
                     // parent form to be saved from a button inside the child form
                     saveFromChildForm: {
                       onSave: this.onSave,
-                      disableSave: this.state.disableSave
-                    }
+                      disableSave: this.state.disableSave,
+                    },
                   })}
                 </StatelessToggleForm>
               </div>
@@ -356,7 +356,7 @@ ToggleForm.defaultProps = {
   hide: true,
   unsavedChanges: false,
   index: 0,
-  nonArrayForm: false
+  nonArrayForm: false,
 };
 
 ToggleForm.propTypes = {
@@ -366,7 +366,7 @@ ToggleForm.propTypes = {
   index: PropTypes.number.isRequired,
   hide: PropTypes.bool.isRequired,
   submissionFieldName: PropTypes.string.isRequired,
-  nonArrayForm: PropTypes.bool.isRequired
+  nonArrayForm: PropTypes.bool.isRequired,
 };
 
 export default ToggleForm;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {
   buildFormDefaultInputMethods,
-  buildFormFunctions
+  buildFormFunctions,
 } from "../../component-utils.js";
 import { SlzFormGroup, SlzToggle, SlzNameInput } from "../../icse/index.js";
 import PropTypes from "prop-types";
@@ -50,7 +50,7 @@ class ResourceGroupForm extends Component {
           {/* create */}
           <SlzToggle
             tooltip={{
-              content: "If true, get data from an existing resource group"
+              content: "If true, get data from an existing resource group",
             }}
             labelText="Use existing instance"
             toggleFieldName="create"
@@ -77,7 +77,7 @@ class ResourceGroupForm extends Component {
             <SlzToggle
               tooltip={{
                 content:
-                  "Add your environment prefix to the beginning of the resource group name."
+                  "Add your environment prefix to the beginning of the resource group name.",
               }}
               labelText="Use prefix"
               defaultToggled={this.state.use_prefix}
@@ -96,17 +96,17 @@ ResourceGroupForm.defaultProps = {
   data: {
     create: false,
     name: "",
-    use_prefix: true
-  }
+    use_prefix: true,
+  },
 };
 
 ResourceGroupForm.propTypes = {
   data: PropTypes.shape({
     create: PropTypes.bool,
     name: PropTypes.string.isRequired,
-    use_prefix: PropTypes.bool
+    use_prefix: PropTypes.bool,
   }),
-  isModal: PropTypes.bool.isRequired
+  isModal: PropTypes.bool.isRequired,
 };
 
 export default ResourceGroupForm;

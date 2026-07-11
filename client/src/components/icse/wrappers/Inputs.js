@@ -5,7 +5,7 @@ import { addClassName } from "../../../lib/index.js";
 import { kebabCase, snakeCase } from "lazy-z";
 import { DynamicToolTipWrapper } from "../../wrappers/Tooltips.js";
 
-export const SlzToggle = props => {
+export const SlzToggle = (props) => {
   let toggleName = props.toggleFieldName || snakeCase(props.labelText);
   return (
     <DynamicToolTipWrapper
@@ -20,7 +20,7 @@ export const SlzToggle = props => {
               addClassName("leftTextAlign fieldWidth", props) +
               (props.tooltip ? " cds--form-item tooltip" : " cds--form-item") // inherit tooltip spacing
             }
-            onToggle={event => {
+            onToggle={(event) => {
               props.onToggle(toggleName, event);
             }}
             defaultToggled={props.defaultToggled}
@@ -37,7 +37,7 @@ SlzToggle.defaultProps = {
   useOnOff: false,
   defaultToggled: false,
   isModal: false,
-  disabled: false
+  disabled: false,
 };
 
 SlzToggle.propTypes = {
@@ -51,8 +51,8 @@ SlzToggle.propTypes = {
   tooltip: PropTypes.shape({
     content: PropTypes.string.isRequired,
     link: PropTypes.string,
-    alignModal: PropTypes.string
+    alignModal: PropTypes.string,
   }),
   onToggle: PropTypes.func.isRequired,
-  isModal: PropTypes.bool.isRequired
+  isModal: PropTypes.bool.isRequired,
 };

@@ -20,7 +20,7 @@ class NavItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isHovering: false
+      isHovering: false,
     };
 
     this.toggleHover = this.toggleHover.bind(this);
@@ -45,7 +45,7 @@ class NavItem extends React.Component {
           key={"popover-" + this.props.item.title}
         >
           <SideNavLink
-            onClick={() => (this.props.navigate(this.props.item.path))}
+            onClick={() => this.props.navigate(this.props.item.path)}
             renderIcon={this.props.item.icon}
             key={this.props.item.title}
             onMouseOver={this.toggleHover}
@@ -69,7 +69,7 @@ class NavItem extends React.Component {
 }
 
 NavItem.defaultProps = {
-  optional: false
+  optional: false,
 };
 
 NavItem.propTypes = {
@@ -77,7 +77,7 @@ NavItem.propTypes = {
     title: PropTypes.string.isRequired,
     path: PropTypes.string.isRequired,
     // icon can be stateless component or import from carbon
-    icon: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired
+    icon: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
   }).isRequired,
   expanded: PropTypes.bool.isRequired,
   optional: PropTypes.bool.isRequired,

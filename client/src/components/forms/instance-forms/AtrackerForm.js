@@ -5,12 +5,12 @@ import {
   ResourceGroupSelect,
   SlzFormGroup,
   SlzToggle,
-  SlzModal
+  SlzModal,
 } from "../../icse/index.js";
 import { stateInit } from "../../../lib/index.js";
 import {
   buildFormDefaultInputMethods,
-  buildFormFunctions
+  buildFormFunctions,
 } from "../../component-utils.js";
 import PropTypes from "prop-types";
 
@@ -46,12 +46,12 @@ class AtrackerForm extends Component {
   handleToggle(name) {
     if (this.state.add_route && !this.state.showFsModal) {
       this.setState({
-        showFsModal: true
+        showFsModal: true,
       });
     } else if (this.state.showFsModal && name !== "showFsModal") {
       this.setState({
         showFsModal: false,
-        add_route: false
+        add_route: false,
       });
     } else {
       this.setState(this.toggleStateBoolean(name, this.state));
@@ -98,7 +98,7 @@ class AtrackerForm extends Component {
           <SlzSelect
             tooltip={{
               content:
-                "The bucket name under the Cloud Object Storage instance where Activity Tracker logs will be stored"
+                "The bucket name under the Cloud Object Storage instance where Activity Tracker logs will be stored",
             }}
             groups={this.props.slz.store.cosBuckets}
             component="Activity Tracker"
@@ -113,7 +113,7 @@ class AtrackerForm extends Component {
           <SlzToggle
             tooltip={{
               content:
-                "Must be enabled in order to forward all logs to the Cloud Object Storage bucket"
+                "Must be enabled in order to forward all logs to the Cloud Object Storage bucket",
             }}
             labelText="Create Activity Tracker route"
             defaultToggled={this.state.add_route}
@@ -126,7 +126,7 @@ class AtrackerForm extends Component {
           <SlzSelect
             tooltip={{
               content:
-                "The IAM API key that has writer access to the Cloud Object Storage instance"
+                "The IAM API key that has writer access to the Cloud Object Storage instance",
             }}
             component="atracker"
             name="atracker_key"
@@ -146,19 +146,19 @@ class AtrackerForm extends Component {
 export default AtrackerForm;
 
 AtrackerForm.defaultProps = {
-  isModal: false
+  isModal: false,
 };
 
 AtrackerForm.propTypes = {
   slz: PropTypes.shape({
     store: PropTypes.shape({
       configDotJson: PropTypes.shape({
-        atracker: PropTypes.shape({}).isRequired
+        atracker: PropTypes.shape({}).isRequired,
       }).isRequired,
       prefix: PropTypes.string.isRequired,
       cosKeys: PropTypes.array.isRequired,
-      cosBuckets: PropTypes.array.isRequired
-    }).isRequired
+      cosBuckets: PropTypes.array.isRequired,
+    }).isRequired,
   }),
-  isModal: PropTypes.bool.isRequired
+  isModal: PropTypes.bool.isRequired,
 };

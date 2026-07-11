@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import NetworkingRuleForm from "./NetworkingRuleForm.js";
 import { containsKeys } from "lazy-z";
-import { getRuleProtocol, getSubRule, disableSave } from "../../../../lib/index.js";
+import {
+  getRuleProtocol,
+  getSubRule,
+  disableSave,
+} from "../../../../lib/index.js";
 import {
   DynamicRender,
   SlzHeading,
   EmptyResourceTile,
   SaveAddButton,
-  InstanceFormModal
+  InstanceFormModal,
 } from "../../../icse/index.js";
 import PropTypes from "prop-types";
 
@@ -23,7 +27,7 @@ class NetworkingRulesOrderCard extends Component {
       rules: [...this.props.rules],
       collapse: {},
       allCollapsed: false,
-      showModal: false
+      showModal: false,
     };
 
     this.swapArrayElements = this.swapArrayElements.bind(this);
@@ -64,12 +68,12 @@ class NetworkingRulesOrderCard extends Component {
    */
   collapseAll() {
     let collapse = this.state.collapse;
-    this.state.rules.forEach(rule => {
+    this.state.rules.forEach((rule) => {
       collapse[rule.name] = !this.state.allCollapsed;
     });
     this.setState({
       collapse: collapse,
-      allCollapsed: !this.state.allCollapsed
+      allCollapsed: !this.state.allCollapsed,
     });
   }
 
@@ -167,7 +171,7 @@ class NetworkingRulesOrderCard extends Component {
             isSecurityGroup={this.props.isSecurityGroup}
             vpc_name={this.props.vpc_name}
             isTeleport={this.props.isTeleport}
-            shouldDisableSubmit={function() {
+            shouldDisableSubmit={function () {
               //set modal form enable submit
               if (
                 disableSave("networking_rule", this.state, this.props) === false
@@ -215,8 +219,8 @@ class NetworkingRulesOrderCard extends Component {
                 rule: getSubRule(
                   this.props.isSecurityGroup,
                   rule,
-                  getRuleProtocol(rule)
-                )
+                  getRuleProtocol(rule),
+                ),
               }}
               slz={this.props.slz}
               isSecurityGroup={this.props.isSecurityGroup}
@@ -236,7 +240,7 @@ NetworkingRulesOrderCard.defaultProps = {
   isSecurityGroup: false,
   isTeleport: false,
   hideCreate: false,
-  isAclForm: false
+  isAclForm: false,
 };
 
 NetworkingRulesOrderCard.propTypes = {
@@ -252,36 +256,36 @@ NetworkingRulesOrderCard.propTypes = {
     store: PropTypes.shape({
       configDotJson: PropTypes.shape({
         teleport_vsi: PropTypes.array.isRequired,
-        vsi: PropTypes.array.isRequired
+        vsi: PropTypes.array.isRequired,
       }).isRequired,
       networkAcls: PropTypes.shape({}).isRequired,
-      securityGroups: PropTypes.shape({}).isRequired
+      securityGroups: PropTypes.shape({}).isRequired,
     }).isRequired,
     security_groups: PropTypes.shape({
-      create: PropTypes.func.isRequired
+      create: PropTypes.func.isRequired,
     }).isRequired,
     vpcs: PropTypes.shape({
       network_acls: PropTypes.shape({
         rules: PropTypes.shape({
-          create: PropTypes.func.isRequired
-        }).isRequired
-      }).isRequired
+          create: PropTypes.func.isRequired,
+        }).isRequired,
+      }).isRequired,
     }).isRequired,
     teleport_vsi: PropTypes.shape({
       security_group: PropTypes.shape({
         rules: PropTypes.shape({
-          create: PropTypes.func.isRequired
-        }).isRequired
-      }).isRequired
+          create: PropTypes.func.isRequired,
+        }).isRequired,
+      }).isRequired,
     }).isRequired,
     vsi: PropTypes.shape({
       security_group: PropTypes.shape({
         rules: PropTypes.shape({
-          create: PropTypes.func.isRequired
-        }).isRequired
-      }).isRequired
-    }).isRequired
-  }).isRequired
+          create: PropTypes.func.isRequired,
+        }).isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default NetworkingRulesOrderCard;

@@ -9,11 +9,11 @@ import {
   SshKeyMultiSelect,
   SaveAddButton,
   FlavorSelect,
-  SlzNameInput
+  SlzNameInput,
 } from "../../../icse/index.js";
 import {
   buildFormDefaultInputMethods,
-  buildFormFunctions
+  buildFormFunctions,
 } from "../../../component-utils.js";
 import { stateInit, propsMatchState } from "../../../../lib/index.js";
 import { buildNumberDropdownList } from "lazy-z";
@@ -62,9 +62,9 @@ class F5VsiForm extends Component {
             f5_image_name: vsi[0]?.f5_image_name || "",
             resource_group: vsi[0]?.resource_group || "",
             ssh_keys: vsi[0]?.ssh_keys || [],
-            machine_type: vsi[0]?.machine_type || ""
-          }
-        )
+            machine_type: vsi[0]?.machine_type || "",
+          },
+        ),
       );
     }
     return (
@@ -90,9 +90,9 @@ class F5VsiForm extends Component {
             slz={this.props.slz}
             id="f5"
             initialSelectedItems={this.state.ssh_keys}
-            onChange={selectedItems => {
+            onChange={(selectedItems) => {
               this.handleInputChange({
-                target: { name: "ssh_keys", value: selectedItems }
+                target: { name: "ssh_keys", value: selectedItems },
               });
             }}
           />
@@ -109,7 +109,7 @@ class F5VsiForm extends Component {
               "f5-bigip-16-1-3-2-0-0-4-ltm-1slot",
               "f5-bigip-16-1-3-2-0-0-4-all-1slot",
               "f5-bigip-17-0-0-1-0-0-4-ltm-1slot",
-              "f5-bigip-17-0-0-1-0-0-4-all-1slot"
+              "f5-bigip-17-0-0-1-0-0-4-all-1slot",
             ]}
             labelText="F5 Image"
             name="f5_image_name"
@@ -157,7 +157,7 @@ class F5VsiTile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ...stateInit("vsi", this.props)
+      ...stateInit("vsi", this.props),
     };
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -238,15 +238,15 @@ F5VsiForm.propTypes = {
   slz: PropTypes.shape({
     f5: PropTypes.shape({
       instance: PropTypes.shape({
-        save: PropTypes.func.isRequired
-      }).isRequired
+        save: PropTypes.func.isRequired,
+      }).isRequired,
     }).isRequired,
     store: PropTypes.shape({
       configDotJson: PropTypes.shape({
-        f5_vsi: PropTypes.array.isRequired
-      }).isRequired
-    }).isRequired
-  }).isRequired
+        f5_vsi: PropTypes.array.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default F5VsiForm;

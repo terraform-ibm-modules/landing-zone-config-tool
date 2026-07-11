@@ -3,7 +3,7 @@ import { contains } from "lazy-z";
 import { Form } from "@carbon/react";
 import {
   buildFormDefaultInputMethods,
-  buildFormFunctions
+  buildFormFunctions,
 } from "../../component-utils.js";
 import AppIdKeyCreateForm from "./AppIdKeyCreateForm.js";
 import PropTypes from "prop-types";
@@ -18,7 +18,7 @@ import {
   EmptyResourceTile,
   DeleteModal,
   DeleteButton,
-  SaveAddButton
+  SaveAddButton,
 } from "../../icse/index.js";
 
 /**
@@ -36,7 +36,7 @@ class AppIdForm extends Component {
       open: false,
       showDeleteModal: false,
       keyNameToDelete: "",
-      key_name: ""
+      key_name: "",
     };
     this.state.use_appid = true;
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -73,7 +73,7 @@ class AppIdForm extends Component {
   toggleDeleteModal(name) {
     let tempValueState = {
       showDeleteModal: !this.state.showDeleteModal,
-      keyNameToDelete: name
+      keyNameToDelete: name,
     };
     this.setState(tempValueState);
   }
@@ -108,7 +108,7 @@ class AppIdForm extends Component {
     }).then(() => {
       //set state after save is run using promise
       this.setState({
-        open: false
+        open: false,
       });
     });
   }
@@ -118,7 +118,7 @@ class AppIdForm extends Component {
    * @param name key which needs to be deleted
    */
   handleKeyDelete(name) {
-    let newKeys = this.state.keys.filter(item => item !== name);
+    let newKeys = this.state.keys.filter((item) => item !== name);
     let newAppIdState = { ...this.state };
     newAppIdState.keys = newKeys;
     return new Promise((resolve, reject) => {
@@ -128,7 +128,7 @@ class AppIdForm extends Component {
       //set state after save is run using promise
       this.setState({
         showDeleteModal: false,
-        keys: newKeys
+        keys: newKeys,
       });
     });
   }
@@ -170,7 +170,7 @@ class AppIdForm extends Component {
           className="marginBottomSmall"
           tooltip={{
             content:
-              "Keys can be added to connect an application to an IBM Cloud service."
+              "Keys can be added to connect an application to an IBM Cloud service.",
           }}
           buttons={
             <SaveAddButton
@@ -196,12 +196,12 @@ class AppIdForm extends Component {
           >
             <AppIdKeyCreateForm
               slz={this.props.slz}
-              shouldDisableSubmit={function() {
+              shouldDisableSubmit={function () {
                 if (
                   !validName(this.state.key_name) ||
                   contains(
                     this.props.slz.store.configDotJson.appid.keys,
-                    this.state.key_name
+                    this.state.key_name,
                   )
                 ) {
                   this.props.disableModal();
@@ -264,7 +264,7 @@ AppIdForm.defaultProps = {
   resource_group: null,
   use_data: false,
   keys: [],
-  key_name: ""
+  key_name: "",
 };
 
 AppIdForm.propTypes = {
@@ -278,11 +278,11 @@ AppIdForm.propTypes = {
     store: PropTypes.shape({
       configDotJson: PropTypes.shape({
         appid: PropTypes.shape({
-          keys: PropTypes.array.isRequired
-        }).isRequired
-      }).isRequired
-    })
-  })
+          keys: PropTypes.array.isRequired,
+        }).isRequired,
+      }).isRequired,
+    }),
+  }),
 };
 
 export default AppIdForm;

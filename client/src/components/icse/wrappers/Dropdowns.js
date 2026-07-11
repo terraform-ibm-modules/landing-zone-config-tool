@@ -5,22 +5,22 @@ import {
   isNullOrEmptyString,
   kebabCase,
   splat,
-  buildNumberDropdownList
+  buildNumberDropdownList,
 } from "lazy-z";
 import PopoverWrapper from "./Popover.js";
 import PropTypes from "prop-types";
 import {
   addClassName,
-  prependEmptyStringToArrayOnNullOrEmptyString
+  prependEmptyStringToArrayOnNullOrEmptyString,
 } from "../../../lib/index.js";
 import { DynamicToolTipWrapper } from "../../wrappers/Tooltips.js";
 import React from "react";
-import { clusterFlavors } from "./caches/clusterFlavors.js"
-import { clusterVersions } from "./caches/clusterVersions.js"
-import { vsiImages } from "./caches/vsiImages.js"
-import { vsiInstanceProfiles } from "./caches/vsiInstanceProfiles.js"
+import { clusterFlavors } from "./caches/clusterFlavors.js";
+import { clusterVersions } from "./caches/clusterVersions.js";
+import { vsiImages } from "./caches/vsiImages.js";
+import { vsiInstanceProfiles } from "./caches/vsiInstanceProfiles.js";
 
-export const SlzSelect = props => {
+export const SlzSelect = (props) => {
   let invalid = // automatically set to invalid is is null or empty string and invalid not disabled
     props.disableInvalid !== true && isNullOrEmptyString(props.value)
       ? true
@@ -31,7 +31,7 @@ export const SlzSelect = props => {
       : prependEmptyStringToArrayOnNullOrEmptyString(
           // otherwise try and prepend empty string if null
           props.value,
-          props.groups
+          props.groups,
         );
   // please leave debug here //
   if (props.debug) {
@@ -62,7 +62,7 @@ export const SlzSelect = props => {
               onChange={props.handleInputChange}
               helperText={props.helperText}
             >
-              {groups.map(value => (
+              {groups.map((value) => (
                 <SelectItem
                   key={`${props.component}-${value}`}
                   text={value}
@@ -87,7 +87,7 @@ SlzSelect.defaultProps = {
   invalidText: "Invalid Selection",
   readOnly: false,
   groups: [],
-  debug: false
+  debug: false,
 };
 
 SlzSelect.propTypes = {
@@ -110,8 +110,8 @@ SlzSelect.propTypes = {
   tooltip: PropTypes.shape({
     content: PropTypes.string.isRequired,
     link: PropTypes.string,
-    alignModal: PropTypes.string
-  })
+    alignModal: PropTypes.string,
+  }),
 };
 
 export class ClusterVersionSelect extends React.Component {
@@ -119,19 +119,23 @@ export class ClusterVersionSelect extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      versions: []
+      versions: [],
     };
   }
   componentDidMount() {
     this._isMounted = true;
     if (isEmpty(this.state.versions)) {
       let data = [];
-      clusterVersions["kubernetes"].forEach(version => {
-        data.push(`${version.major}.${version.minor}.${version.patch}_kubernetes`)
-      })
-      clusterVersions["openshift"].forEach(version => {
-        data.push(`${version.major}.${version.minor}.${version.patch}_openshift`)
-      })
+      clusterVersions["kubernetes"].forEach((version) => {
+        data.push(
+          `${version.major}.${version.minor}.${version.patch}_kubernetes`,
+        );
+      });
+      clusterVersions["openshift"].forEach((version) => {
+        data.push(
+          `${version.major}.${version.minor}.${version.patch}_openshift`,
+        );
+      });
       if (this._isMounted) this.setState({ versions: data });
     }
   }
@@ -146,7 +150,7 @@ export class ClusterVersionSelect extends React.Component {
         name="kube_version"
         className={this.props.className}
         component="cluster"
-        groups={this.state.versions.filter(version => {
+        groups={this.state.versions.filter((version) => {
           if (
             (this.props.kube_type === "openshift" &&
               version.indexOf("openshift") !== -1) || // is openshift and contains openshift
@@ -167,7 +171,7 @@ ClusterVersionSelect.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
   className: PropTypes.string, // can be null or undefined
   value: PropTypes.string, // can be null or undefined
-  kube_type: PropTypes.string.isRequired
+  kube_type: PropTypes.string.isRequired,
 };
 
 export class ClusterOperatingSystemSelect extends React.Component {
@@ -175,7 +179,7 @@ export class ClusterOperatingSystemSelect extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      operating_systems: []
+      operating_systems: [],
     };
   }
   componentDidMount() {
@@ -214,7 +218,7 @@ export class FlavorSelect extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      flavors: []
+      flavors: [],
     };
   }
   componentDidMount() {
@@ -222,14 +226,13 @@ export class FlavorSelect extends React.Component {
     if (isEmpty(this.state.flavors)) {
       let data = [];
       if (this.props.kind === "cluster") {
-        clusterFlavors.forEach(flavor => {
-          data.push(flavor.id)
-        })
-      }
-      else {
-        vsiInstanceProfiles["profiles"].forEach(profile => {
-          data.push(profile.name)
-        })
+        clusterFlavors.forEach((flavor) => {
+          data.push(flavor.id);
+        });
+      } else {
+        vsiInstanceProfiles["profiles"].forEach((profile) => {
+          data.push(profile.name);
+        });
       }
       if (this._isMounted) this.setState({ flavors: data });
     }
@@ -249,8 +252,8 @@ export class FlavorSelect extends React.Component {
           this.state.flavors.length === 0 && this.props.value === ""
             ? [] // if modal set to [] to avoid two empty string params
             : this.state.flavors.length === 0
-            ? [this.props.value]
-            : this.state.flavors
+              ? [this.props.value]
+              : this.state.flavors
         }
         key={this.state.flavors} // force update on return api call
         value={this.props.value}
@@ -261,7 +264,7 @@ export class FlavorSelect extends React.Component {
 
 FlavorSelect.defaultProps = {
   name: "machine_type",
-  kind: "cluster"
+  kind: "cluster",
 };
 
 FlavorSelect.propTypes = {
@@ -269,7 +272,7 @@ FlavorSelect.propTypes = {
   className: PropTypes.string, // can be null or undefined
   value: PropTypes.string, // can be null or undefined
   name: PropTypes.string.isRequired,
-  kind: PropTypes.string.isRequired
+  kind: PropTypes.string.isRequired,
 };
 
 export class ImageSelect extends React.Component {
@@ -277,7 +280,7 @@ export class ImageSelect extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      images: []
+      images: [],
     };
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -293,7 +296,7 @@ export class ImageSelect extends React.Component {
           name: element.name,
         });
       });
-      images.forEach(image => {
+      images.forEach((image) => {
         // create a map matching each display name to image name and vice versa
         imageMap[image.display_name] = image.name;
         imageMap[image.name] = image.display_name;
@@ -309,8 +312,8 @@ export class ImageSelect extends React.Component {
     let newEvent = {
       target: {
         name: event.target.name,
-        value: this.state.imageMap[event.target.value]
-      }
+        value: this.state.imageMap[event.target.value],
+      },
     };
     this.props.handleInputChange(newEvent);
   }
@@ -327,8 +330,8 @@ export class ImageSelect extends React.Component {
           this.state.images.length === 0 && this.props.value === ""
             ? [] // prevent duplicate empty string on modal
             : this.state.images.length === 0
-            ? [this.props.value]
-            : splat(this.state.images, "display_name").sort(azsort)
+              ? [this.props.value]
+              : splat(this.state.images, "display_name").sort(azsort)
         }
         key={this.state.images} // force update on return api call
         value={
@@ -342,16 +345,16 @@ export class ImageSelect extends React.Component {
 }
 
 ImageSelect.defaultProps = {
-  className: "fieldWidthSmaller"
+  className: "fieldWidthSmaller",
 };
 
 ImageSelect.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
   className: PropTypes.string, // can be null or undefined
-  value: PropTypes.string // can be null or undefined
+  value: PropTypes.string, // can be null or undefined
 };
 
-export const SlzNumberSelect = props => {
+export const SlzNumberSelect = (props) => {
   return (
     <SlzSelect
       component={props.component}
@@ -359,13 +362,13 @@ export const SlzNumberSelect = props => {
       value={props.value.toString()}
       name={props.name}
       className={props.className}
-      handleInputChange={event => {
+      handleInputChange={(event) => {
         // set name target value and parse int
         let sendEvent = {
           target: {
             name: event.target.name,
-            value: parseInt(event.target.value)
-          }
+            value: parseInt(event.target.value),
+          },
         };
         props.handleInputChange(sendEvent);
       }}
@@ -384,7 +387,7 @@ SlzNumberSelect.defaultProps = {
   min: 1,
   invalid: false,
   isModal: false,
-  disabled: false
+  disabled: false,
 };
 
 SlzNumberSelect.propTypes = {
@@ -400,13 +403,13 @@ SlzNumberSelect.propTypes = {
   invalid: PropTypes.bool.isRequired,
   tooltip: PropTypes.shape({
     content: PropTypes.string.isRequired,
-    link: PropTypes.string
+    link: PropTypes.string,
   }),
   labelText: PropTypes.string.isRequired,
-  isModal: PropTypes.bool.isRequired
+  isModal: PropTypes.bool.isRequired,
 };
 
-export const EntitlementDropdown = props => {
+export const EntitlementDropdown = (props) => {
   return (
     <SlzSelect
       name="entitlement"
@@ -423,10 +426,10 @@ export const EntitlementDropdown = props => {
 EntitlementDropdown.propTypes = {
   value: PropTypes.string, // can be null
   component: PropTypes.string.isRequired,
-  handleInputChange: PropTypes.func.isRequired
+  handleInputChange: PropTypes.func.isRequired,
 };
 
-export const WorkersPerSubnetDropdown = props => {
+export const WorkersPerSubnetDropdown = (props) => {
   return (
     <SlzSelect
       name="workers_per_subnet"
@@ -445,7 +448,7 @@ export const WorkersPerSubnetDropdown = props => {
 WorkersPerSubnetDropdown.defaultProps = {
   invalid: false,
   invalidText: "",
-  fieldWidthSmaller: false
+  fieldWidthSmaller: false,
 };
 
 WorkersPerSubnetDropdown.propTypes = {
@@ -454,10 +457,10 @@ WorkersPerSubnetDropdown.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
   component: PropTypes.string.isRequired,
   value: PropTypes.number.isRequired,
-  fieldWidthSmaller: PropTypes.bool.isRequired
+  fieldWidthSmaller: PropTypes.bool.isRequired,
 };
 
-export const SubnetNameDropdown = props => {
+export const SubnetNameDropdown = (props) => {
   return (
     <SlzSelect
       name="subnet_name"
@@ -477,7 +480,7 @@ export const SubnetNameDropdown = props => {
 
 SubnetNameDropdown.defaultProps = {
   vpc_name: "",
-  invalid: false
+  invalid: false,
 };
 
 SubnetNameDropdown.propTypes = {
@@ -489,13 +492,13 @@ SubnetNameDropdown.propTypes = {
   invalidText: PropTypes.string.isRequired,
   slz: PropTypes.shape({
     store: PropTypes.shape({
-      subnets: PropTypes.object.isRequired
-    }).isRequired
+      subnets: PropTypes.object.isRequired,
+    }).isRequired,
   }).isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
-export const KmsKeySelect = props => {
+export const KmsKeySelect = (props) => {
   return (
     <SlzSelect
       labelText="encryption key"
@@ -515,7 +518,7 @@ export const KmsKeySelect = props => {
 KmsKeySelect.defaultProps = {
   name: "kms_key",
   disabled: false,
-  invalid: false
+  invalid: false,
 };
 
 KmsKeySelect.propTypes = {
@@ -527,12 +530,12 @@ KmsKeySelect.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
   slz: PropTypes.shape({
     store: PropTypes.shape({
-      encryptionKeys: PropTypes.arrayOf(PropTypes.string).isRequired
-    }).isRequired
-  }).isRequired
+      encryptionKeys: PropTypes.arrayOf(PropTypes.string).isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
-export const ResourceGroupSelect = props => {
+export const ResourceGroupSelect = (props) => {
   return (
     <SlzSelect
       name="resource_group"
@@ -550,7 +553,7 @@ export const ResourceGroupSelect = props => {
 
 ResourceGroupSelect.defaultProps = {
   disableInvalid: false, // used in access group dynamic policies/policies
-  labelText: "Resource group"
+  labelText: "Resource group",
 };
 
 ResourceGroupSelect.propTypes = {
@@ -559,15 +562,15 @@ ResourceGroupSelect.propTypes = {
   labelText: PropTypes.string.isRequired,
   slz: PropTypes.shape({
     store: PropTypes.shape({
-      resourceGroups: PropTypes.arrayOf(PropTypes.string).isRequired
-    }).isRequired
+      resourceGroups: PropTypes.arrayOf(PropTypes.string).isRequired,
+    }).isRequired,
   }).isRequired,
   handleInputChange: PropTypes.func.isRequired,
   className: PropTypes.string,
-  value: PropTypes.string
+  value: PropTypes.string,
 };
 
-export const VpcSelect = props => {
+export const VpcSelect = (props) => {
   return (
     <SlzSelect
       labelText="VPC"
@@ -585,7 +588,7 @@ export const VpcSelect = props => {
 
 VpcSelect.defaultProps = {
   name: "vpc",
-  disabled: false
+  disabled: false,
 };
 
 VpcSelect.propTypes = {
@@ -593,11 +596,11 @@ VpcSelect.propTypes = {
   component: PropTypes.string.isRequired,
   slz: PropTypes.shape({
     store: PropTypes.shape({
-      vpcList: PropTypes.arrayOf(PropTypes.string).isRequired
-    }).isRequired
+      vpcList: PropTypes.arrayOf(PropTypes.string).isRequired,
+    }).isRequired,
   }).isRequired,
   className: PropTypes.string,
   value: PropTypes.string,
   handleInputChange: PropTypes.func.isRequired,
-  disabled: PropTypes.bool.isRequired
+  disabled: PropTypes.bool.isRequired,
 };

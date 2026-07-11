@@ -3,7 +3,7 @@ import { SlzHeading, ToggleForm } from "../icse/index.js";
 import { TeleportConfigForm } from "./instance-forms/index.js";
 import { TeleportVsi } from "./SlzArrayForms.js";
 
-const TeleportBastionHost = props => {
+const TeleportBastionHost = (props) => {
   return (
     <>
       <SlzHeading

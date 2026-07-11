@@ -1,16 +1,13 @@
 import { TextInput } from "@carbon/react";
 import { containsKeys, isBoolean, kebabCase, titleCase } from "lazy-z";
 import React from "react";
-import {
-  nameValidationExp,
-  urlValidationExp
-} from "../../../lib/constants.js";
+import { nameValidationExp, urlValidationExp } from "../../../lib/constants.js";
 import { hasInvalidName } from "../../../lib/error-text-utils.js";
-import { minStringSize} from "../../../lib/lib-utils.js";
+import { minStringSize } from "../../../lib/lib-utils.js";
 import {
   addClassName,
   formatFieldName,
-  buildComposedComponentNameHelperText
+  buildComposedComponentNameHelperText,
 } from "../../../lib/form-utils.js";
 import PropTypes from "prop-types";
 import { DynamicToolTipWrapper } from "../../wrappers/Tooltips.js";
@@ -53,7 +50,7 @@ function formatInputPlaceholder(componentName, fieldName) {
  * @param {string=} props.labelText override label text
  * @returns <SlzTextInput/> component
  */
-export const SlzTextInput = props => {
+export const SlzTextInput = (props) => {
   let fieldName = formatFieldName(props.field);
   return (
     <DynamicToolTipWrapper {...props}>
@@ -90,7 +87,7 @@ SlzTextInput.defaultProps = {
   maxLength: null,
   disabled: false,
   readOnly: false,
-  hideHelperText: false
+  hideHelperText: false,
 };
 
 SlzTextInput.propTypes = {
@@ -104,12 +101,12 @@ SlzTextInput.propTypes = {
   tooltip: PropTypes.shape({
     content: PropTypes.string.isRequired,
     link: PropTypes.string,
-    alignModal: PropTypes.string
+    alignModal: PropTypes.string,
   }),
   className: PropTypes.string,
   readOnly: PropTypes.bool.isRequired,
   labelText: PropTypes.string.isRequired,
-  maxLength: PropTypes.number
+  maxLength: PropTypes.number,
 };
 
 /**
@@ -126,13 +123,13 @@ SlzTextInput.propTypes = {
  * @param {slzStateStore} slz
  * @returns <SlzNameInput />
  */
-export const SlzNameInput = props => {
+export const SlzNameInput = (props) => {
   // get invalid and invalid text
   let invalid = hasInvalidName(
     props.component,
     props.value,
     props.componentProps,
-    props.useData
+    props.useData,
   );
   let helperText = "";
   // if helper text is not hidden
@@ -143,8 +140,8 @@ export const SlzNameInput = props => {
       {
         useData: props.useData,
         suffix: props.random_suffix ? "<random suffix>" : false,
-        parentName: props.parentName || false
-      }
+        parentName: props.parentName || false,
+      },
     );
   }
   return (
@@ -163,7 +160,7 @@ export const SlzNameInput = props => {
 
 SlzNameInput.defaultProps = {
   useData: false,
-  hideHelperText: false
+  hideHelperText: false,
 };
 
 SlzNameInput.propTypes = {
@@ -176,9 +173,9 @@ SlzNameInput.propTypes = {
   tooltip: PropTypes.shape({
     content: PropTypes.string.isRequired,
     link: PropTypes.string,
-    alignModal: PropTypes.string
+    alignModal: PropTypes.string,
   }),
   noMarginRight: PropTypes.bool,
   hideHelperText: PropTypes.bool.isRequired,
-  useData: PropTypes.bool.isRequired
+  useData: PropTypes.bool.isRequired,
 };

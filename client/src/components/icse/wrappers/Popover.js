@@ -10,7 +10,7 @@ class PopoverWrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isHovering: false
+      isHovering: false,
     };
     this.handleMouseOver = this.handleMouseOver.bind(this);
     this.handleMouseOut = this.handleMouseOut.bind(this);
@@ -69,7 +69,7 @@ PopoverWrapper.propTypes = {
   className: PropTypes.string,
   contentClassName: PropTypes.string,
   align: PropTypes.string,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export default PopoverWrapper;

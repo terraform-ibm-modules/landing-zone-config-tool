@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { NetworkingRulesOrderCard } from "./network-rules/index.js";
 import {
   buildFormDefaultInputMethods,
-  buildFormFunctions
+  buildFormFunctions,
 } from "../../component-utils.js";
 import { splat, deepEqual } from "lazy-z";
 import PropTypes from "prop-types";
@@ -46,7 +46,10 @@ class NetworkAclForm extends Component {
    */
   networkRuleOrderDidChange(rules) {
     this.props.networkRuleOrderDidChange(
-      deepEqual(splat(rules, "name"), splat([...this.props.data.rules], "name"))
+      deepEqual(
+        splat(rules, "name"),
+        splat([...this.props.data.rules], "name"),
+      ),
     );
     this.setState({ rules: rules }); // update rules state when an update occurs
   }
@@ -66,10 +69,8 @@ class NetworkAclForm extends Component {
           />
           <SlzToggle
             tooltip={{
-              content:
-                "Add default network ACL rules to VPC.",
-              link:
-                "https://cloud.ibm.com/docs/openshift?topic=openshift-vpc-acls"
+              content: "Add default network ACL rules to VPC.",
+              link: "https://cloud.ibm.com/docs/openshift?topic=openshift-vpc-acls",
             }}
             labelText="Add IBM Cloud Internal Rules"
             toggleFieldName="add_ibm_cloud_internal_rules"
@@ -80,10 +81,8 @@ class NetworkAclForm extends Component {
           />
           <SlzToggle
             tooltip={{
-              content:
-                "Add connectivity rules across any subnet within VPC.",
-              link:
-                "https://cloud.ibm.com/docs/openshift?topic=openshift-vpc-acls"
+              content: "Add connectivity rules across any subnet within VPC.",
+              link: "https://cloud.ibm.com/docs/openshift?topic=openshift-vpc-acls",
             }}
             labelText="Add VPC Connectivity Rules"
             toggleFieldName="add_vpc_connectivity_rules"
@@ -116,9 +115,9 @@ NetworkAclForm.defaultProps = {
   data: {
     name: "",
     add_ibm_cloud_internal_rules: false,
-    add_vpc_connectivity_rules: false
+    add_vpc_connectivity_rules: false,
   },
-  isModal: false
+  isModal: false,
 };
 
 NetworkAclForm.propTypes = {
@@ -126,18 +125,18 @@ NetworkAclForm.propTypes = {
     name: PropTypes.string.isRequired,
     add_ibm_cloud_internal_rules: PropTypes.bool.isRequired,
     add_vpc_connectivity_rules: PropTypes.bool.isRequired,
-    rules: PropTypes.array
+    rules: PropTypes.array,
   }),
   slz: PropTypes.shape({
     store: PropTypes.shape({
       configDotJson: PropTypes.shape({
-        vpcs: PropTypes.array.isRequired
+        vpcs: PropTypes.array.isRequired,
       }).isRequired,
-      networkAcls: PropTypes.shape({}).isRequired
-    }).isRequired
+      networkAcls: PropTypes.shape({}).isRequired,
+    }).isRequired,
   }),
   isModal: PropTypes.bool.isRequired,
-  networkRuleOrderDidChange: PropTypes.func // can be undefined
+  networkRuleOrderDidChange: PropTypes.func, // can be undefined
 };
 
 export default NetworkAclForm;

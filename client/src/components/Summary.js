@@ -12,7 +12,7 @@ class Summary extends React.Component {
     this.state = {
       usePrettyJson: true,
       error: "",
-      fileDownloadUrl: ""
+      fileDownloadUrl: "",
     };
     try {
       validate(this.props.slz.store.configDotJson, true);
@@ -61,7 +61,8 @@ class Summary extends React.Component {
                 </p>
                 <ul>
                   <p className="marginBottomSmall">
-                    • You can view and download your <em>override.json</em> file, and then import it into{" "}
+                    • You can view and download your <em>override.json</em>{" "}
+                    file, and then import it into{" "}
                     <a
                       href="https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone"
                       rel="noreferrer noopener"
@@ -73,7 +74,8 @@ class Summary extends React.Component {
                   </p>
                   <p className="marginBottomXs">
                     • To get a stringified copy of the JSON for use in IBM
-                    Schematics, click the <strong>Copy to Clipboard</strong> button.
+                    Schematics, click the <strong>Copy to Clipboard</strong>{" "}
+                    button.
                   </p>
                   <ul className="marginLeft marginBottomSmall">
                     <li className="marginBottomXs">
@@ -148,7 +150,7 @@ class Summary extends React.Component {
               className="hidden"
               download="override.json"
               href={this.state.fileDownloadUrl}
-              ref={e => (this.download = e)}
+              ref={(e) => (this.download = e)}
             >
               download
             </a>

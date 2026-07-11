@@ -3,7 +3,7 @@ import F5Icon, {
   EditCloseIcon,
   SaveAddButton,
   SaveIcon,
-  UpDownButtons
+  UpDownButtons,
 } from "./Buttons.js";
 import {
   EntitlementDropdown,
@@ -17,7 +17,7 @@ import {
   ClusterVersionSelect,
   ClusterOperatingSystemSelect,
   FlavorSelect,
-  ImageSelect
+  ImageSelect,
 } from "./Dropdowns.js";
 import { SlzToggle } from "./Inputs.js";
 import { SlzModal, DeleteModal, UnsavedChangesModal } from "./Modals.js";
@@ -26,7 +26,7 @@ import {
   SlzMultiSelect,
   SshKeyMultiSelect,
   SubnetMultiSelect,
-  VpcListMultiSelect
+  VpcListMultiSelect,
 } from "./MultiSelects.js";
 import NavItem from "./NavItem.js";
 import PopoverWrapper from "./Popover.js";
@@ -40,7 +40,7 @@ import {
   StatelessToggleForm,
   SlzFormGroup,
   SlzSubForm,
-  Notification
+  Notification,
 } from "./Utils.js";
 
 export {
@@ -83,5 +83,5 @@ export {
   ClusterVersionSelect,
   ClusterOperatingSystemSelect,
   FlavorSelect,
-  ImageSelect
+  ImageSelect,
 };

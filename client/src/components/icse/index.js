@@ -40,7 +40,7 @@ import {
   ClusterVersionSelect,
   ClusterOperatingSystemSelect,
   FlavorSelect,
-  ImageSelect
+  ImageSelect,
 } from "./wrappers/index.js";
 import SlzTabPanel from "./SlzTabPanel.js";
 import SlzFormTemplate from "./SlzFormTemplate.js";
@@ -92,5 +92,5 @@ export {
   ClusterVersionSelect,
   ClusterOperatingSystemSelect,
   FlavorSelect,
-  ImageSelect
+  ImageSelect,
 };

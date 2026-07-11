@@ -6,7 +6,7 @@ import {
   WorkersPerSubnetDropdown,
   SubnetMultiSelect,
   SlzFormGroup,
-  FlavorSelect
+  FlavorSelect,
 } from "../../icse/index.js";
 import PropTypes from "prop-types";
 
@@ -21,10 +21,10 @@ class WorkerPoolForm extends Component {
             subnet_names: this.props.cluster.subnet_names,
             vpc_name: this.props.cluster.vpc_name,
             workers_per_subnet: this.props.cluster.workers_per_subnet,
-            entitlement: this.props.cluster.entitlement
+            entitlement: this.props.cluster.entitlement,
           }
         : this.props.data,
-      showPool: true
+      showPool: true,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubnetChange = this.handleSubnetChange.bind(this);
@@ -113,9 +113,9 @@ WorkerPoolForm.defaultProps = {
     name: "",
     subnet_names: [],
     vpc_name: "",
-    workers_per_subnet: 2
+    workers_per_subnet: 2,
   },
-  isModal: false
+  isModal: false,
 };
 
 WorkerPoolForm.propTypes = {
@@ -134,7 +134,7 @@ WorkerPoolForm.propTypes = {
     subnet_names: PropTypes.array.isRequired,
     vpc_name: PropTypes.string.isRequired,
     worker_pools: PropTypes.array.isRequired,
-    workers_per_subnet: PropTypes.number.isRequired
+    workers_per_subnet: PropTypes.number.isRequired,
   }), // can be null
   data: PropTypes.shape({
     entitlement: PropTypes.string.isRequired,
@@ -142,14 +142,14 @@ WorkerPoolForm.propTypes = {
     name: PropTypes.string.isRequired,
     subnet_names: PropTypes.array.isRequired,
     vpc_name: PropTypes.string.isRequired,
-    workers_per_subnet: PropTypes.number.isRequired
+    workers_per_subnet: PropTypes.number.isRequired,
   }).isRequired,
   slz: PropTypes.shape({
     store: PropTypes.shape({
       configDotJson: PropTypes.shape({
-        clusters: PropTypes.array.isRequired
-      })
-    })
+        clusters: PropTypes.array.isRequired,
+      }),
+    }),
   }),
-  arrayParentName: PropTypes.string.isRequired
+  arrayParentName: PropTypes.string.isRequired,
 };
