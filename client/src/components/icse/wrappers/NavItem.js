@@ -48,8 +48,8 @@ class NavItem extends React.Component {
             onClick={() => (this.props.navigate(this.props.item.path))}
             renderIcon={this.props.item.icon}
             key={this.props.item.title}
-            onMouseOver={this.toggleHover}
-            onMouseOut={this.toggleHover}
+            onMouseEnter={this.toggleHover}
+            onMouseLeave={this.toggleHover}
             className={getClassName(this.props.item.path, this.props.expanded)}
           >
             {this.props.expanded ? this.props.item.title : ""}

@@ -167,6 +167,7 @@ class App extends Component {
     this.setItem(this.state.storeName, slzStateStore.store);
     // Show a notification when state is updated successfully
     let notification = {
+      kind: "success",
       title: "Success",
       text: "Successfully updated!",
       timeout: 3000

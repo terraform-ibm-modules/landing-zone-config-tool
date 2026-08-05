@@ -44,7 +44,7 @@ class PatternForm extends Component {
       showModal: false,
       selectedPattern: null,
       patternSetOnPage: !this.props.slz.store.pattern,
-      zones: this.props.slz.store.zones || 3
+      zones: parseInt(this.props.slz.store.zones) > 0 ? parseInt(this.props.slz.store.zones) : 3
     };
     this.updatePattern = this.updatePattern.bind(this);
     this.handleRadioChange = this.handleRadioChange.bind(this);

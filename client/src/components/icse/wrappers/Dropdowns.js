@@ -351,14 +351,29 @@ ImageSelect.propTypes = {
   value: PropTypes.string // can be null or undefined
 };
 
-export const SlzNumberSelect = props => {
+export const SlzNumberSelect = ({
+  min = 1,
+  invalid = false,
+  isModal = false,
+  disabled = false,
+  max,
+  value,
+  component,
+  name,
+  className,
+  handleInputChange,
+  invalidText,
+  tooltip,
+  labelText,
+  helperText
+}) => {
   return (
     <SlzSelect
-      component={props.component}
-      groups={buildNumberDropdownList(props.max, props.min)}
-      value={props.value.toString()}
-      name={props.name}
-      className={props.className}
+      component={component}
+      groups={buildNumberDropdownList(max, min)}
+      value={value.toString()}
+      name={name}
+      className={className}
       handleInputChange={event => {
         // set name target value and parse int
         let sendEvent = {
@@ -367,24 +382,17 @@ export const SlzNumberSelect = props => {
             value: parseInt(event.target.value)
           }
         };
-        props.handleInputChange(sendEvent);
+        handleInputChange(sendEvent);
       }}
-      invalid={props.invalid}
-      invalidText={props.invalidText}
-      tooltip={props.tooltip}
-      labelText={props.labelText}
-      isModal={props.isModal}
-      disabled={props.disabled}
-      helperText={props.helperText}
+      invalid={invalid}
+      invalidText={invalidText}
+      tooltip={tooltip}
+      labelText={labelText}
+      isModal={isModal}
+      disabled={disabled}
+      helperText={helperText}
     />
   );
-};
-
-SlzNumberSelect.defaultProps = {
-  min: 1,
-  invalid: false,
-  isModal: false,
-  disabled: false
 };
 
 SlzNumberSelect.propTypes = {
