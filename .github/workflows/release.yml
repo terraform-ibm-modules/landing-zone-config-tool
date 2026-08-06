@@ -3,12 +3,14 @@ name: Release-Pipeline
 permissions:
   contents: write
   issues: write
+  pages: write
+  id-token: write
 
 # Trigger on push(merge) to main branch
 on:
   push:
     branches:
-      - main
+      - release-test
 
 jobs:
   call-terraform-release-pipeline:
