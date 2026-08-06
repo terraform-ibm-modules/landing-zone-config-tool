@@ -4,7 +4,7 @@
   "description": "GUI for configuring Landing Zone override.json",
   "main": "index.js",
   "engines": {
-    "node": "24.18.0"
+    "node": ">=24.18.0"
   },
   "scripts": {
     "build": "cd client && npm run build && cp -r build ../",
@@ -25,6 +25,7 @@
   },
   "overrides": {
     "express": "5.2.1",
+    "glob": "13.0.6",
     "nth-check": "3.0.1",
     "postcss": "8.5.17",
     "webpack-dev-middleware": "8.0.3"
