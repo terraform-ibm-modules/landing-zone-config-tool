@@ -9,6 +9,7 @@
  */
 
 import { newTeleportSg } from "./store/defaults.js";
+import { clusterVersions } from "../components/icse/wrappers/caches/clusterVersions.js";
 import {
   defaultToEmptyStringIfValueNull,
   defaultToEmptyStringIfNullString
@@ -221,6 +222,19 @@ function stateInit(componentName, componentProps) {
       ],
       true
     );
+    // Resolve legacy "default" sentinel to the actual latest version string
+    if (stateData.kube_version === "default") {
+      const kubeType = stateData.kube_type || "openshift";
+      const versions = clusterVersions[kubeType];
+      const latest = versions.reduce((a, b) =>
+        b.minor > a.minor || (b.minor === a.minor && b.patch > a.patch) ? b : a
+      );
+      stateData.kube_version = `${latest.major}.${latest.minor}.${latest.patch}_${kubeType}`;
+    }
+    // Resolve legacy REDHAT_8_64 default to RHCOS
+    if (!stateData.operating_system || stateData.operating_system === "REDHAT_8_64") {
+      stateData.operating_system = "RHCOS";
+    }
     ifNullSetToEmptyString(["cos_name", "vpc_name", "resource_group"], true);
     if (componentProps.data.kms_config.crk_name === null) {
       stateData.kms_config = {

@@ -23,7 +23,7 @@ def get_token(ibmcloud_api_key):
     }
 
     response = requests.request("POST", url, headers=headers, data=payload)
-
+    response.raise_for_status()
     access_token = json.loads(response.text)["access_token"]
     return access_token
 
@@ -40,12 +40,12 @@ def call_api(url, access_token):
         response = requests.request("GET", url, headers=headers, data=payload)
         if response.status_code == 404:
             break
+        response.raise_for_status()
+        results += response.text
+        if response.links and "next" in response.links.keys():
+            url = response.links["next"]["url"]
         else:
-            results += response.text
-            if response.links and "next" in response.links.keys():
-                url = response.links["next"]["url"]
-            else:
-                break
+            break
 
     return results
 
@@ -71,6 +71,7 @@ def call_api_paginated(url, access_token, collection_key):
     all_items = []
     while url:
         response = requests.request("GET", url, headers=headers)
+        response.raise_for_status()
         data = response.json()
         all_items.extend(data.get(collection_key, []))
         next_ref = data.get("next", {})

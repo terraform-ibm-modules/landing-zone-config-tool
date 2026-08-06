@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { clusterVersions } from "../../icse/wrappers/caches/clusterVersions.js";
 import {
   SlzSelect,
   EntitlementDropdown,
@@ -28,6 +29,14 @@ import PropTypes from "prop-types";
 
 const kubeTypes = { OpenShift: "openshift" };
 
+function latestKubeVersion(kubeType) {
+  const versions = clusterVersions[kubeType];
+  const latest = versions.reduce((a, b) =>
+    b.minor > a.minor || (b.minor === a.minor && b.patch > a.patch) ? b : a
+  );
+  return `${latest.major}.${latest.minor}.${latest.patch}_${kubeType}`;
+}
+
 class ClusterInstance extends Component {
   constructor(props) {
     super(props);
@@ -54,8 +63,8 @@ class ClusterInstance extends Component {
     } else if (name === "kube_type") {
       cluster[name] = kubeTypes[value];
       cluster.cos_name = "";
-      cluster.kube_version = ""; // reset kube version on change
-      cluster.operating_system = ""; // reset kube operating system on change
+      cluster.kube_version = latestKubeVersion(kubeTypes[value]); // default to latest on type change
+      cluster.operating_system = "RHCOS"; // reset kube operating system on change
     } else if (name === "workers_per_subnet") {
       cluster[name] = Number(value);
     } else if (name === "vpc_name") {
@@ -238,8 +247,8 @@ ClusterInstance.defaultProps = {
   data: {
     cos_name: "",
     kube_type: "openshift",
-    kube_version: "default",
-    operating_system: "REDHAT_8_64",
+    kube_version: latestKubeVersion("openshift"),
+    operating_system: "RHCOS",
     machine_type: "bx2.16x64",
     name: "",
     kms_config: { crk_name: "" },

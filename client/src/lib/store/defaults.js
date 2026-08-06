@@ -1,3 +1,18 @@
+import { clusterVersions } from "../../components/icse/wrappers/caches/clusterVersions.js";
+
+/**
+ * Get the latest kube version string for a given kube type ("openshift" or "kubernetes")
+ * @param {"openshift"|"kubernetes"} kubeType
+ * @returns {string} version string, e.g. "4.21.19_openshift"
+ */
+function latestKubeVersion(kubeType) {
+  const versions = clusterVersions[kubeType];
+  const latest = versions.reduce((a, b) =>
+    b.minor > a.minor || (b.minor === a.minor && b.patch > a.patch) ? b : a
+  );
+  return `${latest.major}.${latest.minor}.${latest.patch}_${kubeType}`;
+}
+
 /**
  * create new default kms
  * @returns key management object
@@ -412,8 +427,8 @@ function newDefaultManagementCluster() {
     cos_name: "cos",
     entitlement: "cloud_pak",
     kube_type: "openshift",
-    kube_version: "default",
-    operating_system: "REDHAT_8_64",
+    kube_version: latestKubeVersion("openshift"),
+    operating_system: "RHCOS",
     machine_type: "bx2.16x64",
     name: "management-cluster",
     resource_group: "management-rg",
@@ -442,8 +457,8 @@ function newDefaultWorkloadCluster() {
     cos_name: "cos",
     entitlement: "cloud_pak",
     kube_type: "openshift",
-    kube_version: "default",
-    operating_system: "REDHAT_8_64",
+    kube_version: latestKubeVersion("openshift"),
+    operating_system: "RHCOS",
     machine_type: "bx2.16x64",
     name: "workload-cluster",
     resource_group: "workload-rg",

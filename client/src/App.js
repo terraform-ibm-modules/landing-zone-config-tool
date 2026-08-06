@@ -34,6 +34,7 @@ import {
   ReleaseNotes
 } from "./components/index.js";
 import { slzState, codeMirrorJson } from "./lib/index.js";
+import { clusterVersions } from "./components/icse/wrappers/caches/clusterVersions.js";
 import "./app.scss";
 import { Notification } from "./components/icse/index.js";
 import { contains } from "lazy-z";
@@ -122,6 +123,20 @@ class App extends Component {
         // If there is a state in browser local storage, use it instead.
         if (stateInStorage) {
           slzStateStore.store = JSON.parse(stateInStorage);
+          // Migrate any clusters that still carry legacy defaults
+          (slzStateStore.store.configDotJson?.clusters || []).forEach(cluster => {
+            if (cluster.kube_version === "default" || !cluster.kube_version) {
+              const kubeType = cluster.kube_type || "openshift";
+              const versions = clusterVersions[kubeType];
+              const latest = versions.reduce((a, b) =>
+                b.minor > a.minor || (b.minor === a.minor && b.patch > a.patch) ? b : a
+              );
+              cluster.kube_version = `${latest.major}.${latest.minor}.${latest.patch}_${kubeType}`;
+            }
+            if (!cluster.operating_system || cluster.operating_system === "REDHAT_8_64") {
+              cluster.operating_system = "RHCOS";
+            }
+          });
         }
         this.state = {
           store: slzStateStore.store,
