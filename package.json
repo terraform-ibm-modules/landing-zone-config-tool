@@ -31,7 +31,7 @@
     "glob": "13.0.6",
     "js-yaml": "5.2.3",
     "nth-check": "3.0.1",
-    "postcss": "8.5.17",
+    "postcss": "8.5.26",
     "serialize-javascript": "7.0.7",
     "uuid": "14.0.1",
     "webpack-dev-middleware": "8.0.3"
