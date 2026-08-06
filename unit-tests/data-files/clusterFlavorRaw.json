@@ -49,7 +49,7 @@
           "isDefault": true
         },
         {
-          "name": "REDHAT_8_64",
+          "name": "RHCOS",
           "isDefault": false
         }
       ]

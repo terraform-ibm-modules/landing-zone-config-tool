@@ -17,7 +17,15 @@ describe("propsMatchState", () => {
           "clusters",
           {
             cluster: {
+              entitlement: undefined,
+              kube_type: undefined,
+              kube_version: undefined,
+              operating_system: "RHCOS",
+              machine_type: undefined,
               name: "hi",
+              subnet_names: undefined,
+              worker_pools: undefined,
+              workers_per_subnet: undefined,
               cos_name: "",
               vpc_name: "",
               resource_group: "",
@@ -26,7 +34,15 @@ describe("propsMatchState", () => {
           },
           {
             data: {
+              entitlement: undefined,
+              kube_type: undefined,
+              kube_version: undefined,
+              operating_system: "RHCOS",
+              machine_type: undefined,
               name: "hi",
+              subnet_names: undefined,
+              worker_pools: undefined,
+              workers_per_subnet: undefined,
               cos_name: "",
               vpc_name: "",
               resource_group: "",

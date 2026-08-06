@@ -20,14 +20,6 @@ import { clusterVersions } from "./caches/clusterVersions.js"
 import { vsiImages } from "./caches/vsiImages.js"
 import { vsiInstanceProfiles } from "./caches/vsiInstanceProfiles.js"
 
-function latestKubeVersion(kubeType) {
-  const versions = clusterVersions[kubeType];
-  const latest = versions.reduce((a, b) =>
-    b.minor > a.minor || (b.minor === a.minor && b.patch > a.patch) ? b : a
-  );
-  return `${latest.major}.${latest.minor}.${latest.patch}_${kubeType}`;
-}
-
 export const SlzSelect = props => {
   let invalid = // automatically set to invalid is is null or empty string and invalid not disabled
     props.disableInvalid !== true && isNullOrEmptyString(props.value)
@@ -123,35 +115,28 @@ SlzSelect.propTypes = {
 };
 
 export class ClusterVersionSelect extends React.Component {
+  _isMounted = false;
   constructor(props) {
     super(props);
-    let versions = [];
-    clusterVersions["kubernetes"].forEach(version => {
-      versions.push(`${version.major}.${version.minor}.${version.patch}_kubernetes`);
-    });
-    clusterVersions["openshift"].forEach(version => {
-      versions.push(`${version.major}.${version.minor}.${version.patch}_openshift`);
-    });
-    this.state = { versions };
+    this.state = {
+      versions: []
+    };
   }
   componentDidMount() {
-    // If parent has no version set yet, seed it with the latest for the current kube_type
-    if (isNullOrEmptyString(this.props.value)) {
-      this.props.handleInputChange({
-        target: { name: "kube_version", value: latestKubeVersion(this.props.kube_type) }
-      });
+    this._isMounted = true;
+    if (isEmpty(this.state.versions)) {
+      let data = [];
+      clusterVersions["kubernetes"].forEach(version => {
+        data.push(`${version.major}.${version.minor}.${version.patch}_kubernetes`)
+      })
+      clusterVersions["openshift"].forEach(version => {
+        data.push(`${version.major}.${version.minor}.${version.patch}_openshift`)
+      })
+      if (this._isMounted) this.setState({ versions: data });
     }
   }
-  componentDidUpdate(prevProps) {
-    // When kube_type changes and version gets cleared, seed with latest for new type
-    if (
-      prevProps.kube_type !== this.props.kube_type &&
-      isNullOrEmptyString(this.props.value)
-    ) {
-      this.props.handleInputChange({
-        target: { name: "kube_version", value: latestKubeVersion(this.props.kube_type) }
-      });
-    }
+  componentWillUnmount() {
+    this._isMounted = false;
   }
   render() {
     return (
@@ -161,17 +146,18 @@ export class ClusterVersionSelect extends React.Component {
         name="kube_version"
         className={this.props.className}
         component="cluster"
-        groups={this.state.versions.filter(version =>
-          (this.props.kube_type === "openshift" &&
-            version.indexOf("openshift") !== -1) || // is openshift and contains openshift
-          (this.props.kube_type !== "openshift" &&
-            version.indexOf("openshift") === -1) // is not openshift and does not contain openshift
-        )}
-        value={
-          isNullOrEmptyString(this.props.value)
-            ? latestKubeVersion(this.props.kube_type)
-            : this.props.value
-        }
+        groups={this.state.versions.filter(version => {
+          if (
+            (this.props.kube_type === "openshift" &&
+              version.indexOf("openshift") !== -1) || // is openshift and contains openshift
+            (this.props.kube_type !== "openshift" &&
+              version.indexOf("openshift") === -1) || // is not openshift and does not contain openshift
+            version === "default" // or is default
+          ) {
+            return version;
+          }
+        })}
+        value={this.props.value}
       />
     );
   }

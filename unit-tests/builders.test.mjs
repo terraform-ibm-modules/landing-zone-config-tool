@@ -20,7 +20,7 @@ describe("builders", () => {
           entitlement: "cloud_pak",
           kube_type: "openshift",
           kube_version: "default",
-          operating_system: "REDHAT_8_64",
+          operating_system: "RHCOS",
           machine_type: "bx2.16x64",
           name: "management-cluster",
           resource_group: "management-rg",
