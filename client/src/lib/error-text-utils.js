@@ -91,8 +91,7 @@ function hasDuplicateName(componentName, value, componentProps) {
   // if vsi sg
   else if (
     componentName === "security_groups" &&
-    (componentProps.addText === "Create a Virtual Server Instance Deployment" ||
-      componentProps.isTeleport)
+    componentProps.data?.security_group
   ) {
     resourceName = componentProps.data.security_group?.name || "";
   } else if (componentName === "default_routing_table_name")

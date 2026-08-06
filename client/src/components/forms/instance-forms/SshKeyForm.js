@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { TextInput } from "@carbon/react";
+import { PasswordInput } from "@carbon/react";
 import {
   buildFormDefaultInputMethods,
   buildFormFunctions
@@ -51,15 +51,15 @@ class SSHKeyForm extends Component {
         </SlzFormGroup>
         <SlzFormGroup noMarginBottom>
           <div className="textInputWide leftTextAlign">
-            <form><TextInput.PasswordInput
-              labelText="Public Key"
-              name="public_key"
-              autoComplete="public_key"
-              id={this.props.data.name + "-ssh-public-key"}
-              {...invalidPublicKey}
-              value={this.state.public_key}
-              onChange={this.handleInputChange}
-            /></form>
+            <form><PasswordInput
+                labelText="Public Key"
+                name="public_key"
+                autoComplete="public_key"
+                id={this.props.data.name + "-ssh-public-key"}
+                {...invalidPublicKey}
+                value={this.state.public_key}
+                onChange={this.handleInputChange}
+              /></form>
           </div>
         </SlzFormGroup>
       </>

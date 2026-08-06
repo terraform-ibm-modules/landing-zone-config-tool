@@ -32,7 +32,7 @@
     "react": "19.2.7",
     "react-dom": "19.2.7",
     "react-is": "19.2.7",
-    "react-router-dom": "7.18.1",
+    "react-router-dom": "8.3.0",
     "regex-but-with-words": "1.5.5",
     "sass": "1.101.0"
   },

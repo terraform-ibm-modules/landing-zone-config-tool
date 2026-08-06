@@ -44,48 +44,49 @@ export const SaveIcon = props => {
  * @param {boolean} props.disabled
  * @returns Save add button
  */
-export const SaveAddButton = props => {
+export const SaveAddButton = ({
+  type = "save",
+  hoverText = "Save Changes",
+  inline = false,
+  disabled = false,
+  onClick,
+  className,
+  noDeleteButton
+}) => {
   return (
     <PopoverWrapper
       hoverText={
-        props.type === "add" && props.hoverText === "Save Changes"
+        type === "add" && hoverText === "Save Changes"
           ? "Add Resource"
-          : props.hoverText
+          : hoverText
       }
       className={
-        (props.disabled ? "inlineBlock cursorNotAllowed" : "") +
-        (props.inline
+        (disabled ? "inlineBlock cursorNotAllowed" : "") +
+        (inline
           ? " alignItemsCenter marginTopLarge inLineFormButton"
           : "")
       }
     >
       <Button
-        kind={props.type === "add" ? "tertiary" : "primary"}
-        onClick={props.onClick}
+        kind={type === "add" ? "tertiary" : "primary"}
+        onClick={onClick}
         className={
-          saveChangeButtonClass(props) +
-          (props.disabled === true
+          saveChangeButtonClass({ type, hoverText, inline, disabled, onClick, className, noDeleteButton }) +
+          (disabled === true
             ? " pointerEventsNone "
-            : " " + props.className)
+            : " " + className)
         }
-        disabled={props.disabled || false}
+        disabled={disabled || false}
         size="sm"
       >
-        {props.type === "add" ? (
+        {type === "add" ? (
           <Add />
         ) : (
-          <SaveIcon saveIsDisabled={props.disabled} />
+          <SaveIcon saveIsDisabled={disabled} />
         )}
       </Button>
     </PopoverWrapper>
   );
-};
-
-SaveAddButton.defaultProps = {
-  type: "save",
-  hoverText: "Save Changes",
-  inline: false,
-  disabled: false
 };
 
 SaveAddButton.propTypes = {
@@ -105,24 +106,24 @@ SaveAddButton.propTypes = {
  * @param {boolean} props.open toggle is open, defaults to false
  * @returns edit close icon
  */
-export const EditCloseIcon = props => {
-  let hoverText = props.hoverText
-    ? props.hoverText
-    : props.open
+export const EditCloseIcon = ({ hoverText, type = "edit", open = false, onClick, disabled }) => {
+  let resolvedHoverText = hoverText
+    ? hoverText
+    : open
     ? "Close"
-    : props.type === "add"
+    : type === "add"
     ? "Configure Resource"
     : "Edit Resource";
-  let icon = props.open ? (
+  let icon = open ? (
     <CloseFilled />
-  ) : props.type === "add" ? (
+  ) : type === "add" ? (
     <Add />
   ) : (
     <Edit />
   );
   return (
-    <PopoverWrapper hoverText={hoverText}>
-      <i onClick={props.onClick} className="chevron">
+    <PopoverWrapper hoverText={resolvedHoverText}>
+      <i onClick={onClick} className="chevron">
         {icon}
       </i>
     </PopoverWrapper>
@@ -137,45 +138,35 @@ EditCloseIcon.propTypes = {
   open: PropTypes.bool
 };
 
-EditCloseIcon.defaultProps = {
-  type: "edit",
-  open: false
-};
-
 /**
  * Delete button
  * @param {*} props
  *
  */
-export const DeleteButton = props => {
+export const DeleteButton = ({ disabled = false, modalOpen = false, onClick, disableDeleteMessage, name }) => {
   return (
     <div className="delete-area">
       <PopoverWrapper
         hoverText={
-          props.disabled ? props.disableDeleteMessage : "Delete Resource"
+          disabled ? disableDeleteMessage : "Delete Resource"
         }
-        className={props.disabled ? "inlineBlock cursorNotAllowed" : ""}
+        className={disabled ? "inlineBlock cursorNotAllowed" : ""}
       >
         <Button
           className={
             "cds--btn--danger--tertiary forceTertiaryButtonStyles" +
-            (props.disabled ? " pointerEventsNone" : "")
+            (disabled ? " pointerEventsNone" : "")
           }
           kind="ghost"
           size="sm"
-          onClick={props.onClick}
-          disabled={props.disabled === true}
+          onClick={onClick}
+          disabled={disabled === true}
         >
-          <TrashCan className={props.disabled ? "" : "redFill"} />
+          <TrashCan className={disabled ? "" : "redFill"} />
         </Button>
       </PopoverWrapper>
     </div>
   );
-};
-
-DeleteButton.defaultProps = {
-  disabled: false,
-  modalOpen: false
 };
 
 DeleteButton.propTypes = {
@@ -184,38 +175,33 @@ DeleteButton.propTypes = {
   name: PropTypes.string.isRequired
 };
 
-export const UpDownButtons = props => {
+export const UpDownButtons = ({ name, disableUp = false, disableDown = false, handleCardUp, handleCardDown }) => {
   return (
     <>
       <Button
-        key={"rule-up-" + props.name}
-        disabled={props.disableUp}
+        key={"rule-up-" + name}
+        disabled={disableUp}
         kind="ghost"
         size="sm"
-        id={props.name + "-up"}
-        onClick={props.handleCardUp}
+        id={name + "-up"}
+        onClick={handleCardUp}
         className="focus forceTertiaryButtonStyles marginRightSmall"
       >
-        <ArrowUp key={"up-" + props.name} />
+        <ArrowUp key={"up-" + name} />
       </Button>
       <Button
         kind="ghost"
-        disabled={props.disableDown}
-        key={"rule-down-" + props.name}
+        disabled={disableDown}
+        key={"rule-down-" + name}
         size="sm"
-        id={props.name + "-down"}
-        onClick={props.handleCardDown}
+        id={name + "-down"}
+        onClick={handleCardDown}
         className="focus forceTertiaryButtonStyles"
       >
-        <ArrowDown key={"down-" + props.name} />
+        <ArrowDown key={"down-" + name} />
       </Button>
     </>
   );
-};
-
-UpDownButtons.defaultProps = {
-  disableUp: false,
-  disableDown: false
 };
 
 UpDownButtons.propTypes = {

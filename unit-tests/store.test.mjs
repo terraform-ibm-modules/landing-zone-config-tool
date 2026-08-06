@@ -6,7 +6,7 @@ const defaultWorkloadCluster = {
   entitlement: "cloud_pak",
   kube_type: "openshift",
   kube_version: "default",
-  operating_system: "REDHAT_8_64",
+  operating_system: "RHCOS",
   machine_type: "bx2.16x64",
   name: "workload-cluster",
   resource_group: "workload-rg",
@@ -33,7 +33,7 @@ const defaultManagementCluster = {
   entitlement: "cloud_pak",
   kube_type: "openshift",
   kube_version: "default",
-  operating_system: "REDHAT_8_64",
+  operating_system: "RHCOS",
   machine_type: "bx2.16x64",
   name: "management-cluster",
   resource_group: "management-rg",
@@ -291,7 +291,7 @@ function lazyAddSg(slz) {
  */
 function newState() {
   let slz = new state();
-  slz.setUpdateCallback(() => {});
+  slz.setUpdateCallback(() => { });
   return slz;
 }
 
@@ -691,7 +691,7 @@ describe("store", () => {
             entitlement: "cloud_pak",
             kube_type: "openshift",
             kube_version: "default",
-            operating_system: "REDHAT_8_64",
+            operating_system: "RHCOS",
             machine_type: "bx2.16x64",
             name: "frog",
             resource_group: "workload-rg",
@@ -744,7 +744,7 @@ describe("store", () => {
             entitlement: "cloud_pak",
             kube_type: "openshift",
             kube_version: "default",
-            operating_system: "REDHAT_8_64",
+            operating_system: "RHCOS",
             machine_type: "bx2.16x64",
             name: "frog",
             resource_group: "workload-rg",
@@ -777,7 +777,7 @@ describe("store", () => {
             entitlement: "cloud_pak",
             kube_type: "openshift",
             kube_version: "default",
-            operating_system: "REDHAT_8_64",
+            operating_system: "RHCOS",
             machine_type: "bx2.16x64",
             name: "frog",
             resource_group: "workload-rg",
@@ -830,7 +830,7 @@ describe("store", () => {
             entitlement: "cloud_pak",
             kube_type: "openshift",
             kube_version: "default",
-            operating_system: "REDHAT_8_64",
+            operating_system: "RHCOS",
             machine_type: "bx2.16x64",
             name: "frog",
             resource_group: "workload-rg",
@@ -2010,7 +2010,7 @@ describe("store", () => {
     describe("secrets_manager.onStoreUpdate", () => {
       it("should remove unfound resource groups", () => {
         let slz = new newState();
-        slz.setUpdateCallback(() => {});
+        slz.setUpdateCallback(() => { });
         slz.store.configDotJson.secrets_manager = {
           kms_key_name: null,
           name: null,
@@ -2028,7 +2028,7 @@ describe("store", () => {
     describe("secrets_manager.save", () => {
       it("should update secrets manager", () => {
         let slz = new newState();
-        slz.setUpdateCallback(() => {});
+        slz.setUpdateCallback(() => { });
         let expectedData = {
           use_secrets_manager: true,
           name: "todd",
@@ -3723,7 +3723,7 @@ describe("store", () => {
         });
         it("should update a subnet in place using field other than name", () => {
           let slz = newState();
-          slz.setUpdateCallback(() => {});
+          slz.setUpdateCallback(() => { });
           slz.vpcs.subnets.save(
             {
               cidr: "1.2.3.4/32",
@@ -3745,7 +3745,7 @@ describe("store", () => {
       describe("vpcs.subnets.delete", () => {
         it("should delete a subnet from a vpc", () => {
           let slz = newState();
-          slz.setUpdateCallback(() => {});
+          slz.setUpdateCallback(() => { });
           slz.vpcs.subnets.delete(
             {},
             {
@@ -3765,7 +3765,7 @@ describe("store", () => {
       describe("vpcs.subnets.create", () => {
         it("should create a subnet in a zone", () => {
           let slz = newState();
-          slz.setUpdateCallback(() => {});
+          slz.setUpdateCallback(() => { });
           let testData = {
             name: "frog-zone-1",
             cidr: "10.2.3.4/32",

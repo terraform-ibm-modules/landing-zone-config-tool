@@ -23,7 +23,7 @@ def get_token(ibmcloud_api_key):
     }
 
     response = requests.request("POST", url, headers=headers, data=payload)
-
+    response.raise_for_status()
     access_token = json.loads(response.text)["access_token"]
     return access_token
 
@@ -40,14 +40,49 @@ def call_api(url, access_token):
         response = requests.request("GET", url, headers=headers, data=payload)
         if response.status_code == 404:
             break
+        response.raise_for_status()
+        results += response.text
+        if response.links and "next" in response.links.keys():
+            url = response.links["next"]["url"]
         else:
-            results += response.text
-            if response.links and "next" in response.links.keys():
-                url = response.links["next"]["url"]
-            else:
-                break
+            break
 
     return results
+
+
+def call_api_paginated(url, access_token, collection_key):
+    """Fetches all pages of an IBM Cloud API that paginates via next.href in the JSON body.
+    The next.href from IBM APIs omits required params like version/generation, so we
+    preserve them from the original URL and reattach to every subsequent page URL.
+    """
+    from urllib.parse import parse_qs, urlencode, urlparse, urlunparse
+
+    # Extract params that must be preserved on every request (version, generation)
+    parsed_initial = urlparse(url)
+    initial_params = {k: v[0] for k, v in parse_qs(parsed_initial.query).items()}
+    sticky_params = {
+        k: initial_params[k] for k in ("version", "generation") if k in initial_params
+    }
+
+    headers = {
+        "Accept": "application/json",
+        "Authorization": f"Bearer {access_token}",
+    }
+    all_items = []
+    while url:
+        response = requests.request("GET", url, headers=headers)
+        response.raise_for_status()
+        data = response.json()
+        all_items.extend(data.get(collection_key, []))
+        next_ref = data.get("next", {})
+        next_url = next_ref.get("href") if next_ref else None
+        if next_url and sticky_params:
+            p = urlparse(next_url)
+            params = {k: v[0] for k, v in parse_qs(p.query).items()}
+            params.update(sticky_params)  # reattach version/generation
+            next_url = urlunparse(p._replace(query=urlencode(params)))
+        url = next_url
+    return {collection_key: all_items}
 
 
 if __name__ == "__main__":
@@ -76,12 +111,24 @@ if __name__ == "__main__":
             access_token,
         )
     )
-    json_map["vsiInstanceProfiles"] = json.loads(
-        call_api(
-            f"http://us-south.iaas.cloud.ibm.com/v1/instance/profiles?version={today}&generation=2",
-            access_token,
-        )
-    )
+    # Fetch gen2 and gen3 profiles separately and merge, deduplicating by name
+    gen2_profiles = call_api_paginated(
+        f"https://us-east.iaas.cloud.ibm.com/v1/instance/profiles?limit=100&version={today}&generation=2",
+        access_token,
+        "profiles",
+    )["profiles"]
+    gen3_profiles = call_api_paginated(
+        f"https://us-east.iaas.cloud.ibm.com/v1/instance/profiles?limit=100&version={today}&generation=3",
+        access_token,
+        "profiles",
+    )["profiles"]
+    seen = set()
+    merged = []
+    for p in gen2_profiles + gen3_profiles:
+        if p["name"] not in seen:
+            seen.add(p["name"])
+            merged.append(p)
+    json_map["vsiInstanceProfiles"] = {"profiles": merged}
 
     # send to files
     for file in [
