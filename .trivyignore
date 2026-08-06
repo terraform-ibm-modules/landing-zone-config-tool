@@ -1,0 +1,5 @@
+# react-router CSRF in RSC (React Server Components) mode.
+# This project is a client-side SPA and does not use RSC mode, server actions,
+# or the framework adapter — the vulnerable code path is never exercised.
+# No fix exists in the 7.x line; the advisory requires >=8.3.0 which is not yet published.
+GHSA-qwww-vcr4-c8h2

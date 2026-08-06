@@ -4,7 +4,7 @@
   "description": "GUI for configuring Landing Zone override.json",
   "main": "index.js",
   "engines": {
-    "node": "24.18.0"
+    "node": ">=24.18.0"
   },
   "scripts": {
     "build": "cd client && npm run build && cp -r build ../",
@@ -24,9 +24,16 @@
     "nyc": "18.0.0"
   },
   "overrides": {
+    "@babel/core": "8.0.1",
+    "brace-expansion": "5.0.9",
+    "diff": "9.0.0",
     "express": "5.2.1",
+    "glob": "13.0.6",
+    "js-yaml": "5.2.3",
     "nth-check": "3.0.1",
-    "postcss": "8.5.17",
+    "postcss": "8.5.26",
+    "serialize-javascript": "7.0.7",
+    "uuid": "14.0.1",
     "webpack-dev-middleware": "8.0.3"
   }
 }
