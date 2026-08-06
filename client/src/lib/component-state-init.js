@@ -221,6 +221,10 @@ function stateInit(componentName, componentProps) {
       ],
       true
     );
+    // Resolve legacy REDHAT_8_64 default to RHCOS
+    if (!stateData.operating_system || stateData.operating_system === "REDHAT_8_64") {
+      stateData.operating_system = "RHCOS";
+    }
     ifNullSetToEmptyString(["cos_name", "vpc_name", "resource_group"], true);
     if (componentProps.data.kms_config.crk_name === null) {
       stateData.kms_config = {

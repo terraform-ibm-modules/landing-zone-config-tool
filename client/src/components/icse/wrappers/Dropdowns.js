@@ -29,10 +29,10 @@ export const SlzSelect = props => {
     props.groups.length === 0
       ? [] // if no groups, empty array
       : prependEmptyStringToArrayOnNullOrEmptyString(
-          // otherwise try and prepend empty string if null
-          props.value,
-          props.groups
-        );
+        // otherwise try and prepend empty string if null
+        props.value,
+        props.groups
+      );
   // please leave debug here //
   if (props.debug) {
     console.log("PROPS: ", props);
@@ -171,22 +171,18 @@ ClusterVersionSelect.propTypes = {
 };
 
 export class ClusterOperatingSystemSelect extends React.Component {
-  _isMounted = false;
   constructor(props) {
     super(props);
     this.state = {
-      operating_systems: []
+      operating_systems: ["RHCOS", "RHEL_9_64", "REDHAT_8_64"]
     };
   }
   componentDidMount() {
-    this._isMounted = true;
-    if (isEmpty(this.state.operating_systems)) {
-      let data = ["REDHAT_8_64", "RHCOS"];
-      if (this._isMounted) this.setState({ operating_systems: data });
+    if (this.props.value !== "RHCOS") {
+      this.props.handleInputChange({
+        target: { name: "operating_system", value: "RHCOS" }
+      });
     }
-  }
-  componentWillUnmount() {
-    this._isMounted = false;
   }
   render() {
     return (
@@ -197,7 +193,7 @@ export class ClusterOperatingSystemSelect extends React.Component {
         className={this.props.className}
         component="cluster"
         groups={this.state.operating_systems}
-        value={this.props.value}
+        value={this.props.value || "RHCOS"}
       />
     );
   }
@@ -249,8 +245,8 @@ export class FlavorSelect extends React.Component {
           this.state.flavors.length === 0 && this.props.value === ""
             ? [] // if modal set to [] to avoid two empty string params
             : this.state.flavors.length === 0
-            ? [this.props.value]
-            : this.state.flavors
+              ? [this.props.value]
+              : this.state.flavors
         }
         key={this.state.flavors} // force update on return api call
         value={this.props.value}
@@ -327,8 +323,8 @@ export class ImageSelect extends React.Component {
           this.state.images.length === 0 && this.props.value === ""
             ? [] // prevent duplicate empty string on modal
             : this.state.images.length === 0
-            ? [this.props.value]
-            : splat(this.state.images, "display_name").sort(azsort)
+              ? [this.props.value]
+              : splat(this.state.images, "display_name").sort(azsort)
         }
         key={this.state.images} // force update on return api call
         value={
@@ -351,14 +347,29 @@ ImageSelect.propTypes = {
   value: PropTypes.string // can be null or undefined
 };
 
-export const SlzNumberSelect = props => {
+export const SlzNumberSelect = ({
+  min = 1,
+  invalid = false,
+  isModal = false,
+  disabled = false,
+  max,
+  value,
+  component,
+  name,
+  className,
+  handleInputChange,
+  invalidText,
+  tooltip,
+  labelText,
+  helperText
+}) => {
   return (
     <SlzSelect
-      component={props.component}
-      groups={buildNumberDropdownList(props.max, props.min)}
-      value={props.value.toString()}
-      name={props.name}
-      className={props.className}
+      component={component}
+      groups={buildNumberDropdownList(max, min)}
+      value={value.toString()}
+      name={name}
+      className={className}
       handleInputChange={event => {
         // set name target value and parse int
         let sendEvent = {
@@ -367,24 +378,17 @@ export const SlzNumberSelect = props => {
             value: parseInt(event.target.value)
           }
         };
-        props.handleInputChange(sendEvent);
+        handleInputChange(sendEvent);
       }}
-      invalid={props.invalid}
-      invalidText={props.invalidText}
-      tooltip={props.tooltip}
-      labelText={props.labelText}
-      isModal={props.isModal}
-      disabled={props.disabled}
-      helperText={props.helperText}
+      invalid={invalid}
+      invalidText={invalidText}
+      tooltip={tooltip}
+      labelText={labelText}
+      isModal={isModal}
+      disabled={disabled}
+      helperText={helperText}
     />
   );
-};
-
-SlzNumberSelect.defaultProps = {
-  min: 1,
-  invalid: false,
-  isModal: false,
-  disabled: false
 };
 
 SlzNumberSelect.propTypes = {

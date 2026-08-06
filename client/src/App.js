@@ -122,6 +122,12 @@ class App extends Component {
         // If there is a state in browser local storage, use it instead.
         if (stateInStorage) {
           slzStateStore.store = JSON.parse(stateInStorage);
+          // Migrate legacy REDHAT_8_64 operating_system to RHCOS
+          (slzStateStore.store.configDotJson?.clusters || []).forEach(cluster => {
+            if (!cluster.operating_system || cluster.operating_system === "REDHAT_8_64") {
+              cluster.operating_system = "RHCOS";
+            }
+          });
         }
         this.state = {
           store: slzStateStore.store,
@@ -167,6 +173,7 @@ class App extends Component {
     this.setItem(this.state.storeName, slzStateStore.store);
     // Show a notification when state is updated successfully
     let notification = {
+      kind: "success",
       title: "Success",
       text: "Successfully updated!",
       timeout: 3000
