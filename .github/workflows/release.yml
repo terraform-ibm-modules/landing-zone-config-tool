@@ -10,9 +10,9 @@ permissions:
 on:
   push:
     branches:
-      - release-test
+      - main
 
 jobs:
   call-terraform-release-pipeline:
-    uses: terraform-ibm-modules/common-pipeline-assets/.github/workflows/pages-release.yml@per2
+    uses: terraform-ibm-modules/common-pipeline-assets/.github/workflows/pages-release.yml@v1.24.13
     secrets: inherit
