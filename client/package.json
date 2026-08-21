@@ -34,12 +34,12 @@
     "react-is": "19.2.8",
     "react-router-dom": "7.18.2",
     "regex-but-with-words": "1.5.5",
-    "sass": "1.102.0"
+    "sass": "1.103.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "6.0.5",
+    "@vitejs/plugin-react": "6.1.0",
     "prettier": "3.9.6",
-    "vite": "8.2.1"
+    "vite": "8.2.2"
   },
   "overrides": {
     "express": "5.2.1",
