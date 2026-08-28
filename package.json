@@ -4,7 +4,7 @@
   "description": "GUI for configuring Landing Zone override.json",
   "main": "index.js",
   "engines": {
-    "node": "v26.7.0"
+    "node": "26.8.1"
   },
   "scripts": {
     "build": "cd client && npm run build && cp -r build ../",
@@ -29,7 +29,7 @@
     "diff": "9.0.0",
     "express": "5.2.1",
     "glob": "13.0.6",
-    "js-yaml": "5.3.0",
+    "js-yaml": "5.4.1",
     "nth-check": "3.0.1",
     "postcss": "8.5.26",
     "serialize-javascript": "7.1.0",
