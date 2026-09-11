@@ -7,7 +7,7 @@
   "main": "/src/index.js",
   "homepage": "https://terraform-ibm-modules.github.io/landing-zone-config-tool/",
   "engines": {
-    "node": "24.20.0"
+    "node": "24.21.0"
   },
   "scripts": {
     "build": "vite build",
@@ -19,9 +19,9 @@
     "format:staged": "prettier --write"
   },
   "dependencies": {
-    "@carbon/icons-react": "11.87.0",
-    "@carbon/react": "1.115.0",
-    "@carbon/styles": "1.114.0",
+    "@carbon/icons-react": "11.88.0",
+    "@carbon/react": "1.116.0",
+    "@carbon/styles": "1.115.0",
     "@codemirror/lang-javascript": "6.2.5",
     "@lezer/highlight": "1.2.3",
     "@uiw/codemirror-themes": "4.25.11",
@@ -29,9 +29,9 @@
     "gh-pages": "6.3.0",
     "lazy-z": "2.0.0",
     "prop-types": "15.8.1",
-    "react": "19.2.8",
-    "react-dom": "19.2.8",
-    "react-is": "19.2.8",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-is": "19.3.0",
     "react-router-dom": "7.18.3",
     "regex-but-with-words": "1.5.5",
     "sass": "1.104.0"
@@ -39,7 +39,7 @@
   "devDependencies": {
     "@vitejs/plugin-react": "6.1.1",
     "prettier": "3.9.6",
-    "vite": "8.2.2"
+    "vite": "8.3.0"
   },
   "overrides": {
     "express": "5.2.1",
