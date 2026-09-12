@@ -34,7 +34,7 @@
     "react-is": "19.3.0",
     "react-router-dom": "7.18.3",
     "regex-but-with-words": "1.5.5",
-    "sass": "1.104.0"
+    "sass": "1.104.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "6.1.1",
