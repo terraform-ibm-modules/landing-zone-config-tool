@@ -32,13 +32,13 @@
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-is": "19.3.0",
-    "react-router-dom": "7.18.3",
+    "react-router-dom": "7.18.4",
     "regex-but-with-words": "1.5.5",
     "sass": "1.104.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "6.1.1",
-    "prettier": "3.9.6",
+    "prettier": "3.9.8",
     "vite": "8.3.0"
   },
   "overrides": {
