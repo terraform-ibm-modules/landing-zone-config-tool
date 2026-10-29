@@ -7,7 +7,7 @@
   "main": "/src/index.js",
   "homepage": "https://terraform-ibm-modules.github.io/landing-zone-config-tool/",
   "engines": {
-    "node": "24.22.1"
+    "node": "26.13.0"
   },
   "scripts": {
     "build": "vite build",
@@ -32,9 +32,9 @@
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "react-is": "19.3.1",
-    "react-router-dom": "7.18.4",
+    "react-router-dom": "7.18.5",
     "regex-but-with-words": "1.5.5",
-    "sass": "1.106.1"
+    "sass": "1.107.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "6.1.2",
@@ -45,7 +45,7 @@
     "express": "5.3.0",
     "nth-check": "3.0.1",
     "picomatch": "4.0.7",
-    "postcss": "8.5.31",
+    "postcss": "8.5.32",
     "webpack-dev-middleware": "8.5.0"
   },
   "browserslist": [
