@@ -34,7 +34,7 @@
     "react-is": "19.3.1",
     "react-router-dom": "7.18.5",
     "regex-but-with-words": "1.5.5",
-    "sass": "1.107.0"
+    "sass": "1.107.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "6.1.2",
@@ -46,7 +46,7 @@
     "nth-check": "3.0.1",
     "picomatch": "4.0.7",
     "postcss": "8.5.32",
-    "webpack-dev-middleware": "8.5.0"
+    "webpack-dev-middleware": "8.6.0"
   },
   "browserslist": [
     ">0.2%",
